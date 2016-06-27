@@ -1,1 +1,0 @@
-{   "id" : "56",   "descripcion" : "Convocatoria prueba",   "fecha_convocatoria" : "29/07/2014 03:46pm",   "fecha_reunion" : "14/08/2014 12:00am",   "status" : "Aprobada",   "archivo_acta" : "http://localhost/media/1_1_Introduccion.pdf"}
