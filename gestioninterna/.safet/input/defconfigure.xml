@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : deftrac.xml
+Creado     : Víctor Bravo
+Autor      : Victor Bravo
+Descripcion: Archivo de Entrada para SAFET - Inflow
+-->
+<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<operations suffix=":" commandname="operacion" >  
+<operation  name="Gráfico de Flujo de Trabajo"  desc="Agregar,Modificar,Eliminar,Listar" icon="plus.png">
+</operation>
+<operation  name="Título_del_gráfico" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="combolistliteral" mandatory="no" 
+title="Incluir_Título_Gráfico_Flujo" options="Sí::Se muestra un título en el gráfico de flujo de trabajo::on,No::No se incluye el texto colocado como título en los flujos de trabajo::off">
+			generaloptions.currentflowtitle.include
+		</field>
+		<field type="string" mandatory="no" title="Título_Gráfico_de_Flujo">
+			generaloptions.currentflowtitle
+		</field>
+		<field type="combolistliteral" mandatory="no" 
+title="Tamaño_de_la_letra" options="10::pequeño::10,12::mediano::12,14::mediano-alto::14,18::grande::18,24::muy grande::24">
+			generaloptions.currentflowtitle.size
+		</field>
+		<field type="combolistliteral" mandatory="no" 
+title="Tipo_de_la_letra" options="Helvetica::Letra tipo Helvetica::Helvetica,Book Antiqua::Book Antiqua::Book Antiqua,Dejavu Sans::Dejavu Sans::Dejavu Sans,Serif::Serif::Serif">
+			generaloptions.currentflowtitle.font
+		</field>
+		<field type="combolistliteral" mandatory="no" 
+title="Separación_del_gráfico" options="20::normal::20,30::normal-mediano::30,40::mediano::40,50::mediano-alto::50,75::mucho::75,100::muy alejado::100">
+			generaloptions.currentflowtitle.separation
+		</field>
+
+
+	</fields>
+</command>
+</operation>
+<operation  name="Texto_informativo" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>		
+		<field type="combolistliteral" mandatory="no" title="Incluir_FechaHora_en_Gráfico"
+				options="Sí::Se muestra la fecha  y hora en el gráfico de flujo de trabajo::on,No::No se incluye la fecha y hora en los flujos de trabajo::off">
+			graphs.infotext.include
+		</field>
+	<field type="combolistliteral" mandatory="no" 
+	title="Tamaño_de_la_letra" options="10::pequeño::10,12::mediano::12,14::mediano-alto::14,18::grande::18,24::muy grande::24">
+				graphs.infotext.size
+			</field>
+			<field type="combolistliteral" mandatory="no" 
+	title="Tipo_de_la_letra" options="Helvetica::Letra tipo Helvetica::Helvetica,Book Antiqua::Book Antiqua::Book Antiqua,Dejavu Sans::Dejavu Sans::Dejavu Sans,Serif::Serif::Serif">
+				graphs.infotext.font
+			</field>
+			<field type="combolistliteral" mandatory="no" 
+	title="Separación_del_gráfico" options="20::normal::20,30::normal-mediano::30,40::mediano::40,50::mediano-alto::50,75::mucho::75,100::muy alejado::100">
+				graphs.infotext.separation
+			</field>
+
+	</fields>
+</command>
+</operation>
+
+<operation  name="Opciones_Gráficas" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="combolistliteral" options="Arriba/Abajo::La dirección del gráfico es arriba-abajo::TB,Izquierda/Derecha::La dirección del gráfico es izquierda-derecha::LR" mandatory="no"
+		       title="Direccion_Grafico_de_Flujo">
+				plugins.graphviz.graph.rankdir
+		</field>
+		<field type="combocolor" options="Carpeta::Una carpeta::folder,Cuadro::Un cuadro::box,elipse::Una Elipse::ellipse,huevo::Un figura en forma de huevo::egg,Círculo::Figura circular::circle,Doble Círculo::Figura doble círculo::doublecircle,Diamante::Figura Diamante::diamond,Punto::Figura Punto::point,Sin Figura::No se dibuja figura::plaintext,Rectángulo::Figura rectangular::rectangle,Nota::Figura forma de nota::note,Tabulador::Figura en forma de tabulador::tab,Cuadro 3d::Figura Cuadro 3d::box3d,Componente::Figura tipo componente::component" mandatory="no"
+		       title="Figura_para_tareas">
+				plugins.graphviz.task.shape
+		</field>
+
+		<field type="combocolor" mandatory="no" title="Color_por_Defecto"
+			options="Blanco antiguo::Color Blanco Antiguo::antiquewhite,Verde::Color Verde::green,Rojo Coral::Color Rojo Coral::coral,Amarillo::Color Amarillo::yellow,Azul Cielo::Color Azul Cielo::skyblue,Blanco Fantasma::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,Gris Claro::Color Gris Claro::lightgray,Azul::Color Azul::blue,Naranja::Color Naranja::orange" >
+				plugins.graphviz.task.fillcolor
+		</field>	
+		<field type="combocolor" mandatory="no" title="Color_para__Estadística"
+			options="Blanco antiguo::Color Blanco Antiguo::antiquewhite,Verde::Color Verde::green,Rojo Coral::Color Rojo Coral::coral,Amarillo::Color Amarillo::yellow,Azul Cielo::Color Azul Cielo::skyblue,Blanco Fantasma::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,Gris Claro::Color Gris Claro::lightgray,Azul::Color Azul::blue,Naranja::Color Naranja::orange" >
+				plugins.graphviz.stats.colorgradient
+		</field>	
+
+	</fields>
+</command>
+</operation>
+
+<operation  name="Conexión Base de Datos"  desc="Agregar,Modificar,Eliminar,Listar" icon="plus.png">
+</operation>
+<operation  name="Parámetros_de_Conexión" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="combolistliteral" options="dbtracsafet,dbtracseguridad" mandatory="no" title="Nombre_Base_de_Datos" >
+			database.db.1
+		</field>
+		<field type="string" mandatory="no" title="Servidor">
+			database.host.1
+		</field>
+		<field type="string" mandatory="no" title="Usuario">
+			database.user.1
+		</field>			
+		<field type="string" mandatory="no" title="Contraseña">
+			database.password.1
+		</field>
+		<field type="string" mandatory="no" title="Puerto">
+			database.port.1
+		</field>
+	</fields>
+</command>
+</operation>
+<operation  name="Reportes"  desc="Parámetros del reporte" icon="firmadoc.png">
+</operation>
+<operation  name="Estadísticas" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="combolistliteral" options="Sí::Mostrar colores para todas las tareas::yes,No::Muestra solamente para los que se indicaron explícitamente::no" mandatory="no" title="Incluir_todos_en_reporte">
+			defaultvalues.report
+		</field>
+		<field type="combolistliteral" options="Sí::Mostrar cuadro adicional con estadística::yes,No::No mostrar cuadro de estadísticas::no" mandatory="no" title="Mostrar_cuadro_estadísticas">
+			plugins.graphviz.showstats
+		</field>
+		<field type="combocolor" mandatory="no" title="Color_Cuadro_Fuente"
+			options="Blanco antiguo::Color Blanco Antiguo::antiquewhite,Verde::Color Verde::green,Rojo Coral::Color Rojo Coral::coral,Amarillo::Color Amarillo::yellow,Azul Cielo::Color Azul Cielo::skyblue,Blanco Fantasma::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,Gris Claro::Color Gris Claro::lightgray,Azul::Color Azul::blue,Naranja::Color Naranja::orange,Gris::Color Gris::gray,Negro::Color Negro::black,Blanco::Color Blanco::white" >
+				plugins.graphviz.stats.fontcolor
+		</field>	
+		<field type="combocolor" mandatory="no" title="Color_Cuadro_Relleno"
+			options="Blanco antiguo::Color Blanco Antiguo::antiquewhite,Verde::Color Verde::green,Rojo Coral::Color Rojo Coral::coral,Amarillo::Color Amarillo::yellow,Azul Cielo::Color Azul Cielo::skyblue,Blanco Fantasma::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,Gris Claro::Color Gris Claro::lightgray,Azul::Color Azul::blue,Naranja::Color Naranja::orange,Gris::Color Gris::gray,Negro::Color Negro::black,Blanco::Color Blanco::white" >
+				plugins.graphviz.stats.fillcolor
+		</field>
+<field type="combolistliteral" options="Lleno::Sólido::filled,Punteado::Estilo punteado::dotted,Rayas::Estilo rayas separadas::dashed" mandatory="no" title="Estilo_de_línea_del_Cuadro">
+			plugins.graphviz.stats.style
+		</field>	
+	</fields>
+
+</command>
+</operation>
+<operation  name="Plantillas" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="combolistliteral" options="Sí::Mostrar colores para todas las tareas::yes,No::Muestra solamente para los que se indicaron explícitamente::no" mandatory="no" title="Incluir_todos_en_reporte">
+			defaultvalues.report
+		</field>
+		<field type="filename" mandatory="no" title="Plantilla_para_reportes" desc="Plantilla a utilizar para la generación de los reportes (HTML)" filter="Archivos de flujo (*.html);;Todos (*)" >
+			reports.general.template
+		</field>
+		<field type="filename" mandatory="no" title="Plantilla_para_documento_a_firmar" desc="Plantilla a utilizar para la generación de los reportes para firma Electrónica de Documentos (HTML)" filter="Archivos de flujo (*.html);;Todos (*)" >
+			reports.documenttosign.template
+		</field>
+
+	</fields>
+</command>
+</operation>
+
+<operation  name="Registro de Sucesos (Log)"  desc="Asigna las opciones del registro de sucesos" icon="connect.png">
+</operation>
+<operation  name="Filtrado_de_sucesos" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="combolistliteral" options="Activado::Activa el Registro tipo Acción (Acción)::on,Desactivado::Desactiva el Registro tipo Acción (Action)::off" mandatory="no" title="Activar_Registro_acción">
+			log.action
+		</field>
+		<field type="combolistliteral" options="Activado::Activa el Registro tipo Depuración (Debug)::on,Desactivado::Desactiva el Registro tipo Depuración (Debug)::off" mandatory="no" title="Activar_Registro_depuración">
+			log.debug
+		</field>
+	<field type="combolistliteral" options="Activado::Activa el Registro tipo Advertencia (Warning)::on,Desactivado::Desactiva el Registro tipo Advertencia (Warning)::off" mandatory="no" title="Activar_Registro_advertencia">
+			log.warning
+		</field>
+	<field type="combolistliteral" options="Activado::Activa el Registro tipo Error (Error)::on,Desactivado::Desactiva el Registro tipo Error (Error)::off" mandatory="no" title="Activar_Registro_error">
+			log.error
+		</field>
+
+	<field type="combolistliteral" options="Archivo::Mostrar Registro por  archivo::file,Pantalla::Mostrar Registro por consola::screen" mandatory="no" title="Mostrar_registro_por">
+			log.output
+		</field>
+	</fields>
+</command>
+</operation>
+<operation  name="Parámetros para Autofiltro"  desc="Asigna las opciones de gráficos/reportes con autofiltro" icon="connect.png">
+</operation>
+<operation  name="Opciones_Campo_Fecha" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="combolistliteral" options="12 horas::Mediodía::12,un día::un día::24,Dos días::Dos días::48,Tres días::Tres días::72,Una semana::Una semana::168,Dos semanas::Dos semanas::336,Un mes::Un mes::672,Un mes y medio::Un mes y medio::1008,Dos meses::Dos meses::1334" mandatory="no" title="Lapso_de_tiempo">
+			autofilter.datetime.period
+		</field>
+	</fields>
+</command>
+</operation>
+
+</operations>

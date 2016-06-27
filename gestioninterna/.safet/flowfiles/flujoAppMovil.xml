@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->        
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+
+<yawl  version="0.01">
+<workflow id="Proyecto AppMovil">
+        <token key="id"  keysource="actividad_por_accion">
+        </token>
+<parameter type="combolistliteral" options="TB::La direccin del grfico es arriba-abajo::TB,LR::La direccin del grfico es izquierda-derecha::LR" mandatory="no"
+                       title="Direccion_Grafico_de_Flujo" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir">
+                </parameter>
+<parameter type="combolistliteral" options="svg::Grfico SVG::svg,png::Grfico PNG::png" mandatory="no"
+                       title="Formato_del_Grafico" configurekey="Plugins.Graphviz/plugins.graphviz.graphtype">
+                </parameter>
+<parameter type="combolistliteral" options="on::Incluir::on,off::No Incluir::off" mandatory="no"
+                       title="Incluir_Fecha_Hora" configurekey="Graphs/graphs.infotext.include">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle">
+                </parameter>
+<parameter type="combocolor" mandatory="no" title="Color Para Estadistica"
+                       options="antiquewhite::Color Blanco Antiguo::antiquewhite,green::Color Verde::green,coral::Color Rojo Coral::coral,red::Color Rojo::red,yellow::Color Amarillo::yellow,skyblue::Color Azul Cielo::skyblue,ghostwhite::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,lightgray::Color Gris Claro::lightgray,blue::Color Azul::blue,orange::Color Naranja::orange,gray::Color Gris::gray,black::Color Negro::black,white::Color Blanco::white"
+configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalue="Amarillo">
+                </parameter>
+
+  <condition left="16" type="start" id="inicial" top="153" >
+   <port side="forward" type="split" >
+    <connection query="select tipo from actividad_por_accion" left="126" options="Proyecto_Software" tokenlink="" source="ProyectoTecnico" top="31" />
+   </port>
+  </condition>
+  <task title="no" report="no" left="299" id="ProyectoTecnico" top="128" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="227" options="Planificacion" tokenlink="" source="Planificacion" top="396" />
+   </port>
+   <variable config="1" documentsource="select id_accion_especifica,status,porcentaje from actividad_por_accion" left="358" type="sql" id="Todos" scope="task" top="93" />
+  </task>
+  <task title="no" report="yes" left="461" id="Planificacion" textualinfo="5" top="344" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="613" options="Propuesta_Solucion" tokenlink="" source="Propuesta_Solucion" top="184" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="409" type="sql" id="vContratacion" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Planificacion')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Planificacion' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Planificacion' order by fechaaccion  desc limit 1) as tiempo" top="298" />
+  </task>
+  <task title="no" report="yes" left="713" role="aaraujo" id="Propuesta_Solucion" textualinfo="3" top="99" >
+   <port pattern="or" side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="1000" options="Alcance" tokenlink="" source="Alcance" top="2" />
+    <connection query="select status from actividad_por_accion" left="895" options="Factibilidad" tokenlink="" source="Factibilidad" top="123" />
+    <connection query="select status from actividad_por_accion" left="884" options="Actores" tokenlink="" source="Actores" top="508" />
+    <connection query="select status from actividad_por_accion" left="830" options="Propuesta_Desarrollo" tokenlink="" source="Propuesta_Desarrollo" top="643" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="740" type="sql" id="vPropuesta_Solucion" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Propuesta_Solucion')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Propuesta_Solucion' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Propuesta_Solucion' order by fechaaccion  desc limit 1) as tiempo" top="52" />
+  </task>
+  <task title="no" report="yes" left="1208" role="aaraujo" id="Alcance" textualinfo="3" top="128" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="1472" options="Descripcion_Aplicacion" tokenlink="" source="Descripcion_Aplicacion" top="86" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="1209" type="sql" id="vAlcance" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Alcance')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Alcance' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Alcance' order by fechaaccion  desc limit 1) as tiempo" top="72" />
+  </task>
+  <task title="no" report="yes" left="1661" role="aaraujo" id="Descripcion_Aplicacion" textualinfo="3" top="139" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="1857" options="Estandares" tokenlink="" source="Estandares" top="291" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="1662" type="sql" id="vDescripcion_Aplicacion" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Descripcion_Aplicacion')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Descripcion_Aplicacion' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Descripcion_Aplicacion' order by fechaaccion  desc limit 1) as tiempo" top="83" />
+  </task>
+  <task title="no" report="yes" left="1940" role="jruiz" id="Estandares" textualinfo="2" top="109" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="2149" options="Dominio_Aplicacion" tokenlink="" source="Dominio_Aplicacion" top="33" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="1941" type="sql" id="vEstandares" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Estandares')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Estandares' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Estandares' order by fechaaccion  desc limit 1) as tiempo" top="52" />
+  </task>
+  <task title="no" report="yes" left="2277" role="aaraujo" id="Dominio_Aplicacion" textualinfo="1" top="183" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="2524" options="Definicion_Requerimientos" tokenlink="" source="Definicion_Requerimientos" top="36" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="2272" type="sql" id="vDominio_Aplicacion" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Dominio_Aplicacion')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Dominio_Aplicacion' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Dominio_Aplicacion' order by fechaaccion  desc limit 1) as tiempo" top="126" />
+  </task>
+  <task title="no" report="yes" left="3058" role="aaraujo" id="Definicion_Requerimientos" textualinfo="3" top="143" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="3261" options="Especificacion_Requerimientos" tokenlink="" source="Especificacion_Requerimientos" top="454" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="3160" type="sql" id="vDefinicion_Requerimientos" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Definicion_Requerimientos')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Definicion_Requerimientos' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Definicion_Requerimientos' order by fechaaccion  desc limit 1) as tiempo" top="140" />
+  </task>
+  <task title="no" report="yes" left="2726" role="jruiz" id="Especificacion_Requerimientos" textualinfo="3" top="162" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="2880" options="Riesgos" tokenlink="" source="Riesgos" top="32" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="2727" type="sql" id="vEspecificacion_Requerimientos" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Especificacion_Requerimientos')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Especificacion_Requerimientos' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Especificacion_Requerimientos' order by fechaaccion  desc limit 1) as tiempo" top="108" />
+  </task>
+  <task title="no" report="yes" left="3423" role="jruiz" id="Riesgos" textualinfo="2" top="154" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="3673" options="Diagrama_Actividades" tokenlink="" source="Diagrama_Actividades" top="171" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="3499" type="sql" id="vRiesgos" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Riesgos')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Riesgos' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Riesgos' order by fechaaccion  desc limit 1) as tiempo" top="151" />
+  </task>
+  <task title="no" report="yes" left="3889" role="jruiz" id="Diagrama_Actividades" textualinfo="1" top="154" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="4169" options="Plan_Proyecto" tokenlink="" source="Plan_Proyecto" top="171" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="3793" type="sql" id="vDiagrama_Actividades" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Diagrama_Actividades')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Diagrama_Actividades' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Diagrama_Actividades' order by fechaaccion  desc limit 1) as tiempo" top="98" />
+  </task>
+  <task title="no" report="yes" left="4344" role="aaraujo" id="Plan_Proyecto" textualinfo="5" top="166" >
+   <port pattern="or" side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="4604" options="Codificacion_Arquitectura" tokenlink="" source="Codificacion_Arquitectura" top="529" />
+    <connection query="select status from actividad_por_accion" left="4570" options="Codificacion_Interfaz" tokenlink="" source="Codificacion_Interfaz" top="84" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="4371" type="sql" id="vPlan_Proyecto" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Plan_Proyecto')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Plan_Proyecto' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Plan_Proyecto' order by fechaaccion  desc limit 1) as tiempo" top="244" />
+  </task>
+  <task title="no" report="yes" left="4803" role="aaraujo" id="Codificacion_Arquitectura" textualinfo="26" top="509" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="5153" options="Empaquetado" tokenlink="" source="Empaquetado" top="417" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="4794" type="sql" id="vCodificacion_Arquitectura" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Codificacion_Arquitectura')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Codificacion_Arquitectura' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Codificacion_Arquitectura' order by fechaaccion desc  limit 1) as tiempo" top="441" />
+  </task>
+  <task title="" report="yes" left="5357" role="aaraujo" id="Empaquetado" textualinfo="2" top="270" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="5613" options="Pruebas_a" tokenlink="" source="Pruebas_a" top="290" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="5402" type="sql" id="vEmpaquetado" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Empaquetado')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Empaquetado' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Empaquetado' order by fechaaccion  desc limit 1  ) as tiempo" top="203" />
+  </task>
+  <task title="no" report="yes" left="5813" role="jruiz" id="Pruebas_a" textualinfo="2" top="270" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="6063" options="Despliegue" tokenlink="" source="Despliegue" top="289" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="5868" type="sql" id="vPruebas_a" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Pruebas_a')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Pruebas_a' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Pruebas_a' order by fechaaccion  desc limit 1) as tiempo" top="199" />
+  </task>
+  <task title="no" report="yes" left="6273" role="jruiz" id="Despliegue" textualinfo="3" top="268" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="6520" options="Publicacion" tokenlink="" source="Publicacion" top="288" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="6316" type="sql" id="vDespliegue" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Despliegue')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Despliegue' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Despliegue' order by fechaaccion  desc limit 1) as tiempo" top="196" />
+  </task>
+  <task title="no" report="yes" left="7119" role="aaraujo" id="Publicacion" textualinfo="3" top="270" >
+   <port side="forward" type="split" >
+    <connection query="true" left="7448" options="" tokenlink="" source="final" top="288" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="7068" type="sql" id="vPublicacion" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Publicacion')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Publicacion' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Publicacion' order by fechaaccion  desc limit 1) as tiempo" top="190" />
+  </task>
+  <task title="no" report="yes" left="4804" role="jruiz" id="Codificacion_Interfaz" textualinfo="26" top="67" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="5154" options="Empaquetado" tokenlink="" source="Empaquetado" top="214" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="4911" type="sql" id="vCodificacion_Interfaz" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Codificacion_Interfaz')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Codificacion_Interfaz' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Codificacion_Interfaz' order by fechaaccion  desc limit 1) as tiempo" top="80" />
+  </task>
+  <task title="no" report="yes" left="1084" role="jruiz" id="Factibilidad" textualinfo="2" top="287" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="1371" options="Descripcion_Aplicacion" tokenlink="" source="Descripcion_Aplicacion" top="243" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="1086" type="sql" id="vFactibilidad" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Factibilidad')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Factibilidad' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Factibilidad' order by fechaaccion  desc limit 1) as tiempo" top="228" />
+  </task>
+  <task title="no" report="yes" left="1101" role="aaraujo" id="Actores" textualinfo="2" top="518" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="1454" options="Descripcion_Aplicacion" tokenlink="" source="Descripcion_Aplicacion" top="342" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="1094" type="sql" id="vActores" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Actores')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Actores' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Actores' order by fechaaccion  desc limit 1) as tiempo" top="463" />
+  </task>
+  <task title="no" report="yes" left="1009" role="jruiz" id="Propuesta_Desarrollo" textualinfo="3" top="708" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" left="1511" options="Descripcion_Aplicacion" tokenlink="" source="Descripcion_Aplicacion" top="487" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" left="1009" type="sql" id="vPropuesta_Desarrollo" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Propuesta_Desarrollo')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Propuesta_Desarrollo' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Propuesta_Desarrollo' order by fechaaccion  desc limit 1) as tiempo" top="652" />
+  </task>
+  <condition left="7670" id="final" top="294" >
+   <port side="forward" type="split" >
+    <connection source="" />
+   </port>
+  </condition>
+ </workflow>
+</yawl>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<script language="javascript"> 
+var safettitle = "";
+var safetlistcount = 0;
+document.write('<title>'+'Listado de Solicitudes' +'</title>');
+</script>
+
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    	<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/yui.css" >
+
+<style>
+/*Supplemental CSS for the YUI distribution*/
+#custom-doc { width: 95%; min-width: 950px; }
+#pagetitle {background-image: url(bg_hd.gif);}
+#pagetitle h1 {background-image: url(title_h_bg.gif);}
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/dpSyntaxHighlighter.css">
+<!--Script and CSS includes for YUI dependencies on this page-->
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/paginator.css" />
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/datatable.css" />
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/button.css" />
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/yuiloader-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/dom-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/event-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/dragdrop-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/animation-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/element-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/paginator-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/datasource-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/datatable-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/button-min.js"></script>
+
+
+<!--begin custom header content for this example-->
+
+<!--end custom header content for this example-->
+
+
+<script type="text/javascript">
+//enable passthrough of errors from YUI Event:
+if ((typeof YAHOO !== "undefined") && (YAHOO.util) && (YAHOO.util.Event)) {
+	YAHOO.util.Event.throwErrors = true;
+}
+</script>
+</head>
+<body id="yahoo-com" class=" yui-skin-sam">
+<div id="custom-doc" class="yui-t2">
+<div id="bd">
+	
+	<div >
+		<div >
+		  <div >
+			  <div >   
+	<div class="promo">
+<script language="javascript"> 
+var titul = 'Nuevos tickets';
+
+document.write('<h1 id="title1">'+'Listado Solicitudes </h1>');
+
+</script>
+	
+					
+	<div id="example-canvas" class="bd">
+	
+		
+	<!--BEGIN SOURCE CODE FOR EXAMPLE =============================== -->
+	
+	<div id="complex"></div>
+
+<script type="text/javascript">
+
+
+//safetlist = [ { id: "17", id: "17", cedula_solicitante: "V12797664", nombres: "Víctor Rafael", apellidos: "Bravo Bravo", tipo: "Técnico", nombre_blog: "cryptoblog", fecha_propuesta: "1287782146"}, { id: "18", id: "18", cedula_solicitante: "V12797664", nombres: "Víctor Rafael", apellidos: "Bravo Bravo", tipo: "Investigación", nombre_blog: "formatodigidoc", fecha_propuesta: "1287783650"}];
+<SAFET/>
+
+
+//safetcolumns = [
+//{ key:"id", label:"id",width:100,resizeable:true,sortable:true},
+//{ key:"cedula_solicitante", label:"cedula_solicitante",width:100,resizeable:true,sortable:true},
+//{ key:"apellidos", label:"apellidos",width:100,resizeable:true,sortable:true},
+//{ key:"nombres", label:"nombres",width:100,resizeable:true,sortable:true}
+//];
+
+myDataTable = null;
+
+safetproccessData = function() {
+
+        document.getElementById("title1").innerHTML= "Lista de Tickets (Actividades at&oacute;micas)";
+
+        var myDataSource = new YAHOO.util.DataSource(safetlist);
+        myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+//        myDataSource.responseSchema = {
+//            fields: ["areacode","state"]
+ //       };
+
+        var myConfigs = {
+      //      sortedBy:{key:"id",dir:"asc"},
+            paginator: new YAHOO.widget.Paginator({
+                rowsPerPage: 25,
+                template: YAHOO.widget.Paginator.TEMPLATE_ROWS_PER_PAGE,
+                rowsPerPageOptions: [5,10,25,50,100],
+                pageLinks: 5
+            }),
+            draggableColumns:true
+        }
+
+	// Colocar formato columnas
+	
+	
+	
+
+	if ( myDataTable == null ) {
+        	myDataTable = new YAHOO.widget.DataTable("complex", safetcolumns, myDataSource, myConfigs);
+	}
+
+        myDataTable.subscribe("rowClickEvent",myDataTable.onEventSelectRow);
+        myDataTable.subscribe("cellDblclickEvent",myDataTable.onEventShowCellEditor);
+        myDataTable.subscribe("editorBlurEvent", myDataTable.onEventSaveCellEditor);
+
+        
+
+        return {
+            oDS: myDataSource,
+            oDT: myDataTable
+        }
+
+
+
+    };
+
+safetproccessData();
+
+</script>
+	
+	
+		</div>
+		
+	
+	</div>			
+	</div>
+		
+		</div>
+		
+		</div>
+	</div>
+
+
+	</div><!--closes bd-->
+
+	
+</div>
+<script src="http://seguridad.cenditel.gob.ve/safet/media/dpSyntaxHighlighter.js"></script>
+<script language="javascript"> 
+dp.SyntaxHighlighter.HighlightAll('code'); 
+</script>
+
+</body>
+</html>
+

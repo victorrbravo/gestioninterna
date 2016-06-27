@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Actas Pendientes por Firma segun Usuario" desc="Proceso que realiza para la gestion de las reuniones del consejo directivo">
+<token key="reuniones.id"  keysource="reuniones">
+</token>
+  <parameter type="string" options="" mandatory="no"
+                       title="Mostrar_en_grafico" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show" defaultvalue="Porc,Tokens" >
+                </parameter>
+ 
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle" defaultvalue="Actas Pedientes por Firma segun Consejero" >
+                </parameter>
+           
+<condition id="inicial" type="start">
+	<port side="forward" type="split"  >
+		<connection   source="Convocada" query="select reuniones.status from personal" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]"  options=  "Convocada">
+		</connection>
+	</port>
+</condition>
+
+<task id="Convocada"  title="Se hizo llamado" >
+	<port side="forward" type="split" pattern="or" >
+	    <connection source="Pautada" query="select reuniones.status from personal" options="Pautada" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	 <variable id="vConvocada" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select  descripcion,fecha_convocatoria,fecha_reunion,archivo_convocatoria from personal"
+ rolfield=""  timestampfield="" >
+     </variable>
+</task>
+
+<task id="Pautada"  title="Validar_Quorum" >
+	<port side="forward" type="split" >
+		<connection source="Realizada" query="select reuniones.status from personal" options="Realizada" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPautada" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select  descripcion,fecha_convocatoria,fecha_reunion,archivo_convocatoria from personal"
+ rolfield=""  timestampfield="" >
+     </variable>
+</task>
+
+<task id="Realizada"  title="Registrar_reunion" >
+	<port side="forward" type="split" >
+		<connection source="Aprobada" query="select reuniones.status from personal" options="Aprobada" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vRealizada" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,reuniones.status,archivo_acta from personal"
+ rolfield=""  timestampfield="" >
+     </variable>
+</task>
+
+<task id="Aprobada"  title="Aprobar_Actas" >
+	<port side="forward" type="split" pattern= "or">
+		<connection source="Por_jcontreras" query="select usuario from personal" options="jcontreras" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+		<connection source="Por_jsosa" query="select usuario from personal" options="jsosa" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+		<connection source="Por_atorres" query="select usuario from personal" options="atorres" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+		<connection source="Por_jbuenano" query="select usuario from personal" options="jbuenano" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+		<connection source="Por_dserpa" query="select usuario from personal" options="dserpa" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+
+		<connection source="Por_jochoa" query="select usuario from personal" options="jochoa" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+
+		<connection source="Por_sortega" query="select usuario from personal" options="sortega" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+
+		<connection source="Por_fmolina" query="select usuario from personal" options="fmolina" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+
+		<connection source="Por_aochoa" query="select usuario from personal" options="aochoa" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+
+		<connection source="Por_jvillegas" query="select usuario from personal" options="jvillegas" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+
+		<connection source="Por_jzambrano" query="select usuario from personal" options="jzambrano" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+
+		<connection source="Por_manzola" query="select usuario from personal" options="manzola" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+
+		<connection source="Por_hcontreras" query="select usuario from personal" options="hcontreras" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vAprobada" scope="task"  type="sql" config="1"  tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="SELECT descripcion,fecha_convocatoria,fecha_reunion,reuniones.status,archivo_acta from personal"
+ rolfield="(select propietario from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Aprobada')  as rol"  timestampfield="(select fecha_accion from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Aprobada' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+
+</task>
+
+<task id="Por_jcontreras"  title="Usuario jcontreras" >
+	<port side="forward" type="split" >
+		<connection source="firma_presidente" query="vAprobada SIGN !Jose Joaquin Contreras G." options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_jcontreras" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_jsosa"  title="Usuario jsosa" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_1" query="vAprobada SIGN ! Jose Rafael Sosa Briceno" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_jsosa" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_atorres"  title="Usuario atorres" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_2" query="vAprobada SIGN ! Anthoni Camilo Torres Martinez" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_atorres" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_jbuenano"  title="Usuario jbuenano" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_3" query="vAprobada SIGN ! Juan Pablo Buenano Cardozo" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_jbuenano" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_dserpa"  title="Usuario dserpa" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_4" query="vAprobada SIGN !Dora Olga Serpa Marvaez" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_dserpa" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_jochoa"  title="Usuario jochoa" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_5" query="vAprobada SIGN !Jesus Ignacio Ochoa Arias" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_jochoa" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_sortega"  title="Usuario sortega" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_6" query="vAprobada SIGN !Santiago Lazo Ortega" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_sortega" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_fmolina"  title="Usuario fmolina" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_7" query="vAprobada SIGN ! Fidelina Molina de Hidalgo" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_fmolina" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_aochoa"  title="Usuario aochoa" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_8" query="vAprobada SIGN ! Alejandro Elias Ochoa Arias" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_aochoa" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_jvillegas"  title="Usuario jvillegas" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_9" query="vAprobada SIGN ! Juan Carlos Villegas" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_jvillegas" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_jzambrano"  title="Usuario " >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_10" query="vAprobada SIGN ! Jerson Orlando Zambrano Guerrero" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_jzambrano" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_manzola"  title="Usuario manzola" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_11" query="vAprobada SIGN ! Myriam Teresa Anzola de Diaz" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_manzola" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="Por_hcontreras"  title="Usuario hcontreras" >
+	<port side="forward" type="split" >
+		<connection source="firma_Consejeros_12" query="vAprobada SIGN ! Henry Contreras" options="yes" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vPor_hcontreras" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="firma_presidente"  title="Firma_presidente" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_jcontreras" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select codigo,reuniones.status from personal" groupby="GROUP BY reuniones.id"  >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_1"  title="Firma_Consejero_1" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_jsosa" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_2"  title="Firma_Consejero_2" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_atorres" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_3"  title="Firma_Consejero_3" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_jbuenano" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_4"  title="Firma_Consejero_4" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_dserpa" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_5"  title="Firma_Consejero_5" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_jochoa" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_6"  title="Firma_Consejero_6" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_sortega" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+
+<task id="firma_Consejeros_7"  title="Firma_Consejero_7" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_fmolina" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_8"  title="Firma_Consejero_8" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_aochoa" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_9"  title="Firma_Consejero_9" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_jvillegas" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_10"  title="Firma_Consejero_10" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_jzambrano" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_11"  title="Firma_Consejero_11" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_manzola" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_12"  title="Firma_Consejero_12" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select reuniones.status from personal" options="Pasar_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<variable id="vfirma_hcontreras" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select codigo,reuniones.status from personal" >
+     </variable>
+</task>
+
+<task id="Pasar_libro"  title="Pasar_Actas_libro" >
+	<port side="forward" type="split" >
+		<connection source="En_libro" query="select reuniones.status from personal" options="En_libro" tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" >
+		</connection>
+	</port>
+	<port side="bottom" type="join" pattern="and">
+         </port> 
+	<variable id="vPasar_actas_al_libro" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select descripcion,archivo_acta,fecha_convocatoria,fecha_reunion from personal"
+ rolfield=""  timestampfield="" >
+     </variable>
+</task>
+
+<task id="En_libro"  title="Actas_en_libro" >
+	<port side="forward" type="split" >
+		<connection source="final" query="true" options="" >
+        </connection>
+	</port>
+	<variable id="vActas_en_libro" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_personal:consejero_reunion][id_reunion]" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,archivo_acta from personal"
+ rolfield=""  timestampfield=""  >
+     </variable>
+</task>
+
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+

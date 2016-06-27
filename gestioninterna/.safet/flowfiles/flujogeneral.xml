@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE yawl SYSTEM 'file:///home/debian/.safet/dtd/yawlworkflow.dtd'>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<yawl version="0.01" >
+ <workflow desc="Tickets usados por Trac" id="Tickets" >
+  <token keysource="ticket" key="id" />
+  <parameter title="Fechainicio" validation="" options="" type="datetime" mandatory="yes" >
+                        Fechainicio
+                </parameter>
+  <parameter title="Fechafin" validation="" options="" type="datetime" mandatory="yes" >
+                        Fechafin
+                </parameter>
+  <parameter title="Tarea_padre" validation="" type="string" mandatory="yes" >
+			TareaPadre
+		</parameter>
+  <parameter title="Incluir Titulo del Grafico" options="Si::Se muestra un ttulo en el grfico de flujo de trabajo::on,No::No se incluye el texto colocado como ttulo en los flujos de trabajo::off" configurekey="GeneralOptions/generaloptions.currentflowtitle.include" type="combolistliteral" mandatory="no" defaultvalue="No" />
+  <parameter title="Titulo del Grafico" configurekey="GeneralOptions/generaloptions.currentflowtitle" type="string" mandatory="no" defaultvalue="Grafico" />
+  <parameter title="Color Para Estadistica" options="Blanco antiguo::Color Blanco Antiguo::antiquewhite,Verde::Color Verde::green,Rojo Coral::Color Rojo Coral::coral,Amarillo::Color Amarillo::yellow,Azul Cielo::Color Azul Cielo::skyblue,Blanco Fantasma::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,Gris Claro::Color Gris Claro::lightgray,Azul::Color Azul::blue,Naranja::Color Naranja::orange,Gris::Color Gris::gray,Negro::Color Negro::black,Blanco::Color Blanco::white" configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" type="combocolor" mandatory="no" defaultvalue="Amarillo" />
+  <parameter title="Incluir_todos_en_reporte" options="Si::Mostrar colores para todas las tareas::yes,No::Muestra solamente &#x9;para los que se indicaron explcitamente::no" configurekey="DefaultValues/defaultvalues.report" type="combolistliteral" mandatory="no" />
+  <condition type="start" id="inicial" >
+   <port side="forward" type="split" >
+    <connection query="select changetime from ticket" options=">{#1} AND changetime&lt;{#2}" tokenlink="" source="PorFecha" />
+   </port>
+  </condition>
+  <task title="{#1} a {#2}" report="no" id="PorFecha" >
+   <port side="forward" type="split" >
+    <connection query="select parenttask from ticket" options="{#3}" tokenlink="" source="PorTareaPadre" />
+   </port>
+   <variable config="1" documentsource="select summary as resumen,description as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" type="sql" tokenlink="" id="VariablePorFecha" rolfield="owner" scope="task" timestampfield="changetime" />
+  </task>
+  <task title="{#3}" report="no" id="PorTareaPadre" >
+   <port side="forward" type="split" >
+    <connection query="select status from ticket" options="new" tokenlink="" source="Nuevo" />
+   </port>
+   <variable config="1" documentsource="select summary as resumen,description as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" type="sql" tokenlink="" id="VariablePorTareaPadre" rolfield="owner" scope="task" timestampfield="changetime" />
+  </task>
+  <task title="en atencion" id="Nuevo" >
+   <port pattern="or" side="forward" type="split" >
+    <connection query="select status from ticket" options="accepted" source="Aceptado" />
+    <connection query="select status from ticket" options="failinfo" source="FaltaInfo" />
+   </port>
+   <variable config="1" documentsource="select summary as resumen,translate( description,chr(13),'.') as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" type="sql" tokenlink="" id="VariableNuevo" rolfield="owner" scope="task" timestampfield="changetime" />
+   <autofilter query="select owner from ticket" report="yes" type="split" tokenlink="" id="Nuevo_Propietarios" source="Aceptado" />
+   <autofilter query="select component from ticket" report="yes" type="split" tokenlink="" id="Nuevo_Componentes" source="Aceptado" />
+   <autofilter query="select milestone from ticket" report="yes" type="split" tokenlink="" id="Nuevo_Hito" source="Aceptado" />
+   <autofilter query="select time from ticket" report="yes" type="split" tokenlink="" id="Generacion" source="Aceptado" />
+   <autofilter query="select type from ticket" report="yes" type="split" tokenlink="" id="Nuevo_Tipo" source="Aceptado" />
+  </task>
+  <task title="faltan_datos" id="FaltaInfo" >
+   <port side="forward" type="split" >
+    <connection query="select status from ticket" options="accepted" source="Aceptado" />
+   </port>
+   <variable config="1" documentsource="select summary as resumen,description as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" type="sql" tokenlink="" id="VariableFaltaInfo" rolfield="owner" scope="task" timestampfield="changetime" />
+   <autofilter query="select owner from ticket" report="yes" type="split" tokenlink="" id="FaltaInfo_Propietarios" source="PorCerrar" />
+   <autofilter query="select milestone from ticket" report="yes" type="split" tokenlink="" id="FaltaInfo_Hito" source="PorCerrar" />
+   <autofilter query="select type from ticket" report="yes" type="split" tokenlink="" id="FaltaInfo_Tipo" source="PorCerrar" />
+  </task>
+  <task title="en_ejecucion" id="Aceptado" >
+   <port pattern="none" side="forward" type="split" >
+    <connection query="select status from ticket" options="progressin" source="EnProgreso" />
+   </port>
+   <variable config="1" documentsource="select summary as resumen,description as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" type="sql" tokenlink="" id="VariableAceptado" rolfield="owner" scope="task" timestampfield="changetime" />
+   <autofilter query="select owner from ticket" report="yes" type="split" tokenlink="" id="Aceptado_Propietarios" source="PorCerrar" />
+   <autofilter query="select milestone from ticket" report="yes" type="split" tokenlink="" id="Aceptado_Hito" source="PorCerrar" />
+   <autofilter query="select type from ticket" report="yes" type="split" tokenlink="" id="Aceptado_Tipo" source="PorCerrar" />
+  </task>
+  <task title="implementando" id="EnProgreso" >
+   <port pattern="or" side="forward" type="split" >
+    <connection query="select status from ticket" options="closed" source="PorCerrar" />
+    <connection query="select status from ticket" options="Parado" source="Parado" />
+   </port>
+   <variable config="1" documentsource="select summary as resumen,description as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" type="sql" tokenlink="" id="VariableEnProgreso" rolfield="owner" scope="task" timestampfield="changetime" />
+   <autofilter query="select owner from ticket" report="yes" type="split" tokenlink="" id="EnProgreso_Propietarios" source="PorCerrar" />
+   <autofilter query="select milestone from ticket" report="yes" type="split" tokenlink="" id="EnProgreso_Hito" source="PorCerrar" />
+   <autofilter query="select type from ticket" report="yes" type="split" tokenlink="" id="EnProgreso_Tipo" source="PorCerrar" />
+  </task>
+  <task title="Tickets_detenidos" id="Parado" >
+   <port side="forward" type="split" >
+    <connection query="VariablePorCerrar SIGN Victor Bravo" options="yes" source="FirmadoCerrado" />
+   </port>
+   <variable config="1" documentsource="select summary from ticket" type="sql" tokenlink="" id="vParado" rolfield="owner" scope="task" timestampfield="changetime" />
+   <autofilter query="select owner from ticket" report="yes" type="split" tokenlink="" id="EnProgreso_Propietarios" source="FirmadoCerrado" />
+   <autofilter query="select milestone from ticket" report="yes" type="split" tokenlink="" id="EnProgreso_Hito" source="FirmadoCerrado" />
+   <autofilter query="select type from ticket" report="yes" type="split" tokenlink="" id="EnProgreso_Tipo" source="FirmadoCerrado" />
+  </task>
+  <task title="por_firmar" id="PorCerrar" >
+   <port side="forward" type="split" >
+    <connection query="VariablePorCerrar SIGN Victor Bravo" options="yes" source="FirmadoCerrado" />
+   </port>
+   <variable config="1" documentsource="select id,summary as resumen,type as tipo,milestone as hito,time as fecha, changetime as fecha_ultimocambio,parenttask as tareapadre,owner as propietario from ticket" type="sql" tokenlink="" id="VariablePorCerrar" rolfield="owner" scope="task" timestampfield="changetime" />
+   <autofilter query="select owner from ticket" report="yes" type="split" tokenlink="" id="PorCerrar_Propietarios" source="FirmadoCerrado" />
+   <autofilter query="select milestone from ticket" report="yes" type="split" tokenlink="" id="PorCerrar_Hito" source="FirmadoCerrado" />
+  </task>
+  <task title="Firmados" id="FirmadoCerrado" >
+   <port side="forward" type="split" >
+    <connection query="true" options="" source="final" />
+   </port>
+   <variable config="1" documentsource="select  summary as resumen,description as descripcion,type as tipo,milestone as hito,parenttask as tareapadre,owner as propietario from ticket" type="sql" tokenlink="" id="VariableFirmadoCerrado" rolfield="owner" scope="task" timestampfield="changetime" />
+   <autofilter query="select owner from ticket" report="yes" type="split" tokenlink="" id="FCPropietarios" source="Aceptado" />
+   <autofilter query="select component from ticket" report="yes" type="split" tokenlink="" id="FCComponentes" source="Aceptado" />
+  </task>
+  <condition id="final" >
+   <port side="forward" type="split" >
+    <connection source="" />
+   </port>
+  </condition>
+ </workflow>
+ <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_" />
+</yawl>

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->        
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Control y Seguimientos de las correspondencias">
+<token key="id"  keysource="correspondencia">
+</token>
+<parameter type="combolistliteral" options="TB::La direccin del grfico es arriba-abajo::TB,LR::La direccin del grfico es izquierda-derecha::LR" mandatory="no"
+                       title="Direccion_Grafico_de_Flujo" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir">
+                </parameter>
+<parameter type="combolistliteral" options="svg::Grfico SVG::svg,png::Grfico PNG::png" mandatory="no"
+                       title="Formato_del_Grafico" configurekey="Plugins.Graphviz/plugins.graphviz.graphtype">
+                </parameter>
+<parameter type="combolistliteral" options="on::Incluir::on,off::No Incluir::off" mandatory="no"
+                       title="Incluir_Fecha_Hora" configurekey="Graphs/graphs.infotext.include">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Mostrar_en_grafico" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show" defaultvalue="Porc,Tokens" >
+                </parameter>
+<parameter type="string" options="" mandatory="no" 
+                       title="Plantilla" configurekey="Reports/reports.general.template" defaultvalue="/var/www/media/templates/planillaCorrespondencia.html" >
+                </parameter> 
+
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle">
+                </parameter>
+<parameter type="combocolor" mandatory="no" title="Color Para Estadistica"
+                       options="antiquewhite::Color Blanco Antiguo::antiquewhite,green::Color Verde::green,coral::Color Rojo Coral::coral,red::Color Rojo::red,yellow::Color Amarillo::yellow,skyblue::Color Azul Cielo::skyblue,ghostwhite::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,lightgray::Color Gris Claro::lightgray,blue::Color Azul::blue,orange::Color Naranja::orange,gray::Color Gris::gray,black::Color Negro::black,white::Color Blanco::white"
+configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalue="yellow">
+                </parameter>
+               
+<parameter type="" icon="hito.png" desc= "Por_correspondencia" mandatory="no" options=""  
+          title="Por_correspondencia" defaultvalue="0">
+        </parameter>
+ 
+<condition id="inicial" type="start">
+	<port side="forward" type="split">
+		<connection   source="Por_correspondencia" query="select id from correspondencia"  options="{#Por_correspondencia}" tokenlink="" >
+        </connection>
+	</port>
+</condition>
+
+<task id="Por_correspondencia"  title="_USERNAME" >
+        <port side="forward" type="split" >
+            <connection source="Oficina_Atencion_Ciudadana" query="select status from correspondecia" options="Oficina_Atencion_Ciudadana">
+            </connection>
+        </port>
+	    <variable id="vCorrespondencia" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select nombreciudadano, cedulaciudadano, correociudadano, telefonociudadano, procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Oficina_Atencion_Ciudadana')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Oficina_Atencion_Ciudadana' order by fecha_accion  desc limit 1) as tiempo">
+         </variable>
+
+</task>
+
+<task id="Oficina_Atencion_Ciudadana">
+	<port side="forward" type="split" pattern="or">
+	    <connection source="Presidencia" query="select status from correspondencia" options="Presidencia">
+		</connection>
+	    <connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+	</port>
+	<variable id="vOficina_Atencion_Ciudadana" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select nombreciudadano, cedulaciudadano, correociudadano, telefonociudadano, procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Oficina_Atencion_Ciudadana')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Oficina_Atencion_Ciudadana' order by fecha_accion  desc limit 1) as tiempo">
+    </variable>
+</task>
+
+<task id="Presidencia" >
+	<port side="forward" type="split" pattern="or">
+		<connection source="Direccion_ejecutiva" query="select status from correspondencia" options="Direccion_ejecutiva">
+		</connection>
+		<connection source="Consejo_directivo" query="select status from correspondencia" options="Consejo_directivo">
+		</connection>
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+	</port>
+	<variable id="vPresidencia" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Presidencia')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Presidencia' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Direccion_ejecutiva" >
+	<port side="forward" type="split" pattern="or">
+		
+		<connection source="Consultoria_juridica" query="select status from correspondencia" options="Consultoria_juridica">
+		</connection>
+		<connection source="Auditoria_interna" query="select status from correspondencia" options="Auditoria_interna">
+		</connection>
+		<connection source="Direccion_gestion_interna" query="select status from correspondencia" options="Direccion_gestion_interna">
+		</connection>
+		<connection source="Direccion_gestion_conocimiento" query="select status from correspondencia" options="Direccion_gestion_conocimiento">
+		</connection>
+		<connection source="Direccion_desarrollo" query="select status from correspondencia" options="Direccion_desarrollo">
+		</connection>
+		<connection source="Direccion_investigacion" query="select status from correspondencia" options="Direccion_investigacion">
+		</connection>
+		<connection source="Direccion_reflexion" query="select status from correspondencia" options="Direccion_reflexion">
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+		
+	</port>
+	<variable id="vDireccion_ejecutiva" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_ejecutiva')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_ejecutiva' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Consejo_directivo">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+	</port>
+	<variable id="vConsejo_directivo" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Consejo_directivo')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Consejo_directivo' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Consultoria_juridica">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+	</port>
+	<variable id="vConsultoria_juridica" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Consultoria_juridica')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Consultoria_juridica' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+
+<task id="Auditoria_interna">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+	</port>
+	<variable id="vAuditoria_interna" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Auditoria_interna')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Auditoria_interna' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Direccion_gestion_interna" >
+	<port side="forward" type="split" pattern= "or">
+		<connection source="Coordinacion_Talento_Humano" query="select status from correspondencia" options="Coordinacion_Talento_Humano">
+		</connection>
+		<connection source="Coordinacion_Presupuesto" query="select status from correspondencia" options="Coordinacion_Presupuesto">
+		</connection>
+		<connection source="Coordinacion_finanzas_y_contabilidad" query="select status from correspondencia" options="Coordinacion_finanzas_y_contabilidad">
+		</connection>
+		<connection source="Coordinacion_Servicios_Generales" query="select status from correspondencia" options="Coordinacion_Servicios_Generales">
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+	</port>
+	<variable id="vDireccion_gestion_interna" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_gestion_interna')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_gestion_interna' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Direccion_gestion_conocimiento">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+	</port>
+	<variable id="vDireccion_gestion_conocimiento" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_gestion_conocimiento')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_gestion_conocimiento' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Direccion_desarrollo">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+	</port>
+	<variable id="vDireccion_desarrollo" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_desarrollo')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_desarrollo' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Direccion_investigacion">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+	</port>
+	<variable id="vDireccion_investigacion" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_investigacion')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_investigacion' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Direccion_reflexion">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+	</port>
+	<variable id="vDireccion_reflexion" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_reflexion')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Direccion_reflexion' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Coordinacion_Talento_Humano">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+	</port>
+	<variable id="vCoordinacion_Talento_Humano" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Coordinacion_Talento_Humano')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Coordinacion_Talento_Humano' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Coordinacion_Presupuesto">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+	</port>
+	<variable id="vCoordinacion_presupuesto" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Coordinacion_presupuesto')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Coordinacion_presupuesto' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Coordinacion_finanzas_y_contabilidad">
+	<port side="forward" type="split" pattern="or" >
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+	</port>
+	<variable id="vCoordinacion_finanzas_y_contabilidad" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Coordinacion_finanzas_y_contabilidad')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Coordinacion_finanzas_y_contabilidad' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Coordinacion_Servicios_Generales">
+	<port side="forward" type="split" pattern="or">
+		<connection source="Aprobacion_Presidencia" query="select status from correspondencia" options="Aprobacion_Presidencia" >
+		</connection>
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+	</port>
+	<variable id="vCoordinacion_Servicios_Generales" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Coordinacion_Servicios_Generales')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Coordinacion_Servicios_Generales' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Aprobacion_Presidencia">
+	<port side="forward" type="split" >
+		<connection source="Correspondencias_atendidas" query="select status from correspondencia" options="Correspondencias_atendidas" >
+		</connection>
+	</port>
+	<variable id="vAprobacion_Presidencia" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Aprobacion_Presidencia')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Aprobacion_Presidencia' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<task id="Correspondencias_atendidas">
+	<port side="forward" type="split" >
+		<connection source="final" query="true" options="" >
+        	</connection>
+	</port>
+	<variable id="vCorrespondencias_atendidas" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select procedencia,tipo,asunto,para,fecha_generada,fecha_recepcion,status,respuesta,fecha_respuesta,codigo_oficio_entrante from correspondencia"
+ rolfield="(select responsable from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Correspondencias_atendidas')  as rol"  timestampfield="(select fecha_accion from correspondencia_registro where correspondencia.id=id_correspondencia and correspondencia_registro.status='Correspondencias_atendidas' order by fecha_accion  desc limit 1) as tiempo" >
+     </variable>
+</task>
+
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+

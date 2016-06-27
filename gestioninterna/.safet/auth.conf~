@@ -1,0 +1,1575 @@
+*
+* XPCOM de Mozilla Firefox para aplicar firma electronica
+*
+* Copyright (C) 2008 Vctor Bravo aabravo@cenditel.gob.ve), Antonio Araujo
+* (aaraujo@cenditel.gob.ve)
+*
+* CENDITEL Fundacion Centro Nacional de Desarrollo e Investigacin en Tecnologas Libres
+*
+* Este programa es software libre; Usted puede usarlo bajo los trminos de la licencia de
+*
+* Este programa se distribuye con la esperanza de que sea til, pero SI NINGUNA GARANTA;
+* tampoco las implcitas garantas de MERCANTILIDAD o ADECUACIN A UN PROPSITO PARTICULAR.
+* Consulte la licencia GPL para ms detalles. Usted debe recibir una copia de la GPL junto
+* con este programa; si no, escriba a la Free Software Foundation Inc. 51 Franklin Street,
+* 5 Piso, Boston, MA 02110-1301, USA.
+*
+*/
+
+# Archivo de configuracion de autenticación y autorizaciòn de la libreria libsafet
+# ================================================
+
+[Database]
+
+# Informacion de configuracion de fuentes de datos.
+# Una fuente de datos esta asociada a una conexion con una base
+# de datos relacional. Es posible tener varias fuentes de datos, cada
+# una representada por un indice.
+
+# Especifica el numero de fuentes de datos diferentes
+database.datasources = 1
+
+# Para realizar la conexion de base de datos asociada a una fuente de datos
+# se requieren varios elementos:
+
+# Nombre de la fuente de datos 1
+database.sourcename.1 = database1
+
+# Especifica el controlador asociado a la fuente de datos
+database.driver.1 = psql
+
+# Especifica si la fuente de datos esta activa o no
+database.actived.1 = on
+
+# Especifica el nombre de host para la fuente de datos
+database.host.1 = localhost
+
+# Especifica el nombre de la base de datos para la fuente de datos
+
+database.db.1 = intranet 
+
+# Especifica el puerto de conexin para la base de datos 
+database.port.1 = 5432
+
+# Especifica el nombre de usuario para la fuente de datos
+database.user.1 = vbravo
+
+# Especifica la contrasena de acceso para la fuente de datos
+database.password.1 = 4n0d0Merida!
+
+
+[Titles]
+
+titles.application = AppPlanificacion
+
+
+[Roles]
+
+roles.name.1 = Desarrollador
+roles.description.1 = Codifica
+
+roles.name.2 = Administrador
+roles.description.2 = Funciones de administración
+
+roles.name.3 = UsuarioFinal
+roles.description.3 = Acceso para el usuario final
+
+roles.name.4 = UsuarioRecepcion
+roles.description.4 = Acceso para el usuario de la recepción de CENDITEL
+
+roles.name.5 = UsuarioTalentoHumano
+roles.description.5 = Acceso para el usuario de Talento Humano de CENDITEL
+
+roles.name.6 = UsuarioDireccionDeGestion
+roles.description.6 = Acceso para el usuario de la Dirección de Gestión de CENDITEL
+
+roles.name.7 = UsuarioDireccionEjecutiva
+roles.description.7 = Acceso para el usuario de la Dirección Ejecutiva de CENDITEL
+
+roles.name.8 = UsuarioPresidencia
+roles.description.8 = Acceso para el usuario de la Presidencia de CENDITEL
+
+roles.name.9 = UsuarioCoordinacionDeFinanzas
+roles.description.9 = Acceso para el usuario de la Coordinación de Finanzas de CENDITEL
+
+roles.name.10 = UsuarioReportes
+roles.description.10 = Acceso para el usuario para visualizar los reportes del Sistemas
+
+roles.name.11 = UsuarioAuditoriaInterna
+roles.description.11 = Acceso para el usuario de Auditoria Interna de CENDITEL
+
+roles.name.12 = UsuarioConsultoriaJuridica
+roles.description.12 = Acceso para el usuario de Consultoria Interna de CENDITEL
+
+roles.name.13 = UsuarioCoordinacionDePresupuesto
+roles.description.13 = Acceso para el usuario de la Coordinación de Presupuesto de CENDITEL
+
+roles.name.14 = UsuarioCoordinadacionServiciosGenerales
+roles.description.14 = Acceso para el usuario de la Coordinación de Servicios Generales de CENDITEL
+
+roles.name.15 = UsuarioDireccionDeDesarrollo
+roles.description.15 = Acceso para el usuario de la Dirección de Desarrollo
+
+roles.name.16 = UsuarioDireccionDeReflexion
+roles.description.16 = Acceso para el usuario de la Dirección de Reflexión
+
+roles.name.17 = UsuarioDireccionDeApropiacion
+roles.description.17 = Acceso para el usuario de la Dirección de Apropiación
+
+roles.name.18 = UsuarioDireccionGestionConocimiento
+roles.description.18 = Acceso para el usuario de la Dirección de Gestión del Conocimiento
+
+roles.name.19 = UsuarioDireccionInvestigacion
+roles.description.19 = Acceso para el usuario de la Dirección de Investigación
+
+roles.name.20 = UsuarioDireccionSoporte
+roles.description.20 = Acceso para el usuario de la Dirección de Soporte
+
+roles.name.21 = UsuarioOAC
+roles.description.21 = Acceso para el usuario de la Oficina de Atención Ciudadana
+
+roles.name.22 = Invitado
+roles.description.22 = Usuario invitado
+
+roles.name.23 = aconsejod
+roles.description.23 = Usuario para cargar las actas
+
+[Hierarchy]
+hierarchy.path.1 = execute,read
+hierarchy.path.2 = modify,read
+
+
+[Auth]
+# Valores escritos por SAFET - INFLOW Wed May 25 15:30:41 2016
+auth.account.1 = vbravo
+auth.pass.1 = 0614ca4b50daaf8aead2bcb385b16c5f19ad22d6
+auth.realname.1 = Víctor Bravo vbravo
+auth.role.1 = Administrador
+
+auth.account.2 = admin
+auth.pass.2 = 22cd2d1c596f4091e248aff0e4aa0d47c84b2b36
+auth.realname.2 = Usuario de Administrador
+auth.role.2 = Administrador1
+
+auth.account.3 = aaraujo
+auth.pass.3 = 606de957e5a0788f8cc1b17f269d426d528a887c
+auth.realname.3 = Antonio Araujo Brett aaraujo
+auth.role.3 = Administrador
+
+auth.account.4 = pbuitrago
+auth.pass.4 = 7c07a7552aab477bf87543b4aa03be5e29c73fad
+auth.realname.4 = Pedro Buitrago pbuitrago
+auth.role.4 = Administrador;UsuarioFinal;UsuarioOAC
+
+auth.account.5 = earaujo11242
+auth.pass.5 = ddc6fdd484d5a71b9619beb8b19a7ea06980d8ff
+auth.realname.5 = Ender Araujo earaujo
+auth.role.5 = UsuarioFinal
+
+auth.account.6 = mmontilla
+auth.pass.6 = e4f8f78c5ea27853df21cbaf10002fe2515c5fc8
+auth.realname.6 = Maricela Montilla mmontilla
+auth.role.6 = UsuarioFinal
+
+auth.account.7 = ssole
+auth.pass.7 = 194a404325dbad483768e81b89f5bf5882305996
+auth.realname.7 = Solazver Solé ssole
+auth.role.7 = UsuarioFinal;UsuarioDireccionDeDesarrollo
+
+auth.account.8 = rsumoza
+auth.pass.8 = 18147b7e35e73c89153047032884e9e367601de5
+auth.realname.8 = Rodolfo Sumoza rsumoza
+auth.role.8 = UsuarioFinal
+
+auth.account.9 = lgrisolia
+auth.pass.9 = 99a5a6516b0ae1df554d92759448ad618f2f0d6c
+auth.realname.9 = Luis Grisolía lgrisolia
+auth.role.9 = UsuarioFinal;UsuarioTalentoHumano
+
+auth.account.10 = gparedes
+auth.pass.10 = 9537499b4a796adf3afdb47d4bd6cdf0521f3019
+auth.realname.10 = Gusmery Paredes gparedes
+auth.role.10 = UsuarioFinal
+
+auth.account.11 = ebenitez
+auth.pass.11 = 4b7670174767b1ff5ed97adc8e24bb71df896da2
+auth.realname.11 = Elisabeth Benitez ebenitez
+auth.role.11 = UsuarioFinal
+
+auth.account.12 = aolivares
+auth.pass.12 = f2de336596cb3d205563f1c723300862e84fb701
+auth.realname.12 = Alexander Olivares aolivares
+auth.role.12 = UsuarioFinal
+
+auth.account.13 = mvarela
+auth.pass.13 = 12e4ce54bc7ee2f4a81593ccad886ebaa7a0cca5
+auth.realname.13 = Maryorie Varela mvarela
+auth.role.13 = UsuarioFinal
+
+auth.account.14 = abrito
+auth.pass.14 = 22cd2d1c596f4091e248aff0e4aa0d47c84b2b36
+auth.realname.14 = Alejandro Brito abrito
+auth.role.14 = UsuarioFinal
+
+auth.account.15 = jcastillo
+auth.pass.15 = 07cd39b4350b196769fa11d01f349ef4c25ae8fb
+auth.realname.15 = Jose Castillo jcastillo
+auth.role.15 = UsuarioFinal;Oficina_Atencion_Ciudadana
+
+auth.account.16 = sroca
+auth.pass.16 = b788c321ed00b86cc29a1c8c1ce8348db6d6c20c
+auth.realname.16 = Santiago Roca sroca
+auth.role.16 = UsuarioFinal;UsuarioDireccionDeReflexion;UsuarioDireccionDeApropiacion
+
+auth.account.17 = erojas
+auth.pass.17 = b788c321ed00b86cc29a1c8c1ce8348db6d6c20c
+auth.realname.17 = Epifania Rojas erojas
+auth.role.17 = UsuarioFinal
+
+auth.account.18 = aserra
+auth.pass.18 = 8060d6634c26f36a21e36cb68f23791e53feaeac
+auth.realname.18 = Angel Serra aserra
+auth.role.18 = UsuarioFinal
+
+auth.account.19 = jalvarez
+auth.pass.19 = 7d763098c6a7b9038efe7ae2b757a2d8d594a7df
+auth.realname.19 = Johanna Alvarez jalvarez
+auth.role.19 = UsuarioFinal
+
+auth.account.20 = rrangel
+auth.pass.20 = cd1c30fecf5b4b038e1c294acc3e604ca043871a
+auth.realname.20 = Rodolfo Rangel rrangel
+auth.role.20 = UsuarioFinal
+
+auth.account.21 = rvargas
+auth.pass.21 = de2722b89e98d502d94f777598648e8f68256590
+auth.realname.21 = Roldán Vargas rvargas
+auth.role.21 = UsuarioFinal
+
+auth.account.22 = eparedes
+auth.pass.22 = 981bc705d6ba01cb538593d341e6e05c337d98e8
+auth.realname.22 = Erwin Paredes eparedes
+auth.role.22 = UsuarioFinal
+
+auth.account.23 = jvizcarrondo
+auth.pass.23 = f05b67ee4c4de45855eb5717f0e99a59581cccfa
+auth.realname.23 = Juan Vizcarrondo jvizcarrondo
+auth.role.23 = UsuarioFinal
+
+auth.account.24 = cgonzalez
+auth.pass.24 = 069c7f31a7eddfaeae5a8f2ce84b306cdf51de40
+auth.realname.24 = Carlos González cgonzalez
+auth.role.24 = UsuarioFinal
+
+auth.account.25 = ddiaz
+auth.pass.25 = 72955a4d703ec5e6c934f124d5995088ae64bc0b
+auth.realname.25 = Dhionel Díaz ddiaz
+auth.role.25 = UsuarioFinal;UsuarioDireccionInvestigacion
+
+auth.account.26 = amedrano
+auth.pass.26 = 3b8c18651d0c1f817f6d59c448a36af3e527cedb
+auth.realname.26 = Alberto Medrano amedrano
+auth.role.26 = UsuarioFinal
+
+auth.account.27 = jcontreras
+auth.pass.27 = 87ac130b54c93f53c6723665e0fa2979cc06d1db
+auth.realname.27 = José Contreras jcontreras
+auth.role.27 = UsuarioFinal;UsuarioPresidencia;Consejero
+
+auth.account.28 = jruiz
+auth.pass.28 = 64a052516dc326bc0128d92be7a31b5c51f4ee90
+auth.realname.28 = Jose Ruiz jruiz
+auth.role.28 = UsuarioFinal
+
+auth.account.29 = lchourio
+auth.pass.29 = 3643b5f6dad5e5024075e24f3567c541334ed716
+auth.realname.29 = Luz Mairet Chourio lchourio
+auth.role.29 = UsuarioFinal
+
+auth.account.30 = yverdi
+auth.pass.30 = 762ba43a5db921c3113d36cd46d3cab0802f1148
+auth.realname.30 = Yuleici Verdi yverdi
+auth.role.30 = UsuarioFinal;UsuarioDireccionEjecutiva;Consejero
+
+auth.account.31 = mparra
+auth.pass.31 = 98a0ae781a4fc04fc2f55a87178c8bd2ccaea8a7
+auth.realname.31 = Maria Auxiliadora Parra mparra
+auth.role.31 = UsuarioFinal
+
+auth.account.32 = ydavila
+auth.pass.32 = 762ba43a5db921c3113d36cd46d3cab0802f1148
+auth.realname.32 = Yoryina Dávila ydavila
+auth.role.32 = UsuarioFinal
+
+auth.account.33 = trivas
+auth.pass.33 = b19aff47263749e3b84b7cb2a89c31de9d3b96b2
+auth.realname.33 = Tanger Rivas trivas
+auth.role.33 = UsuarioFinal;UsuarioCoordinacionDeFinanzas
+
+auth.account.34 = nbaez
+auth.pass.34 = 6ec8f9179f3c82150138c64812ec5f1b87877c7f
+auth.realname.34 = Nelevis Baez nbaez
+auth.role.34 = UsuarioFinal
+
+auth.account.35 = jquintero
+auth.pass.35 = 8b8f13a6ed3ad345eab062d301b6303c81b05624
+auth.realname.35 = Joger Quintero jquintero
+auth.role.35 = UsuarioFinal
+
+auth.account.36 = erugeles
+auth.pass.36 = _erugeles_3b2e3fdf2b11af12e0e927636dd440be5d5efa93_22cd2d1c596f4091e248aff0e4aa0d47c84b2b36
+auth.realname.36 = Eduardo Rugeles erugeles
+auth.role.36 = Invitado
+
+auth.account.37 = agutierrez
+auth.pass.37 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.37 = Antonio Gutierrez agutierrez
+auth.role.37 = UsuarioRecepcion;UsuarioFinal
+
+auth.account.38 = ftoro
+auth.pass.38 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.38 = Freddy Toro ftoro
+auth.role.38 = UsuarioFinal
+
+auth.account.39 = emora
+auth.pass.39 = 31c4fea9e6f7f80d3eb03806c87d1c41e26664e5
+auth.realname.39 = Endira Mora emora
+auth.role.39 = UsuarioFinal;UsuarioTalentoHumano
+
+auth.account.40 = abecerra
+auth.pass.40 = 8987a386619bfaae0ac0fccfa295fd883a4f09fd
+auth.realname.40 = Alis Becerra abecerra
+auth.role.40 = UsuarioFinal
+
+auth.account.41 = jacontreras
+auth.pass.41 = 8334909a28e94cedb3432c1451fe7ed290bfaa70
+auth.realname.41 = Jhonny Contreras jacontreras
+auth.role.41 = UsuarioFinal
+
+auth.account.42 = jaraque
+auth.pass.42 = cde0c9bf47fac19bab308574979e374ad85006fd
+auth.realname.42 = Jaime Araque jaraque
+auth.role.42 = UsuarioFinal;UsuarioCoordinacionDePresupuesto
+
+auth.account.43 = jmoreno
+auth.pass.43 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.43 = Jose Luis Moreno jmoreno
+auth.role.43 = UsuarioFinal
+
+auth.account.44 = ayzarra
+auth.pass.44 = 1acd3975497eea3cc30fea071cb06bc2972a4b3f
+auth.realname.44 = Aura Yzarra ayzarra
+auth.role.44 = UsuarioFinal
+
+auth.account.45 = arivero
+auth.pass.45 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.45 = Alix Rivero arivero
+auth.role.45 = UsuarioFinal
+
+auth.account.46 = lpena
+auth.pass.46 = f726fcb186389f219a1c2e967922f2a1c618830e
+auth.realname.46 = Luis Gerardo Pena lpena
+auth.role.46 = UsuarioFinal
+
+auth.account.47 = jbecerra
+auth.pass.47 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.47 = Jesus Ignacio Becerra jbecerra
+auth.role.47 = UsuarioFinal
+
+auth.account.48 = jredondo
+auth.pass.48 = 7a97b24695f315635b735e27679bc8c19cce83e4
+auth.realname.48 = Jorge Redondo jredondo
+auth.role.48 = UsuarioFinal
+
+auth.account.49 = jvera
+auth.pass.49 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.49 = Julie Vera jvera
+auth.role.49 = UsuarioFinal
+
+auth.account.50 = wbecerra
+auth.pass.50 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.50 = Wilmer Becerra wbecerra
+auth.role.50 = UsuarioFinal
+
+auth.account.51 = jvalero
+auth.pass.51 = 1eaa078252cb97afce35271e538f50aa8402ab97
+auth.realname.51 = José Valero jvalero
+auth.role.51 = UsuarioFinal
+
+auth.account.52 = dvillasana
+auth.pass.52 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.52 = Daisy Delfina Villasana Rodríguez dvillasana
+auth.role.52 = UsuarioFinal;UsuarioConsultoriaJuridica
+
+auth.account.53 = jperez
+auth.pass.53 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.53 = Javier Perez jperez
+auth.role.53 = UsuarioFinal
+
+auth.account.54 = jlenzo
+auth.pass.54 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.54 = Javier Perez jlenzo
+auth.role.54 = UsuarioFinal
+
+auth.account.55 = lcolina
+auth.pass.55 = 7fe2a2c94acf83d926108e558b2ba78d79a559f1
+auth.realname.55 = Laura Colina lcolina
+auth.role.55 = UsuarioFinal
+
+auth.account.56 = gfulano
+auth.pass.56 = 7c4a8d09ca3762af61e59520943dc26494f8941b
+auth.realname.56 = Usuario de prueba
+auth.role.56 = UsuarioFinal
+
+auth.account.57 = jsosa
+auth.pass.57 = a9c21be8f08b172b9c9b8bf478c0613b7531dc75
+auth.realname.57 = José Rafael Sosa Briceño jsosa
+auth.role.57 = Consejero
+
+auth.account.58 = atorres
+auth.pass.58 = fb6d97fa7c430d3e5770df77eb0beb35d3e54e92
+auth.realname.58 = Anthoni Camilo Torres Martínez atorres
+auth.role.58 = Consejero
+
+auth.account.59 = jbuenano
+auth.pass.59 = 86526bddba527f420858eee30704002824e02ff4
+auth.realname.59 = Juan Pablo Buenaño Cardozo juanpablobuen
+auth.role.59 = Consejero
+
+auth.account.60 = jochoa
+auth.pass.60 = ea23e4cce50611f774a338b174dd7688b00b6842
+auth.realname.60 = Jesús Ignacio Ochoa Arias jochoa
+auth.role.60 = Consejero
+
+auth.account.61 = sortega
+auth.pass.61 = e38b226727ef8fd1a9f871d06d17ffde8c256aae
+auth.realname.61 = Santiago Lazo Ortega santiago.lazo
+auth.role.61 = Consejero
+
+auth.account.62 = fmolina
+auth.pass.62 = b2e4a66d8cde0b1bceb5c7915407d85aa4b6c0d3
+auth.realname.62 = Fidelina Molina de Hidalgo fidelina2001
+auth.role.62 = Consejero
+
+auth.account.63 = aochoa
+auth.pass.63 = 74ba5555270514043563a59c786fa39f5c753c6f
+auth.realname.63 = Alejandro Elias Ochoa Arias aleochoa
+auth.role.63 = Consejero
+
+auth.account.64 = jvillegas
+auth.pass.64 = 9ecd01320bbe8d428390582bbfae283a3c836998
+auth.realname.64 = Juan Carlos Villegas vjuanc
+auth.role.64 = Consejero
+
+auth.account.65 = jzambrano
+auth.pass.65 = f733be93e90f97a443e24141325091365c3afcef
+auth.realname.65 = Jerson Orlando Zambrano Guerrero jersonzambrano
+auth.role.65 = Consejero
+
+auth.account.66 = manzola
+auth.pass.66 = 9de67388ed09d0f26c206dc99d5e4fd17352d177
+auth.realname.66 = Myriam Teresa Anzola de Díaz myriam
+auth.role.66 = Consejero
+
+auth.account.67 = hcontreras
+auth.pass.67 = a2efa2e6a4e67da83b01314554443e70100949f0
+auth.realname.67 = Henry Contreras hcontreras
+auth.role.67 = Consejero
+
+auth.account.68 = dserpa
+auth.pass.68 = 736f14851f3005750df3671af5d47e0ddcdacd8b
+auth.realname.68 = Dora Serpa doraolga
+auth.role.68 = Consejero
+
+auth.account.69 = aguarisma
+auth.pass.69 = 6a06523e02a516acb0ddfdf581443bdf00c6810e
+auth.realname.69 = Aidaliz Guarisma aguarisma
+auth.role.69 = UsuarioFinal;UsuarioOAC
+
+auth.account.70 = aconsejod
+auth.pass.70 = 7c4a8d09ca3762af61e59520943dc26494f8941b
+auth.realname.70 = Actas del Consejo Directivo yverdi
+auth.role.70 = aconsejod
+
+auth.account.71 = jose
+auth.pass.71 = 7c4a8d09ca3762af61e59520943dc26494f8941b
+auth.realname.71 = Jose Sulbaran jsulbaranjose
+auth.role.71 = Administrador
+
+auth.account.72 = Jsulbaran
+auth.pass.72 = f7c3bc1d808e04732adf679965ccc34ca7ae3441
+auth.realname.72 = Jose Sulbaran jsulbaranjose@gmail.com
+auth.role.72 = Administrador
+
+
+[Permises]
+
+permises.operation.1 = Generar_solicitud_vacaciones
+permises.accounts.1 = vbravo;aaraujo
+permises.types.1 = read;execute;modify
+permises.roles.1 = Administrador;UsuarioFinal
+
+permises.operation.2 = Talento_humano
+permises.accounts.2 = vbravo;pbuitrago
+permises.types.2 = read;execute;modify
+permises.roles.2 = Administrador;UsuarioTalentoHumano
+
+permises.operation.3 = Direccion_ejecutiva
+permises.accounts.3 = vbravo;pbuitrago
+permises.types.3 = read;execute;modify
+permises.roles.3 = Administrador;UsuarioDireccionEjecutiva
+
+permises.operation.4 = Presidencia_vacaciones
+permises.accounts.4 = vbravo;pbuitrago
+permises.types.4 = read;execute;modify
+permises.roles.4 = Administrador;UsuarioPresidencia
+
+permises.operation.5 = Archivar_solicitud_procesada_vacaciones
+permises.accounts.5 = vbravo;pbuitrago
+permises.types.5 = read;execute;modify
+permises.roles.5 = Administrador;UsuarioTalentoHumano
+
+permises.operation.6 = Generar_solicitud_prestaciones 
+permises.accounts.6 = vbravo;pbuitrago
+permises.types.6 = read;execute;modify
+permises.roles.6 = Administrador;UsuarioFinal
+
+permises.operation.7 = Talento_humano_prestaciones
+permises.accounts.7 = vbravo;pbuitrago
+permises.types.7 = read;execute;modify
+permises.roles.7 = Administrador;UsuarioTalentoHumano
+
+permises.operation.8 = Direccion_ejecutiva_prestaciones
+permises.accounts.8 = vbravo;pbuitrago
+permises.types.8 = read;execute;modify
+permises.roles.8 = Administrador;UsuarioDireccionEjecutiva
+
+permises.operation.9 = Presidencia_prestaciones
+permises.accounts.9 = vbravo;pbuitrago
+permises.types.9 = read;execute;modify
+permises.roles.9 = Administrador;UsuarioPresidencia
+
+permises.operation.10 = Archivar_solicitud_procesada_prestaciones
+permises.accounts.10 = vbravo;pbuitrago
+permises.types.10 = read;execute;modify
+permises.roles.10 = Administrador;UsuarioTalentoHumano
+
+permises.operation.11 = Oficina_Atencion_Ciudadana 
+permises.accounts.11 = vbravo;pbuitrago
+permises.types.11 = read;execute;modify
+permises.roles.11 = Administrador;UsuarioOAC
+
+permises.operation.12 = Generar_gráfico_para_proceso_solicitud_vacaciones
+permises.accounts.12 = vbravo;pbuitrago
+permises.types.12 = read;execute;modify
+permises.roles.12 = Administrador
+
+permises.operation.13 = Modificar_estado_Presidencia_correspondencia 
+permises.accounts.13 = vbravo;pbuitrago
+permises.types.13 = read;execute;modify
+permises.roles.13 = Administrador;UsuarioPresidencia
+
+permises.operation.14 = Respuesta_presidencia_correspondencia 
+permises.accounts.14 = vbravo;pbuitrago
+permises.types.14 = read;execute;modify
+permises.roles.14 = Administrador;UsuarioPresidencia
+
+permises.operation.15 = Siguiente_estado_Auditoria_interna_correspondencia
+permises.accounts.15 = vbravo;pbuitrago
+permises.types.15 = read;execute;modify
+permises.roles.15 = Administrador;UsuarioAuditoriaInterna
+
+permises.operation.16 = Generar_gráfico_para_clave_correspondencia_y_denuncias 
+permises.accounts.16 = vbravo;pbuitrago
+permises.types.16 = read;execute;modify
+permises.roles.16 = Administrador;UsuarioOAC
+
+permises.operation.17 = Listar_datos_para_clave_Solicitud_vacaciones
+permises.accounts.17 = vbravo;pbuitrago
+permises.types.17 = read;execute;modify
+permises.roles.17 = Administrador
+
+
+permises.operation.18 = Generar_gráfico_para_clave_Solicitud_de_vacaciones
+permises.accounts.18 = vbravo;pbuitrago;gfulano;emora
+permises.types.18 = read;execute;modify
+permises.roles.18 = Administrador;UsuarioFinal
+
+permises.operation.19 = Modificar_estado_Direccion_ejecutiva
+permises.accounts.19 = vbravo;pbuitrago
+permises.types.19 = read;execute;modify
+permises.roles.19 = Administrador;UsuarioDireccionEjecutiva
+
+permises.operation.20 = Respuesta_Direccion_ejecutiva_correspondencia
+permises.accounts.20 = vbravo;pbuitrago
+permises.types.20 = read;execute;modify
+permises.roles.20 = Administrador;UsuarioDireccionEjecutiva
+
+# Operaciones de Consulta, Lista de datos y gráficos
+
+permises.operation.21 = Listar_datos
+permises.accounts.21 = vbravo;pbuitrago
+permises.types.21 = read;execute;modify
+permises.roles.21 = Desarrollador;Administrador;Consejero
+
+
+permises.operation.22 = Listar_datos_con_autofiltro
+permises.accounts.22 = vbravo
+permises.types.22 = read;execute;modify
+permises.roles.22 = Administrador
+
+
+permises.operation.23 = Listar_datos_con_filtrorecursivo
+permises.accounts.23 = vbravo
+permises.types.23 = read;execute;modify
+permises.roles.23 = Administrador
+
+permises.operation.24 = Generar_gráfico_coloreado
+permises.accounts.24 = vbravo;emora
+permises.types.24 = read;execute;modify
+permises.roles.24 = Administrador
+
+
+permises.operation.25 = Generar_gráfico_para_clave
+permises.accounts.25 = vbravo
+permises.types.25 = read;execute;modify
+permises.roles.25 = Administrador
+
+
+permises.operation.26 = Generar_gráfico_con_autofiltro
+permises.accounts.26 = vbravo
+permises.types.26 = read;execute;modify
+permises.roles.26 = Desarrollador;Administrador
+
+
+permises.operation.27 = Generar_gráfico_con_filtrorecursivo
+permises.accounts.27 = vbravo
+permises.types.27 = read;execute;modify
+permises.roles.27 = Administrador
+
+# Viñetas
+
+permises.operation.28 = Formulario
+permises.accounts.28 = vbravo
+permises.types.28 = read;execute;modify
+permises.roles.28 = Administrador;Desarrollador
+
+
+permises.operation.29 = Consulta
+permises.accounts.29 = vbravo
+permises.types.29 = read;execute;modify
+permises.roles.29 = Administrador;Desarrollador
+
+permises.operation.30 = Firma/Certificados
+permises.accounts.30 = vbravo
+permises.types.30 = read;execute;modify
+permises.roles.30 = Administrador
+
+permises.operation.31 = Reportes
+permises.accounts.31 = vbravo
+permises.types.31 = read;execute;modify
+permises.roles.31 = Administrador;Desarrollador
+
+
+permises.operation.32 = Flujo
+permises.accounts.32 = vbravo
+permises.types.32 = read;execute;modify
+permises.roles.32 = Administrador;Desarrollador
+
+
+permises.operation.33 = Configuración
+permises.accounts.33 = vbravo
+permises.types.33 = read;execute;modify
+permises.roles.33 = Administrador
+
+permises.operation.34 = Salida
+permises.accounts.34 = vbravo
+permises.types.34 = read;execute;modify
+permises.roles.34 = Administrador
+
+
+permises.operation.35 = Usuarios/Roles
+permises.accounts.35 = vbravo
+permises.types.35 = read;execute;modify
+permises.roles.35 = Administrador;Desarrollador
+
+permises.operation.36 = Respuesta_Oficina_Atencion_Ciudadana_correspondencia 
+permises.accounts.36 = vbravo;pbuitrago
+permises.types.36 = read;execute;modify
+permises.roles.36 = Desarrollador;Administrador;UsuarioOAC
+
+permises.operation.37 = Modificar_estado_Aprobacion_Presidencia 
+permises.accounts.37 = vbravo;aaraujo
+permises.types.37 = read;execute;modify
+permises.roles.37 = Administrador;UsuarioPresidencia
+
+permises.operation.38 = Modificar_estado_Consultoria_juridica
+permises.accounts.38 = vbravo;pbuitrago
+permises.types.38 = read;execute;modify
+permises.roles.38 = Administrador;UsuarioConsultoriaJuridica
+
+permises.operation.39 = Modificar_estado_Consultoria_juridica
+permises.accounts.39 = vbravo;pbuitrago
+permises.types.39 = read;execute;modify
+permises.roles.39 = Administrador;UsuarioConsultoriaJuridica
+
+permises.operation.40 = Modificar_estado_Auditoria_interna 
+permises.accounts.40 = vbravo;pbuitrago
+permises.types.40 = read;execute;modify
+permises.roles.40 = Administrador;UsuarioAuditoriaInterna
+
+permises.operation.41 = Respuesta_Auditoria_interna
+permises.accounts.41 = vbravo;pbuitrago
+permises.types.41 = read;execute;modify
+permises.roles.41 = Administrador;UsuarioAuditoriaInterna
+
+permises.operation.42 = Modificar_estado_Direccion_gestion_interna 
+permises.accounts.42 = vbravo;pbuitrago
+permises.types.42 = read;execute;modify
+permises.roles.42 = Administrador;UsuarioDireccionDeGestion
+
+permises.operation.43 = Respuesta_Direccion_gestion_interna
+permises.accounts.43 = vbravo;pbuitrago
+permises.types.43 = read;execute;modify
+permises.roles.43 = Administrador;UsuarioDireccionDeGestion
+
+permises.operation.44 = Modificar_estado_Coordinacion_finanzas_y_contabilidad
+permises.accounts.44 = vbravo;pbuitrago
+permises.types.44 = read;execute;modify
+permises.roles.44 = Administrador;UsuarioCoordinacionDeFinanzas
+
+permises.operation.45 = Respuesta_Coordinacion_finanzas_y_contabilidad
+permises.accounts.45 = vbravo;pbuitrago
+permises.types.45 = read;execute;modify
+permises.roles.45 = Administrador;UsuarioCoordinacionDeFinanzas
+
+permises.operation.46 = Modificar_estado_Coordinacion_Presupuesto 
+permises.accounts.46 = vbravo;pbuitrago
+permises.types.46 = read;execute;modify
+permises.roles.46 = Administrador;UsuarioCoordinacionDePresupuesto
+
+permises.operation.47 = Respuesta_Coordinacion_Presupuesto
+permises.accounts.47 = vbravo;pbuitrago
+permises.types.47 = read;execute;modify
+permises.roles.47 = Administrador;UsuarioCoordinacionDePresupuesto
+
+permises.operation.48 = Modificar_estado_Coordinacion_Talento_Humano 
+permises.accounts.48 = vbravo;pbuitrago
+permises.types.48 = Interoperatividad:read;execute;modify
+permises.roles.48 = Administrador;UsuarioTalentoHumano
+
+permises.operation.49 = Respuesta_Coordinacion_Talento_Humano
+permises.accounts.49 = vbravo;pbuitrago
+permises.types.49 = read;execute;modify
+permises.roles.49 = Administrador;UsuarioTalentoHumano
+
+permises.operation.50 = Modificar_estado_Coordinacion_Servicios_Generales
+permises.accounts.50 = vbravo;pbuitrago
+permises.types.50 = read;execute;modify
+permises.roles.50 = Administrador;UsuarioCoordinadacionServiciosGenerales
+
+permises.operation.51 = Respuesta_Coordinacion_Servicios_Generales
+permises.accounts.51 = vbravo
+permises.types.51 = read;execute;modify
+permises.roles.51 = Administrador;UsuarioCoordinadacionServiciosGenerales
+
+permises.operation.52 = Modificar_estado_Direccion_desarrollo
+permises.accounts.52 = vbravo;pbuitrago
+permises.types.52 = read;execute;modify
+permises.roles.52 = Administrador;UsuarioDireccionDeDesarrollo
+
+permises.operation.53 = Respuesta_Direccion_desarrollo
+permises.accounts.53 = vbravo;pbuitrago
+permises.types.53 = read;execute;modify
+permises.roles.53 = Administrador;UsuarioDireccionDeDesarrollo
+
+permises.operation.54 = Modificar_estado_Direccion_gestion_conocimiento
+permises.accounts.54 = vbravo;pbuitrago
+permises.types.54 = read;execute;modify
+permises.roles.54 = Administrador;UsuarioDireccionGestionConocimiento;UsuarioDireccionDeApropiación
+
+permises.operation.55 = Respuesta_Direccion_gestion_conocimiento
+permises.accounts.55 = vbravo;pbuitrago
+permises.types.55 = read;execute;modify
+permises.roles.55 = Administrador;UsuarioDireccionGestionConocimiento;UsuarioDireccionDeApropiacion
+
+permises.operation.56 = Modificar_estado_Direccion_reflexion
+permises.accounts.56 = vbravo;pbuitrago
+permises.types.56 = read;execute;modify
+permises.roles.56 = Administrador;UsuarioDireccionDeReflexion
+
+permises.operation.57 = Respuesta_Direccion_reflexion
+permises.accounts.57 = vbravo;pbuitrago
+permises.types.57 = read;execute;modify
+permises.roles.57 = Administrador;UsuarioDireccionDeReflexion
+
+permises.operation.58 = Modificar_estado_Direccion_investigacion
+permises.accounts.58 = vbravo;pbuitrago
+permises.types.58 = read;execute;modify
+permises.roles.58 = Administrador;UsuarioDireccionInvestigacion
+
+permises.operation.59 = Respuesta_Direccion_investigacion
+permises.accounts.59 = vbravo;pbuitrago
+permises.types.59 = read;execute;modify
+permises.roles.59 = Administrador;UsuarioDireccionInvestigacion
+
+permises.operation.60 = eliminar_estado_de_actividad
+permises.accounts.60 = vbravo
+permises.types.60 = read;execute;modify
+permises.roles.60 = Administrador
+
+permises.operation.61 = borrar_consejero
+permises.accounts.61 = vbravo;aaraujo;pbuitrago
+permises.types.61 = read;execute;modify
+permises.roles.61 = Administradori
+
+permises.operation.62 = agregar_consejero
+permises.accounts.62 = vbravo;pbuitrago
+permises.types.62 = read;modify;execute
+permises.roles.62 = Administrador
+
+permises.operation.63 = modificar_consejero
+permises.accounts.63 = pbuitrago;vbravo
+permises.types.63 = read;execute;modify
+permises.roles.63 = Administrador
+
+permises.operation.64 = modificar_trabajador
+permises.accounts.64 = pbuitrago
+permises.types.64 = read;execute;modify
+permises.roles.64 = Administrador
+
+permises.operation.65 = borrar_trabajador
+permises.accounts.65 = pbuitrago
+permises.types.65 = read;execute;modify
+permises.roles.65 = Administrador
+
+permises.operation.66 = Generar_gráfico_coloreado 
+permises.accounts.66 = pbuitrago
+permises.types.66 = read;execute;modify
+permises.roles.66 = Administrador
+
+permises.operation.67 = modificar_producto
+permises.accounts.67 = pbuitrago
+permises.types.67 = read;execute;modify
+permises.roles.67 = Administrador
+
+permises.operation.68 = Solicitud_permiso 
+permises.accounts.68 = pbuitrago
+permises.types.68 = read;execute;modify
+permises.roles.68 = Administrador
+
+permises.operation.69 = Talento_humano_permiso 
+permises.accounts.69 = vbravo
+permises.types.69 = read;execute;modify
+permises.roles.69 = Administrador
+
+permises.operation.70 = Generar_gráfico_para_clave_reuniones
+permises.accounts.70 = vbravo;pbuitrago
+permises.types.70 = read;execute;modify
+permises.roles.70 = Administrador
+
+permises.operation.71 = Direccion_ejecutiva_permiso
+permises.accounts.71 = vbravo;pbuitrago
+permises.types.71 = read;execute;modify
+permises.roles.71 = Administrador
+
+permises.operation.72 = Presidencia_permiso 
+permises.accounts.72 = vbravo;pbuitrago
+permises.types.72 = read;execute;modify
+permises.roles.72 = Administrador
+
+permises.operation.73 = Archivar_solicitud_procesada_permiso 
+permises.accounts.73 = vbravo;pbuitrago
+permises.types.73 = read;execute;modify
+permises.roles.73 = Administrador
+
+permises.operation.74 = borrar_actividad_a_acción_específica
+permises.accounts.74 = vbravo;pbuitrago
+permises.types.74 = read;execute;modify
+permises.roles.74 = Administrador
+
+permises.operation.75 = borrar_asignación_de_trabajador_a_equipo
+permises.accounts.75 = vbravo
+permises.types.75 = read;execute;modify
+permises.roles.75 = Administrador
+
+permises.operation.76 = borrar_proyecto_poa
+permises.accounts.76 = vbravo;pbuitrago
+permises.types.76 = Interoperatividad:read;execute;modify
+permises.roles.76 = Administrador
+
+permises.operation.77 = borrar_acción_específica
+permises.accounts.77 = vbravo
+permises.types.77 = read;execute;modify
+permises.roles.77 = Administrador
+
+permises.operation.78 = Restaurar_gráfico_de_flujo
+permises.accounts.78 = vbravo
+permises.types.78 = read;execute;modify
+permises.roles.78 = Administrador
+
+permises.operation.79 = Comparar_gráfico_de_flujo
+permises.accounts.79 = vbravo;pbuitrago
+permises.types.79 = read;execute;modify
+permises.roles.79 = Administrador;gestionarPlanificacion
+
+permises.operation.80 = Borrar_gráfico_de_flujo
+permises.accounts.80 = vbravo
+permises.types.80 = read;execute;modify
+permises.roles.80 = Administrador
+
+permises.operation.81 = Agregar_planificación
+permises.accounts.81 = vbravo;pbuitrago
+permises.types.81 = read;execute;modify
+permises.roles.81 = Administrador;gestionarPlanificacion
+
+permises.operation.82 = Borrar_planificación
+permises.accounts.82 = vbravo;pbuitrago
+permises.types.82 = read;execute;modify
+permises.roles.82 = Administrador
+
+permises.operation.83 = Cambiar_fecha_de_planificación
+permises.accounts.83 = vbravo;pbuitrago
+permises.types.83 = read;execute;modify
+permises.roles.83 = Administrador;gestionarPlanificacion
+
+permises.operation.84 = Listar_datos_para_clave_proyecto_software
+permises.accounts.84 = vbravo
+permises.types.84 = read;execute;modify
+permises.roles.84 = Administrador
+
+permises.operation.85 = Generar_gráfico_para_clave_Proyecto_Software
+permises.accounts.85 = vbravo;pbuitrago;aaraujo;ssole
+permises.types.85 = read;execute;modify
+permises.roles.85 = Administrador;Seguridad;RP
+
+permises.operation.86 = borrar_equipo
+permises.accounts.86 = vbravo;pbuitrago;aaraujo
+permises.types.86 = read;execute;modify
+permises.roles.86 = Administrador
+
+permises.operation.87 = Generar_gráfico_para_clave_Proyecto_Software_Tercerizado
+permises.accounts.87 = vbravo
+permises.types.87 = read;execute;modify
+permises.roles.87 = Administrador;Radecon;RadeconMaestroVirtual
+
+permises.operation.88 = Siguiente_estado_proyecto_Metodologia_MIV
+permises.accounts.88 = vbravo
+permises.types.88 = read;execute;modify
+permises.roles.88 = Administrador;Metodologia_MIV
+
+permises.operation.89 = Generar_gráfico_para_clave_Proyecto_Calidad
+permises.accounts.89 = vbravo;aaraujo;pbuitrago
+permises.types.89 = read;execute;modify
+permises.roles.89 = Administrador;AseguramientoCalidad
+
+permises.operation.90 = Generar_gráfico_para_clave_Proyecto_Políticas_editoriales_de_la_fundación_CENDITEL 
+permises.accounts.90 = vbravo
+permises.types.90 = read;execute;modify
+permises.roles.90 = Administrador;SICD
+
+permises.operation.91 = Generar_gráfico_para_clave_Proyecto_Refutación
+permises.accounts.91 = vbravo;aaraujo;pbuitrago
+permises.types.91 = read;execute;modify
+permises.roles.91 = Administrador;Seguridad;Refutacion
+
+permises.operation.92 = Generar_gráfico_para_clave_Proyecto_Apropiación
+permises.accounts.92 = vbravo;aaraujo;pbuitrago
+permises.types.92 = read;execute;modify
+permises.roles.92 = Administrador;Apropiacion
+
+permises.operation.93 = Generar_gráfico_para_clave_proyecto_Tibisay_dispositivos_portátiles
+permises.accounts.93 = vbravo;aaraujo;pbuitrago
+permises.types.93 = read;execute;modify
+permises.roles.93 = Administrador;AppMovil
+
+permises.operation.94 = Generar_gráfico_para_clave_Proyecto_Planificación_estratégica
+permises.accounts.94 = vbravo;pbuitrago
+permises.types.94 = read;execute;modify
+permises.roles.94 = Administrador;InterOpePlanificacion;Planificacion
+
+permises.operation.95 = Generar_gráfico_para_clave_Proyecto_Interoperatividad
+permises.accounts.95 = vbravo
+permises.types.95 = read;execute;modify
+permises.roles.95 = Administrador;InterOpePlanificacion;InterOpePlanificacionPruebasPiloto
+
+permises.operation.96 = Siguiente_estado_proyecto_Calidad
+permises.accounts.96 = vbravo
+permises.types.96 = read;execute;modify
+permises.roles.96 = Administrador;AseguramientoCalidad
+
+permises.operation.97 = Siguiente_estado_Proyecto_Sensibilización
+permises.accounts.97 = vbravo
+permises.types.97 = read;execute;modify
+permises.roles.97 = Administrador;Sensibilizacion
+
+permises.operation.98 = Siguiente_estado_proyecto_Sistema_Intercambio_de_datos_para_MIV_y_SIGESIC
+permises.accounts.98 = vbravo
+permises.types.98 = read;execute;modify
+permises.roles.98 = Administrador;SistemaIntercambioDatos
+
+permises.operation.99 = Siguiente_estado_proyecto_Calidad_de_la_informacion_MIV_y_SIGESIC
+permises.accounts.99 = vbravo,aaraujo,pbuitrago
+permises.types.99 = read;execute;modify
+permises.roles.99 = Administrador;CalidadInformacion
+
+permises.operation.100 = Siguiente_estado_Proyecto_Apropiación
+permises.accounts.100 = vbravo,aaraujo;pbuitrago
+permises.types.100 = read;execute;modify
+permises.roles.100 = Administrador;Apropiacion
+
+permises.operation.101 = Siguiente_estado_proyecto_Red_Patria 
+permises.accounts.101 = vbravo;aaraujo;pbuitrago
+permises.types.101 = read;execute;modify
+permises.roles.101 = Administrador;RedPatria
+
+permises.operation.102 = Siguiente_estado_proyecto_Salvapantallas_Bicentenario
+permises.accounts.102 = vbravo;aaraujo;pbuitrago
+permises.types.102 = read;execute;modify
+permises.roles.102 = Administrador;Educativo;RadeconMaestroVirtual;MaestroVirtual
+
+permises.operation.103 = Siguiente_estado_proyecto_SIGMIV 
+permises.accounts.103 = vbravo;aaraujo;pbuitrago
+permises.types.103 = read;execute;modify
+permises.roles.103 = Administrador;SIGMIV
+
+permises.operation.104 = Modificar_registro_de_actividad
+permises.accounts.104 = vbravo;pbuitrago
+permises.types.104 = read;execute;modify
+permises.roles.104 = Administrador
+
+permises.operation.105 = Borrar_registro_de_actividad
+permises.accounts.105 = vbravo;pbuitrago
+permises.types.105 = read;execute;modify
+permises.roles.105 = SuperAdministrador
+
+permises.operation.106 = Copiar_planificación
+permises.accounts.106 = vbravo
+permises.types.106 = read;execute;modify
+permises.roles.106 = Administrador;gestionarPlanificacion
+
+permises.operation.107 = agregar_evaluación_FirmaXML
+permises.accounts.107 = vbravo;pbuitrago
+permises.types.107 = read;execute;modify
+permises.roles.107 = Administrador
+
+permises.operation.108 = borrar_evaluación
+permises.accounts.108 = vbravo;pbuitrago
+permises.types.108 = read;execute;modify
+permises.roles.108 = Administrador
+
+permises.operation.109 = modificar_evaluación_iteración_2
+permises.accounts.109 = vbravo;pbuitrago
+permises.types.109 = read;execute;modify
+permises.roles.109 = Administrador
+
+permises.operation.110 = Siguiente_estado_proyecto_AUTANA 
+permises.accounts.110 = vbravo;aaraujo;pbuitrago
+permises.types.110 = read;execute;modify
+permises.roles.110 = Administrador;AUTANA
+
+permises.operation.111 = Agregar_registro_de_actividad
+permises.accounts.111 = vbravo;pbuitrago
+permises.types.111 = read;execute;modify
+permises.roles.111 = SuperAdministrador
+
+permises.operation.112 = Siguiente_estado_proyecto_Sistema_ECO_ALBA
+permises.accounts.112 = vbravo;aaraujo;pbuitrago
+permises.types.112 = read;execute;modify
+permises.roles.112 = Administrador;Sistema_ECO_ALBA
+
+permises.operation.113 = Generar_gráfico_para_clave_Proyecto_Red_Patria 
+permises.accounts.113 = vbravo;aaraujo;pbuitrago
+permises.types.113 = read;execute;modify
+permises.roles.113 = Administrador;RedPatria
+
+permises.operation.114 = Generar_gráfico_para_clave_proyecto_AUTANA
+permises.accounts.114 = vbravo;aaraujo;pbuitrago
+permises.types.114 = read;execute;modify
+permises.roles.114 = Administrador;AUTANA
+
+permises.operation.115 = Generar_gráfico_para_clave_proyecto_Sistema_para_simulacion_y_manejo_de_escenario_MIV
+permises.accounts.115 = vbravo;aaraujo;pbuitrago
+permises.types.115 = read;execute;modify
+permises.roles.115 = Administrador;SistemaSimulacionMIV
+
+permises.operation.116 = Siguiente_estado_proyecto_Planificacion_estrategica
+permises.accounts.116 = vbravo;aaraujo;pbuitrago
+permises.types.116 = read;execute;modify
+permises.roles.116 = Administrador;InterOpePlanificacion;Planificacion
+
+permises.operation.117 = Siguiente_estado_proyecto_Sistema_para_simulacion_y_manejo_de_escenario_MIV 
+permises.accounts.117 = vbravo;aaraujo;pbuitrago
+permises.types.117 = read;execute;modify
+permises.roles.117 = Administrador;SistemaSimulacionMIV
+
+permises.operation.118 = Siguiente_estado_proyecto_Infraestructura 
+permises.accounts.118 = vbravo;aaraujo;pbuitrago
+permises.types.118 = read;execute;modify
+permises.roles.118 = Administrador;Infraestructura
+
+permises.operation.119 = Generar_gráfico_para_clave_proyecto_mapa_industrial
+permises.accounts.119 = vbravo;aaraujo;pbuitrago
+permises.types.119 = read;execute;modify
+permises.roles.119 = Administrador;SIGMIV;Sistema_ECO_ALBA;Metodologia_MIV;SistemaIntercambioDatos
+
+permises.operation.120 = agregar_ticket_iteración_2
+permises.accounts.120 = vbravo;aaraujo
+permises.types.120 = read;execute;modify
+permises.roles.120 = Administrador;Radecon
+
+permises.operation.121 = modificar_ticket_iteración_2
+permises.accounts.121 = vbravo
+permises.types.121 = read;execute;modify
+permises.roles.121 = Administrador;Radecon
+
+permises.operation.122 = agregar_wiki_iteración_2
+permises.accounts.122 = vbravo
+permises.types.122 = read;execute;modify
+permises.roles.122 = Administrador;Radecon
+
+permises.operation.123 = Siguiente_estado_iteración_2
+permises.accounts.123 = pbuitrago
+permises.types.123 = read;execute;modify
+permises.roles.123 = Administrador;Radecon
+
+permises.operation.124 = borrar_ticket_iteración_2
+permises.accounts.124 = vbravo
+permises.types.124 = read;execute;modify
+permises.roles.124 = Administrador;Radecon_2
+
+permises.operation.125 = Siguiente_estado_parcial_proyecto_software
+permises.accounts.125 = vbravo
+permises.types.125 = read;execute;modify
+permises.roles.125 = Administrador
+
+permises.operation.126 = Copiar_fechas_de_planificación
+permises.accounts.126 = vbravo
+permises.types.126 = read;execute;modify
+permises.roles.126 = Administrador;gestionarPlanificacion
+
+permises.operation.127 = Agregar_nodo_a_gráfico_de_flujo
+permises.accounts.127 = vbravo
+permises.types.127 = read;execute;modify
+permises.roles.127 = Administrador
+
+permises.operation.128 = Borrar_nodo_de_gráfico_de_flujo
+permises.accounts.128 = vbravo
+permises.types.128 = read;execute;modify
+permises.roles.128 = Administrador
+
+permises.operation.129 = Cambiar_conexión_de_gráfico_de_flujo
+permises.accounts.129 = vbravo
+permises.types.129 = read;execute;modify
+permises.roles.129 = Administrador
+
+permises.operation.130 = Agregar_evaluación_prueba_piloto
+permises.accounts.130 = vbravo;pbuitrago
+permises.types.130 = read;execute;modify
+permises.roles.130 = Administrador;PruebasPiloto;TramitesPruebasPiloto;InterOpePlanificacionPruebasPiloto;Tramites
+
+permises.operation.131 = Siguiente_estado_proyecto_Tibisay_dispositivos_portátiles 
+permises.accounts.131 = vbravo
+permises.types.131 = read;execute;modify
+permises.roles.131 = Administrador;AppMovil
+
+permises.operation.132 = Siguiente_estado_proyecto_Sistema_indicadores_seguimiento_proyectos 
+permises.accounts.132 = vbravo;pbuitrago
+permises.types.132 = read;execute;modify
+permises.roles.132 = Administrador;SistemaIndicadores
+
+permises.operation.133 = Generar_gráfico_para_clave_proyecto_Sistema_indicadores_seguimiento_proyectos 
+permises.accounts.133 = vbravo
+permises.types.133 = read;execute;modify
+permises.roles.133 = Administrador;SistemaIndicadores
+
+permises.operation.134 = Generar_gráfico_para_clave_proyecto_Gestion_de_Anonimato 
+permises.accounts.134 = vbravo
+permises.types.134 = read;execute;modify
+permises.roles.134 = Administrador;Anonimato
+
+permises.operation.135 = Generar_gráfico_para_clave_Proyecto_tramites
+permises.accounts.135 = vbravo
+permises.types.135 = read;execute;modify
+permises.roles.135 = Administrador;Tramites
+
+permises.operation.136 = Siguiente_estado
+permises.accounts.136 = vbravo
+permises.types.136 = read;execute;modify
+permises.roles.136 = Administrador
+
+permises.operation.137 = Siguiente_estado_del_flujo_por_correspondencia 
+permises.accounts.137 = vbravo
+permises.types.137 = read;execute;modify
+permises.roles.137 = Administrador
+
+permises.operation.138 = Generar_gráfico_para_clave_tareas_por_correspondencia
+permises.accounts.138 = vbravo
+permises.types.138 = read;execute;modify
+permises.roles.138 = Administrador
+
+permises.operation.139 = Siguiente_estado_del_flujo_por_asignación_directa
+permises.accounts.139 = vbravo
+permises.types.139 = read;execute;modify
+permises.roles.139 = Administrador
+
+permises.operation.140 = Siguiente_estado_del_flujo_de_tareas_general
+permises.accounts.140 = vbravo
+permises.types.140 = read;execute;modify
+permises.roles.140 = Administrador
+
+permises.operation.141 = Generar_gráfico_para_clave_tareas_por_asignacion_directa
+permises.accounts.141 = vbravo
+permises.types.141 = read;execute;modify
+permises.roles.141 = Administrador
+
+permises.operation.142 = Generar_gráfico_para_clave_tareas_general
+permises.accounts.142 = vbravo
+permises.types.142 = read;execute;modify
+permises.roles.142 = Administrador
+
+permises.operation.143 = Editar_grafo
+permises.accounts.143 = vbravo
+permises.types.143 = read;execute;modify
+permises.roles.143 = Administrador;EdicionFlujos
+
+permises.operation.144 = Agregar_grafo
+permises.accounts.144 = vbravo
+permises.types.144 = read;execute;modify
+permises.roles.144 = Administrador;EdicionFlujos
+
+permises.operation.145 = Borrar_grafo
+permises.accounts.145 = vbravo
+permises.types.145 = read;execute;modify
+permises.roles.145 = Administrador;EdicionFlujos
+
+permises.operation.146 = Siguiente_estado_proyecto_communitas
+permises.accounts.146 = vbravo
+permises.types.146 = read;execute;modify
+permises.roles.146 = Administrador;EdicionFlujos;Communitas
+
+permises.operation.146 = Generar_gráfico_para_clave_Proyecto_Communitas
+permises.accounts.146 = vbravo
+permises.types.146 = read;execute;modify
+permises.roles.146 = Administrador;EdicionFlujos;Communitas
+
+permises.operation.147 = Siguiente_estado_proyecto_Cuentacuentos
+permises.accounts.147 = vbravo
+permises.types.147 = read;execute;modify
+permises.roles.147 = Administrador;EdicionFlujos;Cuentacuentos
+
+permises.operation.148 = Generar_gráfico_para_clave_Proyecto_Cuentacuentos
+permises.accounts.148 = vbravo
+permises.types.148 = read;execute;modify
+permises.roles.148 = Administrador;EdicionFlujos;Cuentacuentos
+
+permises.operation.149 = Siguiente_estado_proyecto_medios_comunitarios_socialista
+permises.accounts.149 = vbravo
+permises.types.149 = read;execute;modify
+permises.roles.149 = Administrador;EdicionFlujos;MediosComunitarios
+
+permises.operation.150 = Generar_gráfico_para_clave_Proyecto_Medios_Comunitarios_socialista
+permises.accounts.150 = vbravo
+permises.types.150 = read;execute;modify
+permises.roles.150 = Administrador;EdicionFlujos;MediosComunitarios
+
+permises.operation.151 = Generar_gráfico_para_clave_Proyecto_Asamblea_Socialista
+permises.accounts.151 = vbravo
+permises.types.151 = read;execute;modify
+permises.roles.151 = Administrador;EdicionFlujos;AsambleaSocialista
+
+permises.operation.152 = Siguiente_estado_proyecto_Asamblea_Socialista
+permises.accounts.152 = vbravo
+permises.types.152 = read;execute;modify
+permises.roles.152 = Administrador;EdicionFlujos;AsambleaSocialista
+
+permises.operation.153 = Siguiente_estado_proyecto_contraloria_social
+permises.accounts.153 = vbravo
+permises.types.153 = read;execute;modify
+permises.roles.153 = Administrador;EdicionFlujos;ContraloriaSocial
+
+permises.operation.154 = Generar_gráfico_para_clave_Proyecto_Contraloria_Social
+permises.accounts.154 = vbravo
+permises.types.154 = read;execute;modify
+permises.roles.154 = Administrador;EdicionFlujos;ContraloriaSocial
+
+permises.operation.155 = Cambiar_nota_de_nodo
+permises.accounts.155 = vbravo
+permises.types.155 = read;execute;modify
+permises.roles.155 = Administrador;gestionarPlanificacion
+
+permises.operation.156 = Siguiente_estado_proyecto_communitas
+permises.accounts.156 = vbravo
+permises.types.156 = read;execute;modify
+permises.roles.156 = Administrador;EdicionFlujo;Communitas
+
+permises.operation.157 = Listar_datos_consolidado
+permises.accounts.157 = vbravo
+permises.types.157 = read;execute;modify
+permises.roles.157 = Administrador
+
+permises.operation.158 = Siguiente_estado_proyecto_prueba
+permises.accounts.158 = vbravo
+permises.types.158 = read;execute;modify
+permises.roles.158 = Administrador;usuarioPrueba
+
+permises.operation.159 = Generar_gráfico_para_clave_Proyecto_Prueba
+permises.accounts.159 = vbravo
+permises.types.159 = read;execute;modify
+permises.roles.159 = Administrador;usuarioPrueba
+
+
+permises.operation.160 = Siguiente_estado_proyecto_Television_digital_abierta 
+permises.accounts.160 = vbravo
+permises.types.160 = read;execute;modify
+permises.roles.160 = Administrador;TelevisionDigitalEducativa
+
+
+permises.operation.161 = flujoAppPrueba.Tarea3
+permises.accounts.161 = vbravo
+permises.types.161 = read;execute;modify
+permises.roles.161 = Administrador
+
+permises.operation.162 = Generar_gráfico_para_clave_fondos_públicos
+permises.accounts.162 = vbravo
+permises.types.162 = read;execute;modify
+permises.roles.162 = Administrador
+
+permises.operation.163 = Cambiar_rol_de_tarea
+permises.accounts.163 = vbravo
+permises.types.163 = read;execute;modify
+permises.roles.163 = Administrador;gestionarPlanificacion
+
+permises.operation.164 = Generar_gráfico_para_clave_gestion_interna
+permises.accounts.164 = vbravo
+permises.types.164 = read;execute;modify
+permises.roles.164 = Administrador
+
+permises.operation.165 = Generar_gráfico_para_clave_proyecto_Tibisay_seguridad
+permises.accounts.165 = vbravo
+permises.types.165 = read;execute;modify
+permises.roles.165 = Administrador;ActualizacionSoftware
+
+
+permises.operation.166 = Siguiente_estado_proyecto_Tibisay_seguridad
+permises.accounts.166 = vbravo
+permises.types.166 = read;execute;modify
+permises.roles.166 = Administrador;ActualizacionSoftware
+
+
+permises.operation.167 = Siguiente_estado_proyecto_gestion_interna
+permises.accounts.167 = vbravo
+permises.types.167 = read;execute;modify
+permises.roles.167 = Administrador
+
+permises.operation.168 = Listar_datos_general
+permises.accounts.168 = vbravo;pbuitrago
+permises.types.168 = read;execute;modify
+permises.roles.168 = Administrador;UsuarioFinal;Consejero
+
+permises.operation.169 = Registrar_realización_de_reunión
+permises.accounts.169 = vbravo
+permises.types.169 = read;execute;modify
+permises.roles.169 = Administrador;aconsejod
+
+
+permises.operation.170 = Crear_convocatoria
+permises.accounts.170 = vbravo
+permises.types.170 = read;execute;modify
+permises.roles.170 = Administrador;aconsejod
+
+permises.operation.171 = Borrar_reunión
+permises.accounts.171 = vbravo
+permises.types.171 = read;execute;modify
+permises.roles.171 = Administrador
+
+permises.operation.172 = Firmar_actas_pendientes
+permises.accounts.172 = vbravo
+permises.types.172 = read;execute;modify
+permises.roles.172 = Administrador
+
+permises.operation.173 = Registrar_validación_de_quórum 
+permises.accounts.173 = vbravo
+permises.types.173 = read;execute;modify
+permises.roles.173 = Administrador
+
+permises.operation.174 = Modificar_convocatoria
+permises.accounts.174 = vbravo
+permises.types.174 = read;execute;modify
+permises.roles.174 = Administrador;aconsejod
+
+permises.operation.175 = agregar_empleado
+permises.accounts.175 = vbravo
+permises.types.175 = read;execute;modify
+permises.roles.175 = Administrador;UsuarioTalentoHumano
+
+permises.operation.176 = modificar_empleado
+permises.accounts.176 = vbravo
+permises.types.176 = read;execute;modify
+permises.roles.176 = Administrador;UsuarioTalentoHumano
+
+permises.operation.177 = borrar_empleado
+permises.accounts.177 = vbravo
+permises.types.177 = read;execute;modify
+permises.roles.177 = Administrador;UsuarioTalentoHumano
+
+permises.operation.178 = Registrar_aprobación_de_acta_de_reunión
+permises.accounts.178 = vbravo
+permises.types.178 = read;execute;modify
+permises.roles.178 = Administrador;aconsejod
+
+permises.operation.179 = Firmar_acta_de_reunión
+permises.accounts.179 = vbravo;oprueba;pbuitrago
+permises.types.179 = read;execute;modify
+permises.roles.179 = Administrador;Consejero
+
+permises.operation.180 = Registrar_escritura_en_libro
+permises.accounts.180 = vbravo
+permises.types.180 = read;execute;modify
+permises.roles.180 = Administrador
+
+permises.operation.181 = asignar_consejero_a_reunión
+permises.accounts.181 = pbuitrago
+permises.types.181 = read;execute;modify
+permises.roles.181 = Administrador;Asignadores;aconsejod
+
+
+permises.operation.182 = borrar_personal_de_equipo
+permises.accounts.182 = vbravo;pbuitrago
+permises.types.182 = read;execute;modify
+permises.roles.182 = Administrador
+
+
+permises.operation.183 = Registrar_completación_de_firmas_de_acta
+permises.accounts.183 = vbravo
+permises.types.183 = read;execute;modify
+permises.roles.183 = Administrador
+
+permises.operation.184 = borrar_consejero_de_reunión
+permises.accounts.184 = pbuitrago
+permises.types.184 = read;execute;modify
+permises.roles.184 = Administrador;Asignadores;aconsejod
+
+permises.operation.185 = agregar_adjunto_a_convocatoria
+permises.accounts.185 = vbravo;pbuitrago
+permises.types.185 = read;execute;modify
+permises.roles.185 = Administrador
+
+permises.operation.186 = modificar_consejero
+permises.accounts.186 = vbravo;pbuitrago
+permises.types.186 = read;execute;modify
+permises.roles.186 = Administrador
+
+permises.operation.187 = borrar_consejero
+permises.accounts.187 = vbravo;pbuitrago
+permises.types.187 = read;execute;modify
+permises.roles.187 = Administrador
+
+permises.operation.188 = Enviar_convocatoria_por_correo
+permises.accounts.188 = vbravo
+permises.types.188 = read;execute;modify
+permises.roles.188 = Administrador
+
+permises.operation.189 = confirmar_consejero_para_reunión 
+permises.accounts.189 = pbuitrago
+permises.types.189 = read;execute;modify
+permises.roles.189 = Administrador;Confirmadores
+
+permises.operation.190 = borrar_confirmación_de_consejero
+permises.accounts.190 = pbuitrago
+permises.types.190 = read;execute;modify
+permises.roles.190 = Administrador;Confirmadores
+
+permises.operation.191 = borrar_adjunto_de_convocatoria
+permises.accounts.191 = pbuitrago
+permises.types.191 = read;execute;modify
+permises.roles.191 = Administrador;Confirmadores
+
+permises.operation.192 = Imprimir_planilla_vacaciones
+permises.accounts.192 = pbuitrago;uprueba
+permises.types.192 = read;execute;modify
+permises.roles.192 = Administrador 
+
+permises.operation.193 = Firmar_solicitud
+permises.accounts.193 = pbuitrago;oprueba
+permises.types.193 = read;execute;modify
+permises.roles.193 = Administrador
+
+permises.operation.194 = Reiniciar_solicitud
+permises.accounts.194 = vbravo
+permises.types.194 = read;execute;modify
+permises.roles.194 = Administrador
+
+permises.operation.195 = Pautar_reunión
+permises.accounts.195 = vbravo
+permises.types.195 = read;execute;modify
+permises.roles.195 = Administrador;aconsejod
+
+permises.operation.196 = Enviar_solicitud_por_correo
+permises.accounts.196 = vbravo
+permises.types.196 = read;execute;modify
+permises.roles.196 = Administrador;UsuarioTalentoHumano;UsuarioDireccionEjecutiva
+
+
+permises.operation.197 = Siguiente_estado_solicitud
+permises.accounts.197 = vbravo;pbuitrago
+permises.types.197 = read;execute;modify
+permises.roles.197 = Administrador
+
+permises.operation.198 = Borrar_solicitud
+permises.accounts.198 = vbravo
+permises.types.198 = read;execute;modify
+permises.roles.198 = Administrador
+
+permises.operation.199 = Desarchivar_solicitud
+permises.accounts.199 = vbravo
+permises.types.199 = read;execute;modify
+permises.roles.199 = Administrador
+
+permises.operation.200 = Firmar_solicitud_SAFET01
+permises.accounts.200 = pbuitrago
+permises.types.200 = read;execute;modify
+permises.roles.200 = Administrador
+
+permises.operation.201 = Firmar_solicitud_SAFET02
+permises.accounts.201 = pbuitrago
+permises.types.201 = read;execute;modify
+permises.roles.201 = Administrador;UsuarioTalentoHumano
+
+permises.operation.202 = Generar_gráfico_para_clave_vacaciones
+permises.accounts.202 = vbravo;pbuitrago;gfulano;emora
+permises.types.202 = read;execute;modify
+permises.roles.202 = Administrador
+
+permises.operation.203 = Enviar_correspondencia_por_correo
+permises.accounts.203 = pbuitrago
+permises.types.203 = read;execute;modify
+permises.roles.203 = Administrador;UsuarioOAC
+
+
+permises.operation.204 = Devolver_a_Talento_Humano
+permises.accounts.204 = pbuitrago
+permises.types.204 = read;execute;modify
+permises.roles.204 = Administrador;UsuarioDireccionEjecutiva;UsuarioPresidencia
+
+permises.operation.205 = Generar_ticket
+permises.accounts.205 = vbravo
+permises.types.205 = read;execute;modify
+permises.roles.205 = Administrador
+
+permises.operation.206 = Aceptar_suplencia
+permises.accounts.206 = vbravo
+permises.types.206 = read;execute;modify
+permises.roles.206 = Administrador;UsuarioFinal
+
+permises.operation.207 = Oficina_Atencion_Ciudadana_solicitudes
+permises.accounts.207 = vbravo
+permises.types.207 = read;execute;modify
+permises.roles.207 = Administrador;UsuarioOAC
+
+permises.operation.208 = Generar_gráfico_para_clave_Solicitud_correspondencia_guarura
+permises.accounts.208 = vbravo;pbuitrago
+permises.types.208 = read;execute;modify
+permises.roles.208 = Administrador;UsuarioOAC
+
+

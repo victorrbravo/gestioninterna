@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Personal Consejeros" desc="">
+<token key="personal.id"  keysource="personal">
+</token>
+<parameter type="combolisttable" icon="hito.png" desc= "Por_reunion" mandatory="no" options="id:reuniones::descripcion"  
+	  title="Por_reunion" defaultvalue="0">
+	</parameter>	
+  <condition id="inicial" type="start" left="4" top="232">
+    <port side="forward" type="split" >
+      <connection source="Consejero" query="select personal.id from reuniones" options="&gt;1" tokenlink="[id,id_reunion:confirmado_reunion][id_personal,cedula:personal]" left="170" top="92">
+      </connection>
+    </port>
+  </condition>
+  <task id="Consejero" title="Consejero"  report="yes" left="266" top="283">
+    <port side="forward" type="split">
+      <connection  source="Listado" query="select reuniones.id from reuniones" options="{#Por_reunion}" tokenlink="[id,id_reunion:confirmado_reunion][id_personal,cedula:personal]" left="694" top="188">
+      </connection>
+    </port>
+      <variable  id="ListConsejero" scope="task" config="1" tokenlink="[id,id_reunion:confirmado_reunion][id_personal,cedula:personal]" type="sql" documentsource="select cedula,nombres,apellidos,descripcion,tipo,fecha_convocatoria from reuniones" left="530" top="65">
+      </variable>
+  </task>
+  <task id="Listado" title="{#Por_reunion}"   left="943" top="137">
+    <port side="forward" type="split" >
+      <connection  source="final" query="true" options="" tokenlink="" left="1210" top="154">
+      </connection>
+    </port>
+      <variable  id="vPorReunion" scope="task" config="1" type="sql" documentsource="select cedula,nombres,apellidos,descripcion,tipo,fecha_convocatoria from reuniones" left="898" top="67" tokenlink="[id,id_reunion:confirmado_reunion][id_personal,cedula:personal]" >
+      </variable>
+  </task>
+  <condition id="final" left="1443" top="197">
+    <port side="forward" type="split">
+      <connection source="">
+      </connection>
+    </port>
+  </condition>
+</workflow>
+</yawl>

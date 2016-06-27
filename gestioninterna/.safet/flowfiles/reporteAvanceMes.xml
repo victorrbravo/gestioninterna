@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Reporte de MacroTareas por Fechas">
+	<token key="actividad_registro.id"  keysource="actividad_registro">
+	</token>
+		<parameter type="datetime" mandatory="yes" options="" title="Fechainicio"  validation=""  >
+                        Fechainicio
+                </parameter>
+		<parameter type="datetime" mandatory="yes" options="" title="Fechafin"  validation=""  >
+                        Fechafin
+                </parameter>
+	<parameter type="combolisttable" icon="hito.png" desc= "Seleccione la actividad" 				mandatory="no" options="id:actividad_por_accion::nombre"  title="Por_actividad" defaultvalue="32">
+	</parameter>
+
+<parameter type="combolistliteral" options="TB::La dirección del gráfico es arriba-abajo::TB,LR::La dirección del gráfico es izquierda-derecha::LR" mandatory="no"
+                       title="Direccion_Grafico_de_Flujo" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir">
+                </parameter>
+<parameter type="combolistliteral" options="on::Incluir::on,off::No Incluir::off" mandatory="no"
+                       title="Incluir_Fecha_Hora" configurekey="Graphs/graphs.infotext.include">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle">
+                </parameter>
+<parameter type="combocolor" mandatory="no" title="Color Para Estadistica"
+                        options="antiquewhite::Color Blanco Antiguo::antiquewhite,green::Color Verde::green,coral::Color Rojo Coral::coral,red::Color Rojo::red,yellow::Color Amarillo::yellow,skyblue::Color Azul Cielo::skyblue,ghostwhite::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,lightgray::Color Gris Claro::lightgray,blue::Color Azul::blue,orange::Color Naranja::orange,gray::Color Gris::gray,black::Color Negro::black,white::Color Blanco::white"
+configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalue="Amarillo">
+                </parameter>
+<parameter type="combolistliteral" options="svg::Gráfico SVG::svg,png::Gráfico PNG::png" mandatory="no"
+                       title="Formato_del_Grafico" configurekey="Plugins.Graphviz/plugins.graphviz.graphtype">
+                </parameter>
+
+	<condition id="inicial" type="start">
+        	<port side="forward" type="split"   >
+                	 <connection source="Actividad" query="select id_actividad from actividad_registro"  options="{#3}" tokenlink="">
+			</connection>
+
+		</port>
+	</condition>
+	 <task id="Actividad" title="{#3}">
+<port side="forward" type="split"   >
+                	 <connection source="FechaRango" query="select fechaaccion from actividad_registro"  options="&gt;{#1} AND fechaaccion&lt;{#2}" tokenlink="">
+			</connection>
+
+		</port>
+		<variable id="ListaActividad" scope="task"  type="sql" config="1"  documentsource="select id,id_actividad,fechaaccion,estado, porcentaje from actividad_registro" tokenlink="" >
+		</variable>
+	</task>
+
+	 <task id="FechaRango" title="{#1} a {#2}">
+                <port side="forward" type="split" >
+                        <connection source="final" query="true" options=""
+			tokenlink=""
+				 >
+			</connection>			
+		</port>
+		<variable id="ListaFechaRango" scope="task"  type="sql" config="1"  documentsource="select id,id_actividad,fechaaccion,estado, porcentaje from actividad_registro" tokenlink="" >
+		</variable>
+	</task>
+	<condition id="final">
+		<port side="forward" type="split">
+			<connection source="">
+			</connection>
+		</port>
+	</condition>
+</workflow>
+<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+</configuration>
+</yawl>

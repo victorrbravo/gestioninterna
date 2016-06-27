@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : deftrac.xml
+Creado     : Víctor Bravo
+Autor      : Victor Bravo
+Descripcion: Archivo de Entrada para SAFET - Inflow
+-->
+<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<operations suffix=":" commandname="operacion"  >  
+<operation  name="Reportes"  desc="Reportes, Listas, Formas" icon="report.png">
+</operation>
+
+<operation  name="Listar_datos" >
+<command id ="1" type="agregar" table="lista">
+	<fields>
+		<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" options="show::id">
+			Cargar_archivo_flujo
+		</field>
+		<field type="combovar" mandatory="yes" validation="\w+" changefor="Cargar_archivo_flujo">
+			Variable
+		</field>
+
+	</fields>
+</command>
+</operation>
+
+<operation  name="Listar_datos_consolidado" >
+<command id ="1" type="agregar" table="lista">
+        <fields>
+                <field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" options="show::id">
+                        Cargar_archivo_flujo
+                </field>
+                <field type="combovar" mandatory="yes" validation="\w+" changefor="Cargar_archivo_flujo">
+                        Variable
+                </field>
+
+        </fields>
+</command>
+</operation>
+
+
+<operation  name="Listar_datos_para_clave_proyecto_software" >
+	<command id ="1" type="agregar" table="ticket">
+		<fields>
+	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPrueba.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
+	                        Cargar_archivo_flujo
+	                </field>
+
+			<field type="combolisttable"
+ options="id:actividad_por_accion:where tipo like '%'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+				Clave
+			</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Listar_datos_con_autofiltro" >
+<command id ="1" type="agregar" table="lista">
+	<fields>
+		<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" changekey="yes" >
+			Cargar_archivo_flujo
+		</field>
+		<field type="comboautofilter"  mandatory="no"  changefor="Cargar_archivo_flujo">
+			Autofiltro
+		</field>
+		<field type="combovar" mandatory="yes" changefor="Autofiltro">
+			Variable
+		</field>
+	</fields>
+</command>
+</operation>
+<operation  name="Listar_datos_con_filtrorecursivo" >
+<command id ="1" type="agregar" table="lista">
+	<fields>
+		<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" changekey="yes" >
+			Cargar_archivo_flujo
+		</field>
+		<field type="comborecursivefilter"  mandatory="yes"  >
+			Filtro_recursivo
+		</field>
+		<field type="combovar" mandatory="yes" >
+			Variable
+		</field>
+	</fields>
+</command>
+</operation>
+
+<operation  name="Gráficos de proyectos"  desc="Gráficos de proyectos" icon="graph.png">
+</operation>
+<operation  name="Generar_gráfico_coloreado" >
+	<command id ="1" type="agregar" table="lista" >
+		<fields>
+			<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" options="show::id">
+				Cargar_archivo_flujo
+			</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Gráficos del proyecto Mapa Industrial" subtitle="yes"  desc="Acciones para cambiar de estado un proyecto" icon="factory.png">
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_proyecto_mapa_industrial" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="combolistliteral" options="/home/debian/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" input="cn::1">
+                                Cargar_archivo_flujo
+                        </field>
+   <field type="string" literal="91" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml">
+                        Clave
+                </field>
+
+    <field type="string" literal="90" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml">
+                        Clave
+                </field>
+		<field type="string" literal="92" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml">
+                        Clave
+                </field>
+
+		<field type="string" literal="100" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml">
+                        Clave
+                </field>
+
+		<field type="string" literal="101" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml">
+                        Clave
+                </field>
+
+		<field type="string" literal="106" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml">
+                        Clave
+                </field>
+
+
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Gráficos de Infogobierno" subtitle="yes"  desc="Acciones para cambiar de estado un proyecto" icon="infog.png">
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_Proyecto_Planificación_estratégica" >
+	<command id ="1" type="agregar" table="ticket">
+		<fields>
+	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionProyectoPlanificacion.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                        Cargar_archivo_flujo
+	                </field>
+
+			<field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Planificacion'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+				Clave
+			</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_Proyecto_Contraloria_Social" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Contraloria_Social'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_proyecto_Tibisay_dispositivos_portátiles" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppMovil.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Software'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_proyecto_Tibisay_seguridad" >
+	<command id ="1" type="agregar" table="ticket">
+		<fields>
+	                <field type="string" literal="/home/debian/.safet/flowfiles/actualizacion_software.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                        Cargar_archivo_flujo
+	                </field>
+
+			<field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='actualizacion_software'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+				Clave
+			</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_Proyecto_Calidad" >
+	<command id ="1" type="agregar" table="ticket">
+		<fields>
+	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionAseguramientoDeCalidad.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                        Cargar_archivo_flujo
+	                </field>
+
+			<field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Calidad'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+				Clave
+			</field>
+		</fields>
+	</command>
+</operation>
+
+
+
+
+<operation  name="Generar_gráfico_para_clave_proyecto_Television_digital_abierta" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionTelevisionDigital.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Television_digital'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_proyecto_AUTANA" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionAUTANA.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_AUTANA'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+
+<operation  name="Gráficos del proyecto Educativo" subtitle="yes"  desc="Acciones para cambiar de estado un proyecto" icon="education.png">
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_Proyecto_Medios_Comunitarios_socialista" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Medios_Comunitarios'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+
+<operation  name="Generar_gráfico_para_clave_Proyecto_Cuentacuentos" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_CuentaCuento'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_Proyecto_Communitas" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Communitas'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_Proyecto_Salvapantallas_Bicentenario" >
+	<command id ="1" type="agregar" table="ticket">
+		<fields>
+	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                        Cargar_archivo_flujo
+	                </field>
+
+			<field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Educativo'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+				Clave
+			</field>
+		</fields>
+	</command>
+</operation>
+
+
+<operation  name="Generar_gráfico_para_clave_Proyecto_Políticas_editoriales_de_la_fundación_CENDITEL" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaComunicacional.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_comunicacional'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Gráficos de los proyectos Extra POA" subtitle="yes"  desc="Acciones para cambiar de estado un proyecto" icon="education.png">
+</operation>
+
+
+<operation  name="Generar_gráfico_para_clave_gestion_interna" >
+	<command id ="1" type="agregar" table="ticket">
+		<fields>
+	                <field type="string" literal="/home/debian/.safet/flowfiles/gestion_interna.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                        Cargar_archivo_flujo
+	                </field>
+
+			<field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='gestion_interna'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+				Clave
+			</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_proyecto_Sistema_indicadores_seguimiento_proyectos" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIndicadores.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_Sistema_indicadores'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+
+<operation  name="Gráficos de Control y Seguimiento de tareas"  desc="Gráficos de proyectos" icon="">
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_tareas_por_correspondencia" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionPrueba.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_FlujoPrueba'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_tareas_por_asignacion_directa" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionPrueba1.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_FlujoPrueba'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_tareas_general" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionPrueba2.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where tipo='Proyecto_FlujoPrueba'::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+
+<operation  name="Filtros"  desc="Flujos de trabajo básicos" icon="">
+</operation>
+
+<operation  name="Generar_gráfico_con_autofiltro" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+			<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" >
+				Cargar_archivo_flujo
+			</field>
+			<field type="comboautofilter"  mandatory="yes" validation="\w+" changefor="Cargar_archivo_flujo">
+				Autofiltro
+			</field>
+			
+		</fields>
+	</command>
+</operation>
+<operation  name="Generar_gráfico_con_filtrorecursivo" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+			<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" >
+				Cargar_archivo_flujo
+			</field>
+			<field type="comborecursivefilter"  mandatory="yes" validation="\w+" >
+				Filtro_recursivo
+			</field>
+			
+		</fields>
+	</command>
+</operation>
+<operation  name="Gestión de gráficos"  desc="Flujos de trabajo básicos" icon="">
+</operation>
+
+<operation  name="Restaurar_gráfico_de_flujo" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+<field type="combographs" mandatory="yes"  desc="Grafo_guardado" primarykey="yes" changekey="yes" title="Nombre_grafo">
+			Nombre_grafo
+		</field>			
+		</fields>
+	</command>
+</operation>
+<operation  name="Borrar_gráfico_de_flujo" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+<field type="combographs" mandatory="yes"  desc="Grafo_guardado" primarykey="yes" changekey="yes" title="Nombre_grafo" validation=".*">
+			Nombre_grafo
+		</field>			
+		</fields>
+	</command>
+</operation>
+<operation  name="Agregar_nodo_a_gráfico_de_flujo" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+<field type="filename" mandatory="yes" title="Nombre_grafo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" changekey="yes" primarykey="yes">
+			Nombre_grafo
+		</field>
+		<field type="combotask" mandatory="yes" validation="" changefor="Nombre_grafo">
+			Nodo_anterior
+		</field>
+		<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre_nuevo_nodo" desc="Nombre_nuevo_nodo">
+			Nombre_nuevo_nodo
+		</field>
+	<field type="combolistliteral" mandatory="no" title="Es_paralelo_al_nodo_anterior" desc="Es_paralelo_al_nodo_anterior" options="No::No::No,Si::Si::Si" >
+			Es_paralelo_al_nodo_anterior	
+		</field>
+
+		<field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_options" desc="Campo_options">
+			Campo_options
+		</field>
+		<field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_query" desc="Campo_query">
+			Campo_query
+		</field>
+		<field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_title" desc="Campo_title">
+			Campo_title
+		</field>
+		<field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_documentsource" desc="Campo_documentsource">
+			Campo_documentsource
+		</field>
+		</fields>
+	</command>
+</operation>
+<operation  name="Borrar_nodo_de_gráfico_de_flujo" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+<field type="filename" mandatory="yes" title="Nombre_grafo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" changekey="yes" primarykey="yes">
+			Nombre_grafo
+		</field>
+		<field type="combotask" mandatory="yes" validation="" changefor="Nombre_grafo">
+			Nodo_a_borrar
+		</field>
+		</fields>
+	</command>
+</operation>
+<operation  name="Cambiar_conexión_de_gráfico_de_flujo" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+<field type="filename" mandatory="yes" title="Nombre_grafo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" changekey="yes" primarykey="yes">
+			Nombre_grafo
+		</field>
+		<field type="combotask" mandatory="yes" validation="" changefor="Nombre_grafo">
+			Nodo_origen
+		</field>
+<field type="combotask" mandatory="yes" validation="" changefor="Nombre_grafo">
+			Nodo_destino_actual
+		</field>
+<field type="combotask" mandatory="yes" validation="" changefor="Nombre_grafo">
+			Nuevo_nodo_destino
+		</field>
+		</fields>
+	</command>
+</operation>
+<operation  name="Cambiar_rol_de_tarea" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+<field type="filename" mandatory="yes" title="Nombre_grafo" desc="Mostrar la lista de grafos" filter="Archivos de flujo (*.xml);;Todos (*)" changekey="yes"
+ primarykey="yes" options="show::id">
+			Nombre_grafo
+		</field>
+		<field type="combotask" mandatory="yes" validation="" changekey="yes"  changefor="Nombre_grafo" title="Tarea_a_cambiar" options="" >
+			Tarea_a_cambiar
+		</field>
+		<field type="comboflow" mandatory="yes" validation=""  primarykey="no" options="rolinfo,oneoption" 
+                                  path="{#keyvalue1}"  title="Nombre_del_rol"
+                                changefor="Tarea_a_cambiar" >
+                                Nombre_del_rol
+                </field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Planificación"  desc="Realizar planificación" icon="planning.png">
+</operation>
+
+<operation  name="Agregar_planificación" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+		<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" changekey="yes" options="" primarykey="yes">
+			Cargar_archivo_flujo
+		</field>
+        	<field type="combolisttable" options="id:actividad_por_accion:where flujo='{#1}'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc"  title="id"  changefor="Cargar_archivo_flujo">
+				id
+			</field>	
+		<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre_grafo" desc="Nombre del Proyecto POA">
+			Nombre_grafo
+		</field>
+
+		</fields>
+	</command>
+</operation>
+<operation  name="Cambiar_fecha_de_planificación" >
+	<command id ="1" type="agregar" table="lista">
+	  <fields>
+ <field type="combographs" mandatory="yes" options="file::planned" desc="Grafo_guardado" changekey="yes" primarykey="yes"  title="Nombre_grafo">
+			Nombre_grafo
+		</field>		
+		<field type="combotask" mandatory="yes" validation="" changefor="Nombre_grafo" options="filtercompleted::on" >
+			Tarea
+		</field>
+		<field type="datetime" mandatory="yes" format="time_t" options="" title="Fecha_planificada"  validation=""  >
+                                fecha_planificada
+                        </field>
+		</fields>
+	</command>
+
+</operation>
+<operation  name="Copiar_fechas_de_planificación" >
+	<command id ="1" type="agregar" table="lista">
+	  <fields>
+ <field type="combographs" mandatory="yes" options="file::planned" desc="Grafo_guardado" changekey="yes" primarykey="yes"  title="Nombre_grafo_origen">
+			Nombre_grafo_origen
+		</field>			
+ <field type="combographs" mandatory="yes" options="file::planned" desc="Grafo_guardado" changekey="yes" primarykey="yes"  title="Nombre_grafo_destino">
+			Nombre_grafo_destino
+		</field>			
+		</fields>
+	</command>
+
+</operation>
+
+<operation  name="Borrar_planificación" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+ <field type="combographs" mandatory="yes" options="file::planned" desc="Grafo_guardado" changekey="yes" primarykey="yes"  title="Nombre_grafo">
+			Nombre_grafo
+		</field>			
+		</fields>
+	</command>
+
+</operation>
+<operation  name="Copiar_planificación" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+ <field type="combographs" mandatory="yes" options="file::planned" desc="Grafo_guardado" changekey="yes" primarykey="yes"  title="Nombre_planificacion">
+			Nombre_planificacion
+		</field>			
+		<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre_grafo" desc="Nombre del Proyecto POA">
+			Nombre_grafo
+		</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Comparar_gráfico_de_flujo" >
+	<command id ="1" type="agregar" table="lista">
+		<fields>
+<field type="combographs" mandatory="yes"  desc="Grafo_guardado" primarykey="yes" changekey="yes" title="Nombre_grafo">
+			Nombre_grafo
+		</field>			
+ <field type="combographs" mandatory="yes" options="file::planned" desc="Grafo_guardado"  title="Planificado">
+			Planificado
+		</field>			
+		</fields>
+	</command>
+</operation>
+<operation  name="Edición de flujos"  desc="Operaciones de edición de flujo de trabajo" icon="">
+</operation>
+<operation  name="Agregar_grafo" >
+	<command id ="1" type="agregar" table="lista" >
+		<fields>
+		<field type="string" icon="resumen.png" mandatory="yes" primarykey="yes"  validation="" title="Nombre_grafo" desc="Nombre del Proyecto POA">
+			Nombre_grafo
+		</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Editar_grafo" >
+	<command id ="1" type="agregar" table="lista" >
+		<fields>
+			<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" options="">
+				Cargar_archivo_flujo
+			</field>
+		</fields>
+	</command>
+</operation>
+<operation  name="Borrar_grafo" >
+	<command id ="1" type="agregar" table="lista" >
+		<fields>
+			<field type="filename" mandatory="yes" title="Nombre_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" options="">
+				Nombre_flujo
+			</field>
+		</fields>
+	</command>
+</operation>
+</operations>

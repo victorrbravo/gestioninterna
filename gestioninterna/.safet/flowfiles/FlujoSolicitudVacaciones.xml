@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Flujo Gestion de la solicitud de vacaciones" desc="Proceso que realiza para la gestion de las vacaciones">
+	<token key="id" keysource="vacaciones">
+	</token>
+<parameter type="combolistliteral" options="TB::La dirección del gráfico es arriba-abajo::TB,LR::La dirección del gráfico es izquierda-derecha::LR" mandatory="no"
+                       title="Direccion_Grafico_de_Flujo" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir">
+                </parameter>
+<parameter type="combolistliteral" options="svg::Gráfico SVG::svg,png::Gráfico PNG::png" mandatory="no"
+                       title="Formato_del_Grafico" configurekey="Plugins.Graphviz/plugins.graphviz.graphtype">
+                </parameter>
+<parameter type="combolistliteral" options="on::Incluir::on,off::No Incluir::off" mandatory="no"
+                       title="Incluir_Fecha_Hora" configurekey="Graphs/graphs.infotext.include">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Informacion_extra" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Mostrar_en_grafico" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show" defaultvalue="Porc,Tokens,Total" >
+                </parameter>
+
+<parameter type="combocolor" mandatory="no" title="Color Para Estadistica"
+                        options="antiquewhite::Color Blanco Antiguo::antiquewhite,green::Color Verde::green,coral::Color Rojo Coral::coral,red::Color Rojo::red,yellow::Color Amarillo::yellow,skyblue::Color Azul Cielo::skyblue,ghostwhite::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,lightgray::Color Gris Claro::lightgray,blue::Color Azul::blue,orange::Color Naranja::orange,gray::Color Gris::gray,black::Color Negro::black,white::Color Blanco::white"
+configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalue="yellow">
+		</parameter>
+	<condition id="inicial" type="start">
+	<port side="forward" type="split"  >
+		<connection   source="Solicitud" query="select status from vacaciones"  options="iniciado">
+		</connection>
+	</port>
+</condition>
+
+<task id="Solicitud"  title="Solicitud de vacaciones" >
+	<port side="forward" type="split"  >
+	        <connection source="Talento_humano" query="select status from vacaciones" options="Talento_humano" >
+		</connection>
+	</port>
+	<variable id="vSolicitud" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select usuario,informacion_usuario,fechasolicitud,suplenteinterno_1,suplenteinterno_2 from vacaciones"
+ rolfield="(select propietario from vacaciones_registro where vacaciones.id=id_vacaciones and status='iniciado')  as rol"  timestampfield="select fecha_accion from vacaciones_registro,vacaciones where vacaciones.id=id_vacaciones and vacaciones_registro.status='iniciado' order by fecha_accion  desc limit 1">
+     </variable>
+</task>
+
+<task id="Talento_humano"  title="Gestión vacaciones Talento Humano"  >
+	<port side="forward" type="split" >
+		<connection source="DireccionEjecutiva" query="select status from vacaciones" options="DireccionEjecutiva" >
+		</connection>
+	</port>
+	<variable id="vTalento_humano" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select usuario,informacion_usuario,fechasolicitud,suplenteinterno_1,suplenteinterno_2 from vacaciones"
+ rolfield="(select propietario from vacaciones_registro,vacaciones where vacaciones.id=id_vacaciones and vacaciones_registro.status='Talento_humano'')  as rol"  timestampfield="(select fecha_accion from vacaciones_registro,vacaciones where vacaciones.id=id_vacaciones and vacaciones_registro.status='Talento_humano' order by fecha_accion  desc limit 1">
+     </variable>
+</task>
+
+<task id="DireccionEjecutiva"  title="Gestión vacaciones Dirección Ejecutiva"  >
+	<port side="forward" type="split" >
+		<connection source="Presidencia" query="select status from vacaciones" options="Presidencia" >
+		</connection>
+	</port>
+	<variable id="vDireccion_ejecutiva" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select usuario,informacion_usuario,fechasolicitud,suplenteinterno_1,suplenteinterno_2 from vacaciones"
+ rolfield="(select propietario from vacaciones_registro where vacaciones.id=id_vacaciones and status='Direccion_ejecutiva')  as rol"  timestampfield="select fecha_accion from vacaciones_registro,vacaciones where vacaciones.id=id_vacaciones and vacaciones_registro.status='Direccion_ejecutiva' order by fecha_accion  desc limit 1" >
+     </variable>
+</task>
+
+<task id="Presidencia"  title="Solicitudes_por_presidencia" >
+	<port side="forward" type="split" >
+		<connection source="Archivar_solicitud_procesada" query="select status from vacaciones" options="Archivar_solicitud_procesada" >
+		</connection>
+	</port>
+	<variable id="vPresidencia" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select usuario,informacion_usuario,fechasolicitud,suplenteinterno_1,suplenteinterno_2 from vacaciones"
+ rolfield="(select propietario from vacaciones_registro where vacaciones.id=id_vacaciones and status='Presidencia')  as rol"  timestampfield="select fecha_accion from vacaciones_registro,vacaciones where vacaciones.id=id_vacaciones and vacaciones_registro.status='Presidencia' order by fecha_accion  desc limit 1" >
+     </variable>
+</task>
+
+<task id="Archivar_solicitud_procesada"  title="Solicitudes_procesadas" >
+        <port side="forward" type="split" >
+                <connection source="final" query="true" options="" >
+		</connection>
+        </port>
+        <variable id="vArchivar_solicitud_procesada" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select usuario,informacion_usuario,fechasolicitud,suplenteinterno_1,suplenteinterno_2 from vacaciones"
+ rolfield="(select propietario from vacaciones_registro where vacaciones.id=id_vacaciones and status='Archivar_solicitud_procesada')  as rol"  timestampfield="select fecha_accion from vacaciones_registro,vacaciones where vacaciones.id=id_vacaciones and vacaciones_registro.status='Archivar_solicitud_procesada' order by fecha_accion  desc limit 1">
+     </variable>
+</task>
+
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+

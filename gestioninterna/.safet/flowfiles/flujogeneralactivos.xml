@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Tickets Activos por Hito" desc="Tickets usados por Trac">
+	<token key="id"  keysource="ticket">
+	</token>
+	<parameter type="combolisttable" icon="hito.png" desc= "Seleccione el hito para generar el gráfico" 				mandatory="no" options="name:milestone"  title="Por Hito" defaultvalue="Dic03de2010">
+	</parameter>
+<parameter type="combolistliteral" options="Si::Mostrar colores para todas las tareas::yes,No::Muestra solamente 	para los que se indicaron explícitamente::no" mandatory="no" title="Incluir_todos_en_reporte" 
+			configurekey="DefaultValues/defaultvalues.report">			
+		</parameter>
+<condition id="inicial" type="start">
+                <port side="forward" type="split"   pattern="none">
+                        <connection   source="PorHito" query="select milestone from ticket"  options="{#1}" tokenlink="">
+			</connection>
+
+		</port>
+	</condition>
+	<task id="PorHito"  title="{#1}"  report="no">
+                <port side="forward" type="split"  pattern="or" >
+                        <connection   source="Nuevo" query="select status from ticket"  options="new" tokenlink="">
+			</connection>
+                        <connection   source="Aceptado" query="select status from ticket"  options="accepted" tokenlink="">
+			</connection>
+                        <connection   source="EnProgreso" query="select status from ticket"  options="progressin" tokenlink="">
+			</connection>
+
+		</port>
+		<variable id="VariablePorHito" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select summary as resumen,translate( description,chr(13),'.') as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" rolfield="owner" timestampfield="changetime">
+		</variable>
+	</task>
+	<task id="Nuevo"  title="en atencion" >
+                <port side="forward" type="split"  pattern="none" >
+                        <connection source="Activos" query="true" options="" >
+			</connection>
+
+		</port>
+		<variable id="VariableNuevo" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select summary as resumen,translate( description,chr(13),'.') as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" rolfield="owner" timestampfield="changetime">
+		</variable>
+	</task>
+	<task id="Aceptado"  title="en_ejecucion" >
+                <port side="forward" type="split" pattern="none">
+                        <connection source="Activos" query="true"  options="" >
+			</connection>
+
+		</port>
+		<variable id="VariableAceptado" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select summary as resumen,description as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" rolfield="owner" timestampfield="changetime">
+		</variable>
+
+	</task>
+	<task id="EnProgreso"  title="implementando" >
+                <port side="forward" type="split" >
+                        <connection source="Activos" query="true"  options="" >
+			</connection>
+		</port>
+		<variable id="VariableEnProgreso" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select summary as resumen,description as descripcion,type as tipo,milestone as hito,owner as propietario from ticket" rolfield="owner" timestampfield="changetime">
+		</variable>
+	</task>
+
+	<task id="Activos"  title="para_hacer" >
+                <port side="forward" type="split" >
+                        <connection source="final" query="true"  options="" >
+			</connection>
+		</port>
+		<variable id="VariableActivos" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select summary as resumen,status as estado,type as tipo,parenttask as tareapadre,milestone as hito,owner as propietario from ticket" rolfield="owner" timestampfield="changetime">
+		</variable>
+      		<autofilter id="Activos_Propietarios" type="split" source="final" query="select owner from ticket" tokenlink="" report="yes"> 
+</autofilter> 
+
+	</task>
+
+	<condition id="final">
+		<port side="forward" type="split">
+			<connection source="">
+			</connection>
+		</port>
+	</condition>
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>

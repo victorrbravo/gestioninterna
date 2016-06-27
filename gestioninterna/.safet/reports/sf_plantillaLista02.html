@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<script language="javascript"> 
+var safettitle = "";
+var safetlistcount = 0;
+document.write('<title>'+'Listado de Variables' +'</title>');
+</script>
+
+    
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    	<link rel="stylesheet" type="text/css" href="yui.css" >
+
+<style>
+/*Supplemental CSS for the YUI distribution*/
+#custom-doc { width: 95%; min-width: 950px; }
+#pagetitle {background-image: url(bg_hd.gif);}
+#pagetitle h1 {background-image: url(title_h_bg.gif);}
+#newspaper-a
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 15px;
+	width: 70%;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #69c;
+}
+#principal-table
+{
+	margin: 1px;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+	border: 0px solid #69c;
+}
+#principal-table th
+{
+	padding: 1px;
+	color: #039;
+	width: 300px;
+	border-collapse: collapse;
+	border-left: 1px dashed #69c;
+}
+#principal-table td
+{
+	padding: 7px;
+	color: #669;
+	border-collapse: collapse;
+	border-bottom: 1px dashed #69c;
+}
+
+
+#newspaper-a th
+{
+	padding: 12px 17px 12px 17px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #039;
+	border-bottom: 1px dashed #69c;
+}
+#newspaper-a td
+{
+	padding: 7px 17px 7px 17px;
+	color: #669;
+}
+#newspaper-a tbody tr:hover td
+{
+	color: #339;
+	background: #d0dafd;
+}
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="dpSyntaxHighlighter.css">
+<!--Script and CSS includes for YUI dependencies on this page-->
+<link rel="stylesheet" type="text/css" href="paginator.css" />
+<link rel="stylesheet" type="text/css" href="datatable.css" />
+<link rel="stylesheet" type="text/css" href="button.css" />
+<script type="text/javascript" src="yuiloader-min.js"></script>
+<script type="text/javascript" src="dom-min.js"></script>
+<script type="text/javascript" src="json-min.js"></script>
+<script type="text/javascript" src="yahoo-min.js"></script>
+<script type="text/javascript" src="event-min.js"></script>
+<script type="text/javascript" src="dragdrop-min.js"></script>
+<script type="text/javascript" src="animation-min.js"></script>
+<script type="text/javascript" src="element-min.js"></script>
+<script type="text/javascript" src="paginator-min.js"></script>
+<script type="text/javascript" src="datasource-min.js"></script>
+<script type="text/javascript" src="datatable-min.js"></script>
+<script type="text/javascript" src="button-min.js"></script>
+
+
+
+<!--begin custom header content for this example-->
+
+<!--end custom header content for this example-->
+
+
+<script type="text/javascript">
+//enable passthrough of errors from YUI Event:
+if ((typeof YAHOO !== "undefined") && (YAHOO.util) && (YAHOO.util.Event)) {
+	YAHOO.util.Event.throwErrors = true;
+}
+</script>
+</head>
+<body id="bodyregister" class=" yui-skin-sam">
+<div id="custom-doc" class="yui-t2">
+<div id="divbodyregister1">
+	
+	<div >
+		<div >
+		  <div >
+			  <div >   
+	<div class="promo">
+<script language="javascript"> 
+var titul = 'Nuevos tickets';
+
+document.write('<h1 id="title1">'+'Listado de la variable: ' + safettitle  + '</h1>');
+
+</script>
+	
+					
+	<div id="example-canvas" class="bd">
+	
+		
+	
+	<div id="complex"></div>
+
+
+<div id="divbodyregister2">
+</div>
+
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript">
+
+
+safetlist = []; 
+
+safetcolumns = [];
+
+myDataTable = null;
+
+safetproccessData = function() {
+
+        var jsonStr = YAHOO.lang.JSON.stringify(safetcolumns[1]);
+
+        document.getElementById("title1").innerHTML= "Tickets de "+ safettitle +" ("+ safetlistcount+")";
+        //document.getElementById("divbodyregister2").innerHTML= "<br/><br/><b>Formularios de registro: </b><br/>"+safetlist[0].tipo;
+        var i = 0;
+	var j = 0;
+	var infotext = "<table id=\"principal-table\" ><tr><td>";
+
+	var currentreg;
+	var k = 0;
+	for(i=0; i< safetlistcount;i++) {
+		
+		currentreg = "<table id=\"newspaper-a\" >";		
+		for(j=0; j< safetcolumns.length;j++) {
+			if ( safetcolumns[j].key == "resumen" ) {
+				currentreg = currentreg + 
+				"<td><b>" + safetcolumns[j].label + ":</b></td><td><b>"+
+				eval("safetlist["+i+"]."+safetcolumns[j].key)+"</b></td></tr>";
+			}
+			else {
+				currentreg = currentreg + 
+				"<td><b>" + safetcolumns[j].label + ":</b></td><td>"+
+				eval("safetlist["+i+"]."+safetcolumns[j].key)+"</td></tr>";
+			}
+		}
+		currentreg = currentreg+ "</table>";
+		k++;
+		
+		if ( k == 2 ) {
+			infotext = infotext +currentreg + "</td></tr><tr><td>";
+			k  = 0;
+		} 		
+		else {
+			infotext = infotext + currentreg + "</td><td>" ;
+		}
+				
+		
+	}
+	if ( k == 2 ) {
+		infotext = infotext +"<td></td><td></td></tr></table>";
+	}
+	else {
+		infotext = infotext +"</td></tr></table>";
+	}
+
+
+	document.getElementById("divbodyregister2").innerHTML= "<br/>"+infotext;
+
+        var myDataSource = new YAHOO.util.DataSource(safetlist);
+        myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+
+	// Set up the application under the YAHOO.example namespace
+	var Ex = YAHOO.namespace('example');
+
+	Ex.content    = YAHOO.util.Dom.get('content');
+
+
+	// Create the Paginator widget and subscribe to its changeRequest event
+	Ex.paginator = new YAHOO.widget.Paginator({
+	    rowsPerPage : 1,
+	    totalRecords : Ex.content.getElementsByTagName('div').length,
+	    containers : 'paging'
+	});
+
+	Ex.paginator.subscribe('changeRequest', Ex.handlePagination);
+
+// Render the Paginator into the configured container(s)
+	Ex.paginator.render();
+
+
+
+
+};
+
+</script>
+	
+	
+		</div>
+		
+	
+	</div>			
+	</div>
+		
+		</div>
+		
+		</div>
+	</div>
+
+
+	</div><!--closes bd-->
+
+	
+</div>
+<script src="dpSyntaxHighlighter.js"></script>
+<script language="javascript"> 
+dp.SyntaxHighlighter.HighlightAll('code'); 
+</script>
+
+</body>
+</html>
+

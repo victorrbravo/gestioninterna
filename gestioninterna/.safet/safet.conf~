@@ -1,0 +1,570 @@
+t*
+* SAFET Sistema Automatizado para la Firma Electrnica y Estampado de Tiempo - Componente
+* XPCOM de Mozilla Firefox para aplicar firma electronica
+*
+* Copyright (C) 2008 Vctor Bravo (vbravo@cenditel.gob.ve), Antonio Araujo
+* (aaraujo@cenditel.gob.ve)
+*
+* CENDITEL Fundacion Centro Nacional de Desarrollo e Investigacin en Tecnologas Libres
+*
+* Este programa es software libre; Usted puede usarlo bajo los trminos de la licencia de
+* software GPL versin 2.0 de la Free Software Foundation.
+*
+* Este programa se distribuye con la esperanza de que sea til, pero SI NINGUNA GARANTA;
+* tampoco las implcitas garantas de MERCANTILIDAD o ADECUACIN A UN PROPSITO PARTICULAR.
+* Consulte la licencia GPL para ms detalles. Usted debe recibir una copia de la GPL junto
+* con este programa; si no, escriba a la Free Software Foundation Inc. 51 Franklin Street,
+* 5 Piso, Boston, MA 02110-1301, USA.
+*
+*/
+
+# Archivo de configuracion de la libreria libsafet
+# ================================================
+
+# Variables de presentacin del flujo
+# Seccion para la interfaz Web
+
+[Workflow]
+
+# Establece el color por defecto
+defaultcolor = white
+
+# Establece el color activo
+activecolor = white
+
+# Establece el color pasivo
+traccolor =  white
+
+
+# Variables para establecer imagenes de operadores de fujo de trabajo
+
+[Operators]
+
+# Operador split.xor
+split.xor = imgs/xor.png
+
+# Operador split.and
+split.and = imgs/and.png
+
+# Operador split.or
+split.or = imgs/or.png
+
+# Operador join.xor
+join.xor = imgs/join-xor.png
+
+# Operador join.and
+join.and = imgs/join-and.png
+
+# Operador join.or
+join.or = imgs/join-or.png
+
+# Ningun operador
+none =  imgs/none.png
+
+
+# Informacion sobre el registro de eventos.
+# Por defecto Encendidas (on) todas las categorias para el registro (log)
+[Log]
+# Establece la ruta absoluta donde reside el archivo de registro
+log.filepath = /home/debian/.safet/log
+
+# Habilita la opcion de registro de mensajes de depuracion
+log.debug = on
+
+# Habilita la opcion de registro de de mensajes de acciones
+log.action = on
+
+# Habilita la opcion de registro de de mensajes de advertencia
+log.warning = on
+
+# Habilita la opcion de registro de de mensajes de error
+log.error = on
+
+# Salida del registro de ejecucion, las opciones son: default (file), file y screen
+log.output = file
+
+# Informacion sobre repositorio de documentos asociados a flujos de trabajos
+[XmlRepository]
+
+# Establece si el repositorio XML es remoto
+xmlrepository.remote = off
+
+# En caso de utilizar un repositorio de documentos XML remoto se debe 
+# especificar la informacion de acceso al mismo a traves de un servicio web
+xmlrepository.remote.ip = 150.187.36.6
+xmlrepository.remote.urlwebservice = http://150.187.36.6/cgi-bin/safet
+
+# Establece el tipo de repositorio de documentos XML. Valores posibles:
+# dir: para repositorio basado en un directorio local
+# dbxml: para repositorio DBXML
+xmlrepository.type = dir
+
+# Establece la ruta absoluta al repositorio XML
+
+xmlrepository.path = /var/www
+
+# Establece el nombre del repositorio XML
+xmlrepository.name = media
+
+
+#Opciones para la entrada/modificacion de datos
+
+[Input]
+
+# Establece la ruta absoluta para la entrada/modificacion de datos
+input.path = /home/debian/.safet/input
+#input.file = deflista.xml
+input.file = deftrac.xml
+
+# Opciones generales referentes al funcionamiento del tipo de aplicacion : Consola/Web/Grfica
+[System]
+system.evalexit = on
+
+# Informacin referente a la base de datos o repositorio 
+# para el acceso de la libreria
+
+
+[Widgets]
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoUser.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoColoreado.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoSolicitudVacaciones.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVacaciones.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVacacionesg.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVacacionesnv.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacaciones.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacacionesE.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacacionesT.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacacionessp.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml
+
+widgets.getfilewidget.* = /home/debian/.safet/flowfiles/reporteReunion.xml
+
+widgets.texteditwidget.wiki.leftbold = '''
+widgets.texteditwidget.wiki.rightbold = '''
+widgets.texteditwidget.wiki.leftitalic = ''
+widgets.texteditwidget.wiki.rightitalic = ''
+widgets.texteditwidget.wiki.leftunderline = __
+widgets.texteditwidget.wiki.rightunderline = __
+
+widgets.combowidget.shrinklen = 88
+
+
+widgets.arguments.* = por_hito
+widgets.arguments.* = por_propietario
+widgets.arguments.* = por_version
+
+[Email]
+
+email.template.1 = Estimado {#nombreapellido},<RETURN/>Usted ha solicitado VACACIONES con la siguiente información:<RETURN/><RETURN/>Fecha de salida: {#fechainicio}<RETURN/>Fecha fin del periodo:{#fechafin:86399}<RETURN/>Días solicitados: {#diassolicitados}<RETURN/><RETURN/>Sus suplentes son:<RETURN/>Suplente 1:{#suplenteinterno_1}<RETURN/>Suplente 2:{#suplenteinterno_2}<RETURN/><RETURN/>La solicitud será tramitada y se le avisará por esta vía y mediante el sistema Tibisay -Gestión Interna su aprobación o no aprobación oportunamente.<RETURN/>Sistema Tibisay. Mérida, Venezuela.<RETURN/> <RETURN/> Puede descargar la planilla en el enlace  http://localhost/media/{#safetdocumentid:SolicitudVistaVacacionessp:vSolicitud}
+
+
+email.template.title = Consejero
+
+email.host = localhost
+email.user = root
+email.password = clavetemporalderoot
+email.hostsender = root@proxy1.cenditel.gob.ve
+email.namesender = Sistema SAFET Tibisay
+
+
+[Functions]
+
+functions.bdays.* = 24/12/2013<SAFETSEPARATOR/>25/12/2013<SAFETSEPARATOR/>31/12/2013<SAFETSEPARATOR/>01/01/2014<SAFETSEPARATOR/>17/04/2014<SAFETSEPARATOR/>18/04/2014<SAFETSEPARATOR/>01/05/2014<SAFETSEPARATOR/>24/06/2014<SAFETSEPARATOR/>24/07/2014<SAFETSEPARATOR/>24/12/2014<SAFETSEPARATOR/>25/12/2014<SAFETSEPARATOR/>31/12/2014<SAFETSEPARATOR/>01/01/2015
+
+
+
+
+
+
+
+
+[GeneralOptions]
+
+
+generaloptions.consoleactions.* = SAFET Ver Planificación;operacion:Comparar_gráfico_de_flujo Nombre_grafo: POA 32 en Propuesta Desarrollo Planificado: POA Proyecto Seguridad Formato DDOC 2011 Version 2
+generaloptions.consoleactions.* = SAFET Tickets activos;operacion:Listar_datos Cargar_archivo_flujo: /home/debian/.safet/flowfiles/flujogeneralactivos.xml Variable: VariableActivos parameters.Por_Hito:24Junio2011_1y2FuncionalidadesArquitectura
+generaloptions.consoleactions.* = SAFET Gráfico de Proyectos Sociales;operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/debian/.safet/flowfiles/flujoAppPlanificacionProyectoSocial.xml
+generaloptions.consoleactions.* = SAFET Gráfico de Proyectos Técnicos;operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml
+generaloptions.consoleactions.* = SAFET Gráfico por Clave de Proyectos Técnicos;operacion:Generar_gráfico_para_clave Cargar_archivo_flujo: /home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml Clave:14
+generaloptions.consoleactions.* = SAFET Comparar Gráfico POA Seguridad;operacion:Comparar_gráfico_de_flujo Nombre_grafo: En Actores POA Seguridad 2011 Planificado: POA Proyecto Seguridad Formato DDOC 2011
+
+
+# Titulo para el gráfico de flujo de trabajo
+
+generaloptions.currentflowtitle = Gráfico SAFET
+
+# Opciones On (Incluir en el grfico, No incluir), Off si no se quiere incluir
+
+generaloptions.currentflowtitle.font = Dejavu Sans
+
+# Tamao de la fuente para el texto de informacin en cada flujo de trabajo
+generaloptions.currentflowtitle.size = 18
+
+# Separacin de la fuente para el texto de informacin en cada flujo de trabajo
+generaloptions.currentflowtitle.separation = 10
+
+generaloptions.url.media = http://localhost/media
+generaloptions.dir.media = /var/www/media
+
+generaloptions.currentflowtitle.include = on
+# Ver http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+generaloptions.timezone = UTC
+
+generaloptions.textualinfo.postfix = % 
+
+generaloptions.extrainfo.showonly = off
+generaloptions.extrainfo.showhumanize = on
+
+# Como se muestra la cuenta en la pagina Web campos realname es el Nombre del usuario, accountname el nombre de la cuenta
+
+generaloptions.account.format = %realname [<b>%accountname</b>/%rolname]
+
+
+# Validar las firmas con los certificados del repositorio local
+
+generaloptions.signatures.validate = off
+
+
+# Se colocan las opciones generales del sistema SAFET (Lista de acciones guardadas, entre otros)
+
+[Database]
+
+# Informacion de configuracion de fuentes de datos.
+# Una fuente de datos esta asociada a una conexion con una base
+# de datos relacional. Es posible tener varias fuentes de datos, cada
+# una representada por un indice.
+
+# Especifica el numero de fuentes de datos diferentes
+database.datasources = 1
+
+# Para realizar la conexion de base de datos asociada a una fuente de datos
+# se requieren varios elementos:
+
+# Nombre de la fuente de datos 1
+database.sourcename.1 = database1
+
+# Especifica el controlador asociado a la fuente de datos
+database.driver.1 = psql
+
+# Especifica si la fuente de datos esta activa o no
+database.actived.1 = on
+
+# Especifica el nombre de host para la fuente de datos
+database.host.1 = localhost
+
+# Especifica el nombre de la base de datos para la fuente de datos
+database.db.1 = intranet
+
+# Especifica el puerto de conexin para la base de datos 
+database.port.1 = 5432
+
+# Especifica el nombre de usuario para la fuente de datos
+database.user.1 = vbravo
+
+# Especifica la contrasena de acceso para la fuente de datos
+database.password.1 = vbravo
+
+[Result]
+
+# Tipo de resultado OnlyData,VariableData
+
+result.output.type = VariableData
+
+# Tipo de resultado on/off
+result.graph.formatjson = on
+
+#Valores para el calculo de estadísticas
+[Stats]
+
+#Activar la recoleccion de estadisticas
+stats.actived = off 
+#Fecha de inicio de calculo de estadística, * significa que no hay fecha colocada
+stats.fromdate = *
+#Fecha de fin de calculo de estadística, * significa que no hay fecha colocada
+stats.todate = *
+
+
+# Establece variables de configuracion para la libreria Libdigidoc utilizada por Libsafet
+[Libdigidoc]
+# Ruta del archivo de configuracin digidoc para usarlo con protocolo OCSP
+libdigidoc.configfilepath = /home/debian/.safet/digidoc.conf
+
+
+libdigidoc.x509storepath =  /home/debian/.safet/certs
+
+# Tipo de validacin de firma de Digidoc "ocsp" : via protocolo OCSP, "keystore": Repositorio
+# de claves del navegador Mozilla / Firefox
+#libdigidoc.validationtype = keystore
+
+libdigidoc.mimestypes.* = application/vnd.sun.xml.writer sxw
+libdigidoc.mimestypes.* = application/vnd.sun.xml.writer.template stw
+libdigidoc.mimestypes.* = application/vnd.sun.xml.writer.global sxg
+libdigidoc.mimestypes.* = application/vnd.stardivision.writer sdw vor
+libdigidoc.mimestypes.* = application/vnd.stardivision.writer-global sgl
+libdigidoc.mimestypes.* = application/vnd.sun.xml.calc sxc
+libdigidoc.mimestypes.* = application/vnd.sun.xml.calc.template stc
+libdigidoc.mimestypes.* = application/vnd.stardivision.calc sdc
+libdigidoc.mimestypes.* = application/vnd.sun.xml.impress sxi
+libdigidoc.mimestypes.* = application/vnd.sun.xml.impress.template sti
+libdigidoc.mimestypes.* = application/vnd.stardivision.impress sdd sdp
+libdigidoc.mimestypes.* = application/vnd.sun.xml.draw sxd
+libdigidoc.mimestypes.* = application/vnd.sun.xml.draw.template std
+libdigidoc.mimestypes.* = application/vnd.stardivision.draw sda
+libdigidoc.mimestypes.* = application/vnd.sun.xml.math sxm
+libdigidoc.mimestypes.* = application/vnd.stardivision.math smf
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.text odt
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.text-template ott
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.text-web oth
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.text-master odm
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.graphics odg
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.graphics-template otg
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.presentation odp
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.presentation-template otp
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.spreadsheet ods
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.spreadsheet-template ots
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.chart odc
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.formula odf
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.database odb
+libdigidoc.mimestypes.* = application/vnd.oasis.opendocument.image odi
+libdigidoc.mimestypes.* = application/pdf pdf
+libdigidoc.mimestypes.* = application/xml xml
+libdigidoc.mimestypes.* = text/plain txt
+libdigidoc.mimestypes.* = text/css css
+libdigidoc.mimestypes.* = text/xml xml
+libdigidoc.mimestypes.* = text/html html 
+libdigidoc.mimestypes.* = application/x-gzip tgz
+libdigidoc.mimestypes.* = application/zip zip
+
+# Opciones para los Autofiltros (Autofilter)
+[Autofilter]
+autofilter.datetime.period = 672
+
+
+#Opciones valores por defecto 
+
+[DefaultValues]
+
+defaultvalues.report = yes
+defaultvalues.digidoc.manifest = Investigador
+defaultvalues.digidoc.city = Mérida
+defaultvalues.digidoc.state = Mérida
+defaultvalues.digidoc.country = VE
+defaultvalues.digidoc.zip = 5101
+defaultvalues.panel.info.secondstohide = 4000
+
+defaultvalues.graphs.daysproject = 45
+
+
+[Reports]
+# Configuraciones para mostrar informacin en la aplicacin Inflow
+
+# tipo de protocolo (file,http,ftp,entre otros)
+reports.protocol = file 
+
+# ruta para obtener la plantilla (HTML)
+reports.path = /home/debian/.safet/reports
+
+# nombre de la plantilla HTML + AJAX
+reports.general.template = /var/www/media/templates/listgenerationg.html
+
+# nombre de la plantilla para documento a firmar
+
+#reports.documenttosign.template = /var/www/media/templates/plantillaVacaciones.html
+reports.documenttosign.template = /var/www/media/templates/sf_plantillaFirma01.html
+
+
+
+# Opciones Para los gráficos de flujo de trabajo
+[Graphs]
+
+# opciones para el texto de informacin en cada flujo de trabajo
+# opciones on/off
+graphs.infotext.include = on
+
+# Formato  para el texto de informacin en cada flujo de trabajo (el %date indica Fecha y %time Hora, %datetime Hora y Fecha)
+graphs.infotext.format = Generado %datetime
+
+# Nombre de la fuente para el texto de informacin en cada flujo de trabajo
+graphs.infotext.font = Book Antiqua
+
+# Tamao de la fuente para el texto de informacin en cada flujo de trabajo
+graphs.infotext.size = 14
+
+# Separacin de la fuente para el texto de informacin en cada flujo de trabajo
+graphs.infotext.separation = 30
+
+# Parametros de la información extra de cada nodo
+[ExtraInfo]
+
+extrainfo.infotext.fields = owner,porcentage,completed
+extrainfo.infotext.separator = 
+
+extrainfo.infotext.completed = [*]
+
+# Mostrar campos coloreados (lo ya pasados)
+extrainfo.coloured = yes
+
+# Mostrar estadísticas al final del grafo (resumen)
+extrainfo.summarize = yes
+
+extrainfo.title = Porcentaje:
+
+extrainfo.formula = sumall
+
+extrainfo.pattern = #PAR0#CLA00-9#CLA1+#PAR1#SLA%
+
+# Opciones para las librerias adiciones Plugins
+
+[Plugins]
+# Ruta donde se encuentra las librerias adicionales (plugins)
+plugins.path = /usr/lib/libsafet
+
+
+
+
+# Opciones particulares de cada complemento 
+[Plugins.Graphviz]
+
+# Mostrar la información del campo  textualinfo en el gráfico Opciones "yes" o "no"
+plugins.graphviz.show.textualinfo = yes
+
+# Mostrar la información del campo role  en el gráfico Opciones "yes" o "no"
+plugins.graphviz.show.role = yes
+
+
+# Información a mostrar en cuadro de información extra Porc,Tokens,Total,InfoText,InfoDate
+plugins.graphviz.extrainfo.show = Porc,Tokens,Total,InfoText,InfoDate
+
+
+
+# Tipo de Gráfico svg o png
+plugins.graphviz.graphtype = svg
+
+# Este son los parmetros para dibujar el grafo utilizando el plugins "plugviz" que
+# se entrega con el nucleo de SAFET.
+# Los colores por nombre posibles estan en la siguiente tabla: (Tomado de Guia de dot (Graphviz) 2006)
+# Whites             Reds               Yellows              turquoise     
+# antiquewhite       coral              darkgoldenrod     
+#                                                            Blues
+# azure              crimson            gold     
+# bisque             darksalmon         goldenrod            aliceblue
+# blanchedalmond     deeppink           greenyellow          blue     
+# cornsilk           firebrick          lightgoldenrod       blueviolet
+# floralwhite        hotpink            lightgoldenrodyellow cadetblue     
+# gainsboro          indianred          lightyellow          cornflowerblue
+# ghostwhite         lightpink          palegoldenrod        darkslateblue
+# honeydew           lightsalmon        yellow               deepskyblue     
+# ivory              maroon             yellowgreen          dodgerblue     
+# lavender           mediumvioletred                         indigo
+#                                       Greens
+# lavenderblush      orangered                               lightblue     
+# lemonchiffon       palevioletred      chartreuse           lightskyblue     
+# linen              pink               darkgreen            lightslateblue     
+# mintcream          red                darkolivegreen       mediumblue
+# mistyrose          salmon             darkseagreen         mediumslateblue
+# moccasin           tomato             forestgreen          midnightblue
+# navajowhite        violetred          green                navy
+# oldlace                               greenyellow          navyblue
+#                    Browns
+# papayawhip                            lawngreen            powderblue
+# peachpuff          beige              lightseagreen        royalblue     
+# seashell           brown              limegreen            skyblue     
+# snow               burlywood          mediumseagreen       slateblue     
+# thistle            chocolate          mediumspringgreen    steelblue     
+# wheat              darkkhaki          mintcream
+                                                             Magentas
+# white              khaki              olivedrab     
+# whitesmoke         peru               palegreen            blueviolet
+#                    rosybrown          seagreen             darkorchid     
+# Greys              saddlebrown        springgreen          darkviolet
+# darkslategray      sandybrown         yellowgreen          magenta     
+# dimgray            sienna                                  mediumorchid     
+#                                       Cyans
+# gray               tan                                     mediumpurple     
+# gray                                  aquamarine           mediumvioletred
+#                    Oranges
+# lightgray                             cyan                 orchid     
+# lightslategray     darkorange         darkturquoise        palevioletred     
+# slategray          orange             lightcyan            plum     
+#                    orangered          mediumaquamarine     purple     
+# Blacks                                mediumturquoise      violet
+# black                                 paleturquoise        violetred     
+
+
+
+
+
+plugins.graphviz.extrainfo.showwheretokens = off
+
+#Color activo de para ser utilizado en los grficos 
+plugins.graphviz.task.fillcolor = #f1f1f1
+
+#Color activo de la lnea para ser utilizado en los grficos 
+plugins.graphviz.task.color = black
+
+# Atributo utilizado en la estadstica Opciones posibles (Color/Size/Line/Custom)
+plugins.graphviz.stats.attribute = Color
+
+# Tamao mximo para la estadstica de (Tamano Maximo)
+plugins.graphviz.stats.sizemax = 2 
+
+# Tamao mnimo  para la estadstica de (Tamano Minimo)
+plugins.graphviz.stats.sizemin = 1
+
+# Color para dibujar estadistica
+plugins.graphviz.stats.colorgradient = #ffff00
+
+
+# Color del texto para cuadro de estadística
+plugins.graphviz.stats.fontcolor = black
+
+# Color de fondo  para cuadro de estadística
+plugins.graphviz.stats.fillcolor = antiquewhite
+
+# Estilo de la línea del cuadro de estadística 
+plugins.graphviz.stats.style = dashed
+
+
+
+# Mostrar cuadro de estadística
+plugins.graphviz.showstats = yes
+
+# usar gradientes 
+
+plugins.graphviz.usegradient = yes
+
+
+#Dirección del grafo  TB (Arriba-Abajo) LR (Izquierda-Derecha)
+plugins.graphviz.graph.rankdir = TB
+
+# Tamao del fuente para todos los nodos
+plugins.graphviz.graph.fontsize = 12
+
+# Separador del rank  
+plugins.graphviz.graph.ranksep = 0.5 equally
+
+
+# Figura para la tarea (Task)
+plugins.graphviz.task.shape = box
+
+# Estilo de la Figura para la tarea (Task) filled,bold,dotted,empty
+plugins.graphviz.task.style = filled
+
+#Color activo de para ser utilizado en los gráficos 
+plugins.graphviz.condition.fillcolor = #FFFFFF 
+
+#Color activo de la lnea para ser utilizado en los grficos 
+plugins.graphviz.condition.color = black
+
+# Figura para la (Condition) (box, ellipse, circle, etc.)
+plugins.graphviz.condition.shape = ellipse
+
+# Estilo de la Figura para la tarea (Condition)
+plugins.graphviz.condition.style = filled
+
+
+
+
+plugins.graphviz.extrainfo.showwheretokens = off

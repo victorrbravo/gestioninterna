@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Generar planilla de solicitud de vista_vacaciones" desc="Planilla que se generar con los datos de una solicitud de vista_vacaciones">
+<token key="vista_vacaciones.id"  keysource=" vista_vacaciones">
+</token>
+
+<parameter type="combolistliteral" options="TB::La direccin del grfico es arriba-abajo::TB,LR::La direccin del grfico es izquierda-derecha::LR" mandatory="no"
+                       title="Direccion_Grafico_de_Flujo" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir" defaultvalue="TB">
+                </parameter>
+<parameter type="combolistliteral" options="svg::Grfico SVG::svg,png::Grfico PNG::png" mandatory="no"
+                       title="Formato_del_Grafico" configurekey="Plugins.Graphviz/plugins.graphviz.graphtype">
+                </parameter>
+<parameter type="combolistliteral" options="on::Incluir::on,off::No Incluir::off" mandatory="no"
+                       title="Incluir_Fecha_Hora" configurekey="Graphs/graphs.infotext.include">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Mostrar_en_grafico" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show" defaultvalue="InfoText,InfoDate" >
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Plantilla" configurekey="Reports/reports.documenttosign.template" defaultvalue="/var/www/media/templates/plantillaVacacionesSigned.html" >
+                </parameter>
+
+
+
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle" defaultvalue="Planilla de Solicitud de Vacaciones" >
+                </parameter>
+<parameter type="combocolor" mandatory="no" title="Color Para Estadistica"
+                       options="antiquewhite::Color Blanco Antiguo::antiquewhite,green::Color Verde::green,coral::Color Rojo Coral::coral,red::Color Rojo::red,yellow::Color Amarillo::yellow,skyblue::Color Azul Cielo::skyblue,ghostwhite::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,lightgray::Color Gris Claro::lightgray,blue::Color Azul::blue,orange::Color Naranja::orange,gray::Color Gris::gray,black::Color Negro::black,white::Color Blanco::white"
+configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalue="yellow">
+                </parameter>
+           <parameter type="combolisttable" icon="hito.png" desc= "Por_usuario" mandatory="no" options="usuario:personal::usuario"  
+	  title="Por_usuario" defaultvalue="0">
+	</parameter>	
+     
+<condition id="inicial" type="start">
+	<port side="forward" type="split"  >
+		<connection   source="Por_usuario" query="select personal.usuario from personal"  options="_USERNAME" tokenlink="[cedula,id_cedula:vista_vacaciones]" >
+		</connection>
+	</port>
+</condition>
+<task id="Por_usuario"  title="_USERNAME" >
+	<port side="forward" type="split"  >
+		<connection   source="Vacaciones_solicitadas" query="select vista_vacaciones.status from personal"  options="Talento_humano" tokenlink="[cedula,id_cedula:vista_vacaciones]" >
+		</connection>
+
+	</port>
+	 <variable id="vSolicitud" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_cedula:vista_vacaciones]" 
+                documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia  from personal"
+ rolfield=""  timestampfield="" 
+
+ >
+     </variable>
+</task>
+
+
+<task id="Vacaciones_solicitadas"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"  >
+	    <connection source="Solicitud_firmada" query="vVacaciones_solicitadas SIGN #ANYBODY#" options="yes" tokenlink="[cedula,id_cedula:vista_vacaciones]" 
+>
+        </connection>
+	</port>
+	 <variable id="vVacaciones_solicitadas" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_cedula:vista_vacaciones]" 
+                documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from personal"
+ rolfield="(select nombre_periodo from vista_vacaciones_registro where vista_vacaciones_registro.id_vista_vacaciones=vista_vacaciones.id and vista_vacaciones_registro.status='Talento_humano' limit 1)"  timestampfield="(select fecha_accion from vista_vacaciones_registro where vista_vacaciones_registro.id_vista_vacaciones=vista_vacaciones.id and vista_vacaciones_registro.status='Talento_humano' limit 1)" 
+
+ >
+     </variable>
+</task>
+<task id="Solicitud_firmada"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"  >
+		<connection   source="DireccionEjecutiva" query="select vista_vacaciones.status from personal"  options="Direccion_ejecutiva" tokenlink="[cedula,id_cedula:vista_vacaciones]" >
+		</connection>
+
+	</port>
+	 <variable id="vFirmadas" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_cedula:vista_vacaciones]" 
+                documentsource="select  personal.cargo, personal.cedula,(select p.cargo from vista_vacaciones as v inner join personal p ON p.cedula = v.cedula_suplente_1) as cargo_1, (select p.cargo from vista_vacaciones as v inner join personal p ON p.cedula = v.cedula_suplente_2) as cargo_2,  personal.departamento, diasadisfrutar, diasdisfrutados, diaspordisfrutar, diassolicitados, suplenteinterno_1, suplenteinterno_2, fechasolicitud, nombre, personal.fecha_ingreso, informacion_usuario, nombre, fechainicio, fechafin from personal"
+ rolfield="cn::Victor Rafael Bravo Bravo"  timestampfield="cn::Victor Rafael Bravo Bravo"
+
+ >
+     </variable>
+</task>
+<task id="DireccionEjecutiva"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"  >
+	    <connection source="final" query="true" options="" >
+        </connection>
+	</port>
+	 <variable id="vDireccionEjecutiva" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_cedula:vista_vacaciones]" 
+                documentsource="select  personal.cargo, personal.departamento, diasadisfrutar, diasdisfrutados, diaspordisfrutar, diassolicitados, suplenteinterno_1, suplenteinterno_2, fechasolicitud, nombre, vista_vacaciones.fecha_ingreso, informacion_usuario, nombre, fechainicio, fechafin from personal"
+ rolfield=""  timestampfield="" 
+
+ >
+     </variable>
+</task>
+
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+

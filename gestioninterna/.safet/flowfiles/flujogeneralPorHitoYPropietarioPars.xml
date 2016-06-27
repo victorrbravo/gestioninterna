@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->        
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="carteleratodos">
+        <token key="id"  keysource="vticket">
+        </token>
+	<parameter type="combolisttable" icon="hito.png" desc= "Nro Ticket" mandatory="no" options="id:vticket::id"  
+	  title="nro_ticket" >
+	</parameter>	
+<parameter title="Direccion_Grafico_de_Flujo" options="TB::La dirección del gráfico es arriba-abajo::TB,LR::La dirección del gráfico es izquierda-derecha::LR" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir" type="combolistliteral" mandatory="no" defaultvalue="TB" />
+
+        <condition id="inicial" type="start">
+                <port side="forward" type="split"   >
+                 <connection   source="Mas_tareas" query="select propietario from vticket"  options="_USERNAME" tokenlink="">
+			</connection>
+                </port>
+        </condition>
+        <task id="Mas_tareas"  title="" report="no">
+                <port side="forward" type="split" >
+                        <connection source="Todas_las_tareas" query="select id from vticket" options="&gt;0" >
+                        </connection>
+                </port>
+                <variable id="vMas_las_tareas" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select projectid,resumen,descripcion,tipo,proyecto,tentativedate,tentativo,finishdate,finalizado,propietario,status from vticket" >
+                </variable>
+
+        </task>
+
+        <task id="Todas_las_tareas"  title="" report="no">
+                <port side="forward" type="split" >
+                        <connection source="Por_hacer" query="select status from vticket" options="ToDo" >
+                        </connection>
+                </port>
+                <variable id="vTodas_las_tareas" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select projectid,resumen,descripcion,tipo,proyecto,tentativedate,tentativo,finishdate,finalizado,propietario,status from vticket" >
+                </variable>
+
+  <autofilter query="select proyecto from vticket" report="yes" type="split" tokenlink="" id="por_proyecto" source="Por_hacer" />
+        </task>
+        <task id="Por_hacer"  title="" report="no">
+                <port side="forward" type="split" >
+                        <connection source="final" query="true" options="" >
+                        </connection>
+                </port>
+                <variable id="vPor_hacer" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select projectid,resumen,descripcion,tipo,proyecto,tentativedate,tentativo,finishdate,finalizado,propietario,status from vticket" >
+                </variable>
+        </task>
+
+<condition id="final">
+                <port side="forward" type="split">
+                        <connection source="">
+                        </connection>
+                </port>
+        </condition>
+</workflow>
+        <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+        </configuration>
+</yawl>

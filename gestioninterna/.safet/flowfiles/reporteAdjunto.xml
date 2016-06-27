@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Adjuntos reuniones" desc="">
+<token key="reuniones.id"  keysource="reuniones">
+</token>
+<parameter type="combolisttable" icon="hito.png" desc= "Por_reunion" mandatory="no" options="id:reuniones:: id || ' ' || descripcion"  
+	  title="Por_reunion" defaultvalue="0">
+	</parameter>	
+  <condition id="inicial" type="start" left="4" top="232">
+    <port side="forward" type="split" >
+      <connection source="Consejero" query="select adjuntos.id from adjuntos" options="&gt;0" tokenlink="[id_reunion]" left="170" top="92">
+      </connection>
+    </port>
+  </condition>
+  <task id="Consejero" title="Consejero"  report="yes" left="266" top="283">
+    <port side="forward" type="split" pattern="or">
+      <connection  source="Listado" query="select reuniones.id from adjuntos" options="{#Por_reunion}" tokenlink="[id_reunion]" left="694" top="188">
+      </connection>
+   </port>
+      <variable  id="ListConsejero" scope="task" config="1" tokenlink="[id_reunion]" type="sql" documentsource="select ruta,descripcion from adjuntos" left="530" top="65">
+      </variable>
+  </task>
+  <task id="Listado" title="{#Por_reunion}"   left="943" top="137">
+    <port side="forward" type="split" >
+      <connection  source="final" query="true" options="" tokenlink="" left="1210" top="154">
+      </connection>
+    </port>
+      <variable  id="vPorReunion" scope="task" config="1" type="sql" documentsource="select ruta from adjuntos" left="898" top="67" tokenlink="[id_reunion]"  >
+      </variable>
+  </task>
+  <condition id="final" left="1443" top="197">
+    <port side="forward" type="split">
+      <connection source="">
+      </connection>
+    </port>
+  </condition>
+</workflow>
+</yawl>

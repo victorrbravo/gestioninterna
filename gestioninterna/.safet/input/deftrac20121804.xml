@@ -1,0 +1,1948 @@
+<!--
+Documento  : deftrac.xml
+Creado     : Víctor Bravo
+Autor      : Victor Bravo
+Descripcion: Archivo de Entrada para SAFET - Inflow
+
+-->
+
+<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<operations suffix=":" commandname="operacion">
+<operation  name="POA"  desc="Acciones del Plan Operativo Anual" icon="proyecto.png">
+</operation>
+<operation  name="agregar_proyecto_poa"  desc="Agregar un nuevo proyecto POA" icon="plus.png">
+<command id ="1" type="agregar" table="proyecto_poa" >
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" sequence="proyecto_poa_id_seq" title="proyecto_a_agregar">
+			id
+		</field>
+		<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre" desc="Nombre del Proyecto POA">
+			nombre
+		</field>
+		<field type="stringbox" icon="desc.png" mandatory="yes"  options="wiki" title="Descripcion" desc="La explicación más detallada">
+			descripcion
+		</field>
+		<field type="stringbox" mandatory="yes" title="Objetivo_General" desc="Objetivo general del proyecto">
+			objetivo_general
+		</field>		
+		<field type="stringbox" mandatory="yes" title="Objetivo_Especifico" desc="Objetivo especifico del proyecto">
+			objetivo_especifico
+		</field>			
+		<field type="stringbox" mandatory="yes" title="problema_a_enfrentar" desc="Problema a enfrentar">
+			problema_a_enfrentar
+		</field>
+	</fields>
+</command>
+</operation>
+
+<operation  name="modificar_proyecto_poa"  desc="Modificar un proyecto poa existente" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="proyecto_poa">
+		<fields>
+			<field type="combolisttable" options="id:proyecto_poa::'(' || id || ') ' || nombre" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+				id
+			</field>
+			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Nombre" desc="Nombre del Proyecto POA" changefor="id">
+				nombre
+			</field>
+			<field type="stringbox" icon="desc.png" mandatory="yes"  options="wiki" title="Descripcion" desc="La explicación más detallada" changefor="id" >
+				descripcion
+			</field>
+			<field type="stringbox" mandatory="yes" title="Objetivo_General" desc="Objetivo general del proyecto"
+changefor="id" >
+				objetivo_general
+			</field>		
+			<field type="stringbox" mandatory="yes" title="Objetivo_Especifico" desc="Objetivo especifico del proyecto"
+changefor="id" >
+				objetivo_especifico
+			</field>			
+			<field type="stringbox" mandatory="yes" title="problema_a_enfretar" desc="Problema a enfrentar"
+changefor="id">
+				problema_a_enfrentar
+			</field>
+		</fields>
+	</command>
+</operation>
+<operation  name="borrar_proyecto_poa"  desc="Elimina un proyecto POA" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="proyecto_poa">
+		<fields>
+			<field type="combolisttable" options="id:proyecto_poa::'( ' || id || ') ' || nombre" mandatory="yes" primarykey="yes"
+			title="Id" >
+				id
+			</field>		
+		</fields>
+	</command>
+
+</operation>
+
+<operation  name="Acciones Específicas"  desc="Funciones para las acciones específicas" icon="proyecto.png">
+</operation>
+
+<operation  name="agregar_acción_específica"  desc="Agregar una nueva accion especifica" icon="plus.png">
+<command id ="1" type="agregar" table="accion_especifica" >
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" sequence="accion_especifica_id_seq" title="Accion_a_agregar">
+			id
+		</field>
+		<field type="stringbox" icon="resumen.png" mandatory="yes" validation="" title="Nombre" desc="Nombre de la acción específica">
+			nombre
+		</field>
+		<field type="combolisttable" options="id:proyecto_poa::nombre" mandatory="yes" validation="" title="Proyecto_POA">
+                        id_proyecto_poa
+                </field>
+	</fields>
+</command>
+</operation>
+
+<operation  name="modificar_acción_específica"  desc="Modificar una acción específica existente" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="accion_especifica">
+		<fields>
+			<field type="combolisttable" options="id:accion_especifica::'(' || id || ') ' || nombre" mandatory="yes" primarykey="yes" title="id" order="desc"  changekey="yes">
+				id
+			</field>
+			<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre" desc="Nombre de la acción específica" changefor="id">
+				nombre
+			</field>
+			<field type="combolisttable" options="id:proyecto_poa::nombre" mandatory="yes" validation="" title="Proyecto_POA" changefor="id">
+	                        id_proyecto_poa
+	                </field>
+		</fields>
+	</command>
+</operation>
+<operation  name="borrar_acción_específica"  desc="Elimina un proyecto POA" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="accion_especifica">
+		<fields>
+			<field type="combolisttable" options="id:accion_especifica::'(' || id || ') ' || nombre" mandatory="yes" primarykey="yes" title="id" order="desc"  changekey="yes">
+				id
+			</field>
+
+		</fields>
+	</command>
+
+</operation>
+
+
+<operation  name="Equipos"  desc="Acciones de datos para los equipos" icon="proyecto.png">
+</operation>
+
+<operation  name="agregar_equipo"  desc="Agregar un nuevo equipo responsable de accion específica" icon="plus.png">
+<command id ="1" type="agregar" table="equipo_responsable" >
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" sequence="equipo_responsable_id_seq" title="Equipo_a_agregar">
+			id
+		</field>
+		<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre" desc="Nombre del equipo responsable">
+			grupo
+		</field>
+		<field type="stringbox" icon="resumen.png" mandatory="yes" validation="" title="Descripción" desc="Descripción del equipo responsable">
+			descripcion
+		</field>
+		<field type="datetime" mandatory="no"  function="now()" format="time_t" input="no">
+                        fecha_creacion
+                </field>
+	</fields>
+</command>
+</operation>
+
+<operation  name="modificar_equipo"  desc="Modificar un equipo de trabajo existente" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="equipo_responsable">
+		<fields>
+			<field type="combolisttable" options="id:equipo_responsable::'( ' || id || ') '|| grupo" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes" >
+				id
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre" desc="Nombre del equipo" 
+changefor="id" >
+				grupo
+			</field>
+			<field type="stringbox" mandatory="no"  title="Descripción" desc="Descripción del equipo"
+changefor="id" >
+				descripcion
+			</field>
+			<field type="datetime" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy" title="Fecha_creación"  validation="" changefor="id" >
+                                fecha_creacion
+                        </field>
+			<field type="datetime" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy" title="Fecha_desincorporación"  validation="" changefor="id" >
+                                fecha_desincorporacion
+                        </field>
+		</fields>
+	</command>
+</operation>
+<operation  name="borrar_equipo"  desc="Eliminar un equipo" icon="firmadoc.png">
+	<command id ="1" type="eliminar" table="equipo_responsable">
+		<fields>
+			<field type="combolisttable" options="id:equipo_responsable::'( ' || id || ') '|| grupo" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes" >
+				id
+			</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="asignar_personal_a_equipo"  desc="Asigna un individuo del personal al equipo" icon="plus.png">
+<command id ="1" type="agregar" table="equipo_personal" >
+	<fields>
+		<field type="combolisttable" options="id:equipo_responsable::grupo" mandatory="yes" primarykey="yes" title="Equipo_responsable" order="desc">
+			id_equipo
+		</field>
+		<field type="combolisttable" options="cedula:personal::nombres||' '||apellidos" mandatory="yes" primarykey="yes" title="Personal_a_agregar" order="desc">
+			id_personal
+		</field>
+	</fields>
+</command>
+</operation>
+<operation  name="Actividades"  desc="Acciones de datos para las actividades" icon="proyecto.png">
+</operation>
+
+<operation  name="agregar_actividad_a_acción_específica"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png">
+<command id ="1" type="agregar" table="actividad_por_accion" >
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" sequence="actividad_por_accion_id_seq" title="Numero_de_actividad" changekey="yes">
+			id
+		</field>
+		<field type="combolisttable" options="id:accion_especifica::nombre" mandatory="no" validation="" title="Accion_específica_que_pertenece">
+                        id_accion_especifica
+                </field>
+		<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre" desc="Nombre de la actividad a agregar">
+			nombre
+		</field>
+		<field type="combolisttable" options="id:equipo_responsable::grupo" mandatory="yes" validation="" title="Equipo_responsable">
+                        id_equipo_responsable
+                </field>
+		
+		<field type="datetime" mandatory="yes" options="calendarPopup::true,displayFormat::dd/MM/yy" title="Fecha_entrega"  validation="" index="0">
+                        fecha_entrega
+                </field>
+	<field type="combolistliteral" mandatory="yes" title="Tipo_de_proyecto" desc="Tipo de actividad" 
+options="Proyecto_Ralmo::Proyecto_Ralmo::Proyecto_Ralmo,Proyecto_Software::Proyecto_Software::Proyecto_Software,Proyecto_Social::Proyecto_Social::Proyecto_Social,Proyecto_Hardware_1::Proyecto_Hardware_1::Proyecto_Hardware_1,Proyecto_Hardware_2::Proyecto_Hardware_2::Proyecto_Hardware_2,Proyecto_Educativo::Proyecto_Educativo::Proyecto_Educativo,Proyecto_Software_Tercerizado::Proyecto_Software_Tercerizado::Proyecto_Software_Tercerizado,Proyecto_Sensibilizacion::Proyecto_Sensibilizacion::Proyecto_Sensibilizacion,Proyecto_Refutacion::Proyecto_Refutacion::Proyecto_Refutacion,Proyecto_Apropiacion::Proyecto_Apropiacion::Proyecto_Apropiacion,Proyecto_Planificacion::Proyecto_Planificacion::Proyecto_Planificacion,Proyecto_Interoperatividad::Proyecto_Interoperatividad::Proyecto_Interoperatividad,ExtraPOA::ExtraPOA::ExtraPOA,Proyecto_Trafico::Proyecto_Trafico::Proyecto_Trafico,Proyecto_Mapa_industrial::Proyecto_Mapa_industrial,Proyecto_Tramites::Proyecto_Tramites::Proyecto_Tramites,Proyecto_Communitas::Proyecto_Communitas::Proyecto_Communitas,Proyecto_CuentaCuento::Proyecto_CuentaCuento::Proyecto_CuentaCuento, Proyecto_Medios_Comunitarios::Proyecto_Medios_Comunitarios::Proyecto_Medios_Comunitarios,Proyecto_Asamblea_Socialista::Proyecto_Asamblea_Socialista::Proyecto_Asamblea_Socialista,Proyecto_Contraloria_Social::Proyecto_Contraloria_Social::Proyecto_Contraloria_Social,Proyecto_Calidad::Proyecto_Calidad::Proyecto_Calidad"
+  input="cn::1">
+			tipo
+		</field>
+			<field type="combolisttable" options="id:personal::'(' || cedula || ') ' || apellidos || ', ' || nombres" mandatory="yes" validation="" title="Persona_responsable" changefor="id">
+	                        id_persona_responsable
+	                </field>
+			<field type="combolisttable" options="id:personal::'(' || cedula || ') ' || apellidos || ', ' ||  nombres" mandatory="yes" validation="" title="Asignada_presidencia" changefor="id">
+	                        id_persona_presidencia
+	                </field>
+	<field type="combolistliteral" mandatory="yes" title="Entrega_en_el_trimestre" desc="Trimestre" options="I::I::I,II::II::II,III::III::III,IV::IV::IV">
+			trimestre_entrega
+		</field>
+	<field type="combolistliteral" mandatory="yes" title="Tipo_producto" desc="Tipo de productos" options="Software::Software::Software,Prototipo::Prototipo::Prototipo,Publicación::Publicación::Publicación,Documento::Documento::Documento,Sistema::Sistema::Sistema">
+			tipo_producto
+		</field>
+
+	<field type="combolistliteral" mandatory="yes" title="Número_de_productos" desc="Productos" options="1::1::1,2::2::2,3::3::3,4::4::4,5::5::5,6::6::6,7::7::7,8::8::8,9::9::9,10::10::10,11::11::11,12::12::12,13::13::13,14::14::14,15::15::15">
+			cuantos_productos
+		</field>
+		<field type="string" literal="nueva" mandatory="yes" input="cn::1::Proyecto_Hardware">
+			status
+		</field>
+		<field type="string" literal="Conceptualizacion" mandatory="yes" input="cn::1::Proyecto_Educativo">
+			status
+		</field>
+		<field type="string" literal="Conceptualizacion_sistema" mandatory="yes" input="cn::1::Proyecto_Software_Tercerizado">
+			status
+		</field>
+		<field type="string" literal="Recopilacion_teorica_metodologica" mandatory="yes" input="cn::1::Proyecto_Ralmo">
+			status
+		</field>
+
+		<field type="number"  mandatory="yes" title="Porcentaje_inicial">
+			porcentaje
+		</field>
+
+	</fields>
+</command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+	                                id 
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="yes" sequence="actividad_por_accion_id_seq"
+			typesequence="current">
+	                        id_actividad
+	                </field>
+		        <field type="string" literal="nueva" mandatory="no" primarykey="no" input="cn::1::Proyecto_Hardware">
+			   estado
+		        </field>
+		       
+ <field type="string" literal="Propuesta_Solucion" mandatory="no" primarykey="no" input="cn::1::Proyecto_Software">
+			   estado
+		        </field>
+ <field type="string" literal="Conceptualizacion" mandatory="no" primarykey="no" input="cn::1::Proyecto_Educativo">
+			   estado
+		        </field>
+ <field type="string" literal="Conceptualizacion_sistema" mandatory="no" primarykey="no" input="cn::1::Proyecto_Software_Tercerizado">
+			   estado
+		        </field>
+ <field type="string" literal="Recopilacion_teorica_metodologica" mandatory="no" primarykey="no" input="cn::1::Proyecto_Ralmo">
+			   estado
+		        </field>
+
+		        <field type="string"  title="Porcentaje_inicial" >
+			   porcentaje
+		        </field>
+
+	        </fields>
+	</command>
+
+</operation>
+
+<operation  name="modificar_actividad_a_acción_específica"  desc="Modificar una actividad existente" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="actividad_por_accion">
+		<fields>
+			<field type="combolisttable" options="id:actividad_por_accion::'(' || id || ') ' || nombre" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+				id
+			</field>
+			<field type="string" mandatory="yes"  options="wiki" title="Nombre_de_actividad" desc="Nombre de la actividad" changefor="id">
+				nombre
+			</field>
+			<field type="combolisttable" options="id:accion_especifica::nombre" mandatory="no" validation="" title="Nombre_de_la_acción_específica_a_la_que_pertenece" changefor="id">
+				id_accion_especifica
+			</field>
+			<field type="combolisttable" options="id:equipo_responsable::grupo" mandatory="no" validation="" title="Equipo_responsable" changefor="id">
+	                        id_equipo_responsable
+	                </field>
+			<field type="combolisttable" options="id:personal::'(' || cedula || ') ' || apellidos || ', '  || nombres" mandatory="no" validation="" title="Persona_responsable" changefor="id">
+	                        id_persona_responsable
+	                </field>
+			<field type="combolisttable" options="id:personal::'(' || cedula || ') ' || apellidos || ', '  ||  nombres" mandatory="no" validation="" title="Asignada_presidencia" changefor="id">
+	                        id_persona_presidencia
+	                </field>
+			
+	<field type="combolistliteral" mandatory="no" title="Tipo_producto" desc="Tipo de productos" options="Software::Software::Software,Prototipo::Prototipo::Prototipo,Publicación::Publicación::Publicación,Documento::Documento::Documento,Sistema::Sistema::Sistema"
+changefor="id">
+			tipo_producto
+		</field>
+
+	<field type="combolistliteral" mandatory="no" title="Numero_de_productos" desc="Productos" options="1::1::1,2::2::2,3::3::3,4::4::4,5::5::5"
+changefor="id">
+			cuantos_productos
+		</field>
+	<field type="combolistliteral" mandatory="no" title="Tipo_de_proyecto" desc="Tipo de actividad" options="Proyecto_Ralmo::Proyecto_Ralmo::Proyecto_Ralmo,Proyecto_Software::Proyecto_Software::Proyecto_Software,Proyecto_Social::Proyecto_Social::Proyecto_Social,Proyecto_Hardware_1::Proyecto_Hardware_1::Proyecto_Hardware_1,Proyecto_Hardware_2::Proyecto_Hardware_2::Proyecto_Hardware_2,Proyecto_Educativo::Proyecto_Educativo::Proyecto_Educativo,Proyecto_MaestroVirtual::Proyecto_MaestroVirtual::Proyecto_MaestroVirtual,Proyecto_Software_Tercerizado::Proyecto_Software_Tercerizado::Proyecto_Software_Tercerizado,Proyecto_Sensibilizacion::Proyecto_Sensibilizacion::Proyecto_Sensibilizacion,Proyecto_Refutacion::Proyecto_Refutacion::Proyecto_Refutacion,Proyecto_Apropiacion::Proyecto_Apropiacion::Proyecto_Apropiacion,Proyecto_Planificacion::Proyecto_Planificacion::Proyecto_Planificacion,Proyecto_Interoperatividad::Proyecto_Interoperatividad::Proyecto_Interoperatividad,ExtraPOA::ExtraPOA::ExtraPOA,Proyecto_Trafico::Proyecto_Trafico::Proyecto_Trafico,Proyecto_Mapa_industrial::Proyecto_Mapa_industrial::Proyecto_Mapa_industrial,Proyecto_Tramites::Proyecto_Tramites::Proyecto_Tramites,Proyecto_Communitas::Proyecto_Communitas::Proyecto_Communitas,Proyecto_CuentaCuento::Proyecto_CuentaCuento::Proyecto_CuentaCuento, Proyecto_Medios_Comunitarios::Proyecto_Medios_Comunitarios::Proyecto_Medios_Comunitario, Proyecto_Asamblea_Socialista::Proyecto_Asamblea_Socialista::Proyecto_Asamblea_Socialista,Proyecto_Contraloria_Social::Proyecto_Contraloria_Social::Proyecto_Contraloria_Social,Proyecto_Calidad::Proyecto_Calidad::Proyecto_Calidad"
+changefor="id">
+			tipo
+		</field>
+<field type="combolistliteral" mandatory="no" title="Entrega_en_el_trimestre" desc="Trimestre" options="I::I::I,II::II::II,III::III::III,IV::IV::IV" changefor="id">
+			trimestre_entrega
+		</field>
+			<field type="datetime" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy" title="Fecha_entrega"  validation=""  changefor="id">
+                                fecha_entrega
+                        </field>
+		<field type="string" mandatory="no" title="Estado_actual" changefor="id">
+				status
+		</field>
+		<field type="string" mandatory="no" title="Porcentaje_actual" changefor="id">
+				porcentaje
+		</field>
+
+		</fields>
+	</command>
+</operation>
+<operation  name="borrar_actividad_a_acción_específica"  desc="Elimina un producto por id" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="actividad_por_accion">
+		<fields>
+			<field type="combolisttable" options="id:actividad_por_accion::'(' || id || ' )' || nombre" mandatory="yes" primarykey="yes"
+			title="Número_de_actividad" >
+				id
+			</field>		
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Avance de actividades"  desc="Acciones para cambiar de estado un proyecto" icon="proyecto.png">
+</operation>
+
+<operation  name="Siguiente_estado_proyecto_Aseguramiento_Calidad" desc="Pasa de estado una determinada actividad " icon="padlock.png"> 
+	<command id ="1" type="actualizar" table="actividad_por_accion">
+		<fields>
+			<field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Calidad'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+				id
+			</field>		
+		<field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionAseguramientoCalidad.xml"
+				 title="Siguiente_Estado" changefor="Numero_de_actividad">
+				status
+		</field>
+
+		<field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionAseguramientoCalidad.xml"  title="Porcentaje"
+                                changefor="Siguiente_Estado" >
+                                porcentaje
+                </field>
+                        <field type="string"  mandatory="yes" title="Enlace_para_el_producto" >
+                                enlace
+                        </field>
+	                <field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+                   completado
+                </field>
+
+		</fields>
+	</command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+	                                id 
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="yes" title="Numero_de_actividad">
+	                        id_actividad
+	                </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+			   estado
+		        </field>
+			<field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+                            porcentaje
+                         </field>
+                          <field type="string"  mandatory="no" title="Enlace_para_el_producto">
+                                 enlace
+                          </field>
+                       <field type="string"   mandatory="yes" title="Fue_completado"> 
+				completado
+			</field>
+
+	        </fields>
+	</command>
+	
+	<command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+
+</operation>
+
+<operation  name="Siguiente_estado_Proyecto_Software_Tercerizado" desc="Pasa de estado una determinada actividad " icon="padlock.png"> 
+	<command id ="1" type="actualizar" table="actividad_por_accion">
+		<fields>
+			<field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Software_Tercerizado'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+				id
+			</field>		
+		<field type="comboflow" mandatory="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftwareContratado.xml"
+				 title="Siguiente_Estado" changefor="Numero_de_actividad" changekey="yes">
+				status
+		</field>
+		<field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftwareContratado.xml" 					title="Porcentaje"
+				changefor="Siguiente_Estado" >
+				porcentaje
+		</field> 		
+	                <field type="string"  mandatory="yes" title="Enlace_para_el_producto" >
+	                        enlace
+	                </field>
+
+	         <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+	         </field>
+		<field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+                   completado
+                </field>
+ 
+
+		</fields>
+	</command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+	                                id 
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="yes" title="Numero_de_actividad">
+	                        id_actividad
+	                </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+			   estado
+		        </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+			   porcentaje
+		        </field>
+	                <field type="string"  mandatory="no" title="Enlace_para_el_producto">
+	                        enlace
+	                </field>
+
+	        </fields>
+	</command>
+	<command id ="1" type="actualizar" table="actividad_por_accion">
+		<fields>
+			<field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+				id
+			</field>		
+	         <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+	         </field> 
+
+		</fields>
+	</command>
+
+</operation>
+<operation  name="Siguiente_estado_proyecto_Proyecto_Educativo" desc="Pasa de estado una determinada actividad " icon="padlock.png"> 
+	<command id ="1" type="actualizar" table="actividad_por_accion">
+		<fields>
+			<field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Educativo'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+				id
+			</field>		
+		<field type="comboflow" mandatory="yes" options="next" changekey="yes"
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml"
+				 title="Siguiente_Estado" changefor="Numero_de_actividad">
+				status
+		</field>
+		<field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml" title="Porcentaje_a_agregar"
+				changefor="Siguiente_Estado">
+				porcentaje
+		</field> 
+		<field type="string" mandatory="no" primarykey="no" title="Referencia_URL" >
+                    enlace
+                </field>
+                <field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+                   completado
+                </field>
+		</fields>
+	</command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+	                                id 
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="yes" title="Numero_de_actividad">
+	                        id_actividad
+	                </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+			   estado
+		        </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Porcentaje_a_agregar" >
+			   porcentaje
+		        </field>
+			<field type="string"   mandatory="yes" title="Fue_completado">
+                                completado
+                        </field>
+	        </fields>
+	</command>
+	<command id ="1" type="actualizar" table="actividad_por_accion">
+		<fields>
+			<field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+				id
+			</field>		
+	         <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+	         </field> 
+
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Siguiente_estado_proyecto_software" desc="Pasa de estado una determinada actividad " icon="padlock.png"> 
+	<command id ="1" type="actualizar" table="actividad_por_accion" >
+		<fields>
+			<field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Software'::'(' || id || ') ' || nombre" mandatory="yes"  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes" >
+				id
+			</field>		
+		<field type="comboflow" mandatory="yes"  primarykey="no" changekey="yes"  options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml" title="Siguiente_Estado"
+				changefor="Numero_de_actividad">
+				status
+		</field>
+		<field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml" title="Porcentaje"
+				changefor="Siguiente_Estado">
+				porcentaje
+		</field>
+		        <field type="string" mandatory="no" primarykey="no" title="Referencia_URL" >
+			   enlace
+		        </field>
+			<field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+    		           completado
+			</field>
+
+		</fields>
+	</command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+	                                id 
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="yes" title="Numero_de_actividad">
+	                        id_actividad
+	                </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+			   estado
+		        </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+			   porcentaje
+		        </field>
+			<field type="string" mandatory="no" primarykey="no" title="Referencia_URL" >
+				enlace
+		        </field>
+                       <field type="string"   mandatory="yes" title="Fue_completado"> 
+				completado
+			</field>
+
+	        </fields>
+	</command>
+
+	 <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+	primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Siguiente_estado_proyecto_Planificacion" desc="Pasa de estado una determinada actividad " icon="padlock.png">
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Planificacion'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+                                id
+                        </field>
+                <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftwarePlanificacion.xml"
+                                 title="Siguiente_Estado" changefor="Numero_de_actividad">
+                                status
+                </field>
+
+                <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftwarePlanificacion.xml"  title="Porcentaje"
+                                changefor="Siguiente_Estado" >
+                                porcentaje
+                </field>
+                        <field type="string"  mandatory="yes" title="Enlace_para_el_producto" >
+                                enlace
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+                <fields>
+                        <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+                                        id
+                        </field>
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+                        <field type="string"  mandatory="yes" title="Numero_de_actividad">
+                                id_actividad
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+                           estado
+                          </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+                            porcentaje
+                         </field>
+                          <field type="string"  mandatory="no" title="Enlace_para_el_producto">
+                                 enlace
+                          </field>
+                </fields>
+        </command>
+
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation name="Siguiente_estado_proyecto_mapa_insdustrial" desc="Pasa de estado una determinada actividad " icon="padlock.png">
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Mapa_industrial'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+                                id
+                        </field>
+                <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionMapaIndustrial.xml"
+                                 title="Siguiente_Estado" changefor="Numero_de_actividad">
+                                status
+                </field>
+
+                <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionMapaIndustrial.xml"  title="Porcentaje"
+                                changefor="Siguiente_Estado" >
+                                porcentaje
+                </field>
+                        <field type="string"  mandatory="yes" title="Enlace_para_el_producto" >
+                                enlace
+                        </field>
+			<field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+                           completado
+                        </field>
+                </fields>
+        </command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+                <fields>
+                        <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+                                        id
+                        </field>
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+                        <field type="string"  mandatory="yes" title="Numero_de_actividad">
+                                id_actividad
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+			 estado
+                          </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+                            porcentaje
+                         </field>
+                          <field type="string"  mandatory="no" title="Enlace_para_el_producto">
+                                 enlace
+                          </field>
+                </fields>
+        </command>
+
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+
+</operation>       
+
+<operation  name="Siguiente_estado_proyecto_communitas" desc="Pasa de estado una determinada actividad " icon="padlock.png">
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Communitas'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+                                id
+                        </field>
+                <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml"
+                                 title="Siguiente_Estado" changefor="Numero_de_actividad">
+                                status
+                </field>
+
+                <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml"  title="Porcentaje"
+                                changefor="Siguiente_Estado" >
+                                porcentaje
+                </field>
+                        <field type="string"  mandatory="yes" title="Enlace_para_el_producto" >
+                                enlace
+                        </field>
+			<field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+                           completado
+                        </field>
+                </fields>
+        </command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+                <fields>
+                        <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+                                        id
+                        </field>
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+                        <field type="string"  mandatory="yes" title="Numero_de_actividad">
+                                id_actividad
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+                         estado
+                        </field>
+			<field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+                            porcentaje
+                         </field>
+                          <field type="string"  mandatory="no" title="Enlace_para_el_producto">
+                                 enlace
+                          </field>
+                </fields>
+        </command>
+
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Siguiente_estado_proyecto_Proyecto_Cuenta_Cuento" desc="Pasa de estado una determinada actividad " icon="padlock.png">
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_CuentaCuento'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+                                id
+                        </field>
+                <field type="comboflow" mandatory="yes" options="next" changekey="yes"
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml"
+                                 title="Siguiente_Estado" changefor="Numero_de_actividad">
+                                status
+                </field>
+                <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml" title="Porcentaje_a_agregar"
+                                changefor="Siguiente_Estado">
+                                porcentaje
+                </field>
+			<field type="string" mandatory="no" primarykey="no" title="Referencia_URL" >
+    			   enlace
+			</field>
+			<field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+    			   completado
+			</field>
+                </fields>
+        </command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+                <fields>
+                        <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+                                        id
+                        </field>
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+                        <field type="string"  mandatory="yes" title="Numero_de_actividad">
+                                id_actividad
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+                           estado
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Porcentaje_a_agregar" >
+                           porcentaje
+                        </field>
+
+		</fields>
+        </command>
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Siguiente_estado_proyecto_medios_comunitarios" desc="Pasa de estado una determinada actividad " icon="padlock.png">
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Medios_Comunitarios'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+                                id
+                        </field>
+                <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml"
+                                 title="Siguiente_Estado" changefor="Numero_de_actividad">
+                                status
+                </field>
+
+                <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml"  title="Porcentaje"
+                                changefor="Siguiente_Estado" >
+                                porcentaje
+                </field>
+                        <field type="string"  title="Enlace_para_el_producto" >
+                                enlace
+                        </field>
+			<field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+    			    completado
+			</field>
+                </fields>
+        </command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+                <fields>
+                        <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+                                        id
+                        </field>
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+                        <field type="string"  mandatory="yes" title="Numero_de_actividad">
+                                id_actividad
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+                         estado
+                        </field>
+			<field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+                            porcentaje
+                         </field>
+                          <field type="string"  mandatory="no" title="Enlace_para_el_producto">
+                                 enlace
+                          </field>
+                </fields>
+        </command>
+
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Siguiente_estado_proyecto_Asamblea_Socialista" desc="Pasa de estado una determinada actividad " icon="padlock.png">
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Asamblea_Socialista'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+                                id
+                        </field>
+                <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionAsambleasSocialistas.xml"
+                                 title="Siguiente_Estado" changefor="Numero_de_actividad">
+                                status
+                </field>
+
+                <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionAsambleasSocialistas.xml"  title="Porcentaje"
+                                changefor="Siguiente_Estado" >
+                                porcentaje
+                </field>
+                        <field type="string"  mandatory="yes" title="Enlace_para_el_producto" >
+                                enlace
+                        </field>
+			<field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+    			   completado
+			</field>
+                </fields>
+        </command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+                <fields>
+                        <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+                                        id
+                        </field>
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+                        <field type="string"  mandatory="yes" title="Numero_de_actividad">
+                                id_actividad
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+                         estado
+                        </field>
+			<field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+                            porcentaje
+                         </field>
+                          <field type="string"  mandatory="no" title="Enlace_para_el_producto">
+                                 enlace
+                          </field>
+                </fields>
+        </command>
+
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Siguiente_estado_proyecto_contraloria_socialista" desc="Pasa de estado una determinada actividad " icon="padlock.png">
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="combolisttable" options="id:actividad_por_accion:where tipo ='Proyecto_Contraloria_Socialista'::'(' || id || ') ' || nombre" mandatory="yes"
+  order="desc" primarykey="yes" title="Numero_de_actividad" changekey="yes">
+                                id
+                        </field>
+                <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml"
+                                 title="Siguiente_Estado" changefor="Numero_de_actividad">
+                                status
+                </field>
+
+                <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
+                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml"  title="Porcentaje"
+                                changefor="Siguiente_Estado" >
+                                porcentaje
+                </field>
+                        <field type="string"  mandatory="yes" title="Enlace_para_el_producto" >
+                                enlace
+                        </field>
+                  <field type="combolisttable" options="value:enum:where type='logical'::name" mandatory="yes" primarykey="no" title="Fue_completado" input="cn::1" >
+                           completado
+                        </field>
+
+                </fields>
+        </command>
+        <command id ="1" type="agregar" table="actividad_registro" >
+                <fields>
+                        <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+                                        id
+                        </field>
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fechaaccion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+                        <field type="string"  mandatory="yes" title="Numero_de_actividad">
+                                id_actividad
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+                         estado
+                        </field>
+			<field type="string" mandatory="no" primarykey="no" title="Porcentaje" >
+                            porcentaje
+                         </field>
+                          <field type="string"  mandatory="no" title="Enlace_para_el_producto">
+                                 enlace
+                          </field>
+                </fields>
+        </command>
+
+        <command id ="1" type="actualizar" table="actividad_por_accion">
+                <fields>
+                        <field type="string" mandatory="no"
+primarykey="yes" title="Numero_de_actividad" >
+                                id
+                        </field>
+                 <field type="string" mandatory="no"  function="sum(porcentaje) from actividad_registro where id_actividad={#keyvalue}" input="no" format="integer" >
+                        porcentaje
+                 </field>
+
+                </fields>
+        </command>
+</operation>
+
+
+<operation  name="Productos"  desc="Agregar,Modificar,Eliminar,Listar" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_producto"  desc="Agregar un nuevo producto" icon="plus.png">
+<command id ="1" type="agregar" table="producto_de_actividad" >
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" sequence="producto_de_actividad_id_seq" title="id">
+			id
+		</field>
+
+		<field type="combolistliteral" mandatory="yes" title="Tipo" desc="Tipo de producto" options="Software::Producto de índole técnico::software,Hardware::Producto de índole técnico::hardware,Documento::Producto de índole Social::documento,Jornadas::Producto de índole Social::jornadas,Publicación::Producto de índole social::publicacion,Redes::Producto de índole social::redes">
+			tipo
+		</field>
+
+		<field type="string" mandatory="yes" title="Nombre" desc="Nombre del producto">
+			nombre
+		</field>
+
+		<field type="stringbox" mandatory="yes" title="Descripción" desc="Descripción del producto">
+			descripcion
+		</field>
+
+		<field type="combolisttable" options="id:actividad_por_accion::nombre" mandatory="yes" validation="" title="Actividad_a_la_que_pertenece_el_producto" desc="Producto que se va a generar">
+                        id_actividad
+                </field>
+
+		<field type="string" mandatory="no" title="Referencia" >
+			referencia
+		</field>
+
+	</fields>
+</command>
+</operation>
+<operation  name="modificar_producto"  desc="Modificar un producto existente" icon="firmadoc.png">
+<command id ="1" type="actualizar" table="producto_de_actividad">
+	<fields>
+		<field type="combolisttable" options="id:producto_de_actividad::'(' || id || ') ' || nombre" mandatory="yes" primarykey="yes" order="desc" title="id" changekey="yes">
+			id
+		</field>
+		<field type="string" mandatory="yes" validation="" title="Nombre" desc="Nombre del producto" changefor="id">
+			nombre
+		</field>
+		<field type="string" mandatory="yes" validation="" title="Descripción" desc="Descripción del producto" changefor="id">
+			descripción
+		</field>
+		<field type="combolistliteral" mandatory="yes" validation="" title="Numero de Productos" desc="Cantidad de productos a desarrollar" options="1,2,3,4,5" changefor="id">
+			numero_producto
+		</field>
+		<field type="string" mandatory="no" validation="" title="Referencia" desc="Referencia del producto"
+changefor="id">
+			referencia
+		</field>
+	</fields>
+</command>
+</operation>
+
+<operation  name="borrar_producto"  desc="Elimina un producto por id" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="producto_de_actividad">
+		<fields>
+			<field type="combolisttable" options="cedula:personal::cedula || '-' || nombres || ', ' || apellidos" mandatory="yes" primarykey="yes"
+			title="Id" >
+				id
+			</field>		
+		</fields>
+	</command>
+
+</operation>
+
+
+<operation  name="Trabajadores"  desc="Agregar,Modificar,Eliminar,Listar" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_trabajador"  desc="Agregar un nuevo ticket para la fase de Conceptualización" icon="plus.png">
+<command id ="1" type="agregar" table="personal" >
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" validation="[VE][0-9]{3,8}" title="Cédula">
+			cedula
+		</field>
+		<field type="string" mandatory="yes" title="Nombres" >
+			nombres
+		</field>
+		<field type="string" mandatory="yes" title="Apellidos" >
+			apellidos
+		</field>
+		<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo,Presidente::Presidente::Presidente,Director Ejecutivo::Director Ejecutivo::Director Ejecutivo,Analista Apropiación::Analista Apropiación::Analista Apropiación,Diseño Gráfico::Diseño Gráfico::Diseño Gráfico" mandatory="yes" title="Cargo_asignado">
+			cargo
+		</field>
+
+	</fields>
+</command>
+</operation>
+<operation  name="modificar_trabajador"  desc="Modificar un empleado existente" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="personal">
+		<fields>
+			<field type="combolisttable" options="cedula:personal" mandatory="yes" primarykey="yes" order="desc" title="Cédula" changekey="yes">
+				cedula
+			</field>
+		<field type="string" mandatory="no" title="Nombres" changefor="Cédula">
+			nombres
+		</field>
+		<field type="string" mandatory="no" title="Apellidos" changefor="Cédula">
+			apellidos
+		</field>
+		<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo,Analista Apropiación::Analista Apropiación::Analista Apropiación,Diseño Gráfico::Diseño Gráfico::Diseño Gráfico" mandatory="no" title="Cargo_asignado" changefor="Cédula">
+			cargo
+		</field>
+
+		<field type="linesc" mandatory="no">
+			captura
+		</field>
+		</fields>
+	</command>
+</operation>
+<operation  name="borrar_trabajador"  desc="Elimina un ticket por id" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="personal">
+		<fields>
+			<field type="combolisttable" options="cedula:personal::cedula || '-' || nombres || ', ' || apellidos" mandatory="yes" primarykey="yes"
+			title="Cédula" >
+				cedula
+			</field>		
+		</fields>
+	</command>
+
+</operation>
+<operation  name="borrar_asignación_de_trabajador_a_equipo"  desc="Elimina un producto por id" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="equipo_personal">
+		<fields>
+			<field type="combolisttable" options="id:equipo_personal:: (select (nombres || ' ' || apellidos) as nombrecompleto from personal where equipo_personal.id_personal = cedula) || '->' || (select grupo from equipo_responsable where equipo_responsable.id=equipo_personal.id_equipo) as nombreequipo" mandatory="yes" primarykey="yes"
+			title="Clave" >
+				id
+			</field>		
+		</fields>
+	</command>
+</operation>
+<operation  name="Tickets"  desc="Agregar,Modificar,Eliminar,Listar" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_ticket"  desc="Agregar un nuevo ticket para la fase de Conceptualización" icon="plus.png">
+<command id ="1" type="agregar" table="ticket" >
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" sequence="ticket_id_seq" title="ticket_a_agregar">
+			id
+		</field>
+		<field type="string" mandatory="yes" literal="new">
+			status
+		</field>
+		<field type="datetime" mandatory="yes"  options="calendarPopup::false,displayFormat::hh:mmap"  function="now()" format="time_t" input="no">
+			time
+		</field>
+		<field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+			changetime
+		</field>
+		<field type="string" icon="resumen.png" mandatory="yes" validation="" title="resumen" desc="Escribir un titulo corto del ticket">
+			summary
+		</field>
+		<field type="stringbox" icon="desc.png" mandatory="yes"  options="wiki" title="descripcion" desc="La explicación más detallada">
+			description
+		</field>
+		<field type="combolisttable" mandatory="yes" options="name:component" title="componente" desc="Seleccione el componente a cual corresponde el ticket">
+			component
+		</field>			
+		<field type="combolisttable" icon="hito.png" desc= "Seleccione la fecha que debe culminar este ticket" mandatory="yes" options="name:milestone" title="hito">
+			milestone
+		</field>			
+		<field type="combolisttable" mandatory="yes" options="name:version" title="version">
+			version
+		</field>			
+		<field type="combolisttable" mandatory="yes" options="name:enum:where type='ticket_type'" title="tipo">
+			type
+		</field>			
+			<field type="combolisttable" mandatory="yes" options="name:enum:where type='priority'" title="prioridad">
+			priority
+		</field>
+		<field type="string" literal="_USERNAME" mandatory="yes" >
+			owner
+		</field>
+		<field type="string" literal="_USERNAME" mandatory="yes" >
+			reporter
+		</field>
+			<field type="filename" mandatory="yes" title="archivo_flujo_de_trabajo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="no" changekey="yes"  options="show::id">
+				flowfilepath
+			</field>
+		<field type="combotask" mandatory="yes" validation="" changefor="archivo_flujo_de_trabajo" 
+		title="Tarea_padre">
+			parenttask
+		</field>
+	</fields>
+</command>
+<command id ="1" type="agregar" table="ticket_change" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="ticket_id_seq" typesequence="current">
+	                                ticket
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        time
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        author
+	                </field>
+	                <field type="string" literal="comment" mandatory="yes" >
+	                        field
+	                </field>
+	                <field type="string" literal="1" mandatory="yes" >
+	                        oldvalue
+	                </field>
+		<field type="string" mandatory="no" primarykey="no" title="colocar_como" >
+			newvalue
+		</field>
+	        </fields>
+	</command>
+</operation>
+<operation  name="modificar_ticket"  desc="Modificar un ticket existente" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="ticket">
+		<fields>
+			<field type="combolisttable" options="id:ticket::'(' || id || ') ' || summary" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+				id
+			</field>
+			<field type="string" mandatory="no" validation="" title="resumen" desc="Escribir un titulo corto del ticket" changefor="id">
+				summary
+			</field>
+			<field type="stringbox" mandatory="no"  title="descripcion" desc="La explicación más detallada" changefor="id">
+				description
+			</field>
+			<field type="combolisttable" mandatory="no" options="name:component" title="componente" desc="Seleccione el componente a cual corresponde el ticket" changefor="id">
+				component
+			</field>			
+			<field type="combolisttable" mandatory="no" options="name:milestone" title="hito">
+				milestone
+			</field>			
+			<field type="combolisttable" mandatory="no" options="name:version" title="version">
+				version
+			</field>			
+			<field type="combolisttable" mandatory="no" options="name:enum:where type='ticket_type'" title="tipo" changefor="id">
+				type
+			</field>			
+			<field type="combolisttable" mandatory="no" options="name:enum:where type='priority'" title="prioridad" changefor="id">
+				priority
+			</field>			
+			<field type="combolisttable" mandatory="no" options="owner:ticket"
+ title="Propietario" changefor="id">
+				owner
+			</field>
+			<field  type="combolistliteral" mandatory="no" title="Estado_actual" desc="Tipo de actividad" options="new::new::new,accepted::accepted::accepted,faltainfo::faltainfo::faltainfo,progressin::progressin::progressin,closed::closed::closed"
+ changefor="id">
+				status
+			</field>	
+	
+			<field type="filename" mandatory="yes" title="archivo_flujo_de_trabajo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="no" changekey="yes">
+				flowfilepath
+			</field>
+		<field type="combotask" mandatory="yes" validation="" changefor="archivo_flujo_de_trabajo" 
+		title="Tarea_padre">
+			parenttask
+		</field>
+			<field type="combolisttable" mandatory="no" options="name:enum:where type='resolution'" 						title="Resolución" changefor="id">
+				resolution
+			</field>			
+
+		</fields>
+	</command>
+	<command id ="1" type="actualizar" table="ticket_change" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" title="id">
+	                                ticket
+	                </field>
+		<field type="string" mandatory="no" primarykey="no" title="colocar_como" >
+			newvalue
+		</field>
+	        </fields>
+	</command>
+
+</operation>
+<operation  name="agregar_wiki"  desc="Agrega al wiki de este ticket alguna información importante" icon="resumen.png">
+<command id ="1" type="agregar" table="ticket_change" >
+	<fields>
+			<field type="combolisttable" options="id:ticket::'(' || id || ') ' || summary" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+				ticket
+			</field>
+		<field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+			time
+		</field>
+		<field type="string" literal="_USERNAME" mandatory="yes" >
+			author
+		</field>
+		<field type="string" literal="comment" mandatory="yes" >
+			field
+		</field>
+		<field type="string" literal="1" mandatory="yes" >
+			oldvalue
+		</field>
+		<field type="stringbox" mandatory="yes" validation="" options="wiki" title="texto_wiki">
+			newvalue
+		</field>
+	</fields>
+</command>
+</operation>
+
+<operation  name="Siguiente_estado" desc="Pasa de estado un determinado ticket" icon="padlock.png"> 
+	<command id ="1" type="actualizar" table="ticket">
+		<fields>
+			<field type="combolisttable" options="id:ticket::'(' || id || ') ' || summary" mandatory="yes" primarykey="yes" order="desc" changekey="yes" title="id_ticket" >
+				id
+			</field>		
+		<field type="comboflow" mandatory="yes" options="next" 
+                                  path="/home/debian/.safet/flowfiles/flujofirmado.xml" title="Siguiente_Estado"
+changefor="id_ticket">
+				status
+			</field>
+			<field type="combolisttable" mandatory="no" options="name:enum:where type='resolution'" path="Siguiente_Estado:status" visible="status='closed'" title="Resolución" >
+				resolution
+			</field>				
+		<field type="string" literal="_USERNAME" mandatory="yes" >
+			owner
+		</field>
+		<field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+			changetime
+		</field>
+		</fields>
+	</command>
+</operation>
+<operation  name="borrar_ticket"  desc="Elimina un ticket por id" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="ticket" >
+		<fields>
+			<field type="combolisttable" options="id:ticket::'(' || id || ') ' || summary" mandatory="yes" primarykey="yes" order="desc"
+			title="id_ticket" >
+				id
+			</field>		
+		</fields>
+	</command>
+	<command id ="1" type="eliminar" table="ticket_change" >
+		<fields>
+			<field type="string"  mandatory="yes" primarykey="yes" title="id_ticket">
+				ticket
+			</field>		
+		</fields>
+	</command>
+
+</operation>
+<operation  name="enlazar_subtarea"  desc="Enlaza un ticket a otro (crea una subtarea)" icon="plus.png">
+<command id ="1" type="agregar" table="ticket_change" >
+	<fields>
+		<field type="combolisttable" options="'subtarea_' || id || '_':ticket::'(' || id || ')' || summary as infoticketpadre" mandatory="yes" primarykey="yes" title="ticket_padre" order="desc">
+			newvalue
+		</field>
+		<field type="combolisttable" options="id:ticket::'(' || id || ')' || summary as infotickethijo" mandatory="yes" primarykey="no" title="ticket_hijo" order="desc">
+			ticket
+		</field>
+                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                       time
+                </field>
+                <field type="string" literal="_USERNAME" mandatory="yes" >
+                        author
+                </field>
+                <field type="string" literal="comment" mandatory="yes" >
+                        field
+                </field>
+                <field type="string" literal="1" mandatory="yes" >
+                        oldvalue
+                </field>
+	</fields>
+</command>
+</operation>
+
+<operation  name="borrar_enlace_entre_tareas"  desc="Elimina un enlace entre tareas" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="ticket_change">
+		<fields>
+			<field type="combolisttable" options="newvalue:ticket_change:where newvalue like 'subtarea%'" mandatory="yes" primarykey="yes"
+			title="ticket_padre" >
+				newvalue
+			</field>		
+
+			<field type="combolisttable" options="ticket:ticket_change:where newvalue like '{{ticket_padre}}'" mandatory="yes" primarykey="yes"
+			title="tarea_hijo" >
+				ticket
+			</field>		
+
+		</fields>
+	</command>
+</operation>
+<operation  name="Evaluaciones"  desc="Agregar,Modificar,Eliminar,Listar" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_evaluación_iteración_2"  desc="Agrega una evaluación a un determinado item" icon="resumen.png">
+<command id ="1" type="agregar" table="assessments" >
+	<fields>
+  	     <field type="string" mandatory="yes" primarykey="yes" sequence="assessments_seq" title="Id">
+ 		 	id
+		</field>
+		<field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+			time
+		</field>
+			<field type="combolisttable" options="id:ticket:where parenttask='Pruebas_ite2' and ticket.id not in (select assessments.id_ticket from assessments where username='_USERNAME')::'(' || id || ') ' || summary" mandatory="yes" primarykey="yes" title="id" order="desc" >
+				id_ticket
+			</field>
+
+		<field type="string" literal="_USERNAME" mandatory="yes" >
+			username
+		</field>
+	
+			<field type="combolisttable" mandatory="yes" options="name:enum:where type='ticket_asse'::value"   title="Evaluación" >
+				value
+			</field>				
+	 <field type="string" literal="2" mandatory="yes" >
+	                        iteration
+	                </field>
+		
+		<field type="stringbox" mandatory="no" validation="" options="wiki" title="Observaciones">
+			comments
+		</field>
+
+	</fields>
+</command>
+</operation>
+<operation  name="modificar_evaluación_iteración_2"  desc="Agrega una evaluación a un determinado item" icon="resumen.png">
+<command id ="1" type="actualizar" table="assessments" >
+	<fields>
+			<field type="combolisttable" options="id:assessments::'(' || id || ') ticket:' || id_ticket || '-' || value || '-' || username" mandatory="yes" primarykey="yes" order="desc"
+			title="id_evaluación" changekey="yes">
+				id
+			</field>		
+		<field type="datetime" mandatory="yes"  format="time_t" changefor="id_evaluación" title="Fecha">
+			time
+		</field>
+		<field type="string" mandatory="yes" >
+			username
+		</field>
+
+			<field type="combolisttable" mandatory="yes" options="name:enum:where type='ticket_asse'::value"   title="Evaluación" changefor="id_evaluación">
+				value
+			</field>								
+		<field type="stringbox" mandatory="no" validation="" options="wiki" title="Observaciones" changefor="id_evaluación">
+			comments
+		</field>
+
+	</fields>
+</command>
+</operation>
+
+<operation  name="borrar_evaluación"  desc="Elimina un ticket por id" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="assessments" >
+		<fields>
+			<field type="combolisttable" options="id:assessments::'(' || id || ') ticket:' || id_ticket || '-' || value || '-' || username" mandatory="yes" primarykey="yes" order="desc"
+			title="id_evaluación" >
+				id
+			</field>		
+		</fields>
+	</command>
+
+</operation>
+
+<operation  name="Hitos (Fechas entregas)"  desc="Cambia Información sobre los hitos" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_hito"  desc="Agrega un hito (fecha tope)" icon="firmadoc.png">
+	<command id ="1" type="agregar" table="milestone">
+		<fields>
+			<field type="string" mandatory="yes" validation="" title="Nombre_Hito" primarykey="yes" >
+				name
+			</field>
+			<field type="stringbox" mandatory="yes" validation="" title="Descripción_Hito" >
+				description
+			</field>
+			<field type="datetime" mandatory="yes" options="calendarPopup::true,displayFormat::dd/MM/yy" title="Fecha_Tope" >
+				due
+			</field>
+
+		</fields>
+			
+	</command>
+</operation>
+<operation  name="modificar_hito"  desc="Modificar un hito (fecha tope)" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="milestone">
+		<fields>
+			<field type="combolisttable" options="name:milestone" mandatory="yes" validation="" title="Nombre_Hito" primarykey="yes" changekey="yes">
+				milestone.name
+			</field>
+			<field type="string" mandatory="no" validation="" title="Descripción_Hito" 
+changefor="Nombre_Hito">
+				description
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Hito" 
+changefor="Nombre_Hito">
+				name
+			</field>
+
+			<field type="datetime" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy" title="Fecha_Tope" changefor="Nombre_Hito">
+				due
+			</field>
+		</fields>
+			
+	</command>
+	<command id ="1" type="actualizar" table="ticket">
+		<fields>
+			<field type="string" mandatory="no"  title="Nombre_Hito" primarykey="yes" >
+				ticket.milestone
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Hito" >
+				milestone
+			</field>
+
+		</fields>
+			
+	</command>
+
+</operation>
+<operation  name="borrar_hito"  desc="Elimina un hito por su nombre" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="milestone">
+		<fields>
+			<field type="combolisttable" options="name:milestone" title="Nombre_Hito" mandatory="yes" primarykey="yes">
+				name
+			</field>		
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Componentes (Partes)"  desc="Cambia Información sobre los hitos" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_componente"  desc="Agrega un componente (fecha tope)" icon="firmadoc.png">
+	<command id ="1" type="agregar" table="component">
+		<fields>
+			<field type="string" mandatory="yes" validation="" title="Nombre_Componente" primarykey="yes" >
+				name
+			</field>
+			<field type="string" mandatory="yes" literal="_USERNAME"  >
+				owner
+			</field>
+			<field type="stringbox" mandatory="yes" validation="" title="Descripción_Componente" >
+				description
+			</field>
+
+
+		</fields>			
+	</command>
+</operation>
+<operation  name="modificar_componente"  desc="Modificar un componente (fecha tope)" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="component">
+		<fields>
+			<field type="combolisttable" mandatory="yes" options="name:component" title="Nombre_Componente" primarykey="yes" changekey="yes">
+				component.name
+			</field>
+			<field type="string" mandatory="yes" literal="_USERNAME"  changefor="Nombre_Componente">
+				owner
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Componente" 
+changefor="Nombre_Componente">
+				name
+			</field>
+			<field type="stringbox" mandatory="no" validation="" title="Descripción_Componente" 
+changefor="Nombre_Componente">
+				description
+			</field>
+
+		</fields>
+			
+	</command>
+	<command id ="1" type="actualizar" table="ticket">
+		<fields>
+			<field type="string" mandatory="no"  title="Nombre_Componente" primarykey="yes" >
+				ticket.component
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Componente" >
+				component
+			</field>
+
+		</fields>			
+	</command>
+</operation>
+
+<operation  name="borrar_componente"  desc="Elimina un componente por su nombre" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="component">
+		<fields>
+			<field type="combolisttable" options="name:component" title="Nombre_Componente" mandatory="yes" primarykey="yes">
+				name
+			</field>		
+		</fields>
+	</command>
+</operation>
+<operation  name="Prioridades (Orden ejecución)"  desc="Cambia Información sobre los hitos" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_prioridad"  desc="Agrega una prioridad " icon="firmadoc.png">
+	<command id ="1" type="agregar" table="enum">
+		<fields>
+			<field type="string" mandatory="yes" validation="" title="Nombre_Prioridad" primarykey="yes" >
+				name
+			</field>
+			<field type="string" mandatory="no" input="no" format="integer" function="cast(value as integer)+1 as valor FROM enum where type='priority' ORDER BY value desc LIMIT 1"   >
+				value
+			</field>
+			<field type="string" mandatory="yes" literal="priority">
+				type
+			</field>
+		</fields>
+			
+	</command>
+</operation>
+<operation  name="modificar_prioridad"  desc="Modificar una prioridad" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="enum">
+		<fields>
+			<field type="combolisttable" mandatory="yes" options="name:enum:where type='priority'" title="Nombre_Prioridad" primarykey="yes" >
+				enum.name
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Prioridad" >
+				name
+			</field>
+		</fields>
+			
+	</command>
+	<command id ="1" type="actualizar" table="ticket">
+		<fields>
+			<field type="string" mandatory="no"  title="Nombre_Prioridad" primarykey="yes" >
+				ticket.priority
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Prioridad" >
+				priority
+			</field>
+
+		</fields>			
+	</command>
+</operation>
+<operation  name="borrar_prioridad"  desc="Elimina una prioridad por su nombre" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="enum">
+		<fields>
+			<field type="combolisttable" options="name:enum:where type='priority'" title="Nombre_Prioridad" mandatory="yes" primarykey="yes">
+				name
+			</field>		
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Resoluciones (Al cerrar tickets)"  desc="Cambia Información sobre los hitos" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_resolucion"  desc="Agrega una resolución de ticket cerrado " icon="firmadoc.png">
+	<command id ="1" type="agregar" table="enum">
+		<fields>
+			<field type="string" mandatory="yes" validation="" title="Nombre_Resolución" primarykey="yes" >
+				name
+			</field>
+			<field type="string" mandatory="no" format="integer" function="cast(value as integer)+1 as valor FROM enum where type='resolution' ORDER BY value desc LIMIT 1"  input="no" >
+				value
+			</field>
+			<field type="string" mandatory="yes" literal="resolution">
+				type
+			</field>
+		</fields>
+			
+	</command>
+</operation>
+<operation  name="modificar_resolucion"  desc="Modificar una resolución" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="enum">
+		<fields>
+			<field type="combolisttable" mandatory="yes" options="name:enum:where type='resolution'" title="Nombre_Resolución" primarykey="yes" >
+				enum.name
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Resolución" >
+				name
+			</field>
+		</fields>
+			
+	</command>
+	<command id ="1" type="actualizar" table="ticket">
+		<fields>
+			<field type="string" mandatory="no"  title="Nombre_Resolución" primarykey="yes" >
+				ticket.resolution
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Resolución" >
+				resolution
+			</field>
+
+		</fields>			
+	</command>
+</operation>
+<operation  name="borrar_resolucion"  desc="Elimina una resolución por su nombre" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="enum">
+		<fields>
+			<field type="combolisttable" options="name:enum:where type='resolution'" title="Nombre_Resolución" mandatory="yes" primarykey="yes">
+				name
+			</field>		
+		</fields>
+	</command>
+</operation>
+<operation  name="Versiones"  desc="Cambia Información sobre las versiones" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_version"  desc="Agrega una versión del ticket" icon="firmadoc.png">
+	<command id ="1" type="agregar" table="version">
+		<fields>
+			<field type="string" mandatory="yes" validation="" title="Nombre_Version" primarykey="yes" >
+				name
+			</field>
+			<field type="datetime" mandatory="yes" options="calendarPopup::true,displayFormat::dd/MM/yy" title="Fecha_Finalización_Versión" >
+				time
+			</field>
+			<field type="stringbox" mandatory="yes" validation="" title="Descripción_Versión" >
+				description
+			</field>
+
+
+		</fields>			
+	</command>
+</operation>
+<operation  name="modificar_version"  desc="Modificar una versión" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="version">
+		<fields>
+			<field type="combolisttable" mandatory="yes" options="name:version" title="Nombre_Versión" primarykey="yes" changekey="yes">
+				version.name
+			</field>
+			<field type="datetime" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy" title="Fecha_Finalización_Versión" changefor="Nombre_Versión">
+				time
+			</field>
+			<field type="stringbox" mandatory="no" validation="" title="Descripción_Versión" 
+changefor="Nombre_Versión">
+				description
+			</field>
+
+			<field type="string" mandatory="no" validation="" title="Nombre_Nueva_Versión" 
+changefor="Nombre_Versión">
+				name
+			</field>
+
+		</fields>
+			
+	</command>
+	<command id ="1" type="actualizar" table="ticket">
+		<fields>
+			<field type="string" mandatory="no"  title="Nombre_Versión" primarykey="yes" >
+				ticket.version
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nueva_Versión" >
+				version
+			</field>
+
+		</fields>			
+	</command>
+</operation>
+
+<operation  name="borrar_version"  desc="Elimina una version por su nombre" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="version">
+		<fields>
+			<field type="combolisttable" options="name:version" title="Nombre_Versión" mandatory="yes" primarykey="yes">
+				name
+			</field>		
+		</fields>
+	</command>
+</operation>
+<operation  name="Tipos de tickets"  desc="Cambia Información sobre tipos de tickets" icon="firmadoc.png">
+</operation>
+<operation  name="agregar_tipo"  desc="Agrega un tipo de ticket " icon="firmadoc.png">
+	<command id ="1" type="agregar" table="enum">
+		<fields>
+			<field type="string" mandatory="yes" validation="" title="Nombre_Tipo" primarykey="yes" >
+				name
+			</field>
+			<field type="string" mandatory="no" format="integer" function="cast(value as integer)+1 as valor FROM enum where ticket_type='priority' ORDER BY value desc LIMIT 1"  input="no" >
+				value
+			</field>
+			<field type="string" mandatory="yes" literal="ticket_type">
+				type
+			</field>
+		</fields>
+			
+	</command>
+</operation>
+<operation  name="modificar_tipo"  desc="Modificar un tipo de ticket" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="enum">
+		<fields>
+			<field type="combolisttable" mandatory="yes" options="name:enum:where type='ticket_type'" title="Nombre_Tipo" primarykey="yes" >
+				enum.name
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Tipo" >
+				name
+			</field>
+		</fields>
+			
+	</command>
+	<command id ="1" type="actualizar" table="ticket">
+		<fields>
+			<field type="string" mandatory="no"  title="Nombre_Tipo" primarykey="yes" >
+				ticket.type
+			</field>
+			<field type="string" mandatory="no" validation="" title="Nombre_Nuevo_Tipo" >
+				type
+			</field>
+
+		</fields>			
+	</command>
+</operation>
+<operation  name="borrar_tipo"  desc="Elimina un tipo por su nombre" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="enum">
+		<fields>
+			<field type="combolisttable" options="name:enum:where type='ticket_type'" title="Nombre_Tipo" mandatory="yes" primarykey="yes">
+				name
+			</field>		
+		</fields>
+	</command>
+</operation>
+<operation  name="Administración"  desc="Cambia Información sobre las versiones" icon="firmadoc.png">
+</operation>
+<operation  name="Agregar_registro_de_actividad"  desc="Modificar un registro" icon="firmadoc.png">
+	<command id ="1" type="agregar" table="actividad_registro">
+		<fields>
+      <field type="string"   mandatory="yes" primarykey="yes" sequence="actividad_registro_seq" typesequence="next">
+	                                id 
+	                </field>
+		<field type="combolisttable" options="id:actividad_por_accion::'(' || id || ') ' || nombre" mandatory="yes" primarykey="yes" title="id_actividad" order="desc">
+				id_actividad
+			</field>
+
+	                <field type="string"  mandatory="no" title="Propietario" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="no" title="Porcentaje" >
+	                        porcentaje
+	                </field>
+	                <field type="datetime"  mandatory="no" title="Fecha_de_la_accion" >
+	                        fechaaccion
+	                </field>
+			 <field type="string" mandatory="no" primarykey="no" >
+			   estado
+		        </field>
+		
+		</fields>
+			
+	</command>
+</operation>
+<operation  name="Modificar_registro_de_actividad"  desc="Modificar un registro" icon="firmadoc.png">
+	<command id ="1" type="actualizar" table="actividad_registro">
+		<fields>
+			<field type="combolisttable" mandatory="yes" options="id:actividad_registro::'(' || id_actividad || ') propietario:' ||  propietario || '- ' || estado || ' ' || porcentaje || '%'" title="Numero_registro" title="Numero_registro" primarykey="yes" changekey="yes">
+				id
+			</field>
+	                <field type="string"  mandatory="no" title="Propietario" changefor="Numero_registro">
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="no" title="Porcentaje" changefor="Numero_registro">
+	                        porcentaje
+	                </field>
+	                <field type="datetime"  mandatory="no" title="Fecha_de_la_accion" changefor="Numero_registro">
+	                        fechaaccion
+	                </field>
+			
+		</fields>
+			
+	</command>
+</operation>
+<operation  name="Borrar_registro_de_actividad"  desc="Elimina un tipo por su nombre" icon="clear.png"> 
+	<command id ="1" type="eliminar" table="actividad_registro">
+		<fields>
+<field type="combolisttable" mandatory="yes" options="id:actividad_registro::'(' || id_actividad || ') propietario:' ||  propietario || '- ' || estado || ' ' || porcentaje || '%'" title="Numero_registro" primarykey="yes" changekey="yes">
+				id
+			</field>
+		</fields>
+	</command>
+</operation>
+
+
+
+</operations>
+

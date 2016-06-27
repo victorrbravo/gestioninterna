@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Flujo Gestion_de_Reuniones_del_consejo_directivo" desc="Proceso que realiza para la gestion de las reuniones del consejo directivo">
+<token key="id"  keysource="reuniones">
+</token>
+
+<parameter type="combolistliteral" options="TB::La direccin del grfico es arriba-abajo::TB,LR::La direccin del grfico es izquierda-derecha::LR" mandatory="no"
+                       title="Direccion_Grafico_de_Flujo" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir" defaultvalue="TB">
+                </parameter>
+<parameter type="combolistliteral" options="svg::Grfico SVG::svg,png::Grfico PNG::png" mandatory="no"
+                       title="Formato_del_Grafico" configurekey="Plugins.Graphviz/plugins.graphviz.graphtype">
+                </parameter>
+<parameter type="combolistliteral" options="on::Incluir::on,off::No Incluir::off" mandatory="no"
+                       title="Incluir_Fecha_Hora" configurekey="Graphs/graphs.infotext.include">
+                </parameter>
+
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle" defaultvalue="Seguimiento de reunion de Consejo Directivo" >
+                </parameter>
+<parameter type="combocolor" mandatory="no" title="Color Para Estadistica"
+                       options="antiquewhite::Color Blanco Antiguo::antiquewhite,green::Color Verde::green,coral::Color Rojo Coral::coral,red::Color Rojo::red,yellow::Color Amarillo::yellow,skyblue::Color Azul Cielo::skyblue,ghostwhite::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,lightgray::Color Gris Claro::lightgray,blue::Color Azul::blue,orange::Color Naranja::orange,gray::Color Gris::gray,black::Color Negro::black,white::Color Blanco::white"
+configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalue="yellow">
+                </parameter>
+                
+<condition id="inicial" type="start">
+	<port side="forward" type="split"  >
+		<connection   source="Convocada" query="select status from reuniones"  options="Convocada">
+		</connection>
+	</port>
+</condition>
+
+<task id="Convocada"  title="Convocar_reunion" >
+	<port side="forward" type="split"  >
+	    <connection source="Pautada" query="select status from reuniones" options="Pautada" >
+		</connection>
+	</port>
+	 <variable id="vConvocada" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select  descripcion,fecha_convocatoria,fecha_reunion,archivo_convocatoria from reuniones"
+ rolfield="(select propietario from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Convocada')  as rol"  timestampfield="(select fecha_accion from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Convocada' order by fecha_accion  desc limit 1) as tiempo" 
+
+ >
+     </variable>
+</task>
+
+<task id="Pautada"  title="Validar_Quorum" >
+	<port side="forward" type="split" >
+		<connection source="Realizada" query="select status from reuniones" options="Realizada" >
+		</connection>
+	</port>
+	<variable id="vPautada" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select  descripcion,fecha_convocatoria,fecha_reunion,archivo_convocatoria from reuniones"
+ rolfield="(select propietario from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Pautada')  as rol"  timestampfield="(select fecha_accion from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Pautada' order by fecha_accion  desc limit 1) as tiempo" 
+
+
+
+ >
+     </variable>
+</task>
+
+<task id="Realizada"  title="Registrar_reunion" >
+	<port side="forward" type="split" >
+		<connection source="Aprobada" query="select status from reuniones" options="Aprobada" >
+		</connection>
+	</port>
+	<variable id="vRealizada" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select  descripcion,fecha_convocatoria,fecha_reunion,archivo_convocatoria from reuniones"
+ rolfield="(select propietario from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Realizada')  as rol"  timestampfield="(select fecha_accion from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Realizada' order by fecha_accion  desc limit 1) as tiempo" 
+
+
+ >
+     </variable>
+</task>
+
+<task id="Aprobada"  title="Aprobar_Actas" >
+	<port side="forward" type="split" pattern= "or">
+		 <connection source="firma_presidente" query="vAprobada SIGN Jose Joaquin Contreras G." options="yes" >
+                </connection>
+		<connection source="firma_Consejeros_1" query="vAprobada SIGN Jose Rafael Sosa Briceno" options="yes" >
+		</connection>
+		<connection source="firma_Consejeros_2" query="vAprobada SIGN Anthoni Camilo Torres Martinez" options="yes" >
+		</connection>
+		<connection source="firma_Consejeros_3" query="vAprobada SIGN Juan Pablo Buenano Cardozo" options="yes" >
+		</connection>
+		<connection source="firma_Consejeros_4" query="vAprobada SIGN Jesus Ignacio Ochoa Arias" options="yes" >
+		</connection>
+		 <connection source="firma_Consejeros_5" query="vAprobada SIGN Santiago Lazo Ortega" options="yes" >
+                </connection>
+                <connection source="firma_Consejeros_6" query="vAprobada SIGN Fidelina Molina de Hidalgo" options="yes" >
+                </connection>
+                <connection source="firma_Consejeros_7" query="vAprobada SIGN Alejandro Elias Ochoa Arias" options="yes" >
+                </connection>
+                <connection source="firma_Consejeros_8" query="vAprobada SIGN Juan Carlos Villegas" options="yes" >
+                </connection>
+		 <connection source="firma_Consejeros_9" query="vAprobada SIGN Jerson Orlando Zambrano Guerrero" options="yes" >
+                </connection>
+                <connection source="firma_Consejeros_10" query="vAprobada SIGN  Myriam Teresa Anzola de Diaz" options="yes" >
+                </connection>
+                <connection source="firma_Consejeros_11" query="vAprobada SIGN Henry Contreras" options="yes" >
+                </connection>
+                <connection source="firma_Consejeros_12" query="vAprobada SIGN Dora Olga Serpa Marvaez" options="yes" >
+                </connection>
+	</port>
+	<variable id="vAprobada" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+ rolfield="(select propietario from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Aprobada')  as rol"  timestampfield="(select fecha_accion from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Aprobada' order by fecha_accion  desc limit 1) as tiempo" 
+
+
+
+
+ >
+     </variable>
+</task>
+
+<task id="firma_presidente"  title="Firma_presidente" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+		</connection>
+	</port>
+	<variable id="vfirma_presidente" scope="task"  type="sql" config="1"   tokenlink=""
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+	rolfield="cn::Jose Joaquin Contreras G." timestampfield="cn::Jose Joaquin Contreras G." >
+     </variable>
+</task>
+
+<task id="firma_Consejeros_1"  title="Firma_Consejero_1" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+		</connection>
+	</port>
+	<variable id="vfirma_Consejeros_1" scope="task"  type="sql" config="1"   tokenlink=""
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Jose Rafael Sosa Briceno" timestampfield="cn::Jose Rafael Sosa Briceno" >
+     </variable>
+
+</task>
+
+<task id="firma_Consejeros_2"  title="Firma_Consejero_2" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+		</connection>
+	</port>
+	<variable id="vfirma_Consejeros_2" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+	rolfield="cn::Anthoni Camilo Torres Martinez" timestampfield="cn::Anthoni Camilo Torres Martinez"
+ >
+     </variable>
+</task>
+
+
+<task id="firma_Consejeros_3"  title="Firma_Consejero_3" >
+	<port side="forward" type="split" >
+		<connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+		</connection>
+	</port>
+	<variable id="vfirma_Consejeros_3" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+	rolfield="cn::Juan Pablo Buenano Cardozo" timestampfield="cn::Juan Pablo Buenano Cardozo"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_4"  title="Firma_Consejero_4" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_4" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Jesus Ignacio Ochoa Arias" timestampfield="cn::Jesus Ignacio Ochoa Arias"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_5"  title="Firma_Consejero_5" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_5" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Santiago Lazo Ortega" timestampfield="cn::Santiago Lazo Ortega"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_6"  title="Firma_Consejero_6" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_6" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Fidelina Molina de Hidalgo" timestampfield="cn::Fidelina Molina de Hidalgo"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_7"  title="Firma_Consejero_7" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_7" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Alejandro Elias Ochoa Arias" timestampfield="cn::Alejandro Elias Ochoa Arias"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_8"  title="Firma_Consejero_8" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_8" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Juan Carlos Villegas" timestampfield="cn::Juan Carlos Villegas"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_9"  title="Firma_Consejero_9" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_9" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Jerson Orlando Zambrano Guerrero" timestampfield="cn::Jerson Orlando Zambrano Guerrero"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_10"  title="Firma_Consejero_10" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_10" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Myriam Teresa Anzola de Diaz" timestampfield="cn::Myriam Teresa Anzola de Diaz"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_11"  title="Firma_Consejero_11" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_11" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Henry Contreras" timestampfield="cn::Henry Contreras"
+>
+     </variable>
+</task>
+
+<task id="firma_Consejeros_12"  title="Firma_Consejero_12" >
+        <port side="forward" type="split" >
+                <connection source="Pasar_libro" query="select status from reuniones" options="Pasar_libro" >
+                </connection>
+        </port>
+        <variable id="vfirma_Consejeros_12" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,status,archivo_acta from reuniones"
+        rolfield="cn::Dora Olga Serpa Marvaez" timestampfield="cn::Dora Olga Serpa Marvaez"
+>
+     </variable>
+</task>
+
+<task id="Pasar_libro"  title="Pasar_Actas_libro" >
+	<port side="forward" type="split" >
+		<connection source="En_libro" query="select status from reuniones" options="En_libro" >
+		</connection>
+	</port>
+	<port side="bottom" type="join" pattern="and">
+         </port> 
+
+
+	<variable id="vPasar_actas_al_libro" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,archivo_acta,fecha_convocatoria,fecha_reunion from reuniones"
+ rolfield="(select propietario from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Pasar_libro')  as rol"  timestampfield="(select fecha_accion from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='Pasar_libro' order by fecha_accion  desc limit 1) as tiempo" 
+
+
+ >
+     </variable>
+</task>
+
+<task id="En_libro"  title="Actas_en_libro" >
+	<port side="forward" type="split" >
+		<connection source="final" query="true" options="" >
+        </connection>
+	</port>
+	<variable id="vActas_en_libro" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select descripcion,fecha_convocatoria,fecha_reunion,archivo_acta from reuniones"
+ rolfield="(select propietario from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='En_libro')  as rol"  timestampfield="(select fecha_accion from reuniones_registro where reuniones.id=id_reuniones and reuniones_registro.status='En_libro' order by fecha_accion  desc limit 1) as tiempo" 
+
+
+
+
+ >
+     </variable>
+</task>
+
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+

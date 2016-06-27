@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Reporte de las acciones Especificas Consolidado">
+	<token key="proyecto_poa.id"  keysource="proyecto_poa">
+	</token>
+<parameter type="combolistliteral" options="TB::La dirección del gráfico es arriba-abajo::TB,LR::La dirección del gráfico es izquierda-derecha::LR" mandatory="no"
+                       title="Direccion_Grafico_de_Flujo" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir">
+                </parameter>
+<parameter type="combolistliteral" options="on::Incluir::on,off::No Incluir::off" mandatory="no"
+                       title="Incluir_Fecha_Hora" configurekey="Graphs/graphs.infotext.include">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle">
+                </parameter>
+<parameter type="combocolor" mandatory="no" title="Color Para Estadistica"
+                        options="antiquewhite::Color Blanco Antiguo::antiquewhite,green::Color Verde::green,coral::Color Rojo Coral::coral,red::Color Rojo::red,yellow::Color Amarillo::yellow,skyblue::Color Azul Cielo::skyblue,ghostwhite::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,lightgray::Color Gris Claro::lightgray,blue::Color Azul::blue,orange::Color Naranja::orange,gray::Color Gris::gray,black::Color Negro::black,white::Color Blanco::white"
+configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalue="Amarillo">
+                </parameter>
+<parameter type="combolistliteral" options="svg::Gráfico SVG::svg,png::Gráfico PNG::png" mandatory="no"
+                       title="Formato_del_Grafico" configurekey="Plugins.Graphviz/plugins.graphviz.graphtype">
+                </parameter>
+
+	<condition id="inicial" type="start">
+        	<port side="forward" type="split"   pattern="or">
+                	 <connection source="ProyectoSoftware" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_Software" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+                	 <connection source="ProyectoCalidad" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_Calidad" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ProyectoMediosComunitarios" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion"  options="Proyecto_Medios_Comunitarios" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ProyectoContraloriaSocial" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_Contraloria_Social" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ProyectoAsambleaSocialista" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_Asamblea_Socialista" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ProyectoCuentaCuento" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_CuentaCuento" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ProyectoCommunitas" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_Communitas" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ProyectoMapaindustrial" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_Mapa_industrial" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ProyectoEducativo" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_Educativo" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ProyectoPlanificacion" query="select vista_actividad_por_accion_consolidado.tipo from vista_actividad_por_accion_consolidado"  options="Proyecto_Planificacion" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+                        </connection>
+		</port>
+
+	</condition>
+	<task id="ProyectoSoftware" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectosSoftwares" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoCalidad" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectosCalidad" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoMediosComunitarios" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectoMediosComunitarios" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoContraloriaSocial" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectoContraloriaSocial" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoAsambleaSocialista" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectoAsambleaSocialista" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoCuentaCuento" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectoCuentaCuento" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoCommunitas" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectoCommunitas" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoMapaindustrial" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectoMapaindustrial" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoEducativo" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableProyectoEducativo" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task>
+	<task id="ProyectoPlanificacion" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+                        tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+                                 >
+                        </connection>
+                </port>
+                <variable id="VariableProyectoPlanificacion" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion_consolidado.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+                </variable>
+        </task>
+
+	<task id="SumaTodas" report="no">
+                <port side="forward" type="split" >
+                        <connection source="Consolidado" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+
+		</port>
+		<variable id="VariableSumaTodas" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select vista_actividad_por_accion_consolidado.id as id,vista_actividad_por_accion_consolidado.codigo_accion as codigo,accion_especifica.codigo_accion as codigo,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,status,responsable,presidencia,trimestre_entrega || ' trimestre' as entrega, cuantos_productos as num, tipo_producto,porcenero as ene,porcfebrero as feb ,porcmarzo as mar,porcabril as abr,porcmayo as may,porcjunio as jun,porcjulio as jul,porcagosto as ago,porcseptiembre as sep,porcoctubre as oct,porcnoviembre as nov,porcdiciembre as dic,porcentaje as total from vista_actividad_por_accion" >
+                </variable>
+	</task>
+
+	<task id="Consolidado" report="no">
+                <port side="forward" type="split" >
+                        <connection source="final" query="true" options=""
+                        tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+                                 >
+                        </connection>
+
+                </port>
+                <variable id="VariableConsolidado" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select vista_actividad_por_accion_consolidado.id as id,vista_actividad_por_accion_consolidado.codigo_accion as codigo,accion_especifica.codigo_accion as codigo,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion_consolidado.nombre as actividad,responsable,presidencia,trimestre_entrega || ' trimestre' as entrega, cuantos_productos as num, tipo_producto,porcenero as ene,porcfebrero as feb ,porcmarzo as mar,porcabril as abr,porcmayo as may,porcjunio as jun,porcjulio as jul,porcagosto as ago,porcseptiembre as sep,porcoctubre as oct,porcnoviembre as nov,porcdiciembre as dic,porcentaje as total from vista_actividad_por_accion" >
+                </variable>
+        </task>
+
+
+	<condition id="final">
+		<port side="forward" type="split">
+			<connection source="">
+			</connection>
+		</port>
+	</condition>
+</workflow>
+<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+</configuration>
+</yawl>

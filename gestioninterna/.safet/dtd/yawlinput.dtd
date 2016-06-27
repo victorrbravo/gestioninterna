@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : yawlinput.dtd
+    Created on : 21 de junio de 2010, 15:46
+    Author     : pbuitrago
+    Description:
+        Lenguaje para entrada de datos de SAFET
+-->
+
+<!-- TODO define your own vocabulary/syntax. Example follows:  -->
+<!ELEMENT operations (operation*) > <!-- operations va a tener como elemento: operation -->
+
+<!ATTLIST operations	suffix CDATA #IMPLIED 
+			commandname CDATA #IMPLIED >
+
+<!ELEMENT operation (parameter|command)*  > <!-- operation va a tener como elemento: command -->
+<!ATTLIST operation   	name CDATA #IMPLIED  
+			desc CDATA #IMPLIED
+			action CDATA #IMPLIED
+			dataaction CDATA #IMPLIED
+			postaction CDATA #IMPLIED
+			subtitle  (yes|no) "no"
+			icon CDATA #IMPLIED >
+
+<!ELEMENT command (fields) > <!-- command va a tener como elemento: fields -->
+<!ATTLIST command       id CDATA #IMPLIED  
+                        type (actualizar|eliminar|agregar) "agregar"
+                        table CDATA #IMPLIED > 
+<!ELEMENT parameter (#PCDATA)  >
+<!ATTLIST parameter	type CDATA #IMPLIED   
+			mandatory CDATA #IMPLIED
+			title CDATA #IMPLIED
+			primarykey (yes|no) "no"
+			validation CDATA #IMPLIED 
+			options CDATA #IMPLIED
+			function CDATA #IMPLIED 
+			format (time_t|integer) "time_t" 
+			desc CDATA #IMPLIED
+			literal CDATA #IMPLIED
+			sequence CDATA #IMPLIED
+			typesequence (next|current) "next"
+			input CDATA #IMPLIED
+			path CDATA #IMPLIED
+			visible CDATA #IMPLIED
+ 			order (asc|desc|none) "asc" 
+			icon CDATA #IMPLIED
+			index CDATA #IMPLIED  
+			filter CDATA #IMPLIED 
+			repetible (yes|no) "no"
+			configurekey CDATA #IMPLIED 
+			defaultvalue CDATA #IMPLIED > 
+
+<!ELEMENT fields (field+) > <!-- fields va a tener como elemento: field -->
+			  
+
+<!ELEMENT field (#PCDATA) > <!-- no tiene elemento -->
+<!ATTLIST field		type CDATA #IMPLIED   
+			mandatory CDATA #IMPLIED
+			title CDATA #IMPLIED
+			primarykey (yes|no) "no"
+			validation CDATA #IMPLIED 
+			options CDATA #IMPLIED
+			function CDATA #IMPLIED 
+			format (time_t|integer) "time_t" 
+			desc CDATA #IMPLIED
+			literal CDATA #IMPLIED
+			sequence CDATA #IMPLIED
+			typesequence (next|current) "next"
+			input CDATA #IMPLIED
+			path CDATA #IMPLIED
+			visible CDATA #IMPLIED
+ 			order (asc|desc|none) "asc" 
+			icon CDATA #IMPLIED
+			index CDATA #IMPLIED  
+			filter CDATA #IMPLIED
+			changefor CDATA #IMPLIED
+			changekey CDATA #IMPLIED 
+			enablethis CDATA #IMPLIED
+	    	        repetible (yes|no) "no" > 

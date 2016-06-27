@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="FlujoOrdenDeCompra" desc="Proceso para orden de compra">
+<token key="id"  keysource="orden_de_compra">
+</token>
+<condition id="inicial" type="start">
+	<port side="forward" type="split"  >
+		<connection   source="Requision" query="select status from ticket"  options="Requision" tokenlink="">
+		</connection>
+	</port>
+</condition>
+
+<task id="Requision"  title="Envio_requision" >
+	<port side="forward" type="split"  >
+	        <connection source="Aceptado" query="select status from ticket" options="Aceptado" >
+		</connection>
+	</port>
+		<variable id="VariableRequision" scope="task"  type="sql" config="1"   tokenlink="" documentsource="" >
+		</variable>
+</task>
+
+<task id="Aceptado"  title="recibio_requision" >
+	<port side="forward" type="split" >
+		<connection source="Procesar_requision" query="select status from ticket"  options="Procesar_requision" >
+		</connection>
+	</port>
+	<variable id="VariableAceptado" scope="task"  type="sql" config="1"   tokenlink="" documentsource="" >
+	</variable>
+</task>
+
+<task id="Procesar_requision"  title="Procesar_requision" >
+	<port side="forward" type="split" >
+		<connection source="Cotizaciones" query="select status from ticket"  options="Cotizaciones" >
+		</connection>
+	</port>
+	<variable id="VariableProcesar_requision" scope="task"  type="sql" config="1"   tokenlink="" documentsource="" >
+	</variable>
+</task>
+
+<task id="Cotizaciones"  title="recibio_cotizacion" >
+	<port side="forward" type="split" >
+		<connection source="Procesar_Cotizaciones" query="select status from ticket"  options="Procesar_Cotizaciones" >
+		</connection>
+	</port>
+	<variable id="VariableCotizaciones" scope="task"  type="sql" config="1"   tokenlink="" documentsource="" >
+	</variable>
+</task>
+
+<task id="Procesar_Cotizaciones"  title="Procesar_cotizacion" >
+	<port side="forward" type="split" >
+		<connection source="Acta_comision_De_Compras" query="select status from ticket"  options="Acta_comision_De_Compras">
+		</connection>
+	</port>
+	<variable id="VariableProcesar_Cotizaciones" scope="task"  type="sql" config="1"   tokenlink="" documentsource="" >
+	</variable>
+</task>
+
+<task id="Acta_comision_De_Compras"  title="Generar_Acta_de_compra" >
+	<port side="forward" type="split" >
+		<connection source="Presupuesto_cargar_cotizacion" query="select status from ticket"  options="Presupuesto_cargar_cotizacion">
+		</connection>
+	</port>
+	<variable id="VariableActa_comision_De_Compras" scope="task"  type="sql" config="1"   tokenlink="" documentsource="" >
+	</variable>
+</task>
+
+<task id="Presupuesto_cargar_cotizacion"  title="Cargar_cotizacion" >
+	<port side="forward" type="split" >
+		<connection source="Presupuesto_cargar_cotizacion" query="select status from ticket"  options="Presupuesto_cargar_cotizacion">
+		</connection>
+	</port>
+	<variable id="VariablePresupuesto_cargar_cotizacion" scope="task"  type="sql" config="1"   tokenlink="" documentsource="" >
+	</variable>
+</task>
+
+<task id="Presupuesto_cargar_cotizacion"  title="Cargar_cotizacion" >
+	<port side="forward" type="split" >
+		<connection source="final" query="select status from ticket"  options="final">
+		</connection>
+	</port>
+	<variable id="VariablePresupuesto_cargar_cotizacion" scope="task"  type="sql" config="1"   tokenlink="" documentsource="" >
+	</variable>
+</task>
+
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+

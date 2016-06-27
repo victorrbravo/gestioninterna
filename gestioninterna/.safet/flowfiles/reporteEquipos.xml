@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Personal" desc="">
+<token key="personal.id"  keysource="personal">
+</token>
+<parameter type="combolisttable" icon="hito.png" desc= "Por_equipo" mandatory="no" options="id:equipo_responsable::grupo"  
+	  title="Por_equipo" defaultvalue="0">
+	</parameter>	
+  <condition id="inicial" type="start" left="4" top="232">
+    <port side="forward" type="split" >
+      <connection source="Empleados" query="select personal.id from equipo_responsable" options="&gt;1" tokenlink="[id,id_equipo:equipo_personal][id_personal,cedula:personal]" left="170" top="92">
+      </connection>
+    </port>
+  </condition>
+  <task id="Empleados" title="empleados"  report="yes" left="266" top="283">
+    <port side="forward" type="split">
+      <connection  source="Listado" query="select  equipo_responsable.id from equipo_responsable" options="{#Por_equipo}" tokenlink="[id,id_equipo:equipo_personal][id_personal,cedula:personal]" left="694" top="188">
+      </connection>
+    </port>
+      <variable  id="ListaEmpleados" scope="task" config="1" tokenlink="[id,id_equipo:equipo_personal][id_personal,cedula:personal]" type="sql" documentsource="select cedula,nombres,apellidos,cargo,grupo,nombre_cuenta_intranet from equipo_responsable" left="530" top="65">
+      </variable>
+  </task>
+  <task id="Listado" title="{#Por_equipo}"   left="943" top="137">
+    <port side="forward" type="split" >
+      <connection  source="final" query="true" options="" tokenlink="" left="1210" top="154">
+      </connection>
+    </port>
+      <variable  id="vPorEquipo" scope="task" config="1" type="sql" documentsource="select cedula,nombres,apellidos,cargo,grupo,nombre_cuenta_intranet from equipo_responsable" left="898" top="67">
+      </variable>
+  </task>
+  <condition id="final" left="1443" top="197">
+    <port side="forward" type="split">
+      <connection source="">
+      </connection>
+    </port>
+  </condition>
+</workflow>
+</yawl>

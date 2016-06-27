@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Reporte de las acciones Especificas">
+	<token key="proyecto_poa.id"  keysource="proyecto_poa">
+	</token>
+
+	<condition id="inicial" type="start">
+        	<port side="forward" type="split"   pattern="or">
+                       	 <connection source="InfoGobierno" query="select vista_actividad_por_accion.tipo from vista_actividad_por_accion"  options="InfoGobierno" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="Educativo" query="select vista_actividad_por_accion.tipo from vista_actividad_por_accion"  options="Educativo" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="Mapa_Industrial" query="select vista_actividad_por_accion.tipo from vista_actividad_por_accion"  options="Mapa_Industrial" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+			<connection source="ExtraPOA" query="select vista_actividad_por_accion.tipo from vista_actividad_por_accion"  options="ExtraPOA" tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]">
+			</connection>
+		</port>
+	</condition>
+	<task id="ExtraPOA" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+		<variable id="VariableExtraPOA" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select proyecto_poa.nombre as nombre_proyecto_poa,vista_actividad_por_accion.id as id_actividad,accion_especifica.nombre as accion_especifica,vista_actividad_por_accion.nombre as actividad,status,porcentaje from vista_actividad_por_accion" >
+		</variable>
+	</task> 
+	<task id="InfoGobierno" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+<variable id="vInfoGobierno" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select vista_actividad_por_accion.id || ' / Cod ' || accion_especifica.codigo_accion as id, accion_especifica.nombre as accion_especifica,vista_actividad_por_accion.nombre as actividad,status,responsable,presidencia,trimestre_entrega || ' trimestre' as entrega, cuantos_productos as num, tipo_producto,porcenero as ene,porcfebrero as feb ,porcmarzo as mar,porcabril as abr,porcmayo as may,porcjunio as jun,porcjulio as jul,porcagosto as ago,porcseptiembre as sep,porcoctubre as oct,porcnoviembre as nov,porcdiciembre as dic,porcentaje as total from vista_actividad_por_accion" >
+                </variable>
+	</task>
+	<task id="Educativo" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+
+<variable id="vEducativo" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select vista_actividad_por_accion.id || ' / Cod ' || accion_especifica.codigo_accion as id, accion_especifica.nombre as accion_especifica,vista_actividad_por_accion.nombre as actividad,status,responsable,presidencia,trimestre_entrega || ' trimestre' as entrega, cuantos_productos as num, tipo_producto,porcenero as ene,porcfebrero as feb ,porcmarzo as mar,porcabril as abr,porcmayo as may,porcjunio as jun,porcjulio as jul,porcagosto as ago,porcseptiembre as sep,porcoctubre as oct,porcnoviembre as nov,porcdiciembre as dic,porcentaje as total from vista_actividad_por_accion" >
+                </variable>
+	</task>
+
+	<task id="Mapa_Industrial" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+		</port>
+<variable id="vMapa_Industrial" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select vista_actividad_por_accion.id || ' / Cod ' || accion_especifica.codigo_accion as id, accion_especifica.nombre as accion_especifica,vista_actividad_por_accion.nombre as actividad,status,responsable,presidencia,trimestre_entrega || ' trimestre' as entrega, cuantos_productos as num, tipo_producto,porcenero as ene,porcfebrero as feb ,porcmarzo as mar,porcabril as abr,porcmayo as may,porcjunio as jun,porcjulio as jul,porcagosto as ago,porcseptiembre as sep,porcoctubre as oct,porcnoviembre as nov,porcdiciembre as dic,porcentaje as total from vista_actividad_por_accion" >
+                </variable>
+	</task>
+	<task id="SumaTodas" report="no">
+                <port side="forward" type="split" >
+                        <connection source="final" query="true" options=""
+			tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]"
+				 >
+			</connection>
+
+		</port>
+		<variable id="VariableSumaTodas" scope="task"  type="sql" config="1"  tokenlink="[id_accion_especifica,id:accion_especifica][id_proyecto_poa]" documentsource="select vista_actividad_por_accion.id || ' / Cod ' || accion_especifica.codigo_accion as id, accion_especifica.nombre as accion_especifica,vista_actividad_por_accion.nombre as actividad,status,responsable,presidencia,trimestre_entrega || ' trimestre' as entrega, cuantos_productos as num, tipo_producto,porcenero as ene,porcfebrero as feb ,porcmarzo as mar,porcabril as abr,porcmayo as may,porcjunio as jun,porcjulio as jul,porcagosto as ago,porcseptiembre as sep,porcoctubre as oct,porcnoviembre as nov,porcdiciembre as dic,porcentaje as total from vista_actividad_por_accion" >
+                </variable>
+	</task>
+
+	<condition id="final">
+		<port side="forward" type="split">
+			<connection source="">
+			</connection>
+		</port>
+	</condition>
+</workflow>
+<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+</configuration>
+</yawl>

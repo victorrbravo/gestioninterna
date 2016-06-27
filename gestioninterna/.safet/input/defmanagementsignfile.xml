@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : deftrac.xml
+Creado     : Víctor Bravo
+Autor      : Victor Bravo
+Descripcion: Archivo de Entrada para SAFET - Inflow
+-->
+<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<operations suffix=":" commandname="operacion">
+
+<operation  name="Operaciones de Firma" icon="default.png" >
+</operation>
+<operation  name="Firmar_electronicamente_con_Tarjeta" icon="firmadoc.png" >
+<command id ="1" type="agregar" table="ticket">
+	<fields>
+		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="no" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)" title="Cargar_Archivo_a_Firmar">
+			Cargar_Archivo_1
+		</field>
+		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="no" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)" title="Cargar_Segundo_Archivo_a_Firmar">
+			Cargar_Archivo_2
+		</field>
+		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="no" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)" title="Cargar_Tercer_Archivo_a_Firmar">
+			Cargar_Archivo_3
+		</field>
+		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="no" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)" title="Cargar_Cuarto_Archivo_a_Firmar">
+			Cargar_Archivo_4
+		</field>
+
+		<field type="filename" options="save," mandatory="contenedores" desc="Nombre y ruta (path) del contenedor (Archivo .ddoc)" repetible="no" validation=".+\.ddoc$" filter="Archivos firmados electrónicamente (*.ddoc);;Todos (*)">
+			Nombre_contenedor
+		</field>
+		<field type="filename" options="" mandatory="contenedores" desc="Nombre y ruta (path) de un contenedor (Archivo .ddoc) existente" repetible="no" validation=".+\.ddoc$" >
+		Cargar_contenedor
+		</field>
+	</fields>
+</command>
+</operation>
+<operation  name="Firmar_electrónicamente_con_P12" icon="firmadoc.png" >
+<command id ="1" type="agregar" table="ticket">
+	<fields>
+		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="yes" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)">
+			Cargar_Archivo
+		</field>
+		<field type="filename" options="save" mandatory="contenedores" desc="Nombre y ruta (path) del contenedor (Archivo .ddoc)" repetible="no" filter="Archivos firmados (*.ddoc);;Todos (*)" validation=".+\.ddoc$">
+			Nombre_contenedor
+		</field>
+		<field type="filename" mandatory="contenedores" desc="Nombre y ruta (path) de un contenedor (Archivo .ddoc) existente" repetible="no" filter="Archivos firmados (*.ddoc);;Todos (*)" validation=".+\.ddoc$">
+		Cargar_contenedor
+		</field>
+
+	</fields>
+</command>
+</operation>
+
+<operation  name="Verificar_firma_electrónica"  icon="seal.png"  >
+	<command id ="1" type="agregar" table="ticket">
+		<fields>
+			<field type="filename" mandatory="yes" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="yes" filter="Archivos digidoc Firmados (*.ddoc);;Todos (*)">
+				Cargar_Archivo
+		</field>
+			
+		</fields>
+	</command>
+</operation>
+</operations>
+

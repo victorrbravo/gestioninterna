@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Generar planilla de solicitud de vacaciones" desc="Planilla que se generar con los datos de una solicitud de vacaciones">
+<token key="vacaciones.id"  keysource=" vacaciones">
+</token>
+
+<parameter type="combolistliteral" options="TB::La direccin del grfico es arriba-abajo::TB,LR::La direccin del grfico es izquierda-derecha::LR" mandatory="no"
+                       title="Direccion_Grafico_de_Flujo" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir" defaultvalue="TB">
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Mostrar_en_grafico" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show" defaultvalue="InfoText,InfoDate" >
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Plantilla" configurekey="Reports/reports.general.template" defaultvalue="/var/www/media/templates/plantillaVacaciones.html" >
+                </parameter>
+<parameter type="string" options="" mandatory="no"
+                       title="Titulo" configurekey="GeneralOptions/generaloptions.currentflowtitle" defaultvalue="Planilla de Solicitud de Vacaciones" >
+                </parameter>
+               
+<condition id="inicial" type="start">
+	<port side="forward" type="split"  >
+		<connection   source="Talento_humano" query="select vacaciones.status from personal"  options="Talento_humano" tokenlink="[cedula,id_cedula:vacaciones]" >
+		</connection>
+	</port>
+</condition>
+
+<task id="Talento_humano"  title="Planilla vacaciones" >
+	<port side="forward" type="split"  pattern="or" >
+	    <connection source="DireccionEjecutiva"   query="select vacaciones.status from personal"  options="DireccionEjecutiva"  tokenlink="[cedula,id_cedula:vacaciones]" >
+        </connection>
+    <connection source="Presidencia"   query="select vacaciones.status from personal"  options="Presidencia"  tokenlink="[cedula,id_cedula:vacaciones]" >
+        </connection>
+	</port>
+	 <variable id="vVacaciones_solicitadas" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_cedula:vacaciones]" 
+                documentsource="select  personal.cargo, personal.departamento, diasadisfrutar, diasdisfrutados, diaspordisfrutar, suplenteinterno_1, suplenteinterno_2, fechasolicitud, nombre, vacaciones.fecha_ingreso, informacion_usuario, nombre, fechainicio, fechafin from personal"
+ rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vacaciones.id and status='Talento_humano' limit 1) as rol"  timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vacaciones.id and vacaciones_registro.status='Talento_humano' limit 1) as tiempo" 
+
+ >
+     </variable>
+</task>
+<task id="DireccionEjecutiva"  title="revisado" >
+	<port side="forward" type="split"   >
+	    <connection source="Presidencia" query="select vacaciones.status from personal"  options="Presidencia"  tokenlink="[cedula,id_cedula:vacaciones]" >
+        </connection>
+	
+	</port>
+	 <variable id="vdireccion_ejecutiva" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_cedula:vacaciones]" 
+                documentsource="select  personal.cargo, personal.departamento, diasadisfrutar, diasdisfrutados, diaspordisfrutar, suplenteinterno_1, suplenteinterno_2, fechasolicitud, nombre, vacaciones.fecha_ingreso, informacion_usuario, nombre, fechainicio, fechafin from personal"
+ rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vacaciones.id and status='DireccionEjecutiva' limit 1) as rol"  timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vacaciones.id and vacaciones_registro.status='DireccionEjecutiva' limit 1) as tiempo" 
+
+ >
+     </variable>
+</task>
+<task id="Presidencia"  title="en_presidencia" >
+	<port side="forward" type="split"  pattern="or" >
+	    <connection source="Archivar_solicitud_procesada" query="select vacaciones.status from personal"  options="Archivar_solicitud_procesada"  tokenlink="[cedula,id_cedula:vacaciones]" >
+        </connection>
+    <connection source="Talento_humano" back="yes"  query="select vacaciones.status from personal"  options="Talento_humano"  tokenlink="[cedula,id_cedula:vacaciones]" >
+        </connection>
+    <connection source="DireccionEjecutiva" back="yes"  query="select vacaciones.status from personal"  options="DireccionEjecutiva"  tokenlink="[cedula,id_cedula:vacaciones]" >
+        </connection>
+
+	</port>
+	 <variable id="vEnPresidencia" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_cedula:vacaciones]" 
+                documentsource="select  personal.cargo, personal.departamento, diasadisfrutar, diasdisfrutados, diaspordisfrutar, suplenteinterno_1, suplenteinterno_2, fechasolicitud, nombre, vacaciones.fecha_ingreso, informacion_usuario, nombre, fechainicio, fechafin from personal"
+ rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vacaciones.id and status='Presidencia' limit 1) as rol"  timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vacaciones.id and vacaciones_registro.status='Presidencia' limit 1) as tiempo" 
+
+ >
+     </variable>
+</task>
+
+<task id="Archivar_solicitud_procesada"  title="enviado_aprobacion" >
+	<port side="forward" type="split"  >
+	    <connection source="final" query="true" options="" >
+        </connection>
+	</port>
+	 <variable id="vEnArchivo" scope="task"  type="sql" config="1"   tokenlink="[cedula,id_cedula:vacaciones]" 
+                documentsource="select  personal.cargo, personal.departamento, diasadisfrutar, diasdisfrutados, diaspordisfrutar, suplenteinterno_1, suplenteinterno_2, fechasolicitud, nombre, vacaciones.fecha_ingreso, informacion_usuario, nombre, fechainicio, fechafin from personal"
+ rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vacaciones.id and status='Archivar_solicitud_procesada' limit 1) as rol"  timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vacaciones.id and vacaciones_registro.status='Archivar_solicitud_procesada' limit 1) as tiempo" 
+
+ >
+     </variable>
+</task>
+
+
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+

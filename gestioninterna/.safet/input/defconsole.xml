@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : deftrac.xml
+Creado     : Víctor Bravo
+Autor      : Victor Bravo
+Descripcion: Archivo de Entrada para SAFET - Inflow
+-->
+<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<operations suffix=":" commandname="operacion"  >  
+<operation  name="Reportes"  desc="Reportes, Listas, Formas" icon="report.png">
+</operation>
+
+
+<operation  name="Listar_datos_general" >
+<command id ="1" type="agregar" table="lista">
+        <fields>
+                <field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" options="">
+                        Cargar_archivo_flujo
+                </field>
+                <field type="combovar" mandatory="yes" validation="\w+" changefor="Cargar_archivo_flujo">
+                        Variable
+                </field>
+
+        </fields>
+</command>
+</operation>
+
+<operation  name="Listar_datos" >
+<command id ="1" type="agregar" table="lista">
+        <fields>
+                <field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" options="">
+                        Cargar_archivo_flujo
+                </field>
+                <field type="combovar" mandatory="yes" validation="\w+" changefor="Cargar_archivo_flujo">
+                        Variable
+                </field>
+
+        </fields>
+</command>
+</operation>
+<operation  name="Generar_gráfico_para_clave" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/SolicitudVacaciones.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:vacaciones::'(' || id || ') ' || informacion_usuario" mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+
+
+<operation  name="Generar_gráfico_para_clave_proyecto_AUTANA" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionAUTANA.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where id=94::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+
+<operation  name="Generar_gráfico_para_clave_proyecto_Tibisay_seguridad" >
+        <command id ="1" type="agregar" table="ticket">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/actualizacion_software.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+
+                        <field type="combolisttable"
+ options="id:actividad_por_accion:where id=88::'(' || id || ') ' || nombre " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Listar_datos_para_clave_Solicitud_vacaciones" >
+        <command id ="1" type="agregar" table="vacaciones">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
+                                Cargar_archivo_flujo
+                        </field>
+
+                        <field type="combolisttable"
+ options="id:vacaciones::'(' || id || ') ' || informacion_usuario " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Seguimiento General"  desc="Gráficos de proyectos" icon="graph.png">
+</operation>
+<operation  name="Generar_gráfico_coloreado" >
+	<command id ="1" type="agregar" table="lista" >
+		<fields>
+			<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)" primarykey="yes" changekey="yes" options="show::id,selected::1;2;3;4;5;6;7;8;9;10">
+				Cargar_archivo_flujo
+			</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Seguimiento por reunión de Consejo Directivo"  desc="Acciones para cambiar de estado un proyecto" icon="planning.png">
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_reuniones" >
+	<command id ="1" type="agregar" table="reuniones">
+		<fields>
+	                <field type="string" literal="/home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                        Cargar_archivo_flujo
+	                </field>
+
+			<field type="combolisttable"
+ options="id:reuniones::'(' || id || ') ' || descripcion " mandatory="yes" primarykey="no" title="Clave">
+				Clave
+			</field>
+		</fields>
+	</command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_Solicitud_de_vacaciones" >
+        <command id ="1" type="agregar" table="vacaciones">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+
+                        <field type="combolisttable"
+ options="id:vacaciones:where usuario='_USERNAME'::'(' || id || ') ' || informacion_usuario" mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+                </fields>
+        </command>
+</operation>
+<operation  name="Generar_gráfico_para_clave_vacaciones" >
+        <command id ="1" type="agregar" table="vacaciones">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+
+                        <field type="combolisttable"
+ options="id:vacaciones:where fechasolicitud > 1380601740::'(' || id || ') ' || informacion_usuario" mandatory="yes" primarykey="no" title="Clave" order="desc" >
+                                Clave
+                        </field>
+                </fields>
+        </command>
+</operation>
+
+
+
+<operation  name="Seguimiento de las correspondencias y denuncias"  desc="Acciones para cambiar de estado una correspondencia y denuncias" icon="planning.png">
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_correspondencia_y_denuncias" >
+        <command id ="1" type="agregar" table="correspondencia">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                                Cargar_archivo_flujo
+                        </field>
+
+                        <field type="combolisttable"
+ options="id:correspondencia::'(' || id || ') ' || 'Procedencia: ' || procedencia || ' Asunto: ' || asunto " mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+                </fields>
+        </command>
+</operation>
+
+<operation  name="Generar_gráfico_para_clave_Solicitud_correspondencia_guarura" >
+        <command id ="1" type="agregar" table="correspondencia">
+                <fields>
+                        <field type="string" literal="/home/debian/.safet/flowfiles/FlujoControldeCorrespondenciaGuarura.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
+                                Cargar_archivo_flujo
+                        </field>
+
+                        <field type="combolisttable"
+ options="id_guarura:correspondencia::'(' || id_guarura || ') ' || 'Procedencia: ' || procedencia || ' Asunto: ' || asunto" mandatory="yes" primarykey="no" title="Clave">
+                                Clave
+                        </field>
+                </fields>
+        </command>
+</operation>
+
+
+</operations>

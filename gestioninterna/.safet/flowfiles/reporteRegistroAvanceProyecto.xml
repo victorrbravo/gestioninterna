@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Reporte de Registros de avance de las Actividades de los Proyectos">
+	<token key="id"  keysource="actividad_registro">
+	</token>
+	<parameter type="combolistliteral" mandatory="no" 
+title="Incluir Titulo del Grafico" options="Si::Se muestra un título en el gráfico de flujo de trabajo::on,No::No se incluye el texto colocado como título en los flujos de trabajo::off"  configurekey="GeneralOptions/generaloptions.currentflowtitle.include" defaultvalue="No">
+</parameter>
+<parameter type="string" mandatory="no" title="Titulo del Grafico" configurekey="GeneralOptions/generaloptions.currentflowtitle" defaultvalue="Grafico" >
+</parameter>
+<parameter type="combocolor" mandatory="no" title="Color Para Estadistica" options="Blanco antiguo::Color Blanco Antiguo::antiquewhite,Verde::Color Verde::green,Rojo Coral::Color Rojo Coral::coral,Amarillo::Color Amarillo::yellow,Azul Cielo::Color Azul Cielo::skyblue,Blanco Fantasma::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,Gris Claro::Color Gris Claro::lightgray,Azul::Color Azul::blue,Naranja::Color Naranja::orange,Gris::Color Gris::gray,Negro::Color Negro::black,Blanco::Color Blanco::white" 
+configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalue="Amarillo">
+</parameter>
+<parameter type="combolistliteral" options="Si::Mostrar colores para todas las tareas::yes,No::Muestra solamente para los que se indicaron explícitamente::no" mandatory="no" title="Incluir_todos_en_reporte" configurekey="DefaultValues/defaultvalues.report">
+</parameter>
+
+	<condition id="inicial" type="start" >
+        	<port side="forward" type="split" pattern="or">
+                       	 <connection source="Calidad_de_la_informacion_MIV_y_SIGESIC" query="select id_actividad from actividad_registro"  options='101'>
+			</connection>
+			<connection source="Metodologia_MIV" query="select id_actividad from actividad_registro"  options='90'>
+			</connection>
+			<connection source="Sistema_Intercambio_de_datos_para_MIV_y_SIGESIC" query="select id_actividad from actividad_registro"  options='100'>
+			</connection>
+			<connection source="Sistema_para_simulacion_y_manejo_de_escenario_MIV" query="select id_actividad from actividad_registro"  options='106'>
+			</connection>
+			<connection source="Sistema_ECO_ALBA" query="select id_actividad from actividad_registro"  options='91' >
+			</connection>
+			<connection source="SIGMIV" query="select id_actividad from actividad_registro"  options='92'>
+			</connection>
+			<connection source="Planificacion_estrategica" query="select id_actividad from actividad_registro"  options='99'>
+			</connection>
+			<connection source="Contraloria_social" query="select id_actividad from actividad_registro"  options=''>
+			</connection>
+			<connection source="Tibisay_dispositivos_portátiles" query="select id_actividad from actividad_registro"  options='103'>
+			</connection>
+			<connection source="Tibisay_seguridad" query="select id_actividad from actividad_registro"  options='88'>
+			</connection>
+			<connection source="Calidad" query="select id_actividad from actividad_registro"  options='93'>
+			</connection>
+			<connection source="Infraestructura" query="select id_actividad from actividad_registro"  options='109' >
+			</connection>
+			<connection source="Television_digital_abierta" query="select id_actividad from actividad_registro"  options='105'>
+			</connection>
+			<connection source="AUTANA" query="select id_actividad from actividad_registro"  options='94' >
+			</connection>
+			<connection source="Medios_comunitarios_socialista" query="select id_actividad from actividad_registro"  options='107'>
+			</connection>
+			<connection source="Cuentacuentos" query="select id_actividad from actividad_registro"  options='102'>
+			</connection>
+			<connection source="Communitas" query="select id_actividad from actividad_registro"  options='96' >
+			</connection>
+			<connection source="Salvapantallas_Bicentenario" query="select id_actividad from actividad_registro"  options='95'>
+			</connection>
+			<connection source="Red_Patria" query="select id_actividad from actividad_registro"  options='' >
+			</connection>
+			<connection source="Políticas_editoriales_de_la_fundación_CENDITEL" query="select id_actividad from actividad_registro"  options='97' >
+			</connection>
+			<connection source="Gestion_interna" query="select id_actividad from actividad_registro"  options='89' >
+			</connection>
+			<connection source="Sistema_indicadores_seguimiento_proyectos" query="select id_actividad from actividad_registro"  options='104' >
+			</connection>
+			<connection source="Gestion_de_Anonimato" query="select id_actividad from actividad_registro"  options='108' >
+			</connection>
+		</port>
+	</condition>
+
+	<task   id="Calidad_de_la_informacion_MIV_y_SIGESIC"  >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vCalidad_de_la_informacion_MIV_y_SIGESIC" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '101' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '101' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '101' " >
+                </variable>
+	</task>
+
+	<task   id="Metodologia_MIV" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vMetodologia_MIV" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '90' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '90' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '90'" >
+                </variable>
+	</task>
+
+	<task   id="Sistema_Intercambio_de_datos_para_MIV_y_SIGESIC" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vSistema_Intercambio_de_datos_para_MIV_y_SIGESIC" scope="task" type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '100' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '100' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '100'" >
+                </variable>
+	</task>
+
+	<task   id="Sistema_para_simulacion_y_manejo_de_escenario_MIV" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vSistema_para_simulacion_y_manejo_de_escenario_MIV" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '106' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '106'" >
+                </variable>
+	</task>
+
+	<task   id="Sistema_ECO_ALBA" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vSistema_ECO_ALBA" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '91' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '91' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '91'" >
+                </variable>
+	</task>
+
+	<task   id="SIGMIV" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vSIGMIV" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '92' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '92' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '92'" >
+                </variable>
+	</task>
+
+	<task   id="Planificacion_estrategica" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vPlanificacion_estrategica" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '99' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '99' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '99'" >
+                </variable>
+	</task>
+
+	<task   id="Contraloria_social" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vContraloria_social" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '101' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '101' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '101'" >
+                </variable>
+	</task>
+
+	<task   id="Tibisay_dispositivos_portátiles" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vTibisay_dispositivos_portátiles" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '103' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '103' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '103'" >
+                </variable>
+	</task>
+
+	<task   id="Tibisay_seguridad" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vTibisay_seguridad" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '88' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '88' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '88'" >
+                </variable>
+	</task>
+
+	<task   id="Calidad" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vCalidad" scope="task"  type="sql" config="1"  rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '93' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '93' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '93'" >
+                </variable>
+	</task>
+
+	<task   id="Infraestructura" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vInfraestructura" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '109' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '109' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '109'" >
+                </variable>
+	</task>
+
+	<task   id="Television_digital_abierta" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vTelevision_digital_abierta" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '105' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '105' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '105'" >
+                </variable>
+	</task>
+
+	<task   id="Medios_comunitarios_socialista" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vMedios_comunitarios_socialista" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '107' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '107' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '107'" >
+                </variable>
+	</task>
+
+	<task   id="Cuentacuentos" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vCuentacuentos" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '102' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '102' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '102'" >
+                </variable>
+	</task>
+
+	<task   id="Communitas"  >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vCommunitas" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = 96 order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = 96 order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = 96" >
+                </variable>
+	</task>
+	
+
+	<task   id="AUTANA"  >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vAUTANA" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '94' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '94' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '94'" >
+                </variable>
+	</task>
+
+	<task   id="Salvapantallas_Bicentenario" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vSalvapantallas_Bicentenario" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '95' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '95' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '95'" >
+                </variable>
+	</task>
+
+	<task   id="Red_Patria" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vRed_Patria" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad =  order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = " >
+                </variable>
+	</task>
+
+	<task   id="Políticas_editoriales_de_la_fundación_CENDITEL" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vPolíticas_editoriales_de_la_fundación_CENDITEL" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '97' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '97' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '97'" >
+                </variable>
+	</task>
+
+	<task   id="Gestion_interna" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vGestion_interna" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '89' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '89' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '89'" >
+                </variable>
+	</task>
+
+	<task   id="Sistema_indicadores_seguimiento_proyectos"  >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vSistema_indicadores_seguimiento_proyectos" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '104' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '104' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '104'" >
+                </variable>
+	</task>
+
+
+	<task   id="Gestion_de_Anonimato" >
+                <port side="forward" type="split" >
+                        <connection source="SumaTodas" query="true" options="">
+			</connection>
+		</port>
+		<variable id="vGestion_de_Anonimato" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro where id_actividad = '108' order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro where id_actividad = '108' order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro where id_actividad = '108'" >
+                </variable>
+	</task>
+
+	<task   id="SumaTodas"  report="no" >
+                <port side="forward" type="split" >
+                        <connection source="final" query="true" options="">
+			</connection>
+		</port>
+		<variable id="VariableSumaTodas" scope="task"  type="sql" config="1" rolfield="(select id,fechaaccion from actividad_registro order by fechaaccion)" timestampfield="(select fechaaccion from actividad_registro order by fechaaccion)" documentsource="select estado, fechaaccion, porcentaje, enlace from actividad_registro" >
+                </variable>
+	</task>	
+
+	<condition id="final">
+		<port side="forward" type="split">
+			<connection source="">
+			</connection>
+		</port>
+	</condition>
+</workflow>
+<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+</configuration>
+</yawl>

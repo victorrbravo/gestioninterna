@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : deftrac.xml
+Creado     : Víctor Bravo
+Autor      : Victor Bravo
+Descripcion: Archivo de Entrada para SAFET - Inflow
+-->
+<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<operations suffix=":" commandname="operacion" >  
+<operation  name="Usuarios"  desc="Agregar,Modificar,Eliminar,Listar" icon="user.png">
+</operation>
+<operation  name="Agregar_usuario" >
+<command id ="1" type="agregar" table="lista">
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" options=""  title="Nombre_cuenta_usuario">
+			auth.account.*
+		</field>
+		<field type="string" mandatory="no" options="echoMode::Password"  title="Contraseña_usuario">
+			auth.pass.*
+		</field>
+		<field type="string" mandatory="no" title="Nombre_completo_usuario">
+			auth.realname.*
+		</field>
+		<field type="comboconffile" mandatory="no" options="Roles/name.*"  	title="Rol_del_Usuario">
+			auth.role.*
+		</field>
+
+	</fields>
+</command>
+</operation>
+<operation  name="Generar_ticket" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="string" mandatory="yes" options=""  title="Periodo_vacacional">
+			Periodo_vacacional
+		</field>
+	    <field type="string" mandatory="yes" title="Asunto">
+			Asunto
+		</field>
+	    <field type="string" mandatory="yes" title="Destinatarios">
+			Destinatarios
+		</field>
+	    <field type="string" mandatory="yes" title="accion">
+			accion
+		</field>
+	    <field type="string" mandatory="no" title="Emailtemplate">
+			Emailtemplate
+		</field>
+	    <field type="string" mandatory="yes" title="Nombre_operacion">
+			Nombre_operacion
+		</field>
+	</fields>
+</command>
+</operation>
+
+<operation  name="Modificar_usuario" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="comboconffile" mandatory="yes" options="Auth/account.*"  title="Nombre_cuenta_usuario">
+			auth.account.*
+		</field>
+		<field type="string" mandatory="no" options="echoMode::Password"  title="Contrasena_usuario">
+			auth.pass.*
+		</field>
+		<field type="string" mandatory="no" title="Nombre_completo_usuario">
+			auth.realname.*
+		</field>
+
+		<field type="string" mandatory="no" title="Rol_usuario">
+			auth.role.*
+		</field>
+		<field type="string" mandatory="no" title="Tickets_usuario">
+			auth.tickets.*
+		</field>
+
+	</fields>
+</command>
+</operation>
+<operation  name="Borrar_usuario" >
+<command id ="1" type="eliminar" table="Auth">
+	<fields>
+		<field type="comboconffile" mandatory="yes" options="Auth/account.*"  title="Nombre_cuenta_usuario">
+			auth.account.*
+		</field>
+
+	</fields>
+</command>
+</operation>
+
+<operation  name="Operaciones"  desc="Agregar,Modificar,Eliminar,Listar" icon="firmadoc.png">
+</operation>
+<operation  name="Modificar_operación" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="comboconffile" mandatory="yes" options="Permises/operation.*" primarykey="yes"  title="Nombre_operacion">
+			permises.operation.*
+		</field>
+		<field type="listconffile" mandatory="no" options="Auth/account.*" title="Permitido_a_usuarios">
+			permises.accounts.*
+		</field>
+		<field type="string" mandatory="no" title="Tipos_de_permiso">
+			permises.types.*
+		</field>
+		<field type="listconffile" mandatory="no" options="Roles/name.*"  title="Permitido_a_roles">
+			permises.roles.*
+		</field>
+
+	</fields>
+</command>
+</operation>
+<operation  name="Roles"  desc="Agregar,Modificar,Eliminar,Listar" icon="user.png">
+</operation>
+<operation  name="Agregar_rol" >
+<command id ="1" type="agregar" table="Roles">
+	<fields>
+		<field type="string" mandatory="yes" primarykey="yes" options=""  title="Nombre_Rol">
+			roles.name.*
+		</field>
+		<field type="stringbox" mandatory="no" options=""  title="Descripción">
+			roles.description.*
+		</field>
+
+	</fields>
+</command>
+</operation>
+<operation  name="Modificar_rol" >
+<command id ="1" type="actualizar" table="lista">
+	<fields>
+		<field type="comboconffile" primarykey="yes" mandatory="yes" options="Roles/name.*" title="Nombre_rol">
+			roles.name.*
+		</field>
+		<field type="string" mandatory="no"   title="Descripción">
+			roles.description.*
+		</field>
+	</fields>
+</command>
+</operation>
+<operation  name="Borrar_rol" >
+<command id ="1" type="eliminar" table="Roles">
+	<fields>
+		<field type="comboconffile" mandatory="yes" options="Roles/name.*"  title="Nombre_cuenta_usuario">
+			roles.name.*
+		</field>
+
+	</fields>
+</command>
+</operation>
+</operations>

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE yawl SYSTEM 'file:///home/debian/.safet/dtd/yawlworkflow.dtd'>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<yawl version="0.01" >
+ <workflow id="AppHolaMundo" >
+  <token keysource="actividad_por_accion" key="id" />
+  <parameter title="Direccion_Grafico_de_Flujo" options="TB::La direccin del grfico es arriba-abajo::TB,LR::La direccin del grfico es izquierda-derecha::LR" configurekey="Plugins.Graphviz/plugins.graphviz.graph.rankdir" type="combolistliteral" mandatory="no" />
+  <parameter title="Formato_del_Grafico" options="svg::Grfico SVG::svg,png::Grfico PNG::png" configurekey="Plugins.Graphviz/plugins.graphviz.graphtype" type="combolistliteral" mandatory="no" />
+  <parameter title="Incluir_Fecha_Hora" options="on::Incluir::on,off::No Incluir::off" configurekey="Graphs/graphs.infotext.include" type="combolistliteral" mandatory="no" />
+  <parameter title="Titulo" options="" configurekey="GeneralOptions/generaloptions.currentflowtitle" type="string" mandatory="no" />
+  <parameter title="Informacion_extra" options="" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show" type="string" mandatory="no" />
+  <parameter title="Fechainicio" validation="" options="" configurekey="Stats/stats.fromdate" type="datetime" mandatory="yes" >
+                        Fechainicio
+                </parameter>
+  <parameter title="Fecha_final" validation="" options="" configurekey="Stats/stats.todate" type="datetime" mandatory="yes" >
+                        Fechafin
+                </parameter>
+  <parameter title="Color Para Estadistica" options="antiquewhite::Color Blanco Antiguo::antiquewhite,green::Color Verde::green,coral::Color Rojo Coral::coral,red::Color Rojo::red,yellow::Color Amarillo::yellow,skyblue::Color Azul Cielo::skyblue,ghostwhite::Color Blanco Fantasma::ghostwhite,Blanco::Color Blanco::white,lightgray::Color Gris Claro::lightgray,blue::Color Azul::blue,orange::Color Naranja::orange,gray::Color Gris::gray,black::Color Negro::black,white::Color Blanco::white" configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" type="combocolor" mandatory="no" defaultvalue="Amarillo" />
+  <condition type="start" id="inicial" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" options="Tarea1" source="Tarea1" />
+   </port>
+  </condition>
+  <task id="Tarea1" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" options="Tarea1_1" tokenlink="" source="Tarea1_1" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" type="sql" tokenlink="" id="vTarea1" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea1')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea1' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea1' order by fechaaccion  desc limit 1) as tiempo" />
+  </task>
+  <task title="" id="Tarea1_1" >
+   <port side="forward" type="split" pattern="none">
+    <connection query="vTarea1_1 SIGN Solazver Sole Alvarez" options="yes" tokenlink="" source="Tarea4" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" type="sql" tokenlink="" id="vTarea1_1" rolfield="" scope="task" timestampfield="" />
+  </task>
+  <task id="Tarea4" textualinfo="10" >
+   <port side="forward" type="split" >
+    <connection query="select status from actividad_por_accion" options="Tarea3" source="Tarea3" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" type="sql" tokenlink="" id="vTarea4" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea4')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea4' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea4' order by fechaaccion  desc limit 1) as tiempo" />
+  </task>
+  <task title="" id="Tarea3" textualinfo="10" >
+   <port side="forward" type="split" >
+    <connection query="true" options="" source="final" />
+   </port>
+   <variable config="1" documentsource="select nombre,tipo from actividad_por_accion" type="sql" tokenlink="" id="vTarea3" rolfield="(select propietario || '   ' || (select sum(porcentaje) from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea3')  || '%' || case when completado then '' else '[*]' end  from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea3' order by fechaaccion desc  limit 1) as rol" scope="task" timestampfield="(select fechaaccion from actividad_registro where actividad_por_accion.id=id_actividad and estado='Tarea3' order by fechaaccion  desc limit 1) as tiempo" />
+  </task>
+  <condition id="final" >
+   <port side="forward" type="split" >
+    <connection source="" />
+   </port>
+  </condition>
+ </workflow>
+ <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_" />
+</yawl>
