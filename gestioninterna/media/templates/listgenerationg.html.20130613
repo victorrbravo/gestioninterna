@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+<script language="javascript"> 
+var safettitle = "";
+var safetlistcount = 0;
+document.write('<title>'+'Seguimiento de Proyectos CENDITEL' +'</title>');
+</script>
+
+    	<link rel="stylesheet" type="text/css" href="http://localhost/safet/media/yui.css" >
+
+<style>
+/*Supplemental CSS for the YUI distribution*/
+#custom-doc { width: 100%; min-width: 1250px; }
+#pagetitle {background-image: url(bg_hd.gif);}
+#pagetitle h1 {background-image: url(title_h_bg.gif);}
+</style>
+
+<link rel="stylesheet" type="text/css" href="http://localhost/safet/media/dpSyntaxHighlighter.css">
+<!--Script and CSS includes for YUI dependencies on this page-->
+<link rel="stylesheet" type="text/css" href="http://localhost/media/paginator.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost/media/datatable.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost/media/button.css" />
+<script type="text/javascript" src="http://localhost/media/yuiloader-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/dom-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/event-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/dragdrop-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/animation-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/element-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/paginator-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/datasource-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/datatable-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/button-min.js"></script>
+<script type="text/javascript" src="http://localhost/media/jscharts.js"></script>
+
+<!--begin custom header content for this example-->
+
+<!--end custom header content for this example-->
+
+
+<link rel="stylesheet" href="<TEMPLATEPATH/>styles.css" type="text/css" /> 
+<script type="text/javascript">
+//enable passthrough of errors from YUI Event:
+if ((typeof YAHOO !== "undefined") && (YAHOO.util) && (YAHOO.util.Event)) {
+	YAHOO.util.Event.throwErrors = true;
+}
+</script>
+
+
+
+</head>
+<body id="yahoo-com" class=" yui-skin-sam">
+<div id="custom-doc" class="yui-t2">
+<div id="bd">
+	
+	<div >
+		<div >
+		  <div >
+			  <div >   
+	<div class="promo">
+<script language="javascript"> 
+var titul = 'Nuevos tickets';
+var safetlist = []; 
+
+var safetcolumns = [];
+
+var myDataTable = null;
+
+<SAFET/>
+
+
+
+document.write('<h1 id="title1">'+'Listado de la variable: ' + safettitle  + '</h1>');
+</script>
+	
+					
+	<div id="example-canvas" class="bd">
+	
+		
+	<!--BEGIN SOURCE CODE FOR EXAMPLE =============================== -->
+	
+	<div id="complex"></div>
+
+<script type="text/javascript" src="http://localhost/safet/media/data.js"></script>
+<script type="text/javascript">
+
+
+safetproccessData = function() {
+
+//        document.getElementById("title1").innerHTML= "Lista de variable de "+ safettitle +" ("+ safetlistcount+")";
+
+        var myDataSource = new YAHOO.util.DataSource(safetlist);
+        myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+//        myDataSource.responseSchema = {
+//            fields: ["areacode","state"]
+ //       };
+
+        var myConfigs = {
+      //      sortedBy:{key:"id",dir:"asc"},
+            paginator: new YAHOO.widget.Paginator({
+                rowsPerPage: 25,
+                template: YAHOO.widget.Paginator.TEMPLATE_ROWS_PER_PAGE,
+                rowsPerPageOptions: [5,10,25,50,100],
+                pageLinks: 5
+            }),
+            draggableColumns:true
+        }
+
+	if ( myDataTable == null ) {
+        	myDataTable = new YAHOO.widget.DataTable("complex", safetcolumns, myDataSource, myConfigs);
+	}
+
+        myDataTable.subscribe("rowClickEvent",myDataTable.onEventSelectRow);
+        myDataTable.subscribe("cellDblclickEvent",myDataTable.onEventShowCellEditor);
+        myDataTable.subscribe("editorBlurEvent", myDataTable.onEventSaveCellEditor);
+
+        
+        return {
+            oDS: myDataSource,
+            oDT: myDataTable
+        };
+
+    };
+
+safetproccessData();
+safetproccessData();
+
+</script>
+	
+	
+		</div>
+		
+	
+	</div>			
+	</div>
+		
+		</div>
+		
+		</div>
+	</div>
+
+
+	</div><!--closes bd-->
+
+	
+</div>
+<script src="http://localhost/safet/media/dpSyntaxHighlighter.js"></script>
+<script language="javascript"> 
+dp.SyntaxHighlighter.HighlightAll('code'); 
+</script>
+
+</body>
+</html>
+

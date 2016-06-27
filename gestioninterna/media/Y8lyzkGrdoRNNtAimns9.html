@@ -1,0 +1,294 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Tibisay Planilla Solicitud de Vacaciones</title>
+
+<script language="javascript"> 
+	var safettitle = "";
+	var safetlistcount = 0;
+	document.write('<title>'+'Planilla de Vacaciones'+'</title>');
+</script>
+
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/yui.css" >
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/dpSyntaxHighlighter.css">
+<!--Script and CSS includes for YUI dependencies on this page-->
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/paginator.css" />
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/datatable.css" />
+<link rel="stylesheet" type="text/css" href="http://seguridad.cenditel.gob.ve/safet/media/button.css" />
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/yuiloader-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/dom-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/event-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/dragdrop-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/animation-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/element-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/paginator-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/datasource-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/datatable-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/button-min.js"></script>
+<script type="text/javascript" src="http://seguridad.cenditel.gob.ve/safet/media/jscharts.js"></script>
+
+<!--begin custom header content for this example-->
+
+<!--end custom header content for this example-->
+
+<link rel="stylesheet" href="http://localhost/media/templates/styles.css" type="text/css" /> 
+
+<script type="text/javascript">
+	//enable passthrough of errors from YUI Event:
+
+	if ((typeof YAHOO !== "undefined") && (YAHOO.util) && (YAHOO.util.Event)) {
+		YAHOO.util.Event.throwErrors = true;
+	}
+</script>
+
+</head>
+<body id="yahoo-com" class="yui-skin-sam" onload="cargarFirmas()">
+
+
+<div id="printPlanilla">
+<table>
+	<tr>
+		<td><img src="http://localhost/media/templates/images/cintillo_300pppCENDITEL.png" align=left width="844" height="70"></td>
+		<td><img src="http://localhost/media/templates/images/logo_cenditelN.png" height="70" width="180"></td>
+	</tr>
+</table>
+
+<br><br><br><br><br>
+
+
+
+<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="1024">
+	<tr>
+		<td align="center"><h3><center>SOLICITUD DE VACACIONES</center></h3></td>
+	</tr>	
+</table>
+
+<br><br><br>
+	
+<table bgcolor="#ffffff" border="1" cellpadding="2" cellspacing="2" width="1024" >
+	<tr>
+		<td id="solicitudNumero" valign=TOP height="50" colspan="2"><b>Solicitud No:</b></td>
+		<td id="fechaSolicitud" valign=TOP width="400" colspan="3"><b>Fecha de la Solicitud</b></td>
+	</tr>
+
+	<tr>
+		<td id="nombreApellido" valign=TOP height="50" colspan="2"><b>Apellidos y Nombres:</b></td>
+		<td id="cedula" valign=TOP ><b>C&eacute;dula de Identidad:</b></td>
+		<td id="fechaIngreso" valign=TOP colspan="2"><b>Fecha de ingreso</b></td>
+	</tr>
+
+	<tr>
+		<td id="cargo" width="512" valign=TOP height="50" colspan="2"><b>Cargo:</b></td>
+		<td id="dependencia" valign=TOP colspan="3"><b>Dependencia:</b></td>
+	</tr>
+
+	<tr>
+		<td id="nombrePeriodo" valign=TOP height="50" ><b>Periodo Vacacional:</b></td>
+		<td id="diascorrespondiente" valign=TOP height="50"><b>D&iacute;as correspondiente:<b></td>
+		<td id="diasSolicitado" valign=TOP >D&iacute;as Solicitados:</td>
+		<td id="diasDisfrutado" valign=TOP >D&iacute;as disfrutados</td>
+		<td id="diasPorDisfrutar" valign=TOP >D&iacute;as por disfrutar</td>
+	</tr>
+
+    <tr>
+        <td id="fecha_inicio" width="512" valign=TOP height="50" colspan="2">Fecha desde:</td>
+        <td id="fecha_fin" valign=TOP >Fecha hasta:</td>
+		<td id="firma_solicitante" valign=TOP colspan="2"><b>  Firma del Solicitante: </b></td>
+    </tr>
+
+	<tr>
+		<td id="suplente_1" valign=TOP height="50" width="512" colspan="2"><b>Suplente interno 1:</b></td>
+		<td id="cargo_1" valign=TOP ><b> Cargo:</b></td>
+		<td id="firma_1" valign=TOP colspan="2"><b> Firma:</b></td>
+	</tr>
+	<tr>
+		<td id="suplente_2" valign=TOP height="50" colspan="2"><b>Suplente interno 2:</b></td>
+		<td id="cargo_2" valign=TOP ><b> Cargo:</b></td>
+		<td id="firma_2" valign=TOP colspan="2"><b> Firma:</b></td>
+	</tr>
+</table>
+<br>
+<table bgcolor="#ffffff" border="1" cellpadding="2" cellspacing="2" width="1024" >
+	<tr>
+		<td colspan="4" bgcolor="#ABA6A6" align="center"><b>Para ser llenado por la unidad de Talento Humano</b></td>
+	</tr>
+	<tr>
+		<td id="fechaincorporacion" valign=TOP height="50"><b>Fecha de incorporaci&oacute;n:</b></td>
+		<td id="ferchafinalizacion" valign=TOP ><b>Fecha de finalizaci&oacute;n:</b></td>
+		<td id="diasinhabiles" valign=TOP ><b>D&iacute;as Inhabiles:</b></td>
+		<td id="diasadicionales" valign=TOP ><b>D&iacute;as Adicionales:</b></td>
+	</tr>
+	<tr>
+		<td id="bonovacacional" colspan="2" valign=TOP height="50" ><b>Bono Vacacional </b></td>
+		<td id="sueldodelmes" colspan="1" valign=TOP ><b>Sueldo del Mes</b></td>
+		<td id="sueldoanticipado" colspan="1" valign=TOP  ><b>Sueldo Anticipado</b></td>
+	</tr>
+	<tr>
+		<td colspan="4" id="totalcancelar" valign=TOP height="50" ><b>Total a Cancelar</b></td>
+	</tr>
+
+</table>
+<br>
+<table bgcolor="#ffffff" border="1" cellpadding="2" cellspacing="2" width="1024">
+	<tr>
+		<td colspan="3" bgcolor="#ABA6A6" align="center"><b>Autorizaciones</b></td>
+	</tr>
+	<tr>
+		<td id="Firmatalentohumano" valign=TOP height="70" width="300"><b>Firma Talento Humano:</b></td>
+		<td id="Observacionestalenmtohumano" valign=TOP ><b> Observaciones: </b></td>
+	</tr>
+	<tr>
+		<td id="Firmadirejecutiva" valign=TOP height="70" width="300"><b>Firma Direcci&oacute;n:</b></td>
+		<td id="Observacionesdirejecutiva" valign=TOP ><b>Observaciones:</b></td>
+	</tr>
+	<tr>
+		<td id="Firmapresidencia" valign=TOP height="70" width="300"><b>Firma Presidencia:</b></td>
+		<td id="Observacionespresidencia" valign=TOP ><b>Observaciones:</b></td>
+	</tr>
+</table>
+
+<div id="divfooter">Firmas</div>
+</div>
+
+<script type="text/javascript">
+        safettitle = '';
+safetlistcount = 1;
+var  safetafile = "";
+
+safetsigners = [];
+ safetcolumns = [{ key: "id",label:"id",width:10,resizeable:true,sortable:true},
+{ key: "id_cedula",label:"id_cedula",width:90,resizeable:true,sortable:true},
+{ key: "nombreapellido",label:"nombreapellido",width:90,resizeable:true,sortable:true},
+{ key: "diasadisfrutar",label:"diasadisfrutar",width:10,resizeable:true,sortable:true},
+{ key: "diasdisfrutados",label:"diasdisfrutados",width:10,resizeable:true,sortable:true},
+{ key: "diassolicitados",label:"diassolicitados",width:10,resizeable:true,sortable:true},
+{ key: "diaspordisfrutar",label:"diaspordisfrutar",width:10,resizeable:true,sortable:true},
+{ key: "fechasolicitud",label:"fechasolicitud",width:130,resizeable:true,sortable:true},
+{ key: "fechainicio",label:"fechainicio",width:130,resizeable:true,sortable:true},
+{ key: "fechafin",label:"fechafin",width:130,resizeable:true,sortable:true},
+{ key: "suplenteinterno_1",label:"suplenteinterno_1",width:90,resizeable:true,sortable:true},
+{ key: "suplenteinterno_2",label:"suplenteinterno_2",width:90,resizeable:true,sortable:true},
+{ key: "cedula_suplente_1",label:"cedula_suplente_1",width:90,resizeable:true,sortable:true},
+{ key: "cedula_suplente_2",label:"cedula_suplente_2",width:90,resizeable:true,sortable:true},
+{ key: "cargo",label:"cargo",width:90,resizeable:true,sortable:true},
+{ key: "fecha_ingreso",label:"fecha_ingreso",width:130,resizeable:true,sortable:true},
+{ key: "nombre",label:"nombre",width:10,resizeable:true,sortable:true},
+{ key: "departamento",label:"departamento",width:90,resizeable:true,sortable:true},
+{ key: "cargo_1",label:"cargo_1",width:90,resizeable:true,sortable:true},
+{ key: "cargo_2",label:"cargo_2",width:90,resizeable:true,sortable:true},
+{ key: "fechaincorporacion",label:"fechaincorporacion",width:130,resizeable:true,sortable:true},
+{ key: "fechafin",label:"fechafin",width:130,resizeable:true,sortable:true},
+{ key: "diasinhabiles",label:"diasinhabiles",width:10,resizeable:true,sortable:true},
+{ key: "diasadicionales",label:"diasadicionales",width:10,resizeable:true,sortable:true},
+{ key: "bonoacancelar",label:"bonoacancelar",width:10,resizeable:true,sortable:true},
+{ key: "sueldodelmes",label:"sueldodelmes",width:10,resizeable:true,sortable:true},
+{ key: "sueldoanticipado",label:"sueldoanticipado",width:10,resizeable:true,sortable:true},
+{ key: "totalapagar",label:"totalapagar",width:10,resizeable:true,sortable:true},
+{ key: "observaciones_talento_humano",label:"observaciones_talento_humano",width:90,resizeable:true,sortable:true},
+{ key: "observaciones_direccion_ejecutiva",label:"observaciones_direccion_ejecutiva",width:90,resizeable:true,sortable:true},
+{ key: "observaciones_presidencia",label:"observaciones_presidencia",width:90,resizeable:true,sortable:true}];
+
+safetlist = [{   "id" : "205",   "id_cedula" : "V16166297",   "nombreapellido" : "Alberto Medrano V.",   "diasadisfrutar" : "18",   "diasdisfrutados" : "10",   "diassolicitados" : "8",   "diaspordisfrutar" : "8",   "fechasolicitud" : "25/10/2013 12:00am",   "fechainicio" : "02/12/2013 12:00am",   "fechafin" : "11/12/2013 12:00am",   "suplenteinterno_1" : "Angel Serra M.",   "suplenteinterno_2" : "Ender Alexander Araujo Gutierrez",   "cedula_suplente_1" : "V15516916",   "cedula_suplente_2" : "V14936758",   "cargo" : "Analista Desarrollo",   "fecha_ingreso" : "02/01/2008 11:59pm",   "nombre" : "2011",   "departamento" : "Desarrollo",   "cargo_1" : "Analista Desarrollo",   "cargo_2" : "Analista Desarrollo",   "fechaincorporacion" : "12/12/2013 12:00am",   "fechafin" : "11/12/2013 12:00am",   "diasinhabiles" : "2",   "diasadicionales" : "0",   "bonoacancelar" : "4832.76",   "sueldodelmes" : "7249.15",   "sueldoanticipado" : "2658",   "totalapagar" : "7490.76",   "observaciones_talento_humano" : "",   "observaciones_direccion_ejecutiva" : "",   "observaciones_presidencia" : ""}];
+
+//	var cedula=safetlist[0]["informacion_usuario"].substr(safetlist[0]["informacion_usuario"].indexOf('(')+1,safetlist[0]["informacion_usuario"].indexOf(')')-1);
+//	var nombreApellido = safetlist[0]["informacion_usuario"].substr(safetlist[0]["informacion_usuario"].indexOf(')')+1,(safetlist[0]["informacion_usuario"].indexOf(',')-1-safetlist[0]["informacion_usuario"].indexOf(')')));
+        document.getElementById("solicitudNumero").innerHTML= "<b>Solicitud No: </b>" + parseInt(safetlist[0]["id"]);
+	document.getElementById("fechaSolicitud").innerHTML= "<b>Fecha de la Solicitud: </b>" + safetlist[0]["fechasolicitud"];
+	document.getElementById("nombreApellido").innerHTML="<b>Nombres y Apellidos: </b>" + safetlist[0]["nombreapellido"];
+	document.getElementById("cedula").innerHTML="<b>C&eacute;dula de Identidad: </b>" + safetlist[0]["id_cedula"];
+	document.getElementById("fechaIngreso").innerHTML="<b>Fecha de ingreso </b>" + safetlist[0]["fecha_ingreso"];
+	document.getElementById("cargo").innerHTML="<b>Cargo: </b>" + safetlist[0]["cargo"];
+	document.getElementById("dependencia").innerHTML="<b>Dependencia: </b>" + safetlist[0]["departamento"];
+	document.getElementById("nombrePeriodo").innerHTML="<b>Periodo: </b>" + safetlist[0]["nombre"];
+	document.getElementById("diasSolicitado").innerHTML="<b>D&iacute;as solicitados: </b>" + safetlist[0]["diassolicitados"];
+	document.getElementById("diasDisfrutado").innerHTML="<b>D&iacute;as disfrutados: </b>" + safetlist[0]["diasdisfrutados"];
+	document.getElementById("diasPorDisfrutar").innerHTML="<b>D&iacute;as por disfrutar: </b>" + safetlist[0]["diaspordisfrutar"];
+	document.getElementById("diascorrespondiente").innerHTML="<b>D&iacute;as correspondiente: </b>" + safetlist[0]["diasadisfrutar"];
+	document.getElementById("suplente_1").innerHTML="<b>Suplente interno 1: </b>" + safetlist[0]["suplenteinterno_1"];
+	document.getElementById("suplente_2").innerHTML="<b>Suplente interno 2: </b>" + safetlist[0]["suplenteinterno_2"];	
+	document.getElementById("fecha_inicio").innerHTML="<b>Fecha desde: </b>" + safetlist[0]["fechainicio"];
+        document.getElementById("fecha_fin").innerHTML="<b>Fecha hasta: </b>" + safetlist[0]["fechafin"];
+	document.getElementById("cargo_1").innerHTML="<b> Cargo: </b>" + safetlist[0]["cargo_1"];
+	document.getElementById("cargo_2").innerHTML="<b> Cargo: </b>" + safetlist[0]["cargo_2"];
+	document.getElementById("fechaincorporacion").innerHTML="<b> Fecha de incorporaci&oacute;n: </b>" + safetlist[0]["fechaincorporacion"];
+	document.getElementById("ferchafinalizacion").innerHTML="<b> Fecha de finalizaci&oacute;n: </b>" + safetlist[0]["fechafin"];
+	document.getElementById("diasinhabiles").innerHTML="<b> D&iacute;as Inhabiles: </b>" + safetlist[0]["diasinhabiles"];
+	document.getElementById("diasadicionales").innerHTML="<b> D&iacute;as Adicionales: </b>" + safetlist[0]["diasadicionales"];
+	document.getElementById("bonovacacional").innerHTML="<b> Bono Vacacional: </b>" + safetlist[0]["bonoacancelar"];
+	document.getElementById("sueldodelmes").innerHTML="<b> Sueldo del Mes: </b>" + safetlist[0]["sueldodelmes"];
+	document.getElementById("sueldoanticipado").innerHTML="<b> Sueldo Anticipado: </b>" + safetlist[0]["sueldoanticipado"];
+	document.getElementById("totalcancelar").innerHTML="<b> Total a Cancelar: </b>" + safetlist[0]["totalapagar"];
+	document.getElementById("Observacionestalenmtohumano").innerHTML="<b> Observaciones: </b>" + safetlist[0]["observaciones_talento_humano"];
+	document.getElementById("Observacionesdirejecutiva").innerHTML="<b> Observaciones: </b>" + safetlist[0]["observaciones_direccion_ejecutiva"];
+	document.getElementById("Observacionespresidencia").innerHTML="<b> Observaciones: </b>" + safetlist[0]["observaciones_presidencia"];
+
+function cargarFirmas() {
+  if (safetsigners.length == 0 ) { 
+        document.getElementById("divfooter").innerHTML= "Este Documento NO contiene firmas electr&oacute;nicas";
+	return;
+  }
+  var allsigners = "<br/><table width=\"100%\" id=\"newspaper-a\" border=\"1\" style=\"border: 1px solid black; border-collapse:collapse;font-family:verdana,arial,san-serif;font-size:11px;\">\n";
+
+  for(i=0; i < safetsigners.length; i++) {
+		var myvalidation = safetsigners[i].typevalid;
+
+		if ( safetsigners[i].typevalid == "Valida" ) {
+	            myvalidation = "<b>V&aacute;lida</b>";
+		}
+		else if ( safetsigners[i].typevalid == "Invalida" ) {
+		   myvalidation = "NO v&aacute;lida"; 
+		}
+                allsigners = allsigners + "<tr><td><img src=\"http://chart.apis.google.com/chart?chs=100x100&chd=t:90,10&cht=qr&chl="+"http://localhost/media/Y8lyzkGrdoRNNtAimns9.bdoc"+"\"></img></td><td>Nombre Com&uacute;n<br/> <b>"+safetsigners[i].commonName+"</b></td><td>Emisor del Certificado<br/><b>"+safetsigners[i].issuer +"</b></td><td>Lugar de la firma<br/><b>"+safetsigners[i].location+"</b></td><td>Fecha y hora<br/> <b>"+safetsigners[i].date+" "
+		+safetsigners[i].hour+"</b></td>"
+			+"<td>Validaci&oacute;n<br/><b>"+myvalidation +"  </td></tr>";
+
+        }
+        allsigners = allsigners + "</table>";
+
+        document.getElementById("divfooter").innerHTML= allsigners;
+
+
+}
+
+</script>
+
+<script type="text/javascript">
+<!--
+function printContent(id){
+str=document.getElementById(id).innerHTML
+newwin=window.open('','printwin','left=100,top=100,width=400,height=400')
+newwin.document.write('<HTML>\n<HEAD>\n')
+newwin.document.write('<TITLE>Print Page</TITLE>\n')
+newwin.document.write('<script>\n')
+newwin.document.write('function chkstate(){\n')
+newwin.document.write('if(document.readyState=="complete"){\n')
+newwin.document.write('window.close()\n')
+newwin.document.write('}\n')
+newwin.document.write('else{\n')
+newwin.document.write('setTimeout("chkstate()",2000)\n')
+newwin.document.write('}\n')
+newwin.document.write('}\n')
+newwin.document.write('function print_win(){\n')
+newwin.document.write('window.print();\n')
+newwin.document.write('chkstate();\n')
+newwin.document.write('}\n')
+newwin.document.write('<\/script>\n')
+newwin.document.write('</HEAD>\n')
+newwin.document.write('<BODY onload="print_win()">\n')
+newwin.document.write(str)
+newwin.document.write('</BODY>\n')
+newwin.document.write('</HTML>\n')
+newwin.document.close()
+}
+//-->
+</script>
+
+<form action="">
+<input type="button" value="Imprimir planilla" onclick="printContent('printPlanilla')">
+</form>
+
+<br/>
+
+
+</body>
+</html>

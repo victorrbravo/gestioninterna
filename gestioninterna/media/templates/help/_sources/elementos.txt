@@ -1,0 +1,109 @@
+.. editFlowDoc documentation master file, created by
+   sphinx-quickstart on Mon May 30 09:26:42 2011.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Elementos y Eventos
+===================
+
+* **Tarea:** Este elemento permite describir el contenido de una tarea
+
+  .. image:: images/tarea_menu.png
+
+  \  
+
+  .. image:: images/tarea.png
+
+
+* **Conexión:** Este elemento permite interconectar tareas entre ellas y con las condiciones inicial y final.
+
+  .. image:: images/conec_menu.png
+
+  \  
+
+  .. image:: images/conexion.png
+
+* **Variable:** Este elemento permite asociar información de una variable a una tarea, cada tarea debe tener asociado como mínimo una variable. El terminal de conexión de la variable se debe conectar con el terminal que se encuentra en la parte superior de la tarea.
+
+  .. image:: images/var_menu.png
+
+  \  
+
+  .. image:: images/variable.png
+
+* **Autofiltro** Este elemento permite asociar información de los autofiltros de  una tarea. El terminal superior de conexión del autofiltro se debe conectar con el terminal que se encuentra en la parte superior de la tarea, y el terminal inferior  del autofiltro se debe conectar de la misma forma con la tarea "Source" del autofiltro.
+
+  .. image:: images/fil_menu.png
+
+  \  
+
+  .. image:: images/filtro.png
+
+* **Enlaces:** los enlaces son una especie de cables que permiten conectar a través de los terminales los ditintos elementos que se encuentren en el área de diagrama.
+
+  .. image:: images/wire.png
+
+* **Partes Comunes de los elementos:** Los elementos tienen ciertas partes que son comunes para todos:
+
+  * *Barra de Titulo:* la barra de título se encuentra en la parte superior de la caja que compone la estructura de cada elemento, allí se encuentra el nombre del elemento y en el caso de una tarea es sustituido por el texto que se encuentre en el campo Id. Manteniendo pulsado el botón izquierdo del ratón sobre esta zona es posible arrastrar los elementos de una posición a otra.
+
+  * *Botón de clonación:* en la barra de título se encuentra un botón representado por una imagen con dos hojas superpuestas que permite duplicar exactamente igual el contenido de una tarea sin sus conexiones, al hacer clic sobre él se generará una copia exacta de ese elemento y se ubicará en la esquina superior izquierda del área de diagrama.
+
+  * *Botón de eliminar:* en la barra de título del lado derecho también se encuentra un botón representado con una X que permite eliminar del área de diagrama cualquier elemento.
+
+  * *Campo de Color:* este campo se encuentra al final del listado de campos de todos elementos, al hacer clic en este se despliega una paleta de colores que permite seleccionar el color que queremos darle al elemento.
+
+  .. image:: images/tarea_completa.png
+
+* **Evento Inicial:** el evento inicial representa el punto de inicio de los flujos de trabajo, es cargado por defecto en el área de diagrama y no es posible eliminarlo ya que todo flujo debe tener uno.
+
+  .. image:: images/inicio.png
+
+* **Evento Final:** el evento final representa el punto final de los flujos de trabajo, es cargado por defecto en el área de diagrama y no es posible eliminarlo ya que todo flujo debe tener uno.
+
+  .. image:: images/final.png
+
+
+
+
+Propiedades
+===========
+Las propiedades de un flujo se encuentran en el panel derecho de la interfaz.
+
+* **Id:** en este campo se debe introducir el identificador del flujo. Con este mismo nombre será almacenado el flujo al guardarlo.
+* **Descripción:** aquí se debe colocar una descripción acerca del flujo que se va a diagramar.
+* **Key y KeySource:** estos dos campos describen parámetros del flujo.
+* **Conexión Automática:** permite activar o desactivar la conexión automática de elementos, por ejemplo si está activo al agregar un elemento "Tarea" se conecta  automáticamente un elemento "Variable" y un elemento "Conexión" para la "Tarea" siguiente. 
+
+.. image:: images/propiedades.png
+
+Barra de Menú
+=============
+
+* **Nuevo:** permite limpiar el área de diagrama para crear un nuevo flujo, los unicos elementos que no son removidos son las condiciones inicial y final.
+
+* **Abrir:** permite mostrar el listado de flujos que han sido guardados anteriormente en el computador para poder seleccionar uno y cargarlo en la interfaz.
+
+* **Guardar:** permite almacenar el flujo que se encuentre en el área de diagrama en el computador y posteriormente poder cargarlo. Para almacenar un flujo los campos de ciertas propiedades deben estar llenos (Id, Key y KeySource). Si alguno de ellos no lo está la aplicación nos alertará con un mensaje.
+
+* **Eliminar:** esta opción permite eliminar el flujo que se encuentre en ese momento cargado en la interfaz. Después de esta acción no se podrá recuperar la información de este flujo.
+
+* **Formato JSON:** este botón permite  convertir el flujo que tengamos dibujado en el área de diagrama en un archivo en formato JSON (este formato permite conservar la ubicación de los elementos en el área de diagrama).
+
+* **Formato InFlow:** este botón nos da la opción de convertir el flujo que tengamos dibujado en el área de diagrama en un archivo en formato XML que puede ser utilizado como entrada de la aplicación inFlow para su análisis.
+
+* **Cargar JSON:** con esta opción podremos cargar flujos que tengamos en formato JSON,que previamente hayan sido generados con editFlow.
+
+* **Cargar XML:**  permite  cargar al igual que en la opción anterior flujos  en XML en formato inFlow, con la diferencia de que este formato no conserva la ubicación de los elementos del flujo en el área de diagrama.
+
+* **Ayuda:** permite ingresar a este documento de ayuda.
+
+
+.. image:: images/barra_menu.png
+
+Area de Diagrama
+================
+
+Esta área esta compuesta por una especie de lienzo de color blanco en donde pueden ser colocados los distintos elementos que componen un flujo y conectarse entre ellos hasta armar la configuración requerida.
+
+.. image:: images/diagrama.png

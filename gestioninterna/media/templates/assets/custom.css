@@ -1,0 +1,392 @@
+div.WireIt-Container {
+	width: 350px; /* Prevent the modules from scratching on the right */
+}
+
+/**
+ * Ocultar todos los campos excepto terminales y Nombre de tarea
+ */
+div.editFlowTask div.inputEx-Group fieldset.inputEx-Collapsed div.inputEx-label {
+   display: none;
+}
+div.editFlowTask div.inputEx-Group fieldset.inputEx-Collapsed div.inputEx-fieldWrapper{
+   display: block;
+}
+div.editFlowTask  fieldset.inputEx-Collapsed   div.fieldclass{
+   display: none;
+}
+div.editFlowTask  fieldset.inputEx-Collapsed   div.clickEditQuery{
+   display:none;
+}
+div.editFlowTask  fieldset.inputEx-Collapsed   div.clickEdit{
+   display:none;
+}
+
+/*cloneButton Class*/
+
+
+div.WireIt-Container-clonebutton {
+   background-image: url(clone.png);
+   width: 16px;
+   height: 16px;
+   position: absolute;
+   top: 4px;
+   right: 30px;
+   cursor: pointer;
+}
+
+/**
+ * Eventos CSS
+ */
+
+div.StartEvent  {
+	width: 50px;
+	height: 40px;
+	padding-top: 10px;
+}
+/*div.StartEvent:hover div.WireIt-Container-closebutton{
+	display: none;
+}*/
+div.EndEvent  {
+	width: 50px;
+	height: 40px;
+	padding-top: 10px;
+}
+/*div.EndEvent:hover div.WireIt-Container-closebutton{
+	display: none;
+}*/
+
+
+/**
+ * Task CSS
+ */
+
+div.editFlowTask {
+	width: 200px;
+	border: 1px solid black;
+	background-color: #ffffff;
+	-moz-border-radius: 10px;
+}
+
+div.editFlowTask  div.body{
+	border: 0px;
+	background-color: #ffffff;
+	-moz-border-radius: 10px;
+}
+
+
+/* Franja superior de la tarea */
+div.editFlowTask div.WireIt-Container-ddhandle {
+	color: black;
+	background-color: transparent;
+	border-bottom: 1px dotted black;
+}
+div.editFlowTask:hover div.WireIt-Container-ddhandle {
+  background-color: rgba(0,0,0,0.2);
+
+
+
+}
+/*
+div.editFlowTask div.WireIt-Container-ddhandle img {
+	display: none;
+}*/
+
+/* Estilo para el titulo de una tarea */
+div.editFlowTask div.WireIt-Container-ddhandle .titleElement {
+ font-size: 11px;
+}
+
+/* Estilo para el titulo de una tarea */
+div.editFlowTask div.WireIt-Container-ddhandle .floatleft {
+ font-size: 11px;
+}
+
+/* Contenido de la tarea */
+div.editFlowTask  div.inputEx-fieldWrapper {
+	float: left;
+	padding-top:3px;
+}
+div.editFlowTask div.inputEx-Group div.inputEx-label {
+	width:40px;
+}
+div.editFlowTask div.inputEx-Group div.inputEx-Field {
+	width:50px;
+}
+div.editFlowTask div.inputEx-Group div.fieldclass {
+	width:180px;
+}
+
+div.editFlowTask div.inputEx-Group div.clickEdit div.inputEx-Field {
+	width:140px;
+}
+
+div.editFlowTask div.inputEx-Group div.clickEdit div.inputEx-Field textarea {
+	width:130px;
+ height: 65px;
+}
+
+div.editFlowTask div.inputEx-Group div.clickEdit  div.inputEx-InPlaceEdit-visu {
+	width:140px;
+}
+
+div.editFlowTaskr div.inputEx-Group div.fieldclass div.inputEx-StringField-wrapper input {
+	width:85px;
+}
+
+
+
+/**
+ * Ubica los combo box a los lados
+ */
+div.editFlowTask div.inputEx-Group div.selectIn {
+	width:95px;
+}
+div.editFlowTask div.inputEx-Group div.selectOut {
+	width:95px;
+	text-align:right;
+}
+/********************************************/
+
+
+div.editFlowTask div.inputEx-Group{
+	width:190px;
+}
+
+
+
+/**
+ * Var CSS
+ */
+
+div.editFlowVar {
+	width: 150px;
+	border: 1px solid black;
+	background-color: #ffffff;
+	-moz-border-radius: 10px;
+}
+
+div.editFlowVar  div.body{
+	border: 0px;
+	background-color: #ffffff;
+	-moz-border-radius: 10px;
+}
+
+
+/* Franja superior de la tarea */
+div.editFlowVar div.WireIt-Container-ddhandle {
+	color: black;
+	background-color: transparent;
+	border-bottom: 1px dotted black;
+}
+div.editFlowVar:hover div.WireIt-Container-ddhandle {
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* Contenido de la tarea */
+div.editFlowVar  div.inputEx-fieldWrapper {
+	float: left;
+	padding-top:3px;
+}
+div.editFlowVar div.inputEx-Group div.inputEx-label {
+	width:40px;
+}
+div.editFlowVar div.inputEx-Group div.inputEx-Field {
+	width:50px;
+}
+div.editFlowVar div.inputEx-Group div.fieldclass {
+	width:130px;
+}
+div.editFlowVar div.inputEx-Group div.clickEdit div.inputEx-Field {
+	width:140px;
+}
+
+/**
+ * Ocultar todos los campos excepto terminales y Nombre de tarea
+ */
+div.editFlowVar div.inputEx-Group fieldset.inputEx-Collapsed div.inputEx-label {
+   display: none;
+}
+div.editFlowVar div.inputEx-Group fieldset.inputEx-Collapsed div.inputEx-fieldWrapper{
+   display: block;
+}
+div.editFlowVar  fieldset.inputEx-Collapsed   div.fieldclass{
+   display: none;
+}
+div.editFlowVar  fieldset.inputEx-Collapsed   div.clickEditQuery{
+   display:none;
+}
+
+
+
+div.editFlowVar div.inputEx-Group div.clickEditQuery div.inputEx-Field {
+	width:90px;
+}
+div.editFlowVar div.inputEx-Group div.clickEditQuery div.inputEx-Field textarea {
+	width:80px;
+ height: 40px;
+}
+div.editFlowVar div.inputEx-Group div.fieldclass div.inputEx-StringField-wrapper input {
+	width:75px;
+}
+div.editFlowVar div.inputEx-Group div.clickEditQuery  div.inputEx-InPlaceEdit-visu {
+	width:130px;
+}
+
+
+
+
+
+
+/**
+ * Var CSS
+ */
+
+div.editFlowFilter {
+	width: 150px;
+	border: 1px solid black;
+	background-color: #ffffff;
+	-moz-border-radius: 10px;
+}
+
+div.editFlowFilter  div.body{
+	border: 0px;
+	background-color: #ffffff;
+	-moz-border-radius: 10px;
+}
+
+
+/* Franja superior de la tarea */
+div.editFlowFilter div.WireIt-Container-ddhandle {
+	color: black;
+	background-color: transparent;
+	border-bottom: 1px dotted black;
+}
+div.editFlowFilter:hover div.WireIt-Container-ddhandle {
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* Contenido de la tarea */
+div.editFlowFilter  div.inputEx-fieldWrapper {
+	float: left;
+	padding-top:3px;
+}
+div.editFlowFilter div.inputEx-Group div.inputEx-label {
+	width:40px;
+}
+div.editFlowFilter div.inputEx-Group div.inputEx-Field {
+	width:50px;
+}
+div.editFlowFilter div.inputEx-Group div.fieldclass {
+	width:130px;
+}
+div.editFlowFilter div.inputEx-Group div.clickEdit div.inputEx-Field {
+	width:140px;
+}
+
+/**
+ * Ocultar todos los campos excepto terminales y Nombre de tarea
+ */
+div.editFlowFilter div.inputEx-Group fieldset.inputEx-Collapsed div.inputEx-label {
+   display: none;
+}
+div.editFlowFilter div.inputEx-Group fieldset.inputEx-Collapsed div.inputEx-fieldWrapper{
+   display: block;
+}
+div.editFlowFilter  fieldset.inputEx-Collapsed   div.fieldclass{
+   display: none;
+}
+div.editFlowFilter  fieldset.inputEx-Collapsed   div.clickEditQuery{
+   display:none;
+}
+
+
+
+div.editFlowFilter div.inputEx-Group div.clickEditQuery div.inputEx-Field {
+	width:90px;
+}
+div.editFlowFilter div.inputEx-Group div.clickEditQuery div.inputEx-Field textarea {
+	width:80px;
+ height: 40px;
+}
+div.editFlowFilter div.inputEx-Group div.fieldclass div.inputEx-StringField-wrapper input {
+	width:75px;
+}
+div.editFlowFilter div.inputEx-Group div.clickEditQuery  div.inputEx-InPlaceEdit-visu {
+	width:130px;
+}
+
+
+/**
+ * Link CSS
+ */
+div.editFlowLink {
+	width: 150px;
+	border: 1px solid black;
+	background-color: #ffffff;
+	-moz-border-radius: 10px;
+}
+
+div.editFlowLink  div.body{
+	border: 0px;
+	background-color: #ffffff;
+	-moz-border-radius: 10px;
+}
+
+
+/* Franja superior de la tarea */
+div.editFlowLink div.WireIt-Container-ddhandle {
+	color: black;
+	background-color: transparent;
+	border-bottom: 1px dotted black;
+}
+div.editFlowLink:hover div.WireIt-Container-ddhandle {
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* Contenido de la tarea */
+div.editFlowLink  div.inputEx-fieldWrapper {
+	float: left;
+	padding-top:3px;
+}
+div.editFlowLink div.inputEx-Group div.inputEx-label {
+	width:40px;
+}
+div.editFlowLink div.inputEx-Group div.inputEx-Field {
+	width:50px;
+}
+div.editFlowLink div.inputEx-Group div.fieldclass {
+	width:130px;
+}
+div.editFlowLink div.inputEx-Group div.clickEdit div.inputEx-Field {
+	width:140px;
+}
+
+/**
+ * Ocultar todos los campos excepto terminales 
+ */
+div.editFlowLink div.inputEx-Group fieldset.inputEx-Collapsed div.inputEx-label {
+   display: none;
+}
+div.editFlowLink div.inputEx-Group fieldset.inputEx-Collapsed div.inputEx-fieldWrapper{
+   display: block;
+}
+div.editFlowLink  fieldset.inputEx-Collapsed   div.fieldclass{
+   display: none;
+}
+div.editFlowLink  fieldset.inputEx-Collapsed   div.clickEditQuery{
+   display:none;
+}
+
+div.editFlowLink div.inputEx-Group div.clickEditQuery div.inputEx-Field {
+	width:90px;
+}
+div.editFlowLink div.inputEx-Group div.clickEditQuery div.inputEx-Field textarea {
+	width:80px;
+ height: 40px;
+}
+div.editFlowLink div.inputEx-Group div.fieldclass div.inputEx-StringField-wrapper input {
+	width:75px;
+}
+div.editFlowLink div.inputEx-Group div.clickEditQuery  div.inputEx-InPlaceEdit-visu {
+	width:130px;
+}

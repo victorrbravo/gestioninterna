@@ -1,0 +1,783 @@
+#-*- coding: utf-8 -*-
+from mod_python import apache
+from mod_python import util
+from mod_python import Session
+import Safet
+import re
+import shutil
+import safetconfig
+#from safetconfig import *
+
+from PyQt4.QtCore import *
+
+def handler(req):
+    selurl = u"%s" % ( req.parsed_uri[apache.URI_PATH].decode("utf-8"))
+   
+    resultstr = u""
+    if selurl[-1] == "/":
+	selurl = selurl[0:len(selurl)-1]
+
+    if not selurl.endswith("complete"):
+	    req.content_type = "text/html; charset=ISO-8859-1"
+	    req.send_http_header()
+    else:
+	    req.content_type = "text/plain; charset=ISO-8859-1"
+	    req.send_http_header()
+
+    if selurl.endswith("/intranet"):
+	resultstr = safetprincipal(req)
+    elif selurl.endswith("/login"):
+        resultstr = safetlogin(req)
+    elif selurl.endswith("/gologin"):
+	resultstr = safetgologin(req)
+    elif selurl.endswith("/logout"):
+	resultstr = safetlogout(req)	
+    elif selurl.endswith("/goquickconsole"):
+	resultstr = safetgoinputconsole(req)
+    elif selurl.endswith("/goinputform"):
+	resultstr = safetgoinputform(req)
+    elif selurl.endswith("/goinputconsole"):
+	resultstr = safetgoinputconsolemenu(req)
+    elif selurl.endswith("/1"):
+	resultstr = safetinsert(req)
+    elif selurl.endswith("/2"):
+	resultstr = safetconsole(req,selurl)
+    elif selurl.endswith("conscomplete"):
+	resultstr = safetconsautocomplete(req)
+    elif selurl.endswith("formcomplete"):	
+	resultstr = safetformautocomplete(req)
+    elif selurl.endswith("loaddata"):	
+	resultstr = safetloaddata(req)
+    elif selurl.endswith("savegraph"):	
+	resultstr = safetsavegraph(req)
+    elif selurl.endswith("loadpars"):	
+	resultstr = safetloadpars(req)
+    elif selurl.endswith("/goabout"):	
+	resultstr = safetgoabout(req)
+    elif selurl.find("deftrac:operacion:") != -1:
+	resultstr = safetgenerateform(req,selurl)
+    elif selurl.find("defconsole:operacion:") != -1:
+	resultstr = safetgenerateconsole(req,selurl)
+    elif selurl.find("forma:") != -1:
+	resultstr = safetprocessform(req,selurl)
+    elif selurl.find("consola:") != -1:
+	resultstr = safetprocessconsole(req,selurl)
+
+
+
+    resultstr = resultstr.encode("latin_1")
+
+    req.write(resultstr)
+    return apache.OK
+
+def safetloadpars(req):
+	form = util.FieldStorage(req,keep_blank_values=1)
+		
+	resultstr = u""
+	sess = Session.Session(req)
+	if not sess.has_key("inflow"):
+        	return u"No se iniciado la sesión"
+	if not sess['inflow']:
+        	return u'No se ha autenticado'
+
+
+    	myflowname  =u"%s".strip()  % (form.get("primary",None).decode("utf-8") )
+	if ( len(myflowname) == 0 ):
+		return "SafetErrorFaltanDatos"
+
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+	result = myinflow.login(sess['user'],sess['pass'])
+	if not result:
+		return u"Error en la autenticación"
+
+	resultstr = u"%s" % (myinflow.getFlowParameters(myflowname))
+	return resultstr
+
+def safetsavegraph(req):
+
+	form = util.FieldStorage(req,keep_blank_values=1)
+
+	sess = Session.Session(req)
+	resultstr = safettests(sess)
+	if len(resultstr) > 0:
+		return resultstr
+	
+	mypars = QStringList()
+	graphname = form.get("gname",None).decode("latin_1").strip()
+	mypars.append(graphname)
+
+	if sess.has_key("codegraph"):
+		mypars.append(sess["codegraph"])
+	if sess.has_key("dategraph"):
+		mypars.append(sess["dategraph"])
+
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+	result = myinflow.login(sess['user'],sess['pass'])
+	if not result:
+		resultstr = "Error en la autenticación" 
+	else:
+		result = myinflow.doSaveGraph(mypars)		
+		if result:
+	        	resultstr = u"¡Grafo guardado exitosamente!"
+		else:
+			resultstr = u"El Grafo NO fue guardado"
+
+	return resultstr
+
+
+def safetprocessform(req,selurl):
+	form = util.FieldStorage(req,keep_blank_values=1)
+		
+	resultstr = u""
+	sess = Session.Session(req)
+	if not sess.has_key("inflow"):
+        	return u"No se iniciado la sesión"
+	if not sess['inflow']:
+        	return u'No se ha autenticado'
+
+
+	currerror = ""
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+	result = myinflow.login(sess['user'],sess['pass'])
+	if not result:
+		return u"Error en la autenticación"
+
+	myoperation = u"%s" % ( selurl.rpartition("/")[2].replace("forma","operacion") + " ")
+	myfields = u""
+
+	for k in form.keys():
+		if not k.startswith("safet") :
+			newk = k
+			newvalue = form.get(newk,"").decode("latin_1").strip()
+			newvalue = newvalue.replace(":","##SAFETCOLON##")
+			if len(newvalue) > 0:
+				newitem = u" %s: %s\n" % (newk.decode("latin_1"), newvalue) 
+				myfields =  u"%s" %(newitem) + myfields
+
+
+	myoperation = myoperation + myfields
+#	if True:
+#		return myoperation
+	isinserted = myinflow.toInputForm(myoperation )
+	if isinserted:
+		resultstr = resultstr + u"Se ha realizado la operación <b>correctamente</>....ok"
+	else:
+		resultstr = resultstr + u"La operación  <b>NO</b> fue realizada.<br/>"
+		myerror = myinflow.currentError().toLatin1().data()
+		resultstr = resultstr +  u"El error fue el siguiente:<br/>%s" % ( myerror.decode("latin_1"))
+
+
+        resultstr = resultstr + u"<br/> <a href=\"%s\">Regresar al Formulario</b></a>" % (selurl.replace("forma:","deftrac:operacion:"))
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,safetconfig.TEMPLATES[1]))
+
+	return resultstr 
+
+def safetprocessconsole(req,selurl):
+	form = util.FieldStorage(req,keep_blank_values=1)
+		
+	resultstr = u""
+	sess = Session.Session(req)
+	if not sess.has_key("inflow"):
+        	return u"No se iniciado la sesión"
+	if not sess['inflow']:
+        	return u'No se ha autenticado'
+
+
+	currerror = ""
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+    	myinflow.setMediaPath(safetconfig.MEDIA_PATH)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+	result = myinflow.login(sess['user'],sess['pass'])
+	if not result:
+		return u"Error en la autenticación"
+
+	myoperation = selurl.rpartition("/")[2].replace("consola","operacion") + " "
+	myfields = u""
+
+	confk = u""
+	confvalue = u""
+	conffields = {}
+	parsk = u""
+	parsvalue = u""
+	parsfields = {}
+	firstvalue = ""
+	for k in form.keys():
+		if k.startswith("configurekey."):
+			confk = k.decode("latin_1")
+			confvalue = form.get(confk,"").decode("latin_1").strip()
+			confk = confk[len("configurekey."):]
+			if len(confvalue) > 0:
+				conffields[confk] = confvalue	
+		elif k.startswith("parameters."):
+			parsk = k.decode("latin_1")
+			parsvalue = form.get(parsk,"").decode("latin_1").strip()
+			parsk = parsk[len("parameters."):]
+			if len(parsvalue) > 0:
+				parsfields[parsk] = parsvalue
+		elif not k.startswith("safet") :
+			newk = k.decode("latin_1")
+			newvalue = form.get(newk,"").decode("latin_1").strip()
+			if len(newvalue) > 0:
+				newitem = u" %s: %s\n" % (newk, newvalue.replace(":","##SAFETCOLON##")) 
+				myfields =  unicode(newitem) + myfields
+				if len(firstvalue) == 0:
+					firstvalue = newvalue
+	
+	if not conffields.has_key("GeneralOptions/generaloptions.currentflowtitle"): 
+	      conffields["GeneralOptions/generaloptions.currentflowtitle"] = firstvalue
+
+	myinflow.setConffileValues(conffields)
+	myinflow.setParsValues(parsfields)
+	myoperation = myoperation + myfields
+	isgood = myinflow.toInputConsole(myoperation)
+	currtemplate = safetconfig.TEMPLATES[1]
+	response = ""
+	if isgood:
+		response  = u"%s" % (myinflow.currentJSON())
+		if response.endswith(".png"):	
+			resultstr = u"""
+<html>
+<head>
+			"""
+
+			mytitle = myinflow.currentGraphTitle();
+			if mytitle.count()>0:
+				resultstr = resultstr + "<title>%s</title>" % (mytitle)
+			else:
+				resultstr = resultstr + "<title>%s</title>" % ("Sistema Automatizado para la Firma y Estampillado de Tiempo - SAFET")
+		
+			resultstr = resultstr + """
+</head>
+<body>
+			"""
+			if mytitle.count() > 0:	
+				resultstr = resultstr +u"<h2>%s</h2></br>" % (mytitle)
+			myts = myinflow.addInfoGraphDateText()
+			if myts.count() > 0:
+				resultstr = resultstr +u"<b>%s</b></br>" % (myts)
+			resultstr = resultstr + u"<div align=\"center\"><img src=\"%s/%s\"></img></div>" % (safetconfig.MEDIA_URL,response)
+
+		elif response.endswith(".svg"):
+			resultstr = u"""
+			"""
+			mytitle = myinflow.currentGraphTitle();
+			if mytitle.count()>0:
+				resultstr = resultstr + "<title>%s</title>" % (mytitle)
+			else:
+				resultstr = resultstr + "<title>%s</title>" % ("Sistema Automatizado para la Firma y Estampillado de Tiempo - SAFET")
+			resultstr = resultstr + safetconfig.JS_SAFETPROCESSCONSOLE_HEAD
+                         
+                        resultstr = resultstr + " var svg = $('#svgload').svg({loadURL: '%s/%s',onLoad: null, settings: {changeSize: false} });" % (safetconfig.MEDIA_URL,response)
+		        resultstr = resultstr + safetconfig.JS_SAFETPROCESSCONSOLE_FUNCTIONS
+		        
+			if mytitle.count() > 0:	
+				resultstr = resultstr +u"<h2>%s</h2></br>" % (mytitle)
+		        myts = myinflow.addInfoGraphDateText()
+			if myts.count() > 0:
+				resultstr = resultstr +u"<b>%s</b></br>" % (myts)
+		        resultstr = resultstr + safetconfig.JS_SAFETPROCESSCONSOLE_BOTTOM
+
+		elif response.endswith("##SAFETMESSAGE##"):
+			response = response.replace("##SAFETMESSAGE##","")
+			currtemplate = safetconfig.TEMPLATES[2]
+		        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+              		response = response + u"<br/> <a href=\"%s\">Regresar a la Consulta</b></a>" % (selurl.replace("consola:","defconsole:operacion:")) 
+			resultstr = u"%s" % (myinflow.loadReportTemplate(response,currtemplate))
+
+			return resultstr
+		else:			
+			currtemplate = safetconfig.TEMPLATES[3]
+		        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+			#response = response + u"<br/> <a href=\"%s\">Regresar a la Consulta</b></a>" % (selurl.replace("consola:","defconsole:operacion:"))			 
+		        resultstr = u"%s" % (myinflow.loadReportTemplate(response,currtemplate,selurl))
+			return resultstr
+	else:
+		resultstr = resultstr + u"La operación  <b>NO</b> se realizó.<br/>"
+		myerror = myinflow.currentError().toLatin1().data()
+		resultstr = resultstr +  u"El error fue el siguiente:<br/>%s" % ( myerror.decode("latin_1"))
+
+	mylist = myinflow.lastInfoGraph()
+	sess['codegraph'] = mylist[0]
+	sess['dategraph'] = mylist[1]
+	sess.save()
+        resultstr = resultstr + u"<br/> <a href=\"%s\">Regresar a la Consulta</b></a>|  <a href=\"#\" id=\"savegraphbutton\" name=\"savetgraphbutton\" onClick=\"jsSaveGraph('%s')\">Guardar Grafo</a> | <a href=\"%s/%s\">Bajar archivo SVG</a>" % (selurl.replace("consola:","defconsole:operacion:"),myinflow.hostURL(),safetconfig.MEDIA_URL,response)
+	resultstr = resultstr + ""
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,currtemplate))
+ 
+	return resultstr 
+
+def safetconsautocomplete(req):
+	form = util.FieldStorage(req,keep_blank_values=1)
+	myq = unicode(form.get("q",None)).strip().lower()
+		
+	resultstr = u""
+	sess = Session.Session(req)
+	if not sess.has_key("inflow"):
+        	return u"No se iniciado la sesión"
+	if not sess['inflow']:
+        	return u'No se ha autenticado'
+
+	currerror = ""
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+	result = myinflow.login(sess['user'],sess['pass'])
+	if not result:
+		return u"Error en la validación"
+	mylist = myinflow.autoComplete(safetconfig.HOMESAFET_PATH + "/.safet/input/defconsole.xml")
+	mydict = myinflow.loadEditActions()
+
+	for k in mydict.keys():
+		nstr = unicode(k).lower()
+		if nstr.find(myq) != -1:
+			newstr = "%s|%s\n" % (k,mydict[k])
+			resultstr = resultstr + newstr
+		
+
+	return resultstr
+
+def safetformautocomplete(req):
+	form = util.FieldStorage(req,keep_blank_values=1)
+	myq = unicode(form.get("q",None)).strip().lower()
+		
+	resultstr = u""
+	sess = Session.Session(req)
+	if not sess.has_key("inflow"):
+        	return u"No se iniciado la sesión"
+	if not sess['inflow']:
+        	return u'No se ha autenticado'
+
+	currerror = ""
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+	result = myinflow.login(sess['user'],sess['pass'])
+	if not result:
+		return u"Error en la validación"
+	mylist = myinflow.autoComplete(safetconfig.HOMESAFET_PATH + "/.safet/input/deftrac.xml")
+	for n in mylist:
+		nstr = unicode(n).lower()
+		if nstr.find(myq) != -1:
+			newstr = "%s\n" % (n)	
+			resultstr = resultstr + newstr
+
+
+	return resultstr
+
+def safetprincipal(req):
+	sess = Session.Session(req)
+	#resultstr = u'<p align="center"><a href="http://localhost/intranet/login"> Entrar a <b>SAFET</b></a><br/></p><br/>'
+	resultstr = u'<p align="center"><a href="%s"> Entrar a <b>SAFET</b></a><br/></p><br/>'% (safetconfig.LOGIN_URL)
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH )
+        #myinflow.setTemplatePath("http://localhost/media/templates/")
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	#myinflow.setHostURL("http://localhost/intranet")     
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+	#resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,u"/var/www/media/templates/index.html"))
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,safetconfig.TEMPLATES[0]))
+	return resultstr
+
+
+
+def safetlogout(req):
+	sess = Session.Session(req)
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+
+#	if sess.has_key('user'):
+	myinflow.registerLogout(sess['user'])
+#	else:
+#		myinflow.log(u"No se realizo una desconexión (logout) porque no se está conectado al sistema SAFET")
+	sess.delete()
+	sess.cleanup()
+	resultstr =  u"Saliendo de la sesión...ok<p align=""center""><a href=""%s""> Entrar a <b>SAFET</b></a><br/></p><br/>" % (safetconfig.LOGIN_URL)
+
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,safetconfig.TEMPLATES[0]))
+	return resultstr
+
+def safetgoabout(req):
+	sess = Session.Session(req)
+	resultstr =  safetconfig.SAFETGOABOUT
+
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr, safetconfig.TEMPLATES[4]))
+	return resultstr
+
+
+def safetlogin(req):
+    generalform = safetconfig.SAFETLOGIN
+
+    resultstr = u""
+    sess = Session.Session(req)
+    isauth = False
+    myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+    myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+    myinflow.setHostURL(safetconfig.SERVER_URL)     
+ 
+    currtemplate = safetconfig.TEMPLATES[0]
+    if not sess.has_key("inflow"):
+	sess['inflow'] = False
+	sess.save()
+	currtemplate =  safetconfig.TEMPLATES[0]
+    if sess['inflow']:
+	generalform = u"Ya está autenticado con el usuario <b>%s</b>" % (sess['user'])
+	currtemplate =  safetconfig.TEMPLATES[4]
+    resultstr = u"%s" % (myinflow.loadReportTemplate(generalform,currtemplate))
+    
+    return resultstr
+
+
+def printlinks():
+	result = safetconfig.PRINTLINKS
+	return result
+
+def safetgologin(req):
+    sess = Session.Session(req)
+    currerror =  ""
+    form = util.FieldStorage(req,keep_blank_values=1)
+    myuser = form.get("username",None).strip()
+    mypass = form.get("password",None).strip()
+	
+    myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH) 
+    myinflow.registerLogin(myuser)
+    result = myinflow.login(myuser,mypass)
+    resultstr = u""
+    if result:
+	    sess['inflow'] = True
+	    sess['user'] = myuser
+	    sess['pass'] = mypass	    
+	    sess.save()    	
+	    resultstr = printlinks()   
+		 
+    else:
+	    resultstr = safetconfig.SAFETGOLOGIN
+	    myinflow.log(u"LOGFAIL:Falló la autenticación para \"%s\" con contraseña \"%s\"" % (myuser,mypass) )
+
+    myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+    myinflow.setHostURL(safetconfig.SERVER_URL)     
+    resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr, safetconfig.TEMPLATES[0]))
+    return resultstr
+
+def safetgoinputform(req):
+	generalform = safetconfig.HTML_SAFETGOINPUTFORM
+
+	sess = Session.Session(req)
+	
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+	if not sess.has_key('inflow'):	
+		resultstr =  u"No es posible ejecutar esta acción, ya que no se ha autenticado"
+        	resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,safetconfig.TEMPLATES[0]))
+		return resultstr 
+
+	if not sess['inflow']:
+		resultstr =  u"No es posible ejecutar esta acción, ya que la autenticación ha fallado"
+        	resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr, safetconfig.TEMPLATES[0]))
+		return resultstr 
+
+    	result = myinflow.login(sess['user'],sess['pass'])
+ 
+	resultstr = u"<nada>"
+    	if result:
+  		myinflow.setInputPath(safetconfig.HOMESAFET_PATH + "/.safet/input/deftrac.xml")
+		myinflow.setHostURL(safetconfig.SERVER_URL)     
+		resultstr = unicode(myinflow.menuCommands())
+    	else:
+		resultstr = u"Falló la autenticación"
+
+
+	resultstr = resultstr
+ 
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,safetconfig.TEMPLATES[5]))
+ 
+	return resultstr
+
+def safettests(sess):
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+	if not sess.has_key('inflow'):
+		resultstr =  u"No es posible ejecutar esta acción, ya que no se ha autenticado"
+        	resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr, safetconfig.TEMPLATES[0]))
+		return resultstr
+	if not sess['inflow']:
+        	resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr, safetconfig.TEMPLATES[0]))
+		return resultstr
+	return u""
+
+def safetgoinputconsolemenu(req):
+	generalform = u""
+	sess = Session.Session(req)
+	resultstr = safettests(sess)
+	if len(resultstr) > 0:
+		return resultstr
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+	
+    	result = myinflow.login(sess['user'],sess['pass'])
+ 
+	resultstr = u"<nada>"
+    	if result:
+  		myinflow.setInputPath(safetconfig.HOMESAFET_PATH + "/.safet/input/defconsole.xml")
+		myinflow.setHostURL(safetconfig.SERVER_URL)     
+		resultstr = unicode(myinflow.menuCommands())
+    	else:
+		resultstr = u"Falló la autenticación"
+	resultstr = resultstr 
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,safetconfig.TEMPLATES[1]))
+ 
+	return resultstr
+
+
+def safetloaddata(req):
+	sess = Session.Session(req)
+	resultstr = safettests(sess)
+	if len(resultstr) > 0:
+		return resultstr
+
+
+	
+	form = util.FieldStorage(req,keep_blank_values=1)
+	
+    	myid = form.get("id",None).strip()
+    	myop = u"%s"  % (form.get("op",None).decode("utf-8") ) 
+    	mypri =u"%s"  % (form.get("primary",None).decode("utf-8") )
+    	mymod =u"%s"  % (form.get("modname",None))
+
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+    	result = myinflow.login(sess['user'],sess['pass'])
+ 	resultstr = u""
+    	if result:
+  		myinflow.setInputPath(safetconfig.HOMESAFET_PATH + "/.safet/input/%s.xml" % (mymod))
+		myupdate = unicode(myinflow.generateModifyHTML(myop,mypri,myid))
+		#myupdate = u"inflow"
+		resultstr = myupdate
+    	else:
+		resultstr = u"Falló la autenticación"
+	return resultstr
+
+
+
+def safetgenerateform(req,selurl):
+
+	nameoperation = selurl
+	sess = Session.Session(req)
+	resultstr = safettests(sess)
+	if len(resultstr) > 0:
+		return resultstr
+
+	
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+    	result = myinflow.login(sess['user'],sess['pass'])
+
+    	if result:
+		myinflow.setHostURL(safetconfig.SERVER_URL)     
+		myinflow.setHostMediaPath(safetconfig.MEDIA_URL)
+		myinflow.setInputPath(safetconfig.HOMESAFET_PATH + "/.safet/input/deftrac.xml")
+		resultstr = unicode(myinflow.generateFormHead(selurl))	
+		resultstr = resultstr + unicode(myinflow.menuForm(selurl))
+    	else:
+		resultstr = u"Falló la autenticación"
+
+	resultstr = resultstr + unicode(myinflow.generateFormFooter(selurl))
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,safetconfig.TEMPLATES[6]))
+ 
+	return resultstr
+
+def safetgenerateconsole(req,selurl):
+	nameoperation = selurl
+	sess = Session.Session(req)
+	resultstr = safettests(sess)
+	if len(resultstr) > 0:
+		return resultstr
+
+	
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+    	result = myinflow.login(sess['user'],sess['pass'])
+	print "safetgenerateconsole1"
+    	if result:
+		myinflow.setHostURL(safetconfig.SERVER_URL)     
+		print "safetgenerateconsole2"
+		myinflow.setHostMediaPath(safetconfig.MEDIA_URL)
+		myinflow.setInputPath(safetconfig.HOMESAFET_PATH + "/.safet/input/defconsole.xml")
+		print "safetgenerateconsole3"
+		resultstr = unicode(myinflow.generateFormHead(selurl))	
+		print "safetgenerateconsole4"
+		resultstr = resultstr + unicode(myinflow.menuForm(selurl))
+    	else:
+		resultstr = u"Falló la autenticación"
+
+
+	resultstr = resultstr + unicode(myinflow.generateFormFooter(selurl))
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	print "safetgenerateconsole5"
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr, safetconfig.TEMPLATES[7]))
+	print "safetgenerateconsole6"
+ 
+       # resultstr = resultstr + unicode(myinflow.generateFormFooter(selurl))
+	return resultstr
+
+
+def safetgoinputconsole(req):
+	generalform = safetconfig.JS_SAFETGOINPUTCONSOLE
+
+	sess = Session.Session(req)
+	resultstr = safettests(sess)
+	if len(resultstr) > 0:
+		return resultstr
+
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(generalform, safetconfig.TEMPLATES[7]))
+	return resultstr
+
+
+def requestToForm(req,currerror):
+	myform = []
+	textform = req.read().decode("latin_1")
+	pattern = u'name="([a-zA-Z0-9]+)"\\s+([a-zA-Z0-9áéíóúÁÉÍÓÚñÑ_¿¡\-,;\./_][a-zA-Z0-9\\s:áéíóúÁÉÍÓÚñÑ_¿¡\-,;\./_]+)-----------------------------'
+	myform = re.findall(pattern,textform,re.MULTILINE)
+	if len(myform) == 0:
+		currerror = textform
+	return myform
+
+def safetinsert(req):
+    resultstr = u""
+    sess = Session.Session(req)
+    resultstr = safettests(sess)
+    if len(resultstr) > 0:
+		return resultstr
+  
+    currerror = ""
+    form = util.FieldStorage(req,keep_blank_values=1)
+    myoperation = form.get("inputform",None).strip()
+
+    myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+    result = myinflow.login(sess['user'],sess['pass'])
+ 
+    if result:
+  	isinserted = myinflow.toInputForm(myoperation)
+	if isinserted:
+		resultstr = resultstr + u"Se ha realizado la operación <b>correctamente</>....ok"
+	else:
+		resultstr = resultstr + u"La operación  <b>NO</b> fue realizada.<br/>"
+		myerror = myinflow.currentError().toLatin1().data()
+		resultstr = resultstr +  u"El error fue el siguiente:<br/>%s" % ( myerror.decode("latin_1"))
+    else:
+	resultstr = u"Falló la autenticación"
+
+    resultstr = resultstr + '<br/> <a href="/intranet/goinputform">Ir a Panel de Operaciones <b>SAFET</b></a>'
+    return resultstr
+
+def safetconsole(req,selurl):
+    resultstr = u""
+    sess = Session.Session(req)
+    resultstr = safettests(sess)
+    if len(resultstr) > 0:
+		return resultstr
+
+    currerror = ""
+    form = util.FieldStorage(req,keep_blank_values=1)
+    myoperation = form.get("inputform",None).decode("latin_1")
+#    myoperation = "operacion:Generar_grafico_coloreado Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujogeneral.xml"	
+    myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+    myinflow.setMediaPath(safetconfig.MEDIA_PATH)
+    result = myinflow.login(sess['user'],sess['pass'])
+ 
+    if result:
+  	isgood = myinflow.toInputConsole(myoperation.strip())
+	currtemplate = safetconfig.TEMPLATES[7]
+	if isgood:
+		response  = u"%s" % (myinflow.currentJSON())
+		if response.endswith(".png"):	
+			resultstr = u"""
+<html>
+<head>
+			"""
+
+			mytitle = myinflow.currentGraphTitle();
+			if mytitle.count()>0:
+				resultstr = resultstr + "<title>%s</title>" % (mytitle)
+			else:
+				resultstr = resultstr + "<title>%s</title>" % ("Sistema Automatizado para la Firma y Estampillado de Tiempo - SAFET")
+		
+			resultstr = resultstr + """
+</head>
+<body>
+			"""
+			if mytitle.count() > 0:	
+				resultstr = resultstr +u"<h2>%s</h2></br>" % (mytitle)
+			myts = myinflow.addInfoGraphDateText()
+			if myts.count() > 0:
+				resultstr = resultstr +u"<b>%s</b></br>" % (myts)
+			resultstr = resultstr + u"<div align=\"center\"><img src=\"%s/%s\"></img></div>" % (safetconfig.MEDIA_URL,response)
+
+		elif response.endswith(".svg"):
+			resultstr = u"""
+			"""
+			mytitle = myinflow.currentGraphTitle();
+			if mytitle.count()>0:
+				resultstr = resultstr + "<title>%s</title>" % (mytitle)
+			else:
+				resultstr = resultstr + "<title>%s</title>" % ("Sistema Automatizado para la Firma y Estampillado de Tiempo - SAFET")
+			resultstr = resultstr + safetconfig.JS_SAFETCONSOLE
+                         
+                        resultstr = resultstr + " var svg = $('#svgload').svg({loadURL: '%s/%s',onLoad: null, settings: {changeSize: false} });" % (safetconfig.MEDIA_URL, response)
+		        resultstr = resultstr + safetconfig.JS_SAFETCONSOLE_FUNCTIONS
+    
+			if mytitle.count() > 0:	
+				resultstr = resultstr +u"<h2>%s</h2></br>" % (mytitle)
+		        myts = myinflow.addInfoGraphDateText()
+			if myts.count() > 0:
+				resultstr = resultstr +u"<b>%s</b></br>" % (myts)
+		        resultstr = resultstr + safetconfig.JS_SAFETCONSOLE_BOTTOM
+
+		elif response.endswith("##SAFETMESSAGE##"):
+			response = response.replace("##SAFETMESSAGE##","")
+			currtemplate = safetconfig.TEMPLATES[8]
+		        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+              		response = response + u"<br/> <a href=\"%s\">Regresar a la Consulta</b></a>" % (selurl.replace("consola:","defconsole:operacion:")) 
+			resultstr = u"%s" % (myinflow.loadReportTemplate(response,currtemplate))
+
+			return resultstr
+		else:			
+			currtemplate = safetconfig.TEMPLATES[3]
+		        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+		        resultstr = u"%s" % (myinflow.loadReportTemplate(response,currtemplate))
+			return resultstr
+	else:
+		resultstr = resultstr + u"La operación  <b>NO</b> se realizó.<br/>"
+		myerror = myinflow.currentError().toLatin1().data()
+		resultstr = resultstr +  u"El error fue el siguiente:<br/>%s" % ( myerror.decode("latin_1"))
+
+	mylist = myinflow.lastInfoGraph()
+	sess['codegraph'] = mylist[0]
+	sess['dategraph'] = mylist[1]
+	sess.save()
+        resultstr = resultstr + u"<br/> <a href=\"%s\">Regresar a la Consulta</b></a>|  <a href=\"#\" id=\"savegraphbutton\" name=\"savetgraphbutton\" onClick=\"jsSaveGraph('%s')\">Guardar Grafo</a> | <a href=\"%s/%s\">Bajar archivo SVG</a>" % (selurl.replace("consola:","defconsole:operacion:"),myinflow.hostURL(),safetconfig.MEDIA_URL, response)
+	resultstr = resultstr + ""
+        myinflow.setTemplatePath(safetconfig.TEMPLATES_URL)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+        resultstr = u"%s" % (myinflow.loadReportTemplate(resultstr,currtemplate))
+ 
+	return resultstr 
+
+
+
+def safetlist():
+   resultstr = ""
+   return resultstr
+
+

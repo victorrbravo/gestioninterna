@@ -1,0 +1,18 @@
+digraph G {
+rankdir="TB";
+ranksep="0.5 equally";
+fontsize="12";
+DireccionEjecutiva [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="DireccionEjecutiva\nPlanilla vista_vacaciones",fillcolor="#ffffc0" ,color="black"];
+DireccionEjecutiva -> final;
+Por_usuario [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Por_usuario\nvbravo",fillcolor="#ffffc0" ,color="black"];
+Por_usuario -> Vacaciones_solicitadas;
+Solicitud_firmada [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Solicitud_firmada\nPlanilla vista_vacaciones",fillcolor="#ffffc0" ,color="black"];
+Solicitud_firmada -> DireccionEjecutiva;
+Vacaciones_solicitadas [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Vacaciones_solicitadas\nPlanilla vista_vacaciones",fillcolor="#ffffc0" ,color="black"];
+Vacaciones_solicitadas -> Solicitud_firmada;
+inicial [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
+inicial -> Por_usuario;
+final [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
+final_stats [style="dashed"  label=<Total: 0<br/>  >shape="box" fontcolor="black" fillcolor="antiquewhite"];
+final_stats -> final [style="dotted"];
+}

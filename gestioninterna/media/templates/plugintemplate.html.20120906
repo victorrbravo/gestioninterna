@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="http://seguridad.cenditel.gob.ve/safet/media/jquery-latest.js"></script>
+<script src="http://seguridad.cenditel.gob.ve/safet/media/Concurrent.Thread.js"></script>
+<link type="text/css" href="http://localhost/media/css/ui-lightness/jquery-ui-1.8.8.custom.css" rel="stylesheet" />
+<script src="http://localhost/js/jquery.ui.custom.js"></script>
+<script src="http://localhost/media/jquery.jec-1.3.1.js"></script>
+
+  <title>test page for plugin</title>
+<script type="text/javascript">
+  function plugin() {
+    return document.getElementById('plugin');
+  }
+
+  function sign() {
+    document.getElementById('errorMessage').innerHTML = '';
+    document.getElementById('errorCode').innerHTML = '0';
+    document.getElementById('signature').innerHTML = '';
+    var hash = document.getElementById('hash').value;
+    try {
+      var id = plugin().getCertificate().id;
+      document.getElementById('id').innerHTML = id;
+      var signature = plugin().sign(id, hash, { language: 'et' }); // , { language: 'et' }
+      var s = "";
+      for (var i = 0; i < signature.length; i += 64) {
+        s += signature.substr(i, 64) + "\n";
+      }
+      document.getElementById('signature').innerHTML = s;
+
+      $.post("https://seguridad.cenditel.gob.ve/safet/bdoc/finalize/"+s,{});
+    }
+    catch (e) {
+      document.getElementById('errorMessage').innerHTML = plugin().errorMessage;      
+      document.getElementById('errorCode').innerHTML = plugin().errorCode;
+    }
+  }
+
+  function createData() {
+		console.log("...createData.....(1)");
+		try {
+			$.post("https://seguridad.cenditel.gob.ve/safet/bdoc/create/testdoc", {idaction:1,content:document.getElementById('textareadoc').value,id:12,path:'<SAFETFILENAME/>'}, function(data) { document.getElementById('hash').value = data; } );
+		} catch(e) {
+			console.log("error e:" + e);
+		}
+		console.log("createData...(2)");
+
+	}
+
+  function showVersion() {
+    document.getElementById('version').innerHTML = plugin().version;
+  }
+
+  var names = ['id', 'CN', 'issuerCN', 'validFrom', 'validTo'];
+
+  function showData() {
+   
+    document.getElementById('errorMessage').innerHTML = '';
+    document.getElementById('errorCode').innerHTML = '0';
+    try {
+        var cert = plugin().getCertificate();
+        for (var i = 0; i < names.length; i++) {
+          name = names[i];
+          document.getElementById(name).innerHTML = cert[name];
+        }
+        document.getElementById('PEM').innerHTML = cert.certificateAsPEM;
+        var hex = cert.certificateAsHex; 
+        var s = "";
+        if (hex) for (var i = 0; i < hex.length; i += 64) s += hex.substr(i, 64) + "\n";
+        document.getElementById('hex').innerHTML = s;
+    }
+    catch (e) {
+        document.getElementById('errorMessage').innerHTML = plugin().errorMessage;
+        document.getElementById('errorCode').innerHTML = plugin().errorCode;
+    }
+  }
+
+  function prepareDataHtml() {
+    for (var i = 0; i < names.length; i++) {
+      name = names[i];
+      data.innerHTML += "<tr><td>" + name + ": </td><td id='" + name + "'></td>";
+    }
+	document.getElementById('textareadoc').value = document.getElementById('textareadoc').value.split('<SAFETSEPARATOR/>')[0];
+  }
+
+
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" /><title>SAFET - Operaciones</title>
+
+<link rel="stylesheet" href="<TEMPLATEPATH/>styles.css" type="text/css" /><!--
+sensa, a free CSS web template by spyka Webmaster (www.spyka.net)
+
+Download: http://www.spyka.net/web-templates/sensa/
+
+License: Creative Commons Attribution
+//--></head>
+<body onload="showVersion(); prepareDataHtml();">
+
+<div id="container">
+<table>
+<tbody><tr>	
+</tr></tbody></table><table summary="Navigation elements." border="0" cellpadding="0" cellspacing="0" width="1024">
+<tbody><tr>
+<td width="1024">
+<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="1024">
+	<tbody><tr>
+	<td align="left" valign="bottom" width="35"><img src="<TEMPLATEPATH/>images/bandera.png" height="58" width="50" /></td>
+	<td align="left" valign="bottom" width="169"><img src="<TEMPLATEPATH/>images/fir_gob.png" height="58" width="169" /></td>
+	<td align="left" valign="bottom" width="15"><img src="<TEMPLATEPATH/>images/barra.png" height="58" width="15" /></td>
+	<td style="font-size: 14px; color: rgb(109, 110, 110); font-family: Arial,Helvetica,sans-serif; text-decoration: none; letter-spacing: -0.5px; line-height: 1em;" align="left" valign="middle" width="500"><br />Ministerio del Poder Popular para <span style="font-size: 14px; color: rgb(77, 77, 77); font-family: Arial,Helvetica,sans-serif; text-decoration: none; font-weight: bold; letter-spacing: -0.5px; line-height: 1em;">Ciencia, Tecnología e Industrias Intermedias</span>
+	</td>
+	<td align="left" valign="bottom" width="15"><img src="<TEMPLATEPATH/>images/barra.png" height="58" width="15" /></td>
+
+	<td style="font-size: 14px; color: rgb(109, 110, 110); font-family: Arial,Helvetica,sans-serif; text-decoration: none; letter-spacing: -0.5px; line-height: 1em;" align="left" valign="middle" width="450"><br />Fundación Centro Nacional de <span style="font-size: 14px; color: rgb(77, 77, 77); font-family: Arial,Helvetica,sans-serif; text-decoration: none; font-weight: bold; letter-spacing: -0.5px; line-height: 1em;">Desarrollo e Investigación en Tecnologías Libres</span>
+</td>
+	<td align="left" valign="bottom" width="250">&nbsp;</td>
+	<td align="right" valign="bottom" width="68"><img src="<TEMPLATEPATH/>images/200g.png" /></td>
+	</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<div align="right" style="float: right; border: 1px solid black; width: 250px;color:#FFFFF0;" ></div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>	
+   <div id="nav"> <MODULESMENU/> </div>
+</td>
+<td>
+ <span style="font-style: italic; font-family: Georgia, 'Times New Roman', Times, serif; margin: 0; color:#fff; height: 1%; width: 50%;"> <SAFETCURRENTACCOUNT/> </span>
+</td>
+</tr>
+</table>
+    <div id="sub-header">
+		<h2>SAFET - Firma Electr&oacute;nica  <br />
+</h2>
+    </div>
+<br/>
+ <style type="text/css">
+a {
+	font-size: 16px;
+	color: #63915c;
+	font-family: Verdana, Tahoma, Sans-Serif;
+}
+a:link {text-decoration: none}
+a:visited {text-decoration: none}
+a:active {text-decoration: none}
+a:hover {text-decoration: none; color: #38722f ;}
+</style>
+
+<iframe src="http://docs.google.com/gview?url=http://seguridad.cenditel.gob.ve/safet/media/testgen.pdf&embedded=true" style="width:800px; height:500px;" frameborder="0"></iframe>
+
+	<p> </p> 
+	 
+       <p align="center">
+        <textarea name="textareadoc"  id="textareadoc" cols=40 rows=6>   <SAFET/> </textarea>
+
+
+</p>
+
+
+<object id="plugin" type="application/x-digidoc" width="1" height="1"></object>
+<br/>
+
+Plug-in version: <span id="version"></span>
+
+<br/>
+<br/>
+
+hash: <input type="text" size="80" maxlength="128" id="hash" name="hash" value="26fd6dbee37c55c14af480f00daff8817b61967e">
+<input type="button" onclick="javascript:sign()" value="sign"/>
+<br/>
+<pre id="signature"></pre>
+
+<br/>
+<br/>
+
+<iframe src="http://seguridad.cenditel.gob.ve/safet/media/pagina.html"
+width="80%" height="500"
+align="center">
+<p>Archivo a firmar</a>.</p>
+</iframe>
+
+
+<a href="#" onclick="javascript:showData()">show data</a> <br/><br/>
+<input type="button"  onclick="createData()" value="Create Data" />
+
+<table id="data"></table>
+<div>errorMessage: <span id="errorMessage"></span></div>
+<div>errorCode: <span id="errorCode"></span></div>
+
+<div>PEM:</div>
+<pre id="PEM"></pre>
+
+<div>DER in hex:</div>
+<pre id="hex"></pre>
+
+<br />
+<br />
+						
+        
+</div>
+ <div id="footer">
+      <div class="footer-content">
+
+        <div class="footer-box">
+ <h4>Acerca de nuestro sitio</h4>
+
+            <p>
+Sistema que contribuyendo a la planificación de actividades en el
+desarrollo de los proyectos. Permite automatizar los procesos que se
+llevan acabo en los proyectos, gestionar flujos de trabajos con la
+incorporación de herramientas como la firma electrónica y estampado de
+tiempo </p>
+        </div>
+        
+        <div class="footer-box">
+            <h4>CENDITEL</h4>
+
+            <ul>
+              <li><a href="http://www.cenditel.gob.ve/QuienesSomos">¿Quienés somos?</a></li>
+              <li><a href="http://www.cenditel.gob.ve/ComoLoHaremos">¿Cómo lo haremos?</a></li>
+              <li><a href="http://www.cenditel.gob.ve/Mision">¿Cual es nuestra misión?</a></li>
+              <li><a href="http://www.cenditel.gob.ve/QueQueremos">¿Qué queremos?</a></li>
+              <li><a href="http://www.cenditel.gob.ve/CualEsElImpacto">¿Cuál es el impacto?</a></li>
+
+            </ul>
+        </div>
+        
+        <div class="footer-box">
+
+            <h4>Proyecto SAFET</h4>
+            <ul>
+                <li><a href="http://wiki.cenditel.gob.ve/wiki/safet" title="spyka Webmaster resources">Wiki</a></li>
+                <li><a href="http://seguridad.cenditel.gob.ve/safet" title="Gestor del Proyecto SAFET">Gestor del proyecto (Trac)</a></li>	
+        </ul></div>
+        
+        <div class="footer-box end-footer-box">
+            <h4>Busque en nuestro sitio</h4>
+
+            <form action="#" method="get">
+                <p>
+                    <input id="searchquery" size="18" name="searchterm" type="text" />
+
+                    <input id="searchbutton" value="Buscar" class="formbutton" type="submit" />
+                </p>
+            </form>
+        </div>     
+        <div class="clear" /> 
+    </div>
+   <table style="border: 2px solid rgb(255, 255, 255);" width="1024">
+<tbody><tr>
+<td align="center">FUNDACIÓN CENTRO NACIONAL DE DESARROLLO E
+INVESTIGACIÓN EN TECNOLOGÍAS LIBRES (CENDITEL) Avenida Alberto
+Carnevali, vía La Hechicera, Edificio CENDITEL. Teléfono: (0274)6574336
+- 6574958. Apartado Postal: 078. Código Postal: 5101A. RIF:
+G-20007349-7. Mérida-Venezuela
+</td></tr></tbody></table> 
+</div>
+</body></html>

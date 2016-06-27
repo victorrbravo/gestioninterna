@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Elementos y Eventos &mdash; editFlowDoc v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="editFlowDoc v0.1 documentation" href="index.html" />
+    <link rel="up" title="Secciones de la Interfaz Gráfica" href="secciones.html" />
+    <link rel="next" title="Ejemplo paso a paso" href="ejemplo.html" />
+    <link rel="prev" title="Secciones de la Interfaz Gráfica" href="secciones.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="ejemplo.html" title="Ejemplo paso a paso"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="secciones.html" title="Secciones de la Interfaz Gráfica"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="index.html">editFlowDoc v0.1 documentation</a> &raquo;</li>
+          <li><a href="secciones.html" accesskey="U">Secciones de la Interfaz Gráfica</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="elementos-y-eventos">
+<h1>Elementos y Eventos<a class="headerlink" href="#elementos-y-eventos" title="Enlazar permanentemente con este título">¶</a></h1>
+<ul>
+<li><p class="first"><strong>Tarea:</strong> Este elemento permite describir el contenido de una tarea</p>
+<img alt="_images/tarea_menu.png" src="_images/tarea_menu.png" />
+<p></p>
+<img alt="_images/tarea.png" src="_images/tarea.png" />
+</li>
+<li><p class="first"><strong>Conexión:</strong> Este elemento permite interconectar tareas entre ellas y con las condiciones inicial y final.</p>
+<img alt="_images/conec_menu.png" src="_images/conec_menu.png" />
+<p></p>
+<img alt="_images/conexion.png" src="_images/conexion.png" />
+</li>
+<li><p class="first"><strong>Variable:</strong> Este elemento permite asociar información de una variable a una tarea, cada tarea debe tener asociado como mínimo una variable. El terminal de conexión de la variable se debe conectar con el terminal que se encuentra en la parte superior de la tarea.</p>
+<img alt="_images/var_menu.png" src="_images/var_menu.png" />
+<p></p>
+<img alt="_images/variable.png" src="_images/variable.png" />
+</li>
+<li><p class="first"><strong>Autofiltro</strong> Este elemento permite asociar información de los autofiltros de  una tarea. El terminal superior de conexión del autofiltro se debe conectar con el terminal que se encuentra en la parte superior de la tarea, y el terminal inferior  del autofiltro se debe conectar de la misma forma con la tarea &#8220;Source&#8221; del autofiltro.</p>
+<img alt="_images/fil_menu.png" src="_images/fil_menu.png" />
+<p></p>
+<img alt="_images/filtro.png" src="_images/filtro.png" />
+</li>
+<li><p class="first"><strong>Enlaces:</strong> los enlaces son una especie de cables que permiten conectar a través de los terminales los ditintos elementos que se encuentren en el área de diagrama.</p>
+<img alt="_images/wire.png" src="_images/wire.png" />
+</li>
+<li><p class="first"><strong>Partes Comunes de los elementos:</strong> Los elementos tienen ciertas partes que son comunes para todos:</p>
+<ul class="simple">
+<li><em>Barra de Titulo:</em> la barra de título se encuentra en la parte superior de la caja que compone la estructura de cada elemento, allí se encuentra el nombre del elemento y en el caso de una tarea es sustituido por el texto que se encuentre en el campo Id. Manteniendo pulsado el botón izquierdo del ratón sobre esta zona es posible arrastrar los elementos de una posición a otra.</li>
+<li><em>Botón de clonación:</em> en la barra de título se encuentra un botón representado por una imagen con dos hojas superpuestas que permite duplicar exactamente igual el contenido de una tarea sin sus conexiones, al hacer clic sobre él se generará una copia exacta de ese elemento y se ubicará en la esquina superior izquierda del área de diagrama.</li>
+<li><em>Botón de eliminar:</em> en la barra de título del lado derecho también se encuentra un botón representado con una X que permite eliminar del área de diagrama cualquier elemento.</li>
+<li><em>Campo de Color:</em> este campo se encuentra al final del listado de campos de todos elementos, al hacer clic en este se despliega una paleta de colores que permite seleccionar el color que queremos darle al elemento.</li>
+</ul>
+<img alt="_images/tarea_completa.png" src="_images/tarea_completa.png" />
+</li>
+<li><p class="first"><strong>Evento Inicial:</strong> el evento inicial representa el punto de inicio de los flujos de trabajo, es cargado por defecto en el área de diagrama y no es posible eliminarlo ya que todo flujo debe tener uno.</p>
+<img alt="_images/inicio.png" src="_images/inicio.png" />
+</li>
+<li><p class="first"><strong>Evento Final:</strong> el evento final representa el punto final de los flujos de trabajo, es cargado por defecto en el área de diagrama y no es posible eliminarlo ya que todo flujo debe tener uno.</p>
+<img alt="_images/final.png" src="_images/final.png" />
+</li>
+</ul>
+</div>
+<div class="section" id="propiedades">
+<h1>Propiedades<a class="headerlink" href="#propiedades" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Las propiedades de un flujo se encuentran en el panel derecho de la interfaz.</p>
+<ul class="simple">
+<li><strong>Id:</strong> en este campo se debe introducir el identificador del flujo. Con este mismo nombre será almacenado el flujo al guardarlo.</li>
+<li><strong>Descripción:</strong> aquí se debe colocar una descripción acerca del flujo que se va a diagramar.</li>
+<li><strong>Key y KeySource:</strong> estos dos campos describen parámetros del flujo.</li>
+<li><strong>Conexión Automática:</strong> permite activar o desactivar la conexión automática de elementos, por ejemplo si está activo al agregar un elemento &#8220;Tarea&#8221; se conecta  automáticamente un elemento &#8220;Variable&#8221; y un elemento &#8220;Conexión&#8221; para la &#8220;Tarea&#8221; siguiente.</li>
+</ul>
+<img alt="_images/propiedades.png" src="_images/propiedades.png" />
+</div>
+<div class="section" id="barra-de-menu">
+<h1>Barra de Menú<a class="headerlink" href="#barra-de-menu" title="Enlazar permanentemente con este título">¶</a></h1>
+<ul class="simple">
+<li><strong>Nuevo:</strong> permite limpiar el área de diagrama para crear un nuevo flujo, los unicos elementos que no son removidos son las condiciones inicial y final.</li>
+<li><strong>Abrir:</strong> permite mostrar el listado de flujos que han sido guardados anteriormente en el computador para poder seleccionar uno y cargarlo en la interfaz.</li>
+<li><strong>Guardar:</strong> permite almacenar el flujo que se encuentre en el área de diagrama en el computador y posteriormente poder cargarlo. Para almacenar un flujo los campos de ciertas propiedades deben estar llenos (Id, Key y KeySource). Si alguno de ellos no lo está la aplicación nos alertará con un mensaje.</li>
+<li><strong>Eliminar:</strong> esta opción permite eliminar el flujo que se encuentre en ese momento cargado en la interfaz. Después de esta acción no se podrá recuperar la información de este flujo.</li>
+<li><strong>Formato JSON:</strong> este botón permite  convertir el flujo que tengamos dibujado en el área de diagrama en un archivo en formato JSON (este formato permite conservar la ubicación de los elementos en el área de diagrama).</li>
+<li><strong>Formato InFlow:</strong> este botón nos da la opción de convertir el flujo que tengamos dibujado en el área de diagrama en un archivo en formato XML que puede ser utilizado como entrada de la aplicación inFlow para su análisis.</li>
+<li><strong>Cargar JSON:</strong> con esta opción podremos cargar flujos que tengamos en formato JSON,que previamente hayan sido generados con editFlow.</li>
+<li><strong>Cargar XML:</strong>  permite  cargar al igual que en la opción anterior flujos  en XML en formato inFlow, con la diferencia de que este formato no conserva la ubicación de los elementos del flujo en el área de diagrama.</li>
+<li><strong>Ayuda:</strong> permite ingresar a este documento de ayuda.</li>
+</ul>
+<img alt="_images/barra_menu.png" src="_images/barra_menu.png" />
+</div>
+<div class="section" id="area-de-diagrama">
+<h1>Area de Diagrama<a class="headerlink" href="#area-de-diagrama" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Esta área esta compuesta por una especie de lienzo de color blanco en donde pueden ser colocados los distintos elementos que componen un flujo y conectarse entre ellos hasta armar la configuración requerida.</p>
+<img alt="_images/diagrama.png" src="_images/diagrama.png" />
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+            <h3><a href="index.html">Contenidos</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Elementos y Eventos</a></li>
+<li><a class="reference external" href="#propiedades">Propiedades</a></li>
+<li><a class="reference external" href="#barra-de-menu">Barra de Menú</a></li>
+<li><a class="reference external" href="#area-de-diagrama">Area de Diagrama</a></li>
+</ul>
+
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="secciones.html"
+                                  title="Capítulo anterior">Secciones de la Interfaz Gráfica</a></p>
+            <h4>Próximo tema</h4>
+            <p class="topless"><a href="ejemplo.html"
+                                  title="Próximo capítulo">Ejemplo paso a paso</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/elementos.txt"
+                     rel="nofollow">Enseñar el código</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Búsqueda rápida</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Ir a" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="ejemplo.html" title="Ejemplo paso a paso"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="secciones.html" title="Secciones de la Interfaz Gráfica"
+             >anterior</a> |</li>
+        <li><a href="index.html">editFlowDoc v0.1 documentation</a> &raquo;</li>
+          <li><a href="secciones.html" >Secciones de la Interfaz Gráfica</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, FUNDACIÓN CENTRO NACIONAL DE DESARROLLO E INVESTIGACIÓN DE TECNOLOGÍAS LIBRES (CENDITEL).
+      Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
+    </div>
+  </body>
+</html>

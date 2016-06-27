@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ejemplo paso a paso &mdash; editFlowDoc v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="editFlowDoc v0.1 documentation" href="index.html" />
+    <link rel="prev" title="Elementos y Eventos" href="elementos.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="elementos.html" title="Elementos y Eventos"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="index.html">editFlowDoc v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ejemplo-paso-a-paso">
+<h1>Ejemplo paso a paso<a class="headerlink" href="#ejemplo-paso-a-paso" title="Enlazar permanentemente con este título">¶</a></h1>
+<ol class="arabic simple">
+<li>Para comenzar a escribir un nuevo flujo de trabajo debemos seleccionar la opción del menú &#8220;Nuevo&#8221;, esto limpiará el área de diagrama y dejará solo los elementos necesarios para comenzar a realizar la construcción del flujo.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso1.png" src="_images/paso1.png" />
+</blockquote>
+<ol class="arabic simple" start="2">
+<li>Arrastramos desde el panel lateral izquierdo un elemento de tipo tarea y lo soltamos sobre el área de diagrama en una posición favorable para poderlo conectar con el evento inicial, luego enlazamos el  elemento de conexión asociado al evento con el terminal de entrada de la tarea que acabamos de crear.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso2.png" src="_images/paso2.png" />
+</blockquote>
+<ol class="arabic simple" start="3">
+<li>Desplegamos los campos de todos los elementos que actualmente se encuentran en el área haciendo clic en &#8220;Detalles...&#8221; para poder editar el contenido de cada uno de ellos. Y agregamos la información mostrada en la imagen.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso3.png" src="_images/paso3.png" />
+</blockquote>
+<ol class="arabic simple" start="4">
+<li>Además es posible cambiar el color de los elementos del flujo, para esto usamos el ultimo campo de cualquiera de los elementos y seleccionamos el color que queremos darle. Se recomienda utilizar colores claros.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso4.png" src="_images/paso4.png" />
+</blockquote>
+<ol class="arabic simple" start="5">
+<li>Agregamos dos tareas mas para conectarlas con la tarea &#8220;Nuevo&#8221;, además como en esta tarea solo tenemos un elemento de conexión asociado necesitamos agregar otro y asociarlo para conectar ambas tareas nuevas al mismo terminal y debemos también seleccionar en el combobox que se encuentra al lado del terminal la opción &#8220;or&#8221; en este caso para que puedan crearse mas de un enlace.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso5.png" src="_images/paso5.png" />
+</blockquote>
+<ol class="arabic simple" start="6">
+<li>Ahora nuevamente  haciendo clic en &#8220;Detalles...&#8221; podemos contraer los elementos para que ocupen menos espacio en el área de diagrama y además los ubicamos de una manera que pueda ser mas comprensible a la vista. Entonces en el flujo vemos que después de que un ticket es recibido (Nuevo), puede tomar dos estados &#8220;FaltaInfo&#8221; o &#8220;Aceptado&#8221;, después de pasar por &#8220;faltaInfo&#8221; debe pasar igualmente por el estado &#8220;Aceptado&#8221; y continuar en el flujo.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso6.png" src="_images/paso6.png" />
+</blockquote>
+<ol class="arabic simple" start="7">
+<li>A este nivel se hace necesario que guardemos la información que llevamos agregada en la aplicación para evitar perderla por algún inconveniente. Para esto solo debemos completar los campos Id, Key y KeySource de la sección de propiedades. Una vez hecho esto hacemos clic sobre la opción del menú &#8220;Guardar&#8221; y el flujo se habrá guardado usando como nombre el Id.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso7-1.png" src="_images/paso7-1.png" />
+</blockquote>
+<p></p>
+<blockquote>
+<img alt="_images/paso7-2.png" src="_images/paso7-2.png" />
+</blockquote>
+<p></p>
+<blockquote>
+<img alt="_images/paso7-3.png" src="_images/paso7-3.png" />
+</blockquote>
+<ol class="arabic simple" start="8">
+<li>Para cargar un flujo de trabajo simplemente debemos hacer clic en la opción &#8220;Abrir&#8221;, esto nos desplegará un listado con los nombres de los flujos que tenemos guardados. Podremos hacer clic en cualquiera de ellos para cargar el flujo correspondiente. Después de haber sido cargado este flujo puede ser modificado, guardado nuevamente e incluso puede ser eliminado utilizando la opción &#8220;Eliminar&#8221; del menú (Para poder eliminar un flujo debe ser primero cargado en la interfaz).</li>
+</ol>
+<blockquote>
+<img alt="_images/paso8-1.png" src="_images/paso8-1.png" />
+</blockquote>
+<p></p>
+<blockquote>
+<img alt="_images/paso8-2.png" src="_images/paso8-2.png" />
+</blockquote>
+<p></p>
+<blockquote>
+<img alt="_images/paso8-3.png" src="_images/paso8-3.png" />
+</blockquote>
+<ol class="arabic simple" start="9">
+<li>Agregamos una nueva tarea para finalizar el flujo.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso9.png" src="_images/paso9.png" />
+</blockquote>
+<ol class="arabic simple" start="10">
+<li>Ahora agregamos un autofiltro, el autofiltro posee dos terminales. El terminal superior se debe enlazar con el terminal asociativo (superior) de la tarea con la que está relacionado y el terminal inferior (source) se debe enlazar con el terminal superior de la tarea &#8220;Source&#8221; del autofiltro. Después de esto guardamos nuevamente nuestro flujo.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso10.png" src="_images/paso10.png" />
+</blockquote>
+<ol class="arabic simple" start="11">
+<li>En este punto estamos listos para generar nuestro archivo XML que servirá como fuente de entrada al sistema inFlow para su análisis. Solo debemos hacer clic sobre la opción &#8220;Formato inFlow&#8221; del menú, si existe algún error en el flujo el sistema nos alertará y debemos arreglarlo para poder generarlo.</li>
+</ol>
+<blockquote>
+<img alt="_images/paso11-1.png" src="_images/paso11-1.png" />
+</blockquote>
+<p></p>
+<blockquote>
+<img alt="_images/paso11-2.png" src="_images/paso11-2.png" />
+</blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="elementos.html"
+                                  title="Capítulo anterior">Elementos y Eventos</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/ejemplo.txt"
+                     rel="nofollow">Enseñar el código</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Búsqueda rápida</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Ir a" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="elementos.html" title="Elementos y Eventos"
+             >anterior</a> |</li>
+        <li><a href="index.html">editFlowDoc v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, FUNDACIÓN CENTRO NACIONAL DE DESARROLLO E INVESTIGACIÓN DE TECNOLOGÍAS LIBRES (CENDITEL).
+      Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
+    </div>
+  </body>
+</html>

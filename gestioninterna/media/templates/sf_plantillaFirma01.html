@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<script language="javascript"> 
+var safettitle = "";
+var safetlistcount = 0;
+document.write('<title>'+'SAFET - Documento firmado' +'</title>');
+</script>
+
+<script>
+
+<SAFETCODE/>
+
+function cargar() {
+	document.getElementById("divbody").innerHTML=  
+
+"Identificador del acta:<b>"+ safetlist[0].id + "</b><br/>" +
+"Descripci&oacute;n del acta:<b>"+ safetlist[0].descripcion + "</b><br/>" +
+// "Fecha de la convocatoria:<b>"+ safetlist[0].cargo + "</b><br/>" +
+"Fecha de la reuni&oacute;n del  Consejo Directivo:<b>"+ safetlist[0].fecha_reunion + "</b><br/>" +
+"Documento (acta): <a href='"+ safetlist[0].archivo_acta + "'>Descargar</a> <br/>";
+ 
+
+  if (safetsigners.length == 0 ) { 
+        document.getElementById("divfooter").innerHTML= "Este Documento NO Contiene firmas electr&oacute;nicas";
+	return;
+  }
+  var allsigners = "<br/><table width=\"100%\" id=\"newspaper-a\" border=\"1\" style=\"border: 1px solid black; border-collapse:collapse;font-family:verdana,arial,san-serif;font-size:11px;\">\n";
+
+  for(i=0; i < safetsigners.length; i++) {
+		var myvalidation = safetsigners[i].typevalid;
+
+		if ( safetsigners[i].typevalid == "Valida" ) {
+	            myvalidation = "<b>V&aacute;lida</b>";
+		}
+		else if ( safetsigners[i].typevalid == "Invalida" ) {
+		   myvalidation = "NO v&aacute;lida"; 
+		}
+                allsigners = allsigners + "<tr><td><img src=\"http://chart.apis.google.com/chart?chs=100x100&chd=t:90,10&cht=qr&chl="+"http://localhost/media/<SAFETFILENAME/>"+"\"></img></td><td>Nombre Com&uacute;n<br/> <b>"+safetsigners[i].commonName+"</b></td><td>Emisor del Certificado<br/><b>"+safetsigners[i].issuer +"</b></td><td>Lugar de la firma<br/><b>"+safetsigners[i].location+"</b></td><td>Fecha y hora<br/> <b>"+safetsigners[i].date+" "
+		+safetsigners[i].hour+"</b></td>"
+			+"<td>Validaci&oacute;n<br/><b>"+myvalidation +"  </td></tr>";
+
+
+/*                allsigners = allsigners + "<tr><td>"+safetsigners[i].commonName+"</td><td>"+safetsigners[i].date+" "
+		+safetsigners[i].hour+"</td><td> "+safetsigners[i].location+"</td><td>"
+		+"<img src=\"http://chart.apis.google.com/chart?chs=177x177&chd=t:90,10&cht=qr&chl="+safetsigners[i].hexsign+"\"></img>"
+			+"</td></tr>";*/
+
+        }
+        allsigners = allsigners + "</table>";
+
+        document.getElementById("divfooter").innerHTML= allsigners;
+
+
+}
+
+</script>
+</head>
+<p>
+ <img src="http://www.cenditel.gob.ve/themes/cenditel1012/images/cabecera.jpg" /> 
+
+</p>
+<body onload="cargar()">
+<h1 style="font-family:verdana,arial,san-serif;font-size:28px;" >Acta del Consejo Directivo CENDITEL</h2>
+<h2 style="font-family:verdana,arial,san-serif;font-size:20px;">Informaci&oacute;n sobre acta de reuni&oacute;n efectuada por los consejeros</h2>
+
+<br/>
+
+<div id='divbody' style="font-family:verdana,arial,san-serif;font-size:14px;"  > </div>
+
+<br/>
+<div id="divfooter">Firmas</div>
+
+</body>
+</html>
+

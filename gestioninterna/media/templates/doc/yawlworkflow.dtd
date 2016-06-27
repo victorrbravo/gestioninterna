@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : yawlworkflow.dtd
+    Created on : 22 de enero de 2008, 15:46
+    Author     : vbravo
+    Description:
+        Una definicion para gestionar archivos de flujos de trabajo (workflow)
+        con el lenguaje YAWL (Yet Another Workflow Language) 
+        http://www.yawl-system.com dentro del proyecto SAFET :
+        Sistema Automatizado para Firma Electronica y Estampillado de Tiempo
+
+    TODO define vocabulary identification data
+    PUBLIC ID  : -//vendor//vocabulary//EN
+    SYSTEM ID  : http://server/path/yawlworkflow.dtd
+-->
+
+<!-- TODO define your own vocabulary/syntax. Example follows:  -->
+<!ELEMENT yawl (workflow,configuration+)>
+<!ATTLIST yawl
+version  CDATA #REQUIRED> <!-- must be "0.01"> -->
+<!ELEMENT workflow ((task|compositetask|variable|condition)*,token)>
+<!ELEMENT token (#PCDATA) >
+<!ATTLIST token     key CDATA #REQUIRED                    
+                    description CDATA #IMPLIED
+                    type (sql|file|webpage) "sql"
+                    config CDATA #IMPLIED
+                    keysource CDATA #REQUIRED>
+<!ELEMENT configuration (#PCDATA) >
+<!ATTLIST configuration  id CDATA #REQUIRED
+                         connectstring CDATA #REQUIRED>
+<!ATTLIST workflow  id CDATA #REQUIRED
+                    desc CDATA #IMPLIED>
+<!ELEMENT task (variable|port|autofilter)*>
+<!ATTLIST task id CDATA #REQUIRED 
+               title  CDATA #IMPLIED
+               multiplicity (unique|multiple) "unique"
+          type (atomic|composite) "atomic"
+          report (yes|no) "no"  >
+<!ELEMENT compositetask (workflow)>
+<!ELEMENT variable (document*)>
+<!ATTLIST variable  id CDATA #REQUIRED 
+                    tokenlink CDATA #IMPLIED
+                    description CDATA #IMPLIED
+                    scope (net|task) "net"
+                    type (sql|file|webpage) "sql"
+                    usage (input|output|inout) "input"
+                    config CDATA #IMPLIED
+                    source CDATA #IMPLIED
+                    documentsource CDATA #REQUIRED>
+<!ELEMENT document (#PCDATA)  >
+<!ATTLIST document  key CDATA #REQUIRED>
+<!ELEMENT connection (#PCDATA) >
+<!ATTLIST connection source  CDATA #IMPLIED
+		     query CDATA #IMPLIED
+		     options CDATA #IMPLIED
+		     tokenlink CDATA #IMPLIED>					 
+<!ELEMENT port (connection+) >
+<!ELEMENT autofilter (#PCDATA) >
+<!ATTLIST autofilter id CDATA #REQUIRED 
+		side (bottom|down|up|forward) "forward"
+	       source  CDATA #REQUIRED
+               type (join|split)  #REQUIRED
+               query  CDATA #REQUIRED
+               options  CDATA #IMPLIED		
+               tokenlink  CDATA #IMPLIED
+               pattern (none|and|or|xor) "or"
+               report (yes|no) "no"  >
+<!ATTLIST port side (bottom|down|up|forward) #REQUIRED
+               type (join|split)  #REQUIRED
+               query  CDATA #IMPLIED
+               tokenlink  CDATA #IMPLIED
+               options  CDATA #IMPLIED
+               drop    CDATA #IMPLIED  
+	       config CDATA #IMPLIED
+               pattern (none|and|or|xor) "none">
+<!ELEMENT condition (port+) >
+<!ATTLIST condition id CDATA #REQUIRED
+                    type (start|end|inprocess) "inprocess"
+            report (yes|no) "no"  >
+<!ELEMENT taskid (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT link (#PCDATA)>
+<!ELEMENT source (#PCDATA)>
+<!ELEMENT connectstring (#PCDATA)>
+<!ELEMENT parameter (#PCDATA)>
+

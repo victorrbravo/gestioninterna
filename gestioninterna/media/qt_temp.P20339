@@ -1,0 +1,31 @@
+digraph G {
+rankdir="TB";
+ranksep="0.5 equally";
+fontsize="12";
+Por_usuario [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Por_usuario\ntodas",fillcolor="#ffff99" ,color="black"];
+Por_usuario -> Talento_humano;
+Por_usuario_stats [style="dashed"  label=<abecerra <br/>14/08/2014 10:01am<br/>hace 16 minutos  llego<br/>n/a>shape="box" fontcolor="black" fillcolor="antiquewhite"];
+Por_usuario_stats -> Por_usuario [style="dotted"];
+Archivar_solicitud_procesada [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Archivar_solicitud_procesada\nsolicitud_archivada",fillcolor="#ffffff" ,color="black"];
+Archivar_solicitud_procesada -> final;
+DireccionEjecutiva [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="DireccionEjecutiva\nPlanilla vista_vacaciones",fillcolor="#ffffff" ,color="black"];
+DireccionEjecutiva -> Presidencia;
+Firmada_direccion [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Firmada_direccion\nfirmada_YV",fillcolor="#ffffff" ,color="black"];
+Firmada_direccion -> final;
+Firmada_presidencia [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Firmada_presidencia\nfirmada_JJ",fillcolor="#ffffff" ,color="black"];
+Firmada_presidencia -> final;
+Firmada_talento [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Firmada_talento\nfirmada_EE",fillcolor="#ffffff" ,color="black"];
+Firmada_talento -> final;
+Presidencia [style=filled,image="cloud.ps", fontname="Helvetica", shape=Mrecord, label="{ Presidencia\nAprobacion del Presidente | or}",fillcolor="#ffffff" ,color="black"];
+Presidencia -> Archivar_solicitud_procesada;
+Presidencia -> Firmada_talento;
+Presidencia -> Firmada_direccion;
+Presidencia -> Firmada_presidencia;
+Talento_humano [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Talento_humano\nPlanilla vista_vacaciones",fillcolor="#ffff80" ,color="black"];
+Talento_humano -> DireccionEjecutiva;
+inicial [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
+inicial -> Por_usuario;
+final [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
+final_stats [style="dashed"  label=<Suma total: 0%<br/>  >shape="box" fontcolor="black" fillcolor="antiquewhite"];
+final_stats -> final [style="dotted"];
+}
