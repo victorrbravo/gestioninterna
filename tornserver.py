@@ -104,6 +104,16 @@ def resetpass(selurl):
 
 
 
+
+class GoRegisterHandler(tornado.web.RequestHandler):
+    def get(self):            
+        resultstr = safetconfig.SAFETREGISTER
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
+
+        self.write(loader.load("register.html").generate())
+
+
+
 def resendPassword(myaccount,mylist):
     currerror =  ""
     myuser = "comprador"
@@ -778,7 +788,8 @@ class LoginHandler(tornado.web.RequestHandler):
 
     def goPanel(self):
 	 print "LoginHandler................redirigiendo........"
-	 self.redirect("/gopanel/Published/none/none/0")	
+#	 self.redirect("goform/addgeneric/agregar_Alumno/0")	
+	 self.redirect("goform/addgeneric/Generar_solicitud_vacaciones/0")	
 	 return
 #        mypubs = []
  #       mypubs.append({ "summary": "Venta 2"})
@@ -825,7 +836,9 @@ class GoLoginHandler(tornado.web.RequestHandler):
         #self.write(loader.load("login.html").generate(mymessage=False))
   
 	if True:
-		self.redirect("/goform/addgeneric/agregar_representante_legal/0")		    
+		print "Ingresando a GoLoginHandler....1"
+
+		self.redirect("goform/addgeneric/Generar_solicitud_vacaciones/0")		    
 		return
       
 
@@ -886,7 +899,11 @@ class LegacyLoadDataHandler(tornado.web.RequestHandler):
 
         myfs = u"%s"  % (self.get_argument("formstring") )
         
-        print ".....LegacyLoadDataHandler.........4"
+        print ".....LegacyLoadDataHandler.........4...myid:|%s|"  % (myid)
+        print ".....LegacyLoadDataHandler.........4...op:|%s|"  % (myop)
+        print ".....LegacyLoadDataHandler.........4...mypri:|%s|"  % (mypri)
+        print ".....LegacyLoadDataHandler.........4...mymod:|%s|"  % (mypri)
+        
        
        #myother = u"%s"  % (self.get_argument("formkey").decode("utf-8") ) 
 
@@ -903,9 +920,13 @@ class LegacyLoadDataHandler(tornado.web.RequestHandler):
         for f in myfs.split("\n"):
              if len(f) > 0:
                  myform.append(f)
+        print ".....LegacyLoadDataHandler.........7"         
+        
         myupdate = unicode(myinflow.generateModifyHTML(myop,mypri,myid, myother,myform))
         
         print ".....LegacyLoadDataHandler.........6"    
+        print "*********myupdate....:|%s|"  % (myupdate)
+        
         print "*********myupdate: len:%d"  % (len(myupdate))
         self.write(myupdate)
         
@@ -1408,6 +1429,65 @@ class GoFormHandler(tornado.web.RequestHandler):
 		print e
        
 
+class LogoutHandler(tornado.web.RequestHandler):
+    def get(self):
+        #print "Logout"
+        self.clear_cookie("user")
+        self.clear_cookie("pass")
+        self.clear_cookie("ticket")
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
+        self.write(loader.load("login.html").generate(mymessage=False))
+
+
+	
+class GoLoginHandler(tornado.web.RequestHandler):
+    def get(self):            
+        #print "GoLoginGet"
+        current_user = self.get_secure_cookie("user")
+        current_pass = self.get_secure_cookie("pass")
+        
+	if current_user!=None and current_user!="comprador":
+		self.redirect("/goregister")		    
+		return
+		
+
+        resultstr = safetconfig.SAFETREGISTER
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
+        self.write(loader.load("login.html").generate(mymessage=False))
+
+    def post(self):       
+        print "GoLoginPost...................1" 
+        myuser = self.get_argument("account")
+        mypass = self.get_argument("passwordone")
+
+
+        myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH) 
+
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates")) 
+        myinflow.registerLogin(myuser)
+        result = myinflow.login(myuser,mypass)
+
+	myinflow.log("TRY_LOGIN: " + myuser)
+
+        if not result:
+            self.write(loader.load("login.html").generate(mymessage=True))
+	    myinflow.log("TRY_LOGIN_NOVALID: " + myuser)
+            return
+
+
+	myinflow.log("TRY_LOGIN_SUCCESS: " + myuser)
+        #print "auth user: |%s|" % (myuser)
+
+        self.set_secure_cookie("user", myuser)
+        self.set_secure_cookie("pass", mypass)
+      
+      
+	if True:
+		self.redirect("goform/addgeneric/Generar_solicitud_vacaciones/0")		    
+		return
+      
+
+ 
         
 class ProcessAjaxFormHandler(tornado.web.RequestHandler):    
 	def post(self,name_operation):
@@ -1547,10 +1627,11 @@ mycontroller = [
             (r"/loaddata", LegacyLoadDataHandler),            
             (r"/checkrif", CheckRIFHandler),
             (r"/gologin", GoLoginHandler),
+            (r"/logout", LogoutHandler),
+            (r"/goregister", GoRegisterHandler),
 	    (r"/listar/([^\s]+)/([^\s]+)", ListHandler),
             (r"/cargarboletas/", LoadScoreHandler),
             (r"/procesararchivos_([^\s]+)", ProcessFilesHandler),           
-	    (r"/procesarboletas/", ProcessScoreHandler),           
 	    (r"/forma_([^\s]+)/([^\s]+)/(\d+|none)", ProcessFormHandler),
             (r"/goform/([^\s]+)/([^\s]+)/(\d+|none)/?([^\s]*)", GoFormHandler),    
 	    (r"/ajaxforma_([^\s]+)", ProcessAjaxFormHandler),       

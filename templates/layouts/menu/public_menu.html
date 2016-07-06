@@ -1,0 +1,18 @@
+{% try %}
+  {% if current_user == None %}
+    {% set current_user = user_id %}
+  {% end %}
+{% except %}
+  {% set current_user = "comprador" %}
+{% end %}
+
+
+{% try %}
+  {% if user_id != None %}
+    {% set user_id = user_id %}
+  {% end %}
+{% except %}
+  {% set user_id = "0" %}
+{% end %}
+
+{% include "o_menu.html" %}

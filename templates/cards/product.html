@@ -1,0 +1,66 @@
+<div style="margin-bottom:10px" class="col-xs-12 visible-xs visible-sm">
+	<h4><a href="/showpub/none/{{ pub['id'] }}" style="text-decoration: none;"> {{  pub['summary'] }} </a></h4>			
+</div>
+<div class="col-md-3 col-xs-6" align="center">
+	<a  href="{{ pub['foto1']  }}" rel="prettyPhoto[{{ pub['id'] }}]" class="fancy">
+	    <img class="thumbnail" style="padding:0px; margin-bottom:0px;" src="{{ pub['foto1']  }}" width="100" height="80" id="imgproduct_{{ pub['id'] }}"
+             name="imgproduct_{{ pub['id'] }}"></img>
+	</a>
+	{% if len(pub['foto2']) > 0 %}  
+	 	<div class="col-md-4 col-xs-4">
+			<a href="{{ pub['foto2']  }}" rel="prettyPhoto[{{ pub['id'] }}]" class="fancy">
+			<img class="thumbnail" style="padding:0px; margin-bottom:0px; margin-top:5px" src="{{ pub['foto2']  }}" width="24" height="24" 
+			id="imgproduct2_{{ pub['id'] }}" name="imgproduct2_{{ pub['id'] }}"> </img>
+			</a>
+		</div>
+	{% end %}
+	  {% if len(pub['foto3']) > 0 %}  
+		<div class="col-md-4 col-xs-4">
+			<a href="{{ pub['foto3']  }}" rel="prettyPhoto[{{ pub['id'] }}]" class="fancy">
+			<img class="thumbnail" style="padding:0px; margin-bottom:0px; margin-top:5px" src="{{ pub['foto3']  }}" width="24" height="24"
+			id="imgproduct3_{{ pub['id'] }}" name="imgproduct3_{{ pub['id'] }}"
+			> </img>
+			</a>
+		</div>
+	{% end %}
+	{% if len(pub['foto4']) > 0 %}  				
+		<div class="col-md-4 col-xs-4">
+			<a href="{{ pub['foto4']  }}" rel="prettyPhoto[{{ pub['id'] }}]" class="fancy">
+				<img class="thumbnail" style="padding:0px; margin-bottom:0px; margin-top:5px" src="{{ pub['foto4']  }}" width="24" height="24"
+				id="imgproduct4_{{ pub['id'] }}" name="imgproduct4_{{ pub['id'] }}"> </img>
+			</a>
+		</div>
+	{% end %}
+</div>
+<div class="col-md-3 col-xs-6 visible-xs visible-sm" style="text-align:right">	
+        <div class="col-md-12 col-xs-12">
+            <h5 style="margin-bottom:25px;margin-left: -15px;"><b>{{ pub['price']  }}</b></h5>
+        </div>
+        <div class="col-md-12 col-xs-12">
+           	<h5 style="margin-bottom:25px"> Condicion </h5>
+        </div>
+        <div class="col-md-12 col-xs-12">
+        	<h5 style="margin-bottom:25px"> Ciudad </h5>
+        </div>
+</div>
+<div class="col-md-6 col-xs-12 hidden-xs hidden-sm">
+	<h4><a href="/showpub/none/{{ pub['id'] }}" style="text-decoration: none;"> {{  pub['summary'] }} </a></h4>			
+</div>
+<div class="col-md-3 col-xs-6 hidden-xs hidden-sm" style="text-align:right">	
+        <div class="col-md-12 col-xs-12">
+            <h5 style="margin-bottom:25px;margin-left: -15px;"><b>{{ pub['price']  }}</b></h5>
+        </div>
+        <div class="col-md-12 col-xs-12">
+           	<h5 style="margin-bottom:25px"> {{ pub['type'] }} </h5>
+        </div>
+        <div class="col-md-12 col-xs-12">
+        	 <h5 style="margin-bottom:10px"> {{ pub['ciudad'] }}  </h5> 
+        <!--	<h5 style="margin-bottom:10px"> ciudad  </h5> -->
+        </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'facebook',slideshow:3000, autoplay_slideshow: false, social_tools: false});
+  });
+</script>

@@ -1,0 +1,100 @@
+{% if current_user != "comprador" %}
+<div class="hidden-xs">
+<form enctype="multipart/form-data" role="form" action="/processtup/none" method="post" id="formtup" name="formtup" >		 		
+					  
+	<input id="categoria" name="categoria" type="hidden" />
+	<input id="subcategoria" name="subcategoria" type="hidden" />
+	<input id="detallecategoria" name="detallecategoria" type="hidden" />
+	<input id="Foto" name="Foto[]" type="file" multiple style="display:none;"/>
+	<div class="input-group">
+
+		<input type="text" maxlength="140" id="tup" name="tup" class="form-control" placeholder="¿Qué estás pensando vender u ofrecer?" 
+			title="" onkeyup="countTupChar(this)" />
+		<span class="input-group-btn">
+
+
+            <button class="btn btn-info" type="button" onclick="$('#Foto').trigger('click');">
+            	<i class="glyphicon glyphicon-camera"></i>
+            </button>	        			        			      				
+            <button class="btn btn-default" type="submit">Anunciar</button>        			
+		</span> 
+	</div>
+
+			
+    <div class="panel panel-default" style="display:none;border-top:0px" id="cplfields" name="cplfields"  style="display: none;" >			  
+        <div class="panel-body">
+        	<div class="text-right">
+        		<label class="lbl-close" onclick="$('#cplfields').hide()">Cerrar</label>
+			</div>
+        	
+	        <div class="row">
+		        <div class="col-md-4">
+					<label for="Numero_productos" class="control-label">Cantidad</label>
+					<div style="width:100%" class="input-group">	
+						<div id="Número_productos_div"></div>
+						<input type="hidden" class="form-control" id="Numero_productos" name="Numero_productos"  value="1"/>						
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<label for="Precio" class="control-label">Precio</label>
+					<div class="input-group">
+						<input style="text-align:right" type="text" class="form-control" id="Precio" name="Precio" placeholder="Precio" value="0">
+						<div class="input-group-addon">.00 Bs.</div>
+					</div> 
+				</div>
+				<div class="col-md-4">
+					<label for="Tipo" class="control-label">Condición</label>
+					<div style="width:100%" class="input-group">
+						<select class="form-control" id="Tipo" name="Tipo">
+							<option>Nuevo</option>
+							<option>Usado</option>
+						</select>
+					</div> 
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="selCategory" class="control-label">Categoría</label>
+					<select name="selCategory" id="selCategory" class="form-control" onchange="onSubCategory(this.value)"></select>
+				</div>	
+				<div class="col-md-4">
+					<label for="selSubCategory" class="control-label">SubCategoría</label>
+					<select name="selSubCategory" id="selSubCategory" class="form-control"  onchange="onDetailCategory(this.value)"  >
+					</select>
+				</div>	
+				<div class="col-md-4">
+					<label for="selDetail" class="control-label">Detalle</label>
+					<select name="selDetail" id="selDetail" class="form-control" onchange="$('#detallecategoria').val(this.value)">
+					</select>
+				</div>
+			</div>
+
+			<br/>
+
+			<div class="text-right">
+				<a href="/goform/addpublish/agregar_publicación/none">
+        			<label class="lbl-close">Mas opciones</label>
+        		</a>
+			</div>
+        </div>
+	</div>
+</form>
+</div>
+
+<script  type="text/javascript">
+	$(document).ready(function() {
+		  $("#Número_productos_div").jqxNumberInput({ width: 'auto', height: '32px', min: 1, max: 1000, digits: 3, decimalDigits: 0, spinButtons: true, promptChar:' ' });
+		  $("#Número_productos_div").jqxNumberInput("val",1);
+		  $("#Número_productos_div").on('change', function (event) {
+		  var myvalue = event.args.value;
+		  console.log("myvalue number *2:" + myvalue);
+		  document.getElementById("Numero_productos").value = myvalue;
+		  console.log("myvalue number *2:" +  document.getElementById("Numero_productos").value);
+
+		});
+	});
+</script>
+<br/>
+{% end %}

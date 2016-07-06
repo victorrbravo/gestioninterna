@@ -1,0 +1,27 @@
+{% try %}
+
+{% if len(cities_sub) > 6115  %}
+	<div class="panel panel-default">
+    <div class="panel-heading">
+        <b> Categoría </b>
+    </div>        
+
+		<div class="panel-body">		
+			<script type="text/javascript">
+				myfilter = "";
+				for(i=0; i < currcities_sub.data.nodes.length; i++ ){
+					var newlink = "/searchpub/{{boxsearch}}/"+"sub_"+currcities_sub.data.nodes[i].variable;		            					
+					if (currcities_sub.data.nodes[i].parameter1 > 0 ) {						
+						document.write("<a href='"+newlink+"' >"+currcities_sub.data.nodes[i].name+"("+currcities_sub.data.nodes[i].parameter1.trim()+") </a> <br/>");
+
+					}
+				}
+			</script>
+		</div>
+	</div>
+{% end %}
+{% except %}		
+{% end %}	
+
+
+

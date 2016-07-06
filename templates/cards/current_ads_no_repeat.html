@@ -1,0 +1,30 @@
+<!-- myfirstnumber viene de archivo current_ads.html -->
+<div class="panel panel-default weetup-panel-blue">
+    <div class="panel-heading">
+        <b>Destacados</b>
+    </div>  
+    <div class="panel-body">
+        <p class="list-group-item-text">
+            <script type="text/javascript">
+                console.log("ads");
+                mysecondnumber = Math.floor(Math.random() * currads.length);
+
+                if (currads.length > 1 ) {
+                    if ( mysecondnumber == myfirstnumber) {
+                        for(i = 0; i < currads.length;i++){
+                            if (i != myfirstnumber) {
+                                mysecondnumber = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                console.log("firstnumber (2):" + myfirstnumber);
+                console.log("mysecondnumber(2):" + mysecondnumber);
+
+                document.write(doShowAds(currads,mysecondnumber));
+            </script>
+        </p>
+    </div>
+</div>

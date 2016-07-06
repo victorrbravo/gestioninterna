@@ -1,0 +1,236 @@
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+	$('#myCarousel').carousel({
+		interval: 5000
+	});
+
+	$('#carousel-text').html($('#slide-content-0').html());
+
+	//Handles the carousel thumbnails
+	$('[id^=carousel-selector-]').click( function(){
+		var id = this.id.substr(this.id.lastIndexOf("-") + 1);
+		var id = parseInt(id);
+		$('#myCarousel').carousel(id);
+	});
+
+
+	// When the carousel slides, auto update the text
+	$('#myCarousel').on('slid.bs.carousel', function (e) {
+		var id = $('.item.active').data('slide-number');
+		$('#carousel-text').html($('#slide-content-'+id).html());
+	});
+        
+});  
+
+</script>
+
+{%  if len(pubs) == 0  %}	
+	<div class="panel panel-danger">                  
+		<div class="panel-heading">
+			No se pudo seleccionar correctamente la publicación
+		</div> 
+	</div>
+{% else  %}	
+	<div class="panel panel-primary">                  
+		<div class="panel-heading">
+			{% raw pubs[0]['summary'] %} 
+		</div> 
+	
+        <div class="panel-body">
+ 
+			<div class="row">
+
+				<div class="col-md-12" align="center" id="carousel-bounding-box">
+
+					<div class="carousel slide" id="myCarousel">
+						<!-- Carousel items -->
+						<div class="carousel-inner">
+
+								<div class="active item" data-slide-number="0">
+									<img src="{{ pubs[0]['foto1'] }}">
+								</div>
+
+							{%  if len(pubs[0]['foto2']) > 0 and pubs[0]['foto2'] != "/static/media/nophoto_small.png" %} 
+								<div class="item" data-slide-number="1">
+									<img src="{{ pubs[0]['foto2'] }}">
+								</div>
+							{% end %}
+
+							{%  if len(pubs[0]['foto3']) > 0 and pubs[0]['foto3'] != "/static/media/nophoto_small.png"   %}
+								<div class="item" data-slide-number="2">
+									<img src="{{ pubs[0]['foto3'] }}">
+								</div>
+							{% end %}
+
+							{%  if len(pubs[0]['foto4']) > 0 and pubs[0]['foto4'] != "/static/media/nophoto_small.png"   %}
+								<div class="item" data-slide-number="3">
+									<img src="{{ pubs[0]['foto4'] }}">
+								</div>
+							{% end %}
+						</div><!-- Carousel nav -->
+
+
+						<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>                      
+						</a>
+
+						<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"></span>                          
+						</a>                                
+					</div>
+
+				</div><!--/Slider-->
+			</div>
+
+			<div class="row" id="slider-thumbs">
+				<!-- Bottom switcher of slider -->
+
+				<div class="col-md-12" align="center">
+
+						<a class="thumbnail thumbnail-slider" id="carousel-selector-0">
+							<img src="{{ pubs[0]['foto1'] }}">
+						</a>
+
+					{%  if len(pubs[0]['foto2']) > 0 and pubs[0]['foto2'] != "/static/media/nophoto_small.png"  %}
+
+						<a class="thumbnail thumbnail-slider" id="carousel-selector-1">
+							<img src="{{ pubs[0]['foto2'] }}">
+						</a>
+
+					{% end %}
+
+					{%  if len(pubs[0]['foto3']) > 0 and pubs[0]['foto3'] != "/static/media/nophoto_small.png"  %}
+
+						<a class="thumbnail thumbnail-slider" id="carousel-selector-2">
+							<img src="{{ pubs[0]['foto3'] }}">
+						</a>
+
+					{% end %}
+
+					{%  if len(pubs[0]['foto4']) > 0 and pubs[0]['foto4'] != "/static/media/nophoto_small.png"  %}
+
+						<a class="thumbnail thumbnail-slider" id="carousel-selector-3">
+							<img src="{{ pubs[0]['foto4'] }}">
+						</a>
+
+					{%  end %}
+
+				</div>
+
+			</div>
+
+			<div class="panel panel-default">
+                  <div class="panel-heading">Descripción del producto</div>
+				  <div class="panel-body">
+				    {% raw pubs[0]['description'] %}
+				  </div> 
+			</div>
+
+		</div>
+		<div class="panel-footer">
+			<div class="row">
+				<div class="col-md-8 col-sm-8">
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="text-right">
+				{% if pubs[0]['nosold'] == "Si"  %}  	
+					<button class="btn btn-warning"  onclick="" disabled>
+						<i class="glyphicon glyphicon-gift" >  Comprar</i>
+					</button>
+				{% else   %}
+					<button class="btn btn-primary"  onclick="doSafetBuy(this.parentNode, {{ pubs[0]['id'] }} )">
+						<i class="glyphicon glyphicon-gift">  Comprar</i>
+					</button>
+				{% end   %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel-footer">
+			<div name="commenttable" id="commenttable">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="list-group">
+						{% if len(comments) > 0 %} 
+	
+				
+						{% for comment in comments %} 
+
+						<li class="list-group-item">
+							{{ comment['comment'] }} 
+							<div class="text-right">
+								<font size="1">{{ comment['owner'] }} {{ comment['commenttime'] }} </font>
+							</div>
+						</li>
+
+						{% end %}
+
+						{% else %}
+
+						<li class="list-group-item first-coment">
+							Sea el primero en comentar sobre este producto <b>Weetup</b>
+							<div class="text-right">
+								<font size="1">Weetup</font>
+							</div>
+						</li>
+					
+						{% end %} 
+						</ul>
+					</div>
+				</div>
+			</div>  
+
+		</div>
+    </div>
+
+                
+ 
+	      <div class="row">
+	        <div class="col-md-2">
+		    <span class="weetupprice">
+		         Precio: {{  pubs[0]['price'] }}
+		    </span>
+	         </div>
+	         <div class="col-md-6">
+	         </div>
+                 <div class="col-md-2">
+               
+		  </div> 
+		</div>
+		<div class="row">
+	        <div class="col-md-8">
+		    <span class="weetupshipping">
+		         Tipo de Envío: {{  pubs[0]['shippingtype'] }}
+		    </span>
+	         </div>
+	         <div class="col-md-4">
+	         </div>
+                 <div class="col-md-6">
+                 	<span class="weetupshipping">
+               {% if pubs[0]['shippingtype'] == "Fijo"  %}  	
+				   Costo del envío: {{  pubs[0]['shipping_price'] }} 		      
+
+		      {% end   %}
+		  </span>
+		  </div> 
+		</div>
+		<div class="row">		
+		  <div class="col-md-3">
+		       <span class="fb-share-button" 
+					  data-href="http://localhost:8080/showpub/none/{{ pubs[0]['id'] }}" data-layout="button_count">
+					  </span>				   					  
+		  </div>
+		  <div class="col-md-3">
+		  <a href="https://twitter.com/share" class="twitter-share-button" 
+			  data-url="http://localhost:8080/showpub/none/{{ pubs[0]['id'] }}" 
+			  data-via="weetup" data-text="Ve este producto weetup">Tweet</a> 
+			  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+		  </div>
+		</div>
+
+
+          
+
+{% end %}

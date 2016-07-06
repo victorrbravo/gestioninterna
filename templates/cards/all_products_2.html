@@ -1,0 +1,713 @@
+<style>
+	.form-inline .form-group input {
+	    width:470px;
+	}
+	
+	.cliente {
+		margin-top:0px;
+		border: #cdcdcd medium solid;
+		width:50px;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+
+	#divForLoading {
+	  width: 100%;
+	  height: 100%;
+	  top: 0px;
+	  left: 0px;
+	  position: fixed;
+	  display: none;
+	  opacity: 0.7;
+	  background-color: #fff;
+	  z-index: 99;
+	  text-align: center;
+	}
+
+	#divForLoading-image {
+	  position: absolute;
+	  top: 100px;
+	  left: 240px;
+	  z-index: 100;
+	}
+</style>
+
+
+
+<script>
+					
+	function doSafetFavorite(myobj, mypubid ) {
+	      console.log("(1)..doSafetFavorite....mypubid:" + mypubid); 					      					      
+	      $.post('http://localhost:8080/ajaxforma_hacer_favorito', { pubid: mypubid }, 
+		    function(data) { 
+		    	console.log("(2)..data:......myname:"); 
+		    	console.log(data); 
+		    	myresult = eval("(" + data + ")" );
+		    	console.log("result:" + myresult["result"]); 
+		    	if (myresult["result"] == "true") {
+		    	mynewbutton = "<button class=\"btn btn-info\"   onclick=\"doSafetUnFavorite(this.parentNode,"+
+		    	mypubid+")\"  data-toggle=\"tooltip\" data-placement=\"left\" title=\"Colocar como no favorito\" >" +
+	                "<i class=\"glyphicon glyphicon-heart\"></i></button>";
+		    	  
+			  $(myobj).html(mynewbutton);
+		    	}
+		    	
+		    });
+	      
+	}
+	function doSafetUnFavorite(myobj, mypubid ) {
+	      console.log("(1)..doSafetFavorite....mypubid:" + mypubid); 					      					      
+	      $.post('http://localhost:8080/ajaxforma_no_hacer_favorito', { pubid: mypubid }, 
+		    function(data) { 
+		    	console.log("(2)..data:......myname:"); 
+		    	console.log(data); 
+		    	myresult = eval("(" + data + ")" );
+		    	console.log("result:" + myresult["result"]); 
+		    	if (myresult["result"] == "true") {
+		    	mynewbutton = "<button class=\"btn btn-info\"   onclick=\"doSafetFavorite(this.parentNode,"+
+		    	 mypubid+")\"  data-toggle=\"tooltip\" data-placement=\"left\" title=\"Colocar como favorito\" >" +
+	                "<i class=\"glyphicon glyphicon-heart-empty\"></i></button>";
+		    	  
+			  $(myobj).html(mynewbutton);
+		    	}
+		    	
+		    });
+	      
+	}
+	
+	var lastcommentobj = "";
+	
+	function doSafetShow(summary, photo1, photo2, photo3, price, description ) {
+	  $( "#dialogshow" ).dialog({  resizable: true });
+	  myhtml = "<div class=\"row\">\n"
+	          "<div class=\"col-md-6\">\n"
+	  //myhtml= "<p>";
+	  myhtml = myhtml + "<img src=\"" + photo1 +"\"></img>"
+	  if ( photo2.length > 0 ) {
+	  myhtml = myhtml + " <img src=\"" + photo2 +"\"></img>"
+	  }
+	  
+	  if ( photo3.length > 0 ) {
+	  myhtml = myhtml + " <img src=\"" + photo3 +"\"></img>"					  
+	  }
+	  
+	  
+	  myhtml = myhtml + "</div>\n";
+	  myhtml = myhtml + "</div>\n";
+	  
+	  mydata = "<div class=\"row\">\n"
+	          "<div class=\"col-md-12\">\n";
+	  mydata += " "+ summary;
+	  if (description.length > 0 ) {
+	  
+	    currlen = description.length;					    
+	    mydata = mydata + description.substring(0,currlen);
+	    
+	  }
+	  mydata += "</div>\n";
+	  mydata += "</div>\n";
+	  
+	  myprice = "</button><button class=\"btn btn-info\">Precio:" + price +"</button>";
+	  
+	  myhtml = myhtml + mydata + myprice;
+	  
+	  $( "#dialogshow" ).html(myhtml);
+	  
+	
+	}
+	
+	
+	
+	function doSafetEdit( currid ) {
+		      console.log("(1)..doSafetEdit....currid" + currid); 
+		      myurl = 
+"/goform/gomodify/modificar_publicación/" +currid;	
+							 
+
+		      
+		      window.location = myurl;
+
+
+	      
+	}
+	
+	function doSafetComments(myobj, currid ) {
+	
+	console.log("doSafetAddComment");
+	mycurrobj = "#currboxcomment_" + currid;
+	if (mycurrobj == lastcommentobj ) {
+		$(lastcommentobj).html("");					      
+		lastcommentobj = "";
+		return;
+	}
+	myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/comentarios.xml Variable: vPorPublicacion" +
+	" parameters.ByPublication: " + currid; 
+	
+	$("#divForLoading").show();
+	$.post('/ajaxconsole',{ operation: myoperation
+		}, 
+		    function(data) { 
+		      $("#divForLoading").hide();
+		      if ( lastcommentobj.length > 0 ) {
+			      $(lastcommentobj).html("");					      
+		      }
+		      console.log("(1)..data:......ajaxconsole:|" + data + "|"); 
+		     
+		      	 
+		      myresult = eval("(" + data + ")" );
+		      mylist = myresult["safetlist"];
+		      
+		      console.log("(2)..data:......ajaxconsole:" +  mylist.length); 
+		      mynewtable = "";
+		      mynewtable += "<div class=\"panel-footer\" id=\"commenttable\" name=\"commenttable\" >\n";
+		      mynewtable += "<ul class=\"list-group\">\n";
+		        
+		      
+		      for(i = 0; i < mylist.length; i++) {
+			console.log("comment:" + mylist[i]["comment"] + " owner:" + mylist[i]["owner"]);
+			mynewitem = "<li class=\"list-group-item\">"+ mylist[i]["comment"]+ " <b>(" +mylist[i]["owner"] 
+			+")</b> - <font size=\"1\">hace "+
+			mylist[i]["commenttime"].substring(18) +"</font></li>\n";
+			mynewtable += mynewitem;							
+		      }
+		      mynewtable += "</ul>";
+		      mynewtable += "</div>\n";
+		      console.log("(3)..data:......ajaxconsole"); 						      						      
+		     
+
+		      mynewcomment = "";
+		      
+		     if (curruserinfo[0].cuenta != "comprador" ) {
+			      mynewcomment += "<div class=\"panel-footer\">\n";
+			      mynewcomment += "<p >\n";					      
+			      mynewcomment += "<form action=\"javascript:void(0);\" class=\"form-inline\" role=\"form\"><div class=\"form-group col-md-10\"><input class=\"form-control\" type=\"text\" placeholder=\"Comentario\" id=\"currcomment\" name=\"currcomment\" /></div><button class=\"btn btn-default\" onclick=\"doSafetAddComment("+ currid +")\" >Agregar</button></form>";
+			      mynewcomment += "</p>";
+			      mynewcomment += "</div>";
+			}	
+			      mynewobj = "#currboxcomment_" + currid;
+		 	     console.log("(1)..doSafetComments.newobj:" + mynewobj);
+			      $(mynewobj).html(mynewcomment);
+			      lastcommentobj = mynewobj;						      
+			      mynewobj = "#currboxcomment_" + currid;
+			      $(mynewobj).html(mynewtable + mynewcomment);
+		      
+		    });
+	
+	
+	// ****************
+	      
+	      
+	      
+	}
+
+
+	function doSafetGetComment( currid ) {
+	
+	}
+	
+	function doSafetAddComment( currid ) {
+	    mycomment = $("#currcomment").val();
+	    $("#divForLoading").show();
+	    $.post('/ajaxforma_agregar_comentario',{ Publicacion_id: currid,
+		  Comentario: mycomment
+		    }, 
+			function(data) { 
+			$("#divForLoading").hide();
+			    //if ( lastcommentobj.length > 0 ) {
+				//    $(lastcommentobj).html("");					      
+			    //}
+			    console.log("(2)..data:......myname:"); 
+			    console.log(data); 
+			    myresult = eval("(" + data + ")" );
+			    console.log("result:" + myresult["result"]);
+
+			    if (myresult["result"] == "true") {
+			       myid = myresult["id"];
+			       myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/comentarios.xml Variable: vPorId parameters.ById:" + myid
+			       console.log("myoperation: " + myoperation);
+
+			       $("#divForLoading").show(); 	      
+			       $.post('/ajaxconsole',{ operation: myoperation
+		    	       },  
+			           function(data) { 
+						$("#divForLoading").hide();    
+			           		console.log("....data new comment:");
+			           		myresult = eval("(" + data + ")" );							           		
+			           		console.log(data);
+			           		console.log("**comment table...1");
+
+			           		mycomment = myresult["safetlist"][0]["comment"];
+			           		mytime = myresult["safetlist"][0]["commenttime"];
+			           		myowner = myresult["safetlist"][0]["owner"];
+			           		mynewitem = "<li class=\"list-group-item\">"+ mycomment+ " <b>(" +myowner +")</b> - <font size=\"1\">hace "+mytime.substring(18) +"</font></li>\n";
+			           		$("#commenttable ul").append(mynewitem);
+			           		console.log("***comment table...2..newitem:" + mynewitem);
+
+
+				  			//$("#currboxcomment").html("");
+				  		  
+			    	   }													
+		           );
+			   }
+			   
+			});
+	
+	}
+	
+	
+	function doSafetDelete( currid ) {
+	console.log("(1)..doSafetDelete...."); 
+	     bootbox.confirm("¿Está seguro de  eliminar esta publicación?", 
+	    function(result) {			
+
+		  
+		  console.log(currid);
+		  if (result) {
+			  myname = "thesafetrow_" + currid
+			  console.log("myname: " + myname);						    
+			  //$('#' + myname).html("Hola");
+			  $.post('/ajaxforma_borrar_publicación',{ id: currid }, 
+			  function(data) { 
+			    console.log("(2)..data:......myname:"); 
+			    console.log(data); 
+			    mydata = eval('(' + data + ')');
+			    if (mydata["result"] == "true" ) {
+				      $('#' + myname).hide();						       
+			    }
+			    else {
+				console.log("error, no deleted"); 
+			      
+			    }
+			  
+			  console.log("(3)...data:......"); 
+		    
+		    });
+	    }
+	    
+	    console.log("pass");			
+				
+	});					
+	}
+	
+	function doSafetPublish(myobj, currid ) {
+	console.log("(1)..doSafetBuy...."); 
+	     bootbox.confirm("¿Está seguro de publicar este producto?", 
+	    function(result) {			
+	    
+	    console.log(currid);
+	    if (result) {
+		    
+		    $.post('/processbuy/'+currid+"/Published/-1/",
+                                    { id: currid }, 
+		    function(data) { 						    
+		      console.log("(2)..processbuy:......myname:"); 
+		      myresult = eval("(" + data + ")" );
+		      console.log("result:" + myresult["result"]); 
+		      if (myresult["result"] == "true") {
+		    	  mynewbutton = "<button class=\"btn btn-success\"><i class=\"glyphicon glyphicon-log-in\"></i> Publicado</button>"
+			  $(myobj).html(mynewbutton);
+
+
+		      }						      
+		    })					
+		    
+	    }
+	    
+	    console.log("pass buy");		
+		    });					
+	}
+
+
+	function doSafetRate(myobj, currid ) {
+	console.log("(1)..doSafetRate..."); 
+
+		bootbox.dialog({
+		title: "This is a form in a modal.",
+		message: '<div class="row"> ' +
+		'<div class="col-md-12"> ' +
+		'<form class="form-horizontal"> ' +
+		'<div class="form-group"> ' +
+		'<label class="col-md-4 control-label" for="awesomeness">Como lo califica la venta?</label> ' +
+		'<div class="col-md-4"> <div class="radio"> <label for="awesomeness-0"> ' +
+		'<input type="radio" name="awesomeness" id="awesomeness-0" value="2" checked="checked"> ' +
+		'Positiva </label> ' +
+		'</div>' +
+                                '<div class="radio"> <label for="awesomeness-1"> ' +
+		'<input type="radio" name="awesomeness" id="awesomeness-1" value="1"> Neutra </label> ' +
+		'</div> ' +
+		'<div class="radio"> <label for="awesomeness-2"> ' +
+		'<input type="radio" name="awesomeness" id="awesomeness-2" value="0"> Negativa </label> ' +
+		'</div> ' +
+
+		'</div> </div>' +
+		'</form> </div> </div>',
+		buttons: {
+		success: {
+			label: "Guardar",
+		className: "btn-success",
+			callback: function () {
+			
+				console.log("doSafetRate");
+				var answer = $("input[name='awesomeness']:checked").val()
+				var mystr ="Se eligió <b>" + answer + "</b>";
+				console.log(mystr);
+				var options = {};
+				options["0"] = "Negativa";
+				options["1"] = "Neutra";
+				options["2"] = "Positiva";
+
+		 $.post('/processbuy/'+currid+"/Scored/"+answer+"/",
+                                    { id: currid }, 
+                                    function(data) {                                                
+                                      console.log("(2)..processbuy:......myname:"); 
+                                      myresult = eval("(" + data + ")" );
+                                      console.log("result:" + myresult["result"]); 
+                                      if (myresult["result"] == "true") {
+                                      	  mynewbutton = '<button class=\"btn btn-success\" onclick=\"doSafetRate(this.parentNode, '+ currid +')\"><i class=\"glyphicon glyphicon-log-in\"</i> Calificar ('+options[answer]+') </button>';
+                                      	  console.log(mynewbutton);
+
+                                          $(myobj).html(mynewbutton);
+                                      }                                               
+                                    });    							
+
+				   Example.show(mystr);
+				    }
+			  	  }
+				}
+				}
+		); 
+	    				
+	}
+
+
+
+	
+	function doSafetBuy(myobj, currid ) {
+	
+	if (curruserinfo[0].cuenta == "comprador" ) {
+	bootbox.alert("Inicie sesión o regístrese para poder realizar la compra", function(result) {
+		      if (result) {
+			  // currentForm.submit();
+			  return;
+		      }
+		  });
+		  return;
+	      
+	}
+	console.log("(1)..doSafetBuy...."); 
+	     bootbox.confirm("¿Está seguro de comprar este producto?", 
+	    function(result) {			
+	    
+	    console.log(currid);
+	    if (result) {
+		    
+		    $.post('/processbuy/'+currid+"/Sold/-1/",
+                                    { id: currid }, 
+		    function(data) { 						    
+		      console.log("(2)..processbuy:......myname:"); 
+		      myresult = eval("(" + data + ")" );
+		      console.log("result:" + myresult["result"]); 
+		      if (myresult["result"] == "true") {
+		    	  mynewbutton = "<button class=\"btn btn-success\"><i class=\"glyphicon glyphicon-log-in\"></i> Comprado</button>"
+			  $(myobj).html(mynewbutton);
+			  myurl = "/makepurchase/none/"+currid;
+			  console.log("compra realizada url:" + myurl);
+
+			  window.location = myurl;
+		      }						      
+		    })					
+		    
+	    }
+	    
+	    console.log("pass buy");		
+		    });					
+	}
+</script>
+					
+<script src="/static/js/example.js"></script>
+
+<script>
+	$(function () {
+	    Example.init({
+	        "selector": ".bb-alert"
+	    });
+	});
+</script>
+
+<br/>
+{% if len(cities) > 0  %}
+	<div class="panel panel-default">
+		<div class="panel-body">		
+			<script type="text/javascript">
+				myfilter = "";
+				for(i=0; i < currcities.data.nodes.length; i++ ){
+					var newlink = "/searchpub/{{boxsearch}}/"+currcities.data.nodes[i].variable;		            
+					mycity = curruserinfo[0].geo_ciudad.replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u').replace(' ','_');
+
+					if (currcities.data.nodes[i].parameter1 > 0 ) {
+						if ( mycity == currcities.data.nodes[i].name) {
+						myfilter = "<a href='"+newlink+"' >"+currcities.data.nodes[i].name+"("+currcities.data.nodes[i].parameter1.trim()+") </a>  " + myfilter;
+
+						}
+						else {
+						myfilter = myfilter +  "<a href='"+newlink+"' >"+currcities.data.nodes[i].name+"("+currcities.data.nodes[i].parameter1.trim()+") </a>  ";
+
+						}
+
+					}
+				}
+				document.write(myfilter);
+			</script>
+		</div>
+	</div>
+{% end %}
+		
+<div class="row clearfix">
+	{% try %}		
+		{% if successmessage != None %}
+			<div class="alert alert-success">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+				{{ successmessage }}
+			</div>
+		{% end %}	
+	{% except %}		
+	{% end %}	
+</div>
+
+		
+<div id="divForLoading" name="divForLoading" >		        
+	<img id="loading-image" src="/static/loading.gif" alt="Cargando..." />
+</div>
+		        
+		
+<div class="list-group"  id="milistica" name="milistica" >
+	{% if name_operation == "Published" %}
+				 
+		{% try %}
+			{% if name_title == "none" %}
+				<a href="#" class="list-group-item active">Anuncios Weetup</a>
+			{% else %}				      
+				<a href="#" class="list-group-item list-group-item-success">Tendencia:<b><i>{{ name_title }}</i></b></a>
+			{% end %}
+		{% except %}
+				<a href="#" class="list-group-item active">Anuncios Weetup</a>
+		{% end %}
+		
+				
+	{% elif name_operation == "Draft" %}		        
+				<a href="#" class="list-group-item active">Para publicar (borrador)</a>
+	{% elif name_operation == "Sold" %}		        		        
+				<a href="#" class="list-group-item active">Productos Vendidos</a>
+	{% elif name_operation == "Sales" %}		        
+		        <a href="#" class="list-group-item active">Compra / Venta </a>
+	{% elif name_operation == "Delivered" %}
+				<a href="#" class="list-group-item active">Productos Entregados</a>
+	{% elif name_operation.find("squeda")>0 %}
+				<a href="#" class="list-group-item list-group-item-success" ><b><i>{{name_operation}}</i></b></a>
+	{% else %}
+			    <a href="#" class="list-group-item active">Todos los productos</a>			
+	{% end %}
+		        	 
+			
+	<div class="list-group-item">
+				
+	{%  if len(pubs) == 0  %}		        
+
+		<div class="panel panel-default" id="thesafetrow" name="thesafetrow">
+			<div class="panel-body">
+				<div class="col-md-12">								
+					Sin productos publicados
+				</div>
+			</div>					  
+			<div class="panel-footer">
+
+			</div>
+		</div>
+	{% else %}
+
+
+		{% for pub in pubs %} 
+					
+		<div class="panel panel-default" id="thesafetrow_{{ pub['id'] }}" name="thesafetrow_{{ pub['id'] }}">
+			<div class="panel-body">
+				<div class="col-md-3">
+        			<a href="{{ pub['foto1']  }}" class="fancy" id="hip_zoom_{{ pub['id'] }}">
+					    <img src="{{ pub['foto1']  }}" width="100" height="80" id="imgproduct_{{ pub['id'] }}"
+                             name="imgproduct_{{ pub['id'] }}"></img>
+					</a>
+					{% if len(pub['foto2']) > 0 %}  
+					 	<div class="col-md-4">
+							<img src="{{ pub['foto2']  }}" width="24" height="24" 
+							id="imgproduct2_{{ pub['id'] }}" name="imgproduct2_{{ pub['id'] }}"
+							onclick="swapImages('#imgproduct2_{{ pub['id'] }}','#imgproduct_{{ pub['id'] }}','#hip_zoom_{{ pub['id'] }}')"> </img>
+						</div>
+					{% end %}
+					  {% if len(pub['foto3']) > 0 %}  
+						<div class="col-md-4">
+							<img src="{{ pub['foto3']  }}" width="24" height="24"
+							id="imgproduct3_{{ pub['id'] }}" name="imgproduct3_{{ pub['id'] }}"
+							onclick="swapImages('#imgproduct3_{{ pub['id'] }}','#imgproduct_{{ pub['id'] }}','#hip_zoom_{{ pub['id'] }}')"
+							> </img>
+						</div>
+					{% end %}
+					{% if len(pub['foto4']) > 0 %}  				
+						<div class="col-md-4">
+							<img src="{{ pub['foto4']  }}" width="24" height="24"
+							id="imgproduct4_{{ pub['id'] }}" name="imgproduct4_{{ pub['id'] }}"
+							onclick="swapImages('#imgproduct4_{{ pub['id'] }}','#imgproduct_{{ pub['id'] }}','#hip_zoom_{{ pub['id'] }}')"
+							> </img>
+						</div>
+					{% end %}
+				</div>
+				<div class="col-md-6">
+					<a href="/showpub/none/{{ pub['id'] }}" style="color: #0000FF; text-decoration: none;"> {{  pub['summary'] }} </a>			
+				</div>
+		        <div class="col-md-3">	
+	            	<p align="right">{{ pub['price']  }} </p>
+				</div>
+			</div>
+
+
+
+
+					  
+			<div class="panel-footer">
+			<p class="text-left">
+				<a href="/showprofile/{{ pub['owner']  }}/">${{ pub['owner']  }} </a>  / {{ pub['publishtime'][pub['publishtime'].index('  '):]  }}
+				{% try %}		
+
+					{% if (user_perm & 4) == 4 %}
+						{% if name_operation != "Draft"  %}
+							<a class="btn btn-default btn-xs" href="/showprofile/{{pub['approved']}}/">aprobado por {{pub['approved']}} </a>          						
+						{% end %}			  
+					{% end %}
+
+				{% except %}		
+				{% end %}	
+			</p>
+					   
+			<p class="text-right">
+					   
+				{% if name_operation == "Published" %}
+					   
+					{% if pub['owner'] != current_user  %}
+
+						{% if pub['nosold'] == "Si"   %}
+							<span> 
+								<button class="btn btn-warning"  onclick="" data-toggle="tooltip" data-placement="left" title="Producto no actualizado. No es posible comprarlo" >
+									<i class="glyphicon glyphicon-gift">  Comprar</i>
+								</button>  					      
+							</span>
+						{% else  %}
+							<span> 
+								<button class="btn btn-primary"  onclick="doSafetBuy(this.parentNode, {{ pub['id'] }} )">
+									<i class="glyphicon glyphicon-gift">  Comprar</i>
+								</button>  					      
+							</span>
+						{% end %}
+								
+
+				    {% end %}
+
+				{% elif name_operation == "Sales" %}
+					{% if pub['status'] == "Sold" %}					
+						{% if pub['owner'] == current_user  %}
+							<span>
+								<button class="btn btn-info"><i class="glyphicon glyphicon-log-in">
+									</i> Vendido ({{ pub['buyer']}} ) 
+								</button>
+							</span>
+	   					{% else %}
+
+							{% if pub['score'] == "-1"  %}					
+						      	<span>
+						        	{% if pub['noscored'] == "Si" %}					
+							      		<button class="btn btn-primary"  
+				        			    onclick="doSafetRate(this.parentNode, {{ pub['id'] }})" data-toggle="tooltip" data-placement="left" title="Calificar esta publicación" disabled>
+									{% else %}
+										<button class="btn btn-primary" onclick="doSafetRate(this.parentNode, {{ pub['id'] }})" data-toggle="tooltip" data-placement="left" title="Calificar esta publicación">
+									{% end %}
+											<i class="glyphicon glyphicon-ok-sign">  Calificar </i>
+										</button>  			  
+								</span>
+							{% else %}
+								<span>
+						  		{% if pub['noscored'] == "Si" %}					  
+					      			<button class="btn btn-primary" onclick="doSafetRate(this.parentNode, {{ pub['id'] }}     )" data-toggle="tooltip" data-placement="left" title="Calificar esta publicación" disabled>
+		        				{% else %}
+						        	<button class="btn btn-primary" onclick="doSafetRate(this.parentNode, {{ pub['id'] }}     )" data-toggle="tooltip" data-placement="left" title="Calificar la publicación" >
+								{% end %}
+									<i class="glyphicon glyphicon-ok-sign">  Calificar ({{ pub['score_name'] }}) </i></button>  			  
+								</span>
+							{% end %}
+
+						{% end %}
+				{% end %}
+
+				{% elif name_operation == "Draft" %}
+								<span> 
+									<button class="btn btn-primary"  onclick="doSafetPublish(this.parentNode, {{ pub['id'] }} )">
+										<i class="glyphicon glyphicon-new-window"> Publicar </i>
+									</button>  
+								</span>
+				{% end %} 
+				   
+					  <span class="fb-share-button" 
+					  data-href="/showpub/none/{{ pub['id'] }}" data-layout="button_count">
+					  </span>				   
+					  <a href="https://twitter.com/share" class="twitter-share-button" 
+					  data-url="/showpub/none/{{ pub['id'] }}" 
+					  data-via="weetup" data-text="Ve este producto weetup">Tweet</a> 
+					  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+				
+				{% try %}
+					{% if {'pubid': pub['id'] } in favs  %}  				
+								<span> 
+									<button class="btn btn-info"   onclick="doSafetUnFavorite(this.parentNode, '{{ pub['id'] }}' )"  data-toggle="tooltip" data-placement="left" title="Colocar como NO favorito" >
+										<i class="glyphicon glyphicon-heart"></i>
+									</button>
+								</span>
+					{% else %}
+								<span> 
+									<button class="btn btn-info"   onclick="doSafetFavorite(this.parentNode, '{{ pub['id'] }}' )"  data-toggle="tooltip" data-placement="left" title="Colocar como favorito" >
+										<i class="glyphicon glyphicon-heart-empty"></i>
+									</button>
+								</span>
+					{% end %}
+				{% except %}		
+				{% end %}	
+					  <!--<button class="btn btn-success" onclick="doSafetShow('{{pub['summary']}}','{{pub['foto1']}}','{{pub['foto2']}}','{{pub['foto3']}}','{{pub['price']}}','{{pub['description']}}')" 
+					  data-toggle="tooltip" data-placement="left" title="Mostrar esta publicación">					  
+					   <i class="glyphicon glyphicon-eye-open"></i></button>-->
+					   <!-- <a href="/showpub/none/{{ pub['id'] }}" data-toggle="tooltip" data-placement="left" 
+						  title="Mostrar publicación" class="btn btn-success" role="button">
+						  <i class="glyphicon glyphicon-eye-open"></i></a> -->
+				
+				{% if pub['owner'] == current_user  %}
+								<button class="btn btn-success " onclick="doSafetEdit( {{ pub['id'] }} )" data-toggle="tooltip" data-placement="left" 
+								title="Editar publicación">   
+									<i class="glyphicon glyphicon-pencil"></i>
+								</button>
+
+				{% end %}	  
+					   			<button class="btn btn-info" onclick="doSafetComments(this.parentNode, {{ pub['id'] }} )" data-toggle="tooltip" data-placement="left" title="Mostrar los comentarios">
+					   				<i class="glyphicon glyphicon-option-horizontal"></i>
+				   				</button>
+					   
+				{% if pub['owner'] == current_user  %}
+					  <button class="btn btn-info"  
+						onclick="doSafetDelete( {{ pub['id'] }} )" data-toggle="tooltip" data-placement="left" title="Borrar esta publicación">			  
+											   <i class="glyphicon glyphicon-trash"  
+						></i></button>
+				{% end %}
+				</p>
+			</div>
+			<span id="currboxcomment_{{ pub['id'] }}" name="currboxcomment_{{ pub['id'] }}"></span>
+		</div>
+						
+		{% end %}
+	{% end %}
+
+</div>
+</div>

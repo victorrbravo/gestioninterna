@@ -1,0 +1,108 @@
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+
+		$('.img-content-loader').on('change', function(){
+			
+			var $preview = $('#' + $(this).data('preview') );
+
+			var $form = $(this).parents('form');
+			var $input = $(this).children('input[type=file]');
+			var $name = $input.attr('name');
+
+			clean_other_files( $form, $input, $name );
+
+			showVistaPrevia($(this).children('input[type=file]'), $preview);
+		});
+
+		$(".scroll").click(function(event){		
+		    event.preventDefault();
+	    	  $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+							});
+		  //$(".combobox").combobox();		
+
+		  
+		  console.log("imageloader...click...(1)...");
+		  $('.img-content-loader .btn').click( function(event){
+			event.preventDefault();
+			$(this).siblings('input').trigger( "click" );
+		});
+
+		  
+		$('.btn-file-load').on('change', function(){
+			
+			var $preview = $('#' + $(this).data('preview') );
+
+				 console.log($preview);
+				var $form = $(this).parents('form');
+				var $input = $(this).children('input[type=file]');
+				var $name = $input.attr('name')
+				clean_other_files( $form, $input, $name );
+				 console.log($input);
+				
+				showVistaPrevia($(this).children('input[type=file]'), $preview);
+			});	
+		    
+	});
+	
+	function showVistaPrevia( file, element ){
+		var Archivo,Lector;
+		//debugger;
+
+		//$('#progress-bar').css('width','0%');
+		//$('#progress-bar').attr('class','progress-bar');
+
+		Archivo = file[0].files[0];
+
+	
+		if( Archivo.size > 0 ){
+
+			if( !Archivo.type.match('image.*') ){
+				if( element.attr('src') == "")
+					element.attr('src', imagenVacia);
+				alert('El archivo debe ser una imagen');
+				return;
+			}
+
+			Lector = new FileReader(); 
+			Lector.onload = function(event){
+
+				//$('#filename').text( Archivo.name );
+				element.attr('src', event.target.result);
+
+				$('.thumbnails-gallery li').css({
+					'background': 'url(\'' + event.target.result + '\')',
+					'background-size': 'cover',
+					'background-position': 'center center'
+				});
+				//$('.thumbnails-gallery li > img').attr( 'src', event.target.result );
+				//$('#progress-bar').attr('class','progress-bar progress-bar-success');
+
+			};
+
+			Lector.onprogress = updateProgress;
+			
+			Lector.readAsDataURL(Archivo);
+			
+
+		}else{
+			if( element.attr('src') == "")
+				element.attr('src', imagenVacia);
+		}
+		
+	}
+	
+	function updateProgress(event){
+		var porcentajeCarga = Math.round( (event.loaded / event.total) * 100 );
+		$('#progress-bar').css('width',porcentajeCarga+'%');		
+	}
+
+	
+	function clean_other_files( form, this_input, name ){
+		// debugger;
+		inputs = form.find('input[name="'+name+'"]');
+		for(var i=0; i<inputs.length; i++){
+			if( inputs[i] != this_input[0] )
+				inputs[i].value = "";
+		}
+	}
+</script>

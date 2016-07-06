@@ -1,0 +1,96 @@
+<form enctype="multipart/form-data" class="form-horizontal" role="form" action="/processtup/none" method="post" id="formtup" name="formtup" >		 		
+	<div class="input-group input-group-lg">				  
+		<input id="categoria" name="categoria" type="hidden" />
+		<input id="subcategoria" name="subcategoria" type="hidden" />
+		<input id="detallecategoria" name="detallecategoria" type="hidden" />
+		<input id="Foto" name="Foto[]" type="file" multiple style="display:none;"/>
+		<input type="text" id="tup" name="tup" class="form-control" placeholder="¿Qué estás pensando vender u ofrecer?" 
+		title="" onkeyup="countTupChar(this)" >   		  
+		<span class="input-group-btn">     				      				        			      				
+		<p align="center">
+			<img id="blah1" name="blah1" src="/static/sinimagen.jpg" width="32" height="32" />
+		</p>
+		<div class="btn-group">
+			<img id="blah2" src="/static/sinimagen.jpg" width="16" height="16" />
+			<img id="blah3" src="/static/sinimagen.jpg" width="16" height="16" />
+			<img id="blah4" src="/static/sinimagen.jpg" width="16" height="16" />
+		</div>
+		</span> 
+			<span class="input-group-btn">
+                <button class="btn btn-info" type="button" onclick="$('#Foto').trigger('click');">
+                	<i class="glyphicon glyphicon-camera"></i>
+                </button>	        			        			      				
+                <button class="btn btn-default" type="submit">Anunciar</button>        			
+			</span> 
+		</div>
+			
+        <div class="panel panel-default" id="cplfields" name="cplfields"  style="display: none;" >			  
+        <div class="panel-body">
+
+		    <script  type="text/javascript">
+			$(document).ready(function() {
+				  $("#Número_productos_div").jqxNumberInput({ width: '60px', height: '26px',  min: 1, max: 1000, digits: 3, decimalDigits: 0, spinButtons: true, promptChar:' ' });
+				  $("#Número_productos_div").jqxNumberInput("val",1);
+				  $("#Número_productos_div").on('change', function (event) {
+				  var myvalue = event.args.value;
+				  console.log("myvalue number *2:" + myvalue);
+				  document.getElementById("Numero_productos").value = myvalue;
+				  console.log("myvalue number *2:" +  document.getElementById("Numero_productos").value);
+
+				});
+			});
+			</script>
+
+		<div class="col-md-3 column">
+			<label class="sr-only" for="Número productos">Número productos</label>	
+			<div class="input-group">
+				<div class="input-group-addon">Cantidad </div>	
+				<div style='margin-top: 3px;' id="Número_productos_div"></div>
+				<input type="hidden" class="form-control" id="Numero_productos" name="Numero_productos"  value="1"/>						
+			</div>
+		</div>
+
+		<div class="col-md-5 column">
+			<label class="sr-only" for="Precio">Precio  </label>
+			<div class="input-group">
+				<div class="input-group-addon"> Precio (Bs.) </div>
+				<input type="text" class="form-control" id="Precio" name="Precio" placeholder="Precio" value="0">
+				<div class="input-group-addon">.00</div>
+			</div> 
+		</div>
+		<div class="col-md-3 column">
+			<div class="input-group">
+				<select class="form-control" id="Tipo" name="Tipo">
+					<option>Nuevo</option>
+					<option>Usado</option>
+				</select>
+			</div> 
+		</div>
+
+		</div>
+
+		<div class="row clearfix">
+			<div class="col-md-1 column"></div>
+			<div class="col-md-3 column">
+				<label for="selCategory" class="col-md-1 control-label">Categoría</label>
+				<select name="selCategory" id="selCategory" class="form-control" onchange="onSubCategory(this.value)"></select>
+			</div>	
+			<div class="col-md-3 column">
+				<label for="selSubCategory" class="col-md-1 control-label">SubCategoría</label>
+				<select name="selSubCategory" id="selSubCategory" class="form-control"  onchange="onDetailCategory(this.value)"  >
+				</select>
+			</div>	
+			<div class="col-md-3 column">
+				<label for="selDetail" class="col-md-1 control-label">Detalle</label>
+				<select name="selDetail" id="selDetail" class="form-control" onchange="$('#detallecategoria').val(this.value)"  >
+				</select>
+			</div>
+
+			<div class="col-md-1 column">
+				<button class="btn btn-default" type="button" onclick="$('#cplfields').hide()"><i class="glyphicon glyphicon-remove"></i></button>
+			</div>	
+		</div>
+	</div>
+</form>
+			
+<div id="countTup"></div>

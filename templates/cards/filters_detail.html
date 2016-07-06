@@ -1,0 +1,26 @@
+{% try %}
+{% if len(cities_detail) > 5230  %}
+	<div class="panel panel-default">
+    <div class="panel-heading">
+        <b> Detalle </b>
+    </div>        
+
+		<div class="panel-body">		
+			<script type="text/javascript">
+				myfilter = "";
+				for(i=0; i < currcities_detail.data.nodes.length; i++ ){
+					var newlink = "/searchpub/{{boxsearch}}/"+"detail_"+currcities_detail.data.nodes[i].variable;		            					
+					if (currcities_detail.data.nodes[i].parameter1 > 0 ) {						
+						document.write("<a href='"+newlink+"' >"+currcities_detail.data.nodes[i].name+"("+currcities_detail.data.nodes[i].parameter1.trim()+") </a> <br/>");
+
+					}
+				}
+			</script>
+		</div>
+	</div>
+{% end %}
+{% except %}		
+{% end %}	
+
+
+

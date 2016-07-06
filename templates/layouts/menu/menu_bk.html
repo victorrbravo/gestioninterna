@@ -1,0 +1,189 @@
+<!--Header-->
+<nav id="mainNavbar" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="color:white">
+            <div class="visible-xs" style="position: absolute; text-align: center; width: 100%; margin-top: 15px;">
+              <a href="/gopanel/Published/none/none"><b style="color:white">Weetup</b></a>
+            </div>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Inicio</span>
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </button>
+            <button type="button" style="float:left;margin-left:10px" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Salir</span>
+                <span class="glyphicon glyphicon-user"></span>
+            </button>
+          <!-- <a class="navbar-brand" href="#">Weetup</a>-->
+        
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                      <li class="hidden-xs">
+                        <a href="/gopanel/Published/none/none"><b style="color:white">Weetup</b></a>
+                      </li>
+                      {% if current_user == "comprador" %}
+                        <li><a href="/gologin">Iniciar sesión</a></li>
+                      {% end %}
+                {% try %}
+                   {% if current_user != "comprador" %}
+          	         {% if  len(notes) == 0 %}      
+                        <li><a href="/shownotifications/none/none">Notificaciones</a></li>
+          	         {% else %}
+          	            <li><a href="/shownotifications/none/none">Notificaciones <span style="background-color:red" class="badge badge-info ">{{ len(notes) }}</span></a></li>      
+          	         {% end %}
+                   {% end %}
+                {% except %}
+                      <li><a href="/shownotifications/none/none">Notificaciones</a></li>
+                {% end %}
+               
+        
+                {% if current_user != "comprador" %}
+
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mi Cuenta<span class="caret"></span></a>      
+                          <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a href="#">Reputación</a></li>
+                            <li><a href="/gopanel/Sales/none/none">Compras</a></li>
+                            <li><a href="/gopanel/Sold/none/none">Ventas</a></li>
+                            <li><a href="/gopanel/Published/0/none">Favoritos</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a class="has-submenu" aria-haspopup="true" aria-expanded="false" tabindex="-1" href="#">Configuración <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="/checkprofile/editprofile/modificar_perfil/{{ user_id }}">Perfil</a></li>                  
+                                    <li><a tabindex="-1" href="/goform/gopayments__pagos/agregar_método_de_pago/none">Métodos de Pago</a></li>                  
+                                    <li><a tabindex="-1" href="/gochangepass/none/">Cambiar contraseña</a></li>                  
+                                </ul>
+                            </li>
+                            <li><a href="/goform/gocampaigns__campaigns/agregar_campaña/none">Campañas</a></li>		
+
+                            <li><a href="#">Preguntas</a></li>              
+                          </ul>
+                      </li>
+                {% end %}
+
+                {% try %}                
+                    {% if (user_perm & 4) == 4 %}
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>      
+                          <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                          <li>
+                            <a class="has-submenu" aria-haspopup="true" aria-expanded="false" tabindex="-1" href="#">Anuncios <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a tabindex="-1" href="/gopanel/Draft/none/none">Aprobar</a></li>                  
+                            </ul>
+                          </li>
+
+                          <li class="divider"></li>
+                          <li><a href="/gousers">Personas</a></li>
+                          <!-- <li><a href="/gomgntusers/none/">Usuarios</a></li>               -->
+                          <li class="divider"></li>
+                          <li><a href="#">Preguntas</a></li>              
+                        </ul>
+            		      </li>        
+                    {% end %}
+                {% except %}
+                {% end %}
+        
+                  
+                {% try %}                
+                {% if user_perm & 3 == 3 %}
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dashboard<span class="caret"></span></a>      
+                          <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                              <li>
+                                  <a class="has-submenu" aria-haspopup="true" aria-expanded="false" tabindex="-1" href="#">Anuncios <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                      <li><a tabindex="-1" href="/goform/gopublish/agregar_anuncio/none">Agregar</a></li>                  
+                                      <li><a tabindex="-1" href="/goform/gopublish/gestionar_anuncio/none">Modificar</a></li>
+                                      <li><a tabindex="-1" href="/goform/gopublish/borrar_anuncio/none">Eliminar</a></li>    
+                                      <li class="divider"></li>
+                                      <li><a tabindex="-1" href="/goform/gopublish/Siguiente_estado_anuncios/none">Cambiar estado</a></li>    
+                                      <li><a tabindex="-1" href="/showstats/publish/estado_anuncios/">Ver estadísticas</a></li>                          
+                                  </ul>
+                              </li>
+
+                              <li>
+                                  <a class="has-submenu" aria-haspopup="true" aria-expanded="false" tabindex="-1" href="#">Categorías <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                      <li><a tabindex="-1" href="/goform/gocategory__categorias/agregar_categoría/none">Agregar</a></li>                  
+                                      <li><a tabindex="-1" href="/goform/gopublish/borrar_categoría/none">Borrar</a></li>                                    
+                                  </ul>
+                              </li>
+                              <li>
+                                  <a tabindex="-1" href="#">Sub-Categorías <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                  <li><a tabindex="-1" href="/goform/gosubcategory__subcategorias/agregar_subcategoría/none">Agregar</a></li>                  
+                                  </ul>
+                              </li>              
+                              <li>
+                                  <a class="has-submenu" aria-haspopup="true" aria-expanded="false" tabindex="-1" href="#">Ciudades <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                      <li><a tabindex="-1" href="#">Agregar</a></li>                  
+                                  </ul>
+                              </li>
+                              <li class="divider"></li>
+                              <li>
+                                  <a class="has-submenu" aria-haspopup="true" aria-expanded="false" tabindex="-1" href="#">Gestión publicaciones <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                      <li><a tabindex="-1" href="/goform/gopublish/Siguiente_estado_publicación/none">Cambiar estado</a></li>
+                                      <li><a tabindex="-1" href="/showstats/publish/estado_publicaciones/">Ver estadísticas</a></li>                  			  
+                                  </ul>
+                              </li>
+                              <li class="divider"></li>
+                              <li><a href="/gousers">Personas</a></li>
+                              <!-- <li><a href="/gomgntusers/none/">Usuarios</a></li>               -->
+
+                              <li class="divider"></li>
+                              <li><a href="/showcomm/none/none/none">Preguntas</a></li>              
+                          </ul>
+                      </li>        
+        	         {% end %}
+                {% except %}
+                {% end %}
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right hidden-xs" >       
+          {% if current_user == "comprador" %}
+              <li><a href="/goregister">Registrarse</a></li>
+          {% else %}
+              <li>
+                  <a href="#" tabindex="-1" class="has-submenu" aria-haspopup="true" aria-expanded="false">${{ current_user  }} <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/logout">Cerrar sesión</a></li>
+                  </ul>
+              </li>
+           {% end %} 
+          </ul>
+          
+          <ul style="margin-top:10px" class="nav navbar-nav navbar-right hidden-xs hidden-sm" >    
+              {% if current_user != "comprador" %}   
+              <!--li><a href="/goform/gopublish/agregar_publicación/none">Anunciar</a></li-->
+              {% end %}
+              {% include "../../forms/search.html" %}
+          </ul>
+         
+        </div><!-- /.navbar-collapse -->
+
+        <div class="hidden-lg hidden-md hidden-sm">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+              <ul class="nav navbar-nav">
+                {% if current_user == "comprador" %}
+                    <li><a href="/gologin">Iniciar sesión</a></li>
+                {% else %}
+                    <li>
+                        <a href="#" tabindex="-1" class="has-submenu" aria-haspopup="true" aria-expanded="false">${{ current_user  }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/logout">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                 {% end %} 
+              </ul>
+          </div>
+        </div>
+
+    </div>
+</nav>

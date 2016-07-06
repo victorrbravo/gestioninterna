@@ -1,0 +1,431 @@
+<script>
+	var lastcommentobj = "";
+	
+	function doSafetShow(summary, photo1, photo2, photo3, price, description ) {
+	  $( "#dialogshow" ).dialog({  resizable: true });
+	  myhtml = "<div class=\"row\">\n"
+	          "<div class=\"col-md-6\">\n"
+	  //myhtml= "<p>";
+	  myhtml = myhtml + "<img src=\"" + photo1 +"\"></img>"
+	  if ( photo2.length > 0 ) {
+	  myhtml = myhtml + " <img src=\"" + photo2 +"\"></img>"
+	  }
+	  
+	  if ( photo3.length > 0 ) {
+	  myhtml = myhtml + " <img src=\"" + photo3 +"\"></img>"					  
+	  }
+	  
+	  
+	  myhtml = myhtml + "</div>\n";
+	  myhtml = myhtml + "</div>\n";
+	  
+	  mydata = "<div class=\"row\">\n"
+	          "<div class=\"col-md-12\">\n";
+	  mydata += " "+ summary;
+	  if (description.length > 0 ) {
+	  
+	    currlen = description.length;					    
+	    mydata = mydata + description.substring(0,currlen);
+	    
+	  }
+	  mydata += "</div>\n";
+	  mydata += "</div>\n";
+	  
+	  myprice = "</button><button class=\"btn btn-info\">Precio:" + price +"</button>";
+	  
+	  myhtml = myhtml + mydata + myprice;
+	  
+	  $( "#dialogshow" ).html(myhtml);
+	  
+	
+	}
+	
+	
+	
+	function doSafetEdit( currid ) {
+		      console.log("(1)..doSafetEdit....currid" + currid); 
+		      myurl = 
+"http://localhost:8080/goform/gopublish/modificar_publicación/" +currid;	
+							 
+
+		      
+		      window.location = myurl;
+
+
+	      
+	}
+	
+	function doSafetComments(myobj, currid ) {
+	
+	    console.log("doSafetAddComment");
+	    mycurrobj = "#currboxcomment_" + currid;
+	    if (mycurrobj == lastcommentobj ) {
+		    $(lastcommentobj).html("");					      
+		    lastcommentobj = "";
+		    return;
+	    }
+	    myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/comentarios.xml Variable: vPorPublicacion" +
+	    " parameters.ByPublication: " + currid; 
+	    
+	    $.post('http://localhost:8080/ajaxconsole',{ operation: myoperation
+
+		}, 
+		    function(data) { 
+		      if ( lastcommentobj.length > 0 ) {
+			      $(lastcommentobj).html("");					      
+		      }
+		      console.log("(1)..data:......ajaxconsole"); 
+		      
+		      myresult = eval("(" + data + ")" );
+		      mylist = myresult["safetlist"];
+		      
+		      console.log("(2)..data:......ajaxconsole:" +  mylist.length); 
+		      mynewtable = "";
+		      mynewtable += "<div class=\"panel-footer\">\n";
+		      mynewtable += "<ul class=\"list-group\">\n";
+		        
+		      
+		      for(i = 0; i < mylist.length; i++) {
+			console.log("comment:" + mylist[i]["comment"] + " owner:" + mylist[i]["owner"]);
+			mynewitem = "<li class=\"list-group-item\">"+ mylist[i]["comment"]+ " <b>(" +mylist[i]["owner"] 
+			+")</b> - <font size=\"1\">hace "+
+			mylist[i]["commenttime"].substring(18) +"</font></li>\n";
+			mynewtable += mynewitem;							
+		      }
+		      mynewtable += "</ul>";
+		      mynewtable += "</div>\n";
+		      console.log("(3)..data:......ajaxconsole"); 						      						      
+		      
+		      mynewcomment = "";
+		      
+		      mynewcomment += "<div class=\"panel-footer\">\n";
+		      mynewcomment += "<p >\n";					      
+		      mynewcomment += "<form action=\"javascript:void(0);\" class=\"form-inline\" role=\"form\"><div class=\"form-group col-md-10\"><input class=\"form-control\" type=\"text\" placeholder=\"Comentario\" id=\"currcomment\" name=\"currcomment\" /></div><button class=\"btn btn-default\" onclick=\"doSafetAddComment("+ currid +")\" >Agregar</button></form>";
+		      mynewcomment += "</p>";
+		      mynewcomment += "</div>";					      
+		      mynewobj = "#currboxcomment_" + currid;
+		      console.log("(1)..doSafetComments.newobj:" + mynewobj);
+		      $(mynewobj).html(mynewcomment);
+		      lastcommentobj = mynewobj;						      
+		      mynewobj = "#currboxcomment_" + currid;
+		      $(mynewobj).html(mynewtable + mynewcomment);
+		      
+		    });
+	
+	
+	// ****************
+	      
+	      
+	      
+	}
+	
+	function doSafetGetLazy( curroffset ) {
+	myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujo_publicaciones.xml Variable: vPublished" 
+	    + " parameters.CurrOffset: " + curroffset;
+	
+	    
+	    $.post('http://localhost:8080/ajaxconsole',{ operation: myoperation
+		}, 
+		    function(data) { 
+			console.log("...............data....................curroffset:" + curroffset);
+			console.log(data);
+			
+			console.log("...............data.................");
+			CURROFFSET = CURROFFSET + 4;
+		    
+		    });
+	
+	
+	
+	}
+	
+	function doSafetMarkRead(item, currid, newpage ) {
+	    mycomment = $("#currcomment").val();
+	    $.post('http://localhost:8080/ajaxforma_modificar_notificación',{ id: currid,
+		  leido: true
+		    }, 
+			function(data) { 							    
+				//window.location.href = newpage;	
+				countNotifiItem = $('.badge-info');
+				currentCount = countNotifiItem.html();
+				if(currentCount <= 1){
+					countNotifiItem.hide();
+				}else{
+					countNotifiItem.html(currentCount - 1);
+				}
+				$(item).hide();
+			});
+			
+            
+	
+	}
+	
+
+	function doSafetEmail( curremail ) {
+	console.log("(1)..doSafetEmail...."); 
+
+	curremail = curremail.replace(/&quot;/g,'"');
+	curremail = curremail.replace(/&lt;/g,'<');
+	curremail = curremail.replace(/&gt;/g,'>');
+	console.log(curremail); 
+
+	
+
+	     bootbox.dialog({
+	     	
+			title: "Correo enviado",
+			message: "<b>Correo electrónico</b>: " + curremail,
+			 buttons: {
+				success: {
+				label: "Aceptar",
+				className: "btn-success",
+				callback: function() {
+
+						}
+					}
+				}
+	     });
+	}
+
+	function doSafetDelete( currid ) {
+	console.log("(1)..doSafetDelete...."); 
+	     bootbox.confirm("¿Está seguro de  eliminar esta notificación?", 
+	    function(result) {			
+
+	    
+	    console.log(currid);
+	    if (result) {
+		    myname = "thesafetrow_" + currid
+		    console.log("myname: " + myname);
+		    $('#' + myname).hide();
+		    //$('#' + myname).html("Hola");
+		    $.post('http://localhost:8080/ajaxforma_borrar_publicación',{ id: currid }, 
+		    function(data) { 
+		    console.log("(2)..data:......myname:"); 
+		    console.log(data); 
+		    
+		    console.log("(3)...data:......"); 
+		    
+		    });
+	    }
+	    
+	    console.log("pass");			
+				
+	});					
+	}
+	
+	function doSafetPublish(myobj, currid ) {
+	console.log("(1)..doSafetBuy...."); 
+	     bootbox.confirm("¿Está seguro de publicar este producto?", 
+	    function(result) {			
+	    
+	    console.log(currid);
+	    if (result) {
+		    
+		    $.post('http://localhost:8080/processbuy/'+currid+"/Published/-1/",
+                                    { id: currid }, 
+		    function(data) { 						    
+		      console.log("(2)..processbuy:......myname:"); 
+		      myresult = eval("(" + data + ")" );
+		      console.log("result:" + myresult["result"]); 
+		      if (myresult["result"] == "true") {
+		    	  mynewbutton = "<button class=\"btn btn-success\"><i class=\"glyphicon glyphicon-log-in\"></i> Publicado</button>"
+			  $(myobj).html(mynewbutton);
+		      }						      
+		    })					
+		    
+	    }
+	    
+	    console.log("pass buy");		
+		    });					
+	}
+
+
+	function doSafetRate(myobj, currid ) {
+	console.log("(1)..doSafetRate..."); 
+
+		bootbox.dialog({
+		title: "This is a form in a modal.",
+		message: '<div class="row"> ' +
+		'<div class="col-md-12"> ' +
+		'<form class="form-horizontal"> ' +
+		'<div class="form-group"> ' +
+		'<label class="col-md-4 control-label" for="awesomeness">Como lo califica la venta?</label> ' +
+		'<div class="col-md-4"> <div class="radio"> <label for="awesomeness-0"> ' +
+		'<input type="radio" name="awesomeness" id="awesomeness-0" value="Positiva" checked="checked"> ' +
+		'Positiva </label> ' +
+		'</div>' +
+                                '<div class="radio"> <label for="awesomeness-1"> ' +
+		'<input type="radio" name="awesomeness" id="awesomeness-1" value="Neutra"> Neutra </label> ' +
+		'</div> ' +
+		'<div class="radio"> <label for="awesomeness-2"> ' +
+		'<input type="radio" name="awesomeness" id="awesomeness-2" value="Negativa"> Negativa </label> ' +
+		'</div> ' +
+
+		'</div> </div>' +
+		'</form> </div> </div>',
+		buttons: {
+		success: {
+			label: "Guardar",
+		className: "btn-success",
+			callback: function () {
+			
+				console.log("doSafetRate");
+				var answer = $("input[name='awesomeness']:checked").val()
+				var mystr ="Se eligió <b>" + answer + "</b>";
+				console.log(mystr);
+		 $.post('http://localhost:8080/processbuy/'+currid+"/Scored/2/",
+                                    { id: currid }, 
+                                    function(data) {                                                
+                                      console.log("(2)..processbuy:......myname:"); 
+                                      myresult = eval("(" + data + ")" );
+                                      console.log("result:" + myresult["result"]); 
+                                      if (myresult["result"] == "true") {
+                                          mynewbutton = "<button class=\"btn btn-success\"><i class=\"glyphicon glyphicon-log-in\"></i> Calificado</button>"
+                                          $(myobj).html(mynewbutton);
+                                      }                                               
+                                    });    							
+
+				   Example.show(mystr);
+				    }
+			  	  }
+				}
+				}
+		); 
+	    				
+	}
+
+
+
+	
+	function doSafetBuy(myobj, currid ) {
+	console.log("(1)..doSafetBuy...."); 
+	     bootbox.confirm("¿Está seguro de comprar este producto?", 
+	    function(result) {			
+	    
+	    console.log(currid);
+	    if (result) {
+		    
+		    $.post('http://localhost:8080/processbuy/'+currid+"/Sold/-1/",
+                                    { id: currid }, 
+		    function(data) { 						    
+		      console.log("(2)..processbuy:......myname:"); 
+		      myresult = eval("(" + data + ")" );
+		      console.log("result:" + myresult["result"]); 
+		      if (myresult["result"] == "true") {
+		    	  mynewbutton = "<button class=\"btn btn-success\"><i class=\"glyphicon glyphicon-log-in\"></i> Comprado</button>"
+			  $(myobj).html(mynewbutton);
+		      }						      
+		    })					
+		    
+	    }
+	    
+	    console.log("pass buy");		
+		    });					
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="list-group"  id="milistica" name="milistica" >
+                        <a href="#" class="list-group-item active">Todas las notificaciones</a>			
+		        	 
+			
+				<div class="list-group-item">
+				
+				{%  if len(pubs) == 0  %}		        
+
+				    <div class="panel panel-default" id="thesafetrow" name="thesafetrow">
+					  <div class="panel-body">
+					         <div class="col-md-12">								
+					           No tiene notificaciones.
+					         </div>
+																	        
+					  </div>					  
+					 <div class="panel-footer">
+					   
+					</div>
+
+				    </div>
+				{% else %}
+
+					{% for pub in pubs %} 
+					
+					<div class="panel panel-default" id="thesafetrow_{{ pub['id'] }}" name="thesafetrow_{{ pub['id'] }}">
+					  <div class="panel-body">
+					  	<div class="text-capitalize">
+					  	{% if pub['typenote'] == "Follow" %}
+							Te siguió el usuario <a href="/showprofile/{{pub['buyer']}}/">{{pub['buyer']}}</a> 	
+						{% elif pub['typenote'] == "Buy" %}
+							Has comprado: {{ pub['summary']  }}
+						{% elif pub['typenote'] == "Sell" %}
+							Has vendido: {{ pub['summary']  }}
+					   	{% else %}
+					    	{{ pub['summary']  }}
+					   	{% end %}
+					   </div>
+					  	<div class="text-right"><font size="1">
+					  		{% if pub['status']=="Purchase" %}
+					       		Por ${{ pub['owner']  }} | Compra  | {{ pub['createtime'][pub['createtime'].index('  '):]  }}
+							{% else %}
+	                            {% if pub['read'] == 'No'  %}
+									Por ${{ pub['owner']  }} | <font color="red">No leído </font>  | {{ pub['createtime']  }}
+								{% else %}
+								    Por ${{ pub['owner']  }} | <i> Ya Leído</i>  | {{ pub['createtime']  }}
+								{% end %}
+							{% end %}
+					  	</font></div>
+					  </div>
+					  
+					   <div class="panel-footer">
+					   		<div class="text-right">
+								<button class="btn btn-info"  
+								onclick="doSafetEmail( '{{ pub['email'] }}' )" data-toggle="tooltip" data-placement="left" title="Ver correo">			  
+								<i class="glyphicon glyphicon-envelope"></i></button>
+
+								{% if pub['typenote'] == "Follow" %}
+								<button class="btn btn-info"  
+								onclick="doSafetMarkRead(this, '{{ pub['id'] }}', '/showprofile/{{pub['buyer']}}/')" data-toggle="tooltip" data-placement="left" title="${{pub['buyer']}} te ha seguido. Marcar como leida">			  
+								<i class="glyphicon glyphicon-user"></i><b> +1 </b></button>					
+								{% else %}
+									{% if pub['read'] == 'No'  %} 
+									<button class="btn btn-info" title="Marcar como leida"
+									onclick="doSafetMarkRead(this, '{{ pub['id'] }}', '/showpub/none/{{ pub['publicaciones_id'] }}')" data-toggle="tooltip" data-placement="left">			  
+									<i class="glyphicon glyphicon-eye-open"></i></button>
+									{% end %}
+								{% end %}
+
+								{% if pub['owner'] == current_user  %}
+								<button class="btn btn-danger"  
+								onclick="doSafetDelete( {{ pub['id'] }} )" data-toggle="tooltip" data-placement="left" title="Borrar esta notificación">			  
+								<i class="glyphicon glyphicon-trash"></i></button>
+								{% end %}
+							</div>
+
+					  </div>
+					   <span id="currboxcomment_{{ pub['id'] }}" name="currboxcomment_{{ pub['id'] }}"> 
+					   
+					   </span>
+					</div>
+						
+					      {% end %}
+					{% end %}
+
+					
+
+				</div>
+				<div class="list-group-item">
+					<span class="badge">{{len(pubs)}}</span>Número de notificaciones
+				</div>
+			</div>

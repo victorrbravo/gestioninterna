@@ -1,0 +1,26 @@
+<form style="margin-top:0px;" class="navbar-form navbar-left" role="search" method="post" action="/searchpub/none/none" >
+	<div class="input-group" style="width:100%;">
+		
+		{% try %}
+			{% if with_announce and current_user != "comprador" %}
+				<span class="input-group-btn">
+					<a href="/goform/gopublish/agregar_publicación/none" class="btn btn-default" aria-label="Left Align">
+						
+						<span class="glyphicon glyphicon-star-empty" aria-hidden="true"> Anunciar</span>
+						
+					</a>
+				</span>
+			{% end %}
+		{% except %}
+		{% end %}
+
+
+		<input type="text" class="form-control" id="boxsearch" name="boxsearch" placeholder="Buscar producto/servicio" title="" />
+
+		<span class="input-group-btn">
+			<button type="submit" class="btn btn-default" type="button">
+				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+			</button>
+		</span>
+    </div>
+</form>

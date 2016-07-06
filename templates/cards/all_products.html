@@ -1,0 +1,482 @@
+{% try %}
+	{% if is_sold != None %}
+		{% set is_sold == True %}
+	{% end %}
+{% except %}
+	{% set is_sold = False %}		
+{% end %}
+
+<style>
+	.form-inline .form-group input {
+	    /*width:470px;*/
+	}
+	
+	.cliente {
+		margin-top:0px;
+		border: #cdcdcd medium solid;
+		width:50px;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+
+	#divForLoading {
+	  width: 100%;
+	  height: 100%;
+	  top: 0px;
+	  left: 0px;
+	  position: fixed;
+	  display: none;
+	  opacity: 0.7;
+	  background-color: #fff;
+	  z-index: 99;
+	  text-align: center;
+	}
+
+	#divForLoading-image {
+	  position: absolute;
+	  top: 100px;
+	  left: 240px;
+	  z-index: 100;
+	}
+
+	.published-by{
+		color: #737373;
+	    font-size: 12px;
+	    line-height: 20px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    margin-left: 15px;
+	    margin-right: 15px;
+	}
+</style>
+
+
+
+					
+<script src="/static/js/example.js"></script>
+
+<script>
+	$(function () {
+	    Example.init({
+	        "selector": ".bb-alert"
+	    });
+	});
+</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+
+		
+<div class="row clearfix">
+	{% try %}		
+		{% if successmessage != None %}
+			<div class="alert alert-success">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+				{{ successmessage }}
+			</div>
+		{% end %}	
+	{% except %}		
+	{% end %}	
+</div>
+
+		
+<div id="divForLoading" name="divForLoading" >		        
+	<img id="loading-image" src="/static/loading.gif" alt="Cargando..." />
+</div>
+
+{% try %}
+{% if len(pages) > 0  %}
+	<div class="panel panel-default">
+		<div class="panel-body">		
+		    {% for page in pages %} 
+			  
+			  {%  if page["current"] %}
+			     {{ page["number"] }} {{ page['separator'] }}
+			  {% else  %}
+			      <a href="{{ page['url']}}">{{ page["number"] }} </a> {{ page['separator'] }}
+			  
+			  {% end %}
+			 
+			  
+		    {% end %}	  
+			  
+		</div>
+	</div>
+{% end %}
+{% except %}		
+{% end %}	
+
+		
+<div class="list-group"  id="milistica" name="milistica" >
+
+	{% try %}
+		{% if products_title != None %}
+			<a href="#" class="list-group-item active">{{ products_title }}</a>
+		{% end %}
+	{% except %}					
+		{% if name_operation == "Published" %}
+					 
+			{% try %}
+				{% if name_title == "none" %}
+					
+							<a href="#" class="list-group-item active">
+								{% try %}
+									{% if name_filter == "0" %}
+										Mis favoritos
+									{% else %}
+										Anuncios Weetup
+									{% end %}
+
+								{% except %}
+									Anuncios Weetup
+								{% end %}
+							</a>
+					
+				{% else %}				      
+					<a href="#" class="list-group-item list-group-item-success">Tendencia:<b><i>{{ name_title }}</i></b></a>
+				{% end %}
+			{% except %}
+					{% try %}
+						{% if product_detail != None %}
+							
+								{% if is_sold %}
+									<a href="#" class="list-group-item active">
+										Has realizado una compra!!!
+									</a>
+								{% else %}
+									<a href="#" class="list-group-item active">
+										Producto en venta
+									</a>
+								{% end%}
+
+						{% end%}
+					{% except %}
+									<a href="#" class="list-group-item active">
+										Productos venta
+									</a>
+					{% end %}
+			{% end %}
+			
+					
+		{% elif name_operation == "Draft" %}		        
+					<a href="#" class="list-group-item active">Para publicar (borrador)</a>
+		{% elif name_operation == "Sold" %}		        		        
+					<a href="#" class="list-group-item active">Mis Ventas</a>
+		{% elif name_operation == "Sales" %}		        
+			        <a href="#" class="list-group-item active">Mis Compras </a>
+		{% elif name_operation == "Delivered" %}
+					<a href="#" class="list-group-item active">Productos Entregados</a>
+		{% elif name_operation.find("squeda")>0 %}
+					<a href="#" class="list-group-item list-group-item-success" ><b><i>{{name_operation}}</i></b></a>
+		{% else %}
+				    <a href="#" class="list-group-item active">Todos los productos</a>			
+		{% end %}
+	{% end %}
+		        	 
+			
+	<div class="list-group-item">
+				
+	{%  if len(pubs) == 0  %}		        
+
+		<div class="panel panel-default" id="thesafetrow" name="thesafetrow">
+			<div class="panel-body">
+				<div class="col-md-12">								
+					Sin productos publicados
+				</div>
+			</div>					  
+			<div class="panel-footer">
+
+			</div>
+		</div>
+	{% else %}
+		{# set count = 0 #}
+
+		{% for pub in pubs %} 
+		{# if count == 0  #}
+	        
+					
+		<div class="panel panel-default" id="thesafetrow_{{ pub['id'] }}" name="thesafetrow_{{ pub['id'] }}">
+			<div class="panel-body">
+
+				{% try %}
+					{% if product_detail != None %}
+						{% include "product_detail.html" %}
+					{% else %}
+						{% include "product.html" %}
+					{% end%}
+				{% except %}
+					{% include "product.html" %}
+				{% end %}
+
+			</div>
+			<hr style="margin:2px"/>
+			<div class="row">
+						<div class="col-md-8">
+							<div class="published-by">
+								<p class="text-left">
+									Publicado por <a href="/showprofile/{{ pub['owner']  }}/">${{ pub['owner']  }} </a>  hace {{ pub['publishtime'][pub['publishtime'].index('  '):]  }}
+									
+								</p>
+							</div>
+						</div>
+						{% try %}		
+							{% if (user_perm & 4) == 4 %}
+								{% if name_operation != "Draft"  %}
+								<!--div class="col-md-4 text-right hidden-xs hidden-sm">
+									<div class="published-by">
+										<p>Aprobado por  <a href="/showprofile/{{pub['approved']}}/">${{pub['approved']}} </a>
+												
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4 visible-xs visible-sm">
+									<div class="published-by">
+										<p>Aprobado por  <a href="/showprofile/{{pub['approved']}}/">${{pub['approved']}} </a>
+												
+										</p>
+									</div>
+								</div-->
+								{% end %}			  
+							{% end %}
+						{% except %}		
+						{% end %}	
+				</div>
+
+			{% if is_sold == False %}
+			<div class="panel-footer panel-ads">
+				<div class="row">
+					<div class="col-md-8 col-sm-8">
+						<div class="text-left">
+							
+							{% if name_operation == "Published" or name_operation.find("squeda")>0 %}
+								   
+								{% if pub['owner'] != current_user  %}
+									{% try %}
+									{% if pub['nosold'] == "Si"   %}
+										<span> 
+											<button class="btn btn-warning btn-buy" data-toggle="tooltip" data-placement="left" title="Producto no actualizado. No es posible comprarlo" >
+												<i class="glyphicon glyphicon-shopping-cart"> </i>
+											</button>  					      
+										</span>
+									{% else  %}
+										<span> 
+											<button class="btn btn-primary btn-buy" title="Comprar"  onclick="doSafetBuy(this.parentNode, {{ pub['id'] }} )">
+												<i class="glyphicon glyphicon-shopping-cart"></i>
+											</button>  					      
+										</span>
+									{% end %}
+									{% except %}
+										<span> 
+											<button class="btn btn-primary btn-buy" title="Comprar"  onclick="doSafetBuy(this.parentNode, {{ pub['id'] }} )">
+												<i class="glyphicon glyphicon-shopping-cart"></i>
+											</button>  					      
+										</span>
+									{% end %}											
+
+							    {% end %}
+					    		
+					    		<span> 
+									<button class="btn btn-primary" title="Compartir en Weetup">
+										<i class="fa fa-retweet"></i>
+									</button>  					      
+								</span>
+
+								<span> 
+									<a target="_blank" class="btn btn-primary" title="Compartir en Twitter" href="http://twitter.com/intent/tweet?status=Ve este producto weetup+http://localhost/showpub/none/{{ pub['id'] }}">
+										<i class="fa fa-twitter"></i>
+									</a>  					      
+								</span>
+
+								<span> 
+									<a target="_blank" class="btn btn-primary" href="http://www.facebook.com/share.php?u=http://localhost/showpub/none/{{ pub['id'] }}&title=Ve este producto weetup" title="Compartir en Facebook">
+										<i class="fa fa-facebook"></i>
+									</a>  					      
+								</span>
+								{% if pub['foto1'] != ""%}
+								<span> 
+									<a target="_blank" class="btn btn-primary" href="http://pinterest.com/pin/create/bookmarklet/?media=&url=http://localhost{{ pub['foto1'] }}&is_video=false&description=Ve este producto weetup" title="Compartir en Pinterest">
+										<i class="fa fa-pinterest"></i>
+									</a>  						      
+								</span>
+								{% end %}
+
+							{% elif name_operation == "Sales" or name_operation == "Sold" %}
+								{% if pub['status'] == "Sold" %}				
+									{% if pub['owner'] == current_user  %}
+										{% try %}
+											{% if pub['buyer'] == Null  %}
+											<span>
+												<button class="btn btn-primary"><i class="glyphicon glyphicon-log-in">
+													</i> Vendido ({{ pub['buyer']}} ) 
+												</button>
+											</span>
+											{% end %}
+										{% except %}
+										{% end %}
+				   					{% else %}
+
+										{% if pub['score'] == "-1"  %}					
+									      	<span>
+									        	{% if pub['noscored'] == "Si" %}					
+										      		<button class="btn btn-primary"  
+							        			    onclick="doSafetRate(this.parentNode, {{ pub['id'] }})" data-toggle="tooltip" data-placement="left" title="Calificar esta publicación" disabled>
+												{% else %}
+													<button class="btn btn-primary" onclick="doSafetRate(this.parentNode, {{ pub['id'] }})" data-toggle="tooltip" data-placement="left" title="Calificar esta publicación">
+												{% end %}
+														<i class="glyphicon glyphicon-ok-sign"></i>
+													</button>  			  
+											</span>
+										{% else %}
+											<span>
+											{% set score_icon = "glyphicon-ok-sign" %}
+											{% set score_status = "btn-info" %}
+									  		{% if pub['noscored'] == "Si" %}					  
+								      			<button class="btn btn-primary" onclick="doSafetRate(this.parentNode, {{ pub['id'] }}     )" data-toggle="tooltip" data-placement="left" title="Calificar esta publicación" disabled>
+					        				{% else %}
+					        					{% if pub['score_name'] == "Negativa" %}	
+													{% set score_icon = "glyphicon-thumbs-down" %}
+													{% set score_status = "btn-danger" %}
+												{% elif pub['score_name'] == "Positiva" %}
+													{% set score_icon = "glyphicon-thumbs-up" %}
+													{% set score_status = "btn-success" %}
+												{% end %}
+									        	<button class="btn {{ score_status }}" onclick="doSafetRate(this.parentNode, {{ pub['id'] }}     )" data-toggle="tooltip" data-placement="left" title="Publicación calificada como: ({{ pub['score_name'] }})" >
+											{% end %}
+													<i class="glyphicon {{ score_icon }}"></i>
+												</button>  			  
+											</span>
+										{% end %}
+
+									{% end %}
+
+									<button title="{% if name_operation == "Sales" %} Ver datos del vendedor {% else %} {% end %} Ver datos del comprador" data-placement="left" data-toggle="tooltip" onclick="doSafetEmail( '' )" class="btn btn-primary">
+									<i class="glyphicon glyphicon-envelope"></i></button>
+
+									{% if name_operation == "Sold" %}
+
+									<button title="Destacar" data-placement="left" data-toggle="tooltip" onclick="doSafetEmail( '' )" class="btn btn-primary">
+									<i class="glyphicon glyphicon-fire"></i></button>
+
+									{% end %}
+
+							{% end %}
+
+							{% elif name_operation == "Sold" %}
+
+							{% elif name_operation == "Draft" %}
+
+							{% end %} 
+							   
+								  <!--span class="fb-share-button" 
+								  data-href="/showpub/none/{{ pub['id'] }}" data-layout="button">
+								  </span>				   
+								  <a href="https://twitter.com/share" class="twitter-share-button" 
+								  data-url="/showpub/none/{{ pub['id'] }}" 
+								  data-via="weetup" data-text="Ve este producto weetup">Tweet</a--> 
+								  
+							{% if name_operation == "Published" %}
+								
+								{% try %}
+
+								{% if {'pubid': pub['id'] } in favs  %}  				
+												<span> 
+													<button class="btn btn btn-warning"   onclick="doSafetUnFavorite(this.parentNode, '{{ pub['id'] }}' )"  data-toggle="tooltip" data-placement="left" title="Colocar como NO favorito" >
+														<i class="glyphicon glyphicon-star"></i>
+													</button>
+												</span>
+								{% else %}
+												<span> 
+													<button class="btn btn-primary"   onclick="doSafetFavorite(this.parentNode, '{{ pub['id'] }}' )"  data-toggle="tooltip" data-placement="left" title="Colocar como favorito" >
+														<i class="glyphicon glyphicon-star"></i>
+													</button>
+												</span>
+								{% end %}
+								{% except %}	
+									<span> 
+										<button class="btn btn-primary"   onclick="doSafetFavorite(this.parentNode, '{{ pub['id'] }}' )"  data-toggle="tooltip" data-placement="left" title="Colocar como favorito" >
+											<i class="glyphicon glyphicon-star"></i>
+										</button>
+									</span>	
+								{% end %}	
+								  <!--<button class="btn btn-success" onclick="doSafetShow('{{pub['summary']}}','{{pub['foto1']}}','{{pub['foto2']}}','{{pub['foto3']}}','{{pub['price']}}','{{pub['description']}}')" 
+								  data-toggle="tooltip" data-placement="left" title="Mostrar esta publicación">					  
+								   <i class="glyphicon glyphicon-eye-open"></i></button>-->
+								   <!-- <a href="/showpub/none/{{ pub['id'] }}" data-toggle="tooltip" data-placement="left" 
+									  title="Mostrar publicación" class="btn btn-success" role="button">
+									  <i class="glyphicon glyphicon-eye-open"></i></a> -->
+	  
+					   			<button class="btn btn-primary" onclick="doSafetComments(this.parentNode, {{ pub['id'] }} )" data-toggle="tooltip" data-placement="left" title="Preguntas/Respuestas">
+					   				<i class="fa fa-commenting"></i>
+				   				</button>
+							{% end %}
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<div class="text-right hidden-sm hidden-xs">
+								   
+							{% if name_operation == "Published" %}
+								   
+							{% elif name_operation == "Sales" %}
+
+
+							{% elif name_operation == "Draft" %}
+											<span> 
+												<button class="btn btn-primary" title="Publicar" onclick="doSafetPublish(this.parentNode, {{ pub['id'] }} )">
+													<i class="glyphicon glyphicon-share"></i>
+												</button>  
+											</span>
+							{% end %} 
+							   
+								  <!--span class="fb-share-button" 
+								  data-href="/showpub/none/{{ pub['id'] }}" data-layout="button">
+								  </span>				   
+								  <a href="https://twitter.com/share" class="twitter-share-button" 
+								  data-url="/showpub/none/{{ pub['id'] }}" 
+								  data-via="weetup" data-text="Ve este producto weetup">Tweet</a--> 
+								  
+							
+
+								  <!--<button class="btn btn-success" onclick="doSafetShow('{{pub['summary']}}','{{pub['foto1']}}','{{pub['foto2']}}','{{pub['foto3']}}','{{pub['price']}}','{{pub['description']}}')" 
+								  data-toggle="tooltip" data-placement="left" title="Mostrar esta publicación">					  
+								   <i class="glyphicon glyphicon-eye-open"></i></button>-->
+								   <!-- <a href="/showpub/none/{{ pub['id'] }}" data-toggle="tooltip" data-placement="left" 
+									  title="Mostrar publicación" class="btn btn-success" role="button">
+									  <i class="glyphicon glyphicon-eye-open"></i></a> -->
+							
+							{% if pub['owner'] == current_user  %}
+											<button class="btn btn-success " onclick="doSafetEdit( {{ pub['id'] }} )" data-toggle="tooltip" data-placement="left" 
+											title="Editar publicación">   
+												<i class="glyphicon glyphicon-pencil"></i>
+											</button>
+
+							{% end %}
+								   
+							{% if pub['owner'] == current_user  %}
+											<button class="btn btn btn-danger"  
+											onclick="doSafetDelete( {{ pub['id'] }} )" data-toggle="tooltip" data-placement="left" title="Borrar esta publicación">			  
+												<i class="glyphicon glyphicon-trash"  
+											></i></button>
+							{% end %}
+						</div>
+					</div>
+
+				</div>
+				<!--p class="text-left">
+					<a href="/showprofile/{{ pub['owner']  }}/">${{ pub['owner']  }} </a>  / {{ pub['publishtime'][pub['publishtime'].index('  '):]  }}
+					{# if (user_perm & 4) == 4 #}
+						{# if name_operation != "Draft"  #}
+							<a class="btn btn-default btn-xs" href="/showprofile/{{pub['approved']}}/">aprobado por {{pub['approved']}} </a>          						
+						{# end #}			  
+					{# end #}
+				</p-->
+			</div>
+			{% end %}
+			<span id="currboxcomment_{{ pub['id'] }}" name="currboxcomment_{{ pub['id'] }}"></span>
+		</div>
+		{# set count = 1 #}	
+		{# end #}		
+		{% end %}
+	{% end %}
+
+</div>
+</div>

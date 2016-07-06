@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% include "../cards/scripts/user_ads_script.html" %}
+
+   
+    <div class="col-xs-12 col-sm-8 col-md-8 column">
+ 	 {% block panelleft %}
+                  {%end%}
+   
+     {% block panel %}
+
+        {%end %}
+    </div>
+
+    <div class="col-xs-12 col-sm-2 col-md-3 column">
+        {% block panelright %}
+
+   
+         {%end%}
+    </div>
+{%end %}

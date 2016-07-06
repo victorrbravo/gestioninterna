@@ -1,0 +1,144 @@
+<script>
+myval = 0;
+</script>
+
+{% extends "../layouts/tc_main_layout.html" %}
+
+{% block title %}
+{% end %}
+
+{% block ownstyles %}
+
+{% end %}
+
+{% block ownscripts %}
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    
+     <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/select/1.1.2/js/dataTables.select.min.js"></script>
+    
+
+    <!-- jQuery UI -->
+    <link href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet"></link>
+<link href="https://cdn.datatables.net/select/1.1.2/css/select.dataTables.min.css" rel="stylesheet"></link>
+
+ <script type="text/javascript" >
+    var mytable = null;
+    
+    $(document).ready(function() {
+    mytable = $('#example').DataTable( {
+        columnDefs: [ {
+            orderable: false,
+            className: 'select-checkbox',
+            targets:   0
+        } ],
+        select: {
+            style:    'multi',
+            selector: 'td:first-child'
+        },
+         colReorder: true,
+	"language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No hay resultados - Disculpe",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "search": "Buscar:", 
+	    "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)"
+        },        
+        order: [[ 1, 'asc' ]]
+    } );
+    
+   
+} );
+</script>
+{% end %}
+
+{% block listscripts %}
+
+{% end %}
+
+
+{% block panel %}
+
+ 
+ <select id="lapso" name="lapso">
+  <option value="0">lapso...</option>
+ <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+
+</select> 
+
+ <select id="tipoboleta" name="tipoboleta">
+  <option value="">Boleta..</option>
+  <option value="P">Profesor</option>
+  <option value="I">Inglés</option>
+ <option value="E">Educ. física</option>
+
+</select> 
+<br/>
+<br/>
+
+
+{% if len(mylist) > 0 %}        
+ 
+<table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th></th>
+               {% for key in mykeys %}           
+                    <th>{{key}}</th>
+                {% end %}
+                 <th>---</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+               {% for key in mykeys %}           
+                    <th>{{key}}</th>
+                {% end %}
+                      </tr>
+        </tfoot>
+        
+        <tbody>
+  {% for record in mylist %}            
+            <tr>
+                <td></td>
+                {% for key in mykeys %}    
+		    <td>{{record[key]}}</td>
+	      {%  end %}
+	      <td><span id="container_{{record['id']}}"><input type="file" name="datafile_{{record['id']}}" id="datafile_{{record['id']}}" size="40"></span></td>
+            </tr>
+   {%  end %}
+            </tbody>
+    </table>
+    
+{% else %}
+<table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Sin registros</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>           
+           </tr>
+        </tfoot>
+        
+        <tbody>
+  {% for record in mylist %}                
+            <tr>                
+            </tr>
+   {%  end %}
+            </tbody>
+    </table>
+  
+{% end %}
+
+{% block buttons %}
+
+{% end %}
+
+{% end %}

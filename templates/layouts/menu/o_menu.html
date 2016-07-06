@@ -1,0 +1,78 @@
+<!--Header-->
+<nav id="mainNavbar" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="color:white">
+            <div class="visible-xs" style="position: absolute; text-align: center; width: 100%; margin-top: 15px;">
+              <a href="/gopanel/Published/none/none/0"><b style="color:white">Weetup</b></a>
+            </div>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Inicio</span>
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </button>
+            {% if current_user != "comprador" %}
+            <a style="color:white" href="/goform/addpublish/agregar_publicación/none">
+            <button style="background-color:#337ab7" type="button" style="float:rigth;margin-rigth:10px" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#">
+                <span class="sr-only">Salir</span>
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            </a>
+            {% end %}
+            <button type="button" style="float:left;margin-left:10px" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Salir</span>
+                <span class="glyphicon glyphicon-user"></span>
+            </button>
+          <!-- <a class="navbar-brand" href="#">Weetup</a>-->
+        
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                      <li class="hidden-xs">
+                        <a href="/"><b style="color:white">Gestión Interna</b></a>
+                      </li>
+                        <li><a href="/gologin">Iniciar sesión</a></li>
+                      	                          </ul>
+          </ul>
+          <ul class="nav navbar-nav navbar-right hidden-xs" >       
+          {% if current_user == "comprador" %}
+              <li><a href="/goregister">¡Regístrate!</a></li>
+          {% else %}
+              <li>
+                  <a href="#" tabindex="-1" class="has-submenu" aria-haspopup="true" aria-expanded="false">${{ current_user  }} <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/logout">Cerrar sesión</a></li>
+                  </ul>
+              </li>
+           {% end %} 
+          </ul>
+          
+          <ul style="margin-top:10px" class="nav navbar-nav navbar-right hidden-xs hidden-sm" >    
+              {% if current_user != "comprador" %}   
+              <!--li><a href="/goform/gopublish/agregar_publicación/none">Anunciar</a></li-->
+              {% end %}
+              {% include "../../forms/search.html" %}
+          </ul>
+         
+        </div><!-- /.navbar-collapse -->
+
+        <div class="hidden-lg hidden-md hidden-sm">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+              <ul class="nav navbar-nav">
+                {% if current_user == "comprador" %}
+                    <li><a href="/gologin">Iniciar sesión</a></li>
+                {% else %}
+                    <li>
+                        <a href="#" tabindex="-1" class="has-submenu" aria-haspopup="true" aria-expanded="false">${{ current_user  }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/logout">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                 {% end %} 
+              </ul>
+          </div>
+        </div>
+
+    </div>
+</nav>

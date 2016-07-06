@@ -1,0 +1,34 @@
+{% extends "../dashboard_layout.html" %}
+
+{% block ownscripts %}
+	{% include "../../commons/dashboard_form_script.js.html" %}
+	{% block form_scripts %}
+	{% end %}
+{% end %}
+
+{% block content_title %}Dashboard{% end %}
+
+
+{% block content %}
+			
+			{% include "../../messages/messages.html" %}
+
+			<br/>
+			
+			{% block pre_form%}
+
+			{% end %}	
+
+			{% raw mycode %}			
+		
+			<br/>
+
+			{% block post_form%}
+
+			{% end %}		
+
+		<div class="right-modal-body">
+		  	<div class="image-holder"></div>
+			<div class="load-images"></div>
+	    </div><!-- end right-modal-body -->
+{% end %}

@@ -1,0 +1,62 @@
+<script>
+myval = 0;
+</script>
+
+{% extends "layouts/tc_main_layout.html" %}
+
+{% block title %}Cargar boletas{% end %}
+
+{% block ownstyles %}
+
+{% end %}
+
+{% block ownscripts %}
+
+
+{% end %}
+
+
+
+{% block panel %}
+ 	<b>Aquí se muestran los alumnos cuyas boletas se cargaron correctamente</b>
+	<br>
+	<br>
+	<br>
+
+	<form action="demo_form.asp" method="get">
+		<table border=1>
+		<tr>
+			<td> ID </td>
+			<td> Nombres </td>
+			<td> Apellidos </td>
+			<td> Archivo de boleta </td>
+			<td> Marcar para enviar boleta</td>
+		</tr>
+		{% for record in mylist %}
+		<tr>
+			<td> {{record['id']}} </td>
+			<td> {{record['nombres']}} </td>
+			<td> {{record['apellidos']}} </td>
+			<td> {{record['boleta']}} </td>
+			<td> <input type="checkbox" name="boleta" value="boleta"> </td>
+
+		</tr>
+		{% end %}
+			
+		</table>
+		<br>
+		<b>Seleccionar todas las boletas</b>
+		<input type="checkbox" name="checkSeleccionarTodas" value="boleta">
+		<br>
+
+
+
+  		<input type="submit" value="Enviar">
+	</form>
+
+
+
+
+				
+
+{% end %}

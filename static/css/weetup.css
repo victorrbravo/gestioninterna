@@ -1,0 +1,189 @@
+.weetuptitle {
+      font-family: Arial,Helvetica;
+      font-size: 20px;
+      font-weight:normal;
+      font-style:normal;
+      color:#0000FF;
+}
+
+
+.weetupprice {
+      font-family: Arial,Helvetica;
+      font-size: 18px;
+      font-weight:normal;
+      font-style:bold;
+      color:#000000;
+}
+
+.weetupshipping {
+      font-family: Arial,Helvetica;
+      font-size: 15px;
+      font-weight:normal;
+      font-style:normal;
+      color:#005500;
+}
+
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+.circleBase {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+
+.txt{
+    width: 20px;
+    height: 20px;
+    background:red; 
+    font-size:xx-small;
+    font-weight: bold;
+    color:white;
+    position: absolute; 
+    top: 3px;
+    left: 3px;
+    text-align: center;
+    border: 1px solid #000;
+    
+}
+
+.carousel.slide {
+  max-width: 200px;
+  text-align: center;
+}
+.thumbnail{
+  cursor: pointer;
+}
+
+.thumbnail-slider {
+  max-width: 100px !important;
+  display: inline-block !important;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.thumbnail-slider > img {
+  max-width: 80px !important;
+  cursor: pointer;
+}
+
+.text-capitalize{
+  text-transform:lowercase;
+}
+
+.text-capitalize:first-letter{
+  text-transform:uppercase;
+}
+
+.error , .my-error-class {
+    color:#FF0000;  /* red */
+}
+
+.company-data{
+  display:none;
+}
+
+.btn-buy{
+  /*margin-right: 20px;*/
+}
+
+.lbl-close{
+  cursor: pointer;
+}
+
+.lbl-user-account{
+  color:#333;
+}
+
+#mainNavbar {
+  border-radius: 0px;
+}
+
+.content-fixed-menu{
+  margin-top: 50px;
+}
+
+#safetform label{
+  width: auto !important;
+  margin-top: 10px !important;
+  float:none !important;
+}
+
+.ui-datepicker{
+  z-index: 1000 !important;
+}
+
+.container-weetup {
+  margin: 0 auto !important;
+  width: 100%;
+}
+
+.small, small {
+    font-size: 83%;
+}
+
+.weetup-panel-blue {
+    border-color: #e5f7ff;
+}
+
+.weetup-panel-blue > .panel-heading{
+    border-color: #b3e7ff;
+    background-color: #e5f7ff;
+}
+
+.panel-ads button.btn{
+
+padding: 2px 8px;
+
+}
+
+.panel-ads a.btn{
+
+padding: 2px 8px;
+
+}

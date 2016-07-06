@@ -1,0 +1,40 @@
+{% try %}
+
+{% if len(cities) > 2595  %}
+	<div class="panel panel-default">
+    <div class="panel-heading">
+        <b> Ciudad </b>
+    </div>        
+
+		<div class="panel-body">		
+			<script type="text/javascript">
+				myfilter = "";
+				for(i=0; i < currcities.data.nodes.length; i++ ){
+					var newlink = "/searchpub/{{boxsearch}}/"+currcities.data.nodes[i].variable;		            
+					mycity = curruserinfo[0].geo_ciudad.replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u').replace(' ','_');
+
+					if (currcities.data.nodes[i].parameter1 > 0 ) {
+						if ( mycity == currcities.data.nodes[i].name) {
+						document.write("<a href='"+newlink+"' >"+currcities.data.nodes[i].name+"("+currcities.data.nodes[i].parameter1.trim()+") </a> <br/> " );
+
+						}
+						else {
+
+						
+						document.write("<a href='"+newlink+"' >"+currcities.data.nodes[i].name+"("+currcities.data.nodes[i].parameter1.trim()+") </a> <br/>");
+
+						}
+
+					}
+				}
+				//myfilter = myfilter.substr(0, myfilter.lastIndexOf('/'));
+				//document.write(myfilter);
+			</script>
+		</div>
+	</div>
+{% end %}
+{% except %}		
+{% end %}	
+
+
+

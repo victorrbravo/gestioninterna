@@ -1,0 +1,92 @@
+{% extends "layouts/oc_public_layout.html" %}
+
+{% block title %}Gestión Interna - Iniciar sesión{% end %}
+
+{% block ownscripts %}
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+	$("#loginForm").validate({
+	rules: {
+		account: "required",
+			passwordone: "required",							
+		},
+		messages: {
+			account: "Campo requerido",
+			passwordone: "Campo requerido",							
+		}
+	});
+});
+
+
+</script>
+
+<script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+</script>
+
+{% end %}
+
+{% block panel %}
+	
+
+<div class="content">	
+		<div class="container">
+
+			<div>
+			
+			<div class="col-md-6 login-right">
+			  	<h3>Usuarios registrados</h3>
+			  	<p>Si usted tiene una cuenta con nosotros, por favor acceda.</p>
+				
+				
+			   <form class="form-horizontal" role="form" id="loginForm" name="loginForm" method="post" action="/gologin"> 			    
+			    <div class="form-group">
+			     <span>Cuenta</span>
+			     <input type="text" class="form-control" id="account" name="account" placeholder="Nombre de cuenta o correo">
+			     
+			  </div>
+			  <div class="form-group" >
+    				<span>Contraseña</span>
+    				<input type="password" class="form-control" id="passwordone" name="passwordone" placeholder="Clave de acceso">  					
+				</div>
+				<div class="button">
+    				<button type="submit" class="btn btn-primary" >Enviar</button>
+    			</div>
+			  </form>
+			   <small><a href="/goresetpass/gocheckuser/">¿Ha olvidado la contraseña?</a></small>
+  				{% if mymessage %}
+					<p><font color=red>El nombre de la cuenta o la clave es incorrecta</font></p>
+					 {% end %}
+
+			</div>
+			
+			
+			  <div class="col-md-6 login-left">
+			  	 <h3>Usuarios</h3>
+				 <p>
+                 <a class="acount-btn" href="/gopanel/Published/none/none/0">Avisos</a>
+				 <a class="acount-btn" href="/goregister">Regístrese</a>
+                     </p>
+                  <p>
+                           </p>
+			   </div>
+			   
+			   
+			   
+
+			   <div class="clearfix"> </div>			
+			   
+
+		</div>
+
+		</div>
+	</div>
+	<br/><br/>				
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+{% end %}

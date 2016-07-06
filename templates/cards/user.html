@@ -1,0 +1,100 @@
+{% try %}
+{% if current_user != 'comprador' %}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="card hovercard">
+            <div class="cardheader">
+
+            </div>
+            <div class="avatar">
+                <script type="text/javascript">
+                    document.write('<a href="/showprofile/none/"><img src="'+curruserinfo[0].foto+'" /></a>');
+                </script>
+            </div>
+            <div class="info">
+                <div class="title">
+                    <a href="#">
+                        <script type="text/javascript">
+                            document.write('<a href="/showprofile/none/"><p align="center">$'+curruserinfo[0].cuenta+'</p></a>\n');   
+                        </script>                     
+                    </a>
+                </div>
+                <div class="desc">
+                    <script type="text/javascript">
+                        document.write(curruserinfo[0].nombres + ' ' + curruserinfo[0].apellidos);   
+                    </script>                                                   
+                </div>
+                <div class="desc">
+                    <script type="text/javascript">
+                        document.write(curruserinfo[0].geo_estado + ' - ' + curruserinfo[0].pais);   
+                    </script>                                                   
+                </div>
+            </div>
+            
+            
+            <div class="col-xs-12 divider text-center">
+                <div class="col-xs-4 col-sm-4 col-md-4 emphasis">
+                    <a href="/gousers/siguen">
+                    <h4>
+                        <strong class="lbl-user-account" class="profile-followers">
+                            <script type="text/javascript">
+                            document.write('<b>' +curruserinfo[0].followers+ '</b>');
+                            </script>
+                        </strong>
+                    </h4>                    
+                    <p style="margin-right:-16px"><small>Seguidores</a></small></p>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 emphasis">
+                    <a href="/gousers/siguiendo">
+                    <h4>
+                        <strong class="lbl-user-account" class="profile-followings">
+                            <script type="text/javascript">
+                                document.write('<b>' + curruserinfo[0].followings + '</b>');
+                            </script>
+                        </strong>
+                    </h4>              
+                    <p style="margin-right:-16px"><small>Siguiendo</a></small></p>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 emphasis" align="center">
+                    <a href="/gopanel/PublishedUser/none/none/0">
+                    <h4>
+                        <strong class="lbl-user-account">
+                             <script type="text/javascript">
+                                document.write('<b>' +curruserinfo[0].publications+ '</b>');
+                            </script>
+                        </strong>
+                    </h4>                        
+                    <p style="margin-right:-16px"><small>Publicados</a></small></p>
+                </div>
+            </div>
+            {% try %}
+                {% if profile_info != None and current_user != profile_info[0]['cuenta'] %}
+                <div class="col-xs-12">
+                    <br/>
+                    <div>
+                        {% if profile_info[0]['following'] == 'no' %}
+
+                            <button class="btn btn-primary " onclick="doSafetFollow(this.parentNode,'{{ profile_info[0]['followuser'] }}', true )">
+                            <i class="glyphicon glyphicon-hand-right"></i> 
+                            Seguir
+                            </button>
+
+                        {% else %}
+                            
+                            <button class="btn btn-primary " onclick="doSafetUnFollow(this.parentNode, '{{ profile_info[0]['followuser'] }}', true )">
+                            <i class="glyphicon glyphicon-hand-right"></i> 
+                            Dejar de Seguir
+                            </button>
+
+                        {% end %}
+                    </div>
+                </div>
+                {% end %}
+            {% except %}
+            {% end %}
+        </div>
+    </div>
+</div>
+{% end %}
+{% except %}
+{% end %}

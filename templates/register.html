@@ -1,0 +1,425 @@
+{% extends "layouts/oc_public_layout.html" %}
+
+{% block title %}Gestión Interna - registro{% end %}
+
+{% block ownscripts %}
+
+ <script>
+    
+function onCountry(nameCountry) {
+    mycountry = nameCountry.toString();
+    console.log(mycountry);
+   // $(thecountry).val(mycountry);
+   // $("#states").prop('disabled', true);
+   console.log('entering..1');
+   $.post("/bsloaddata",
+          {id:1,
+          country: mycountry})
+          .done(
+           function (data){
+            console.log("*Data loaded:" + data);   
+            var myjson = eval("(" + data + ")" );          
+            
+            
+            myhtmlheader = '<select id="states" name="states" onchange="onState(this.value)" >\n';                            
+              myhtmlfooter = ' \n</select>';
+            console.log("myjson");
+            myhtml = '';
+            myhtml = myhtml + '<option value="" >Seleccione estado</option>';
+            for(i=0; i< myjson.safetlist.length;i++) {
+                console.log(myjson.safetlist[i].nombre);                
+                myhtml = myhtml + '<option value="'+myjson.safetlist[i].id +'" >'+myjson.safetlist[i].nombre+'</option>';
+                myhtml = myhtml + '\n';
+             }
+             console.log('entering..2');
+             console.log(myhtml);
+           
+             $(states).html(myhtmlheader + myhtml + myhtmlfooter);
+         //    $("#states").prop('disabled', false);
+            }
+         );
+ 
+}
+
+
+function onState(idState) {
+    mystate = idState;
+    console.log(mystate);
+    $(thestate).val(idState);
+    $("#cities").prop('disabled', true);
+   $.post("/bsloaddata",
+          {id:2,
+          state: mystate})
+          .done(
+           function (data){
+            console.log("*Data loaded:" + data);   
+            var myjson = eval("(" + data + ")" );                               
+            myhtmlheader = '<select id="cities" name="cities" onClick="$(thecity).val(this.value);">"\n';                            
+              myhtmlfooter = '</select>';
+            console.log("***myjson");
+            myhtml = '';
+            var myfirstvalue = "";
+            for(i=0; i< myjson.safetlist.length;i++) {
+                if (myfirstvalue == 0 )  {
+                    myfirstvalue = myjson.safetlist[i].id ;
+                }
+                console.log("mycity:" +  myjson.safetlist[i].nombre);               
+                myhtml = myhtml + '<option value="'+myjson.safetlist[i].id +'" > '+myjson.safetlist[i].nombre+'</option>';
+                myhtml = myhtml + '\n';
+            
+             }
+             allhtml = myhtmlheader + myhtml + myhtmlfooter;
+             console.log("myhtml:" +allhtml);
+         
+             $(cities).html(allhtml);
+             $("#cities").prop('disabled', false);
+             $("#thecity").val( myfirstvalue );
+            
+            }
+         );
+ 
+}
+
+function onCity(nameCity) {
+    $(thecity).val(nameCity);
+
+}
+
+function isRequiredDataCompany(){
+  if($('#hascompany').prop( "checked" )){
+      $('.company-data').show();
+  }else{
+      $('.company-data').hide();
+  }
+}
+
+
+$(document).ready(function() {
+  
+  isRequiredDataCompany();
+
+  $('#hascompany').on('change',function(){
+    isRequiredDataCompany();
+  });
+
+  console.log("ready weetup registro");
+
+  
+ // onCountry('ve');
+
+// *** Validaciones
+  
+  $("#registerForm").validate({
+    errorClass: "my-error-class",
+    rules: {
+          
+
+      firstname: "required",
+      lastname: "required",
+      companyname: {
+        required: function(element) {
+                myvalue = document.getElementById("hascompany").checked;
+                return myvalue;         
+            },
+        },
+        companyrif: {
+        required: function(element) {
+                myvalue = document.getElementById("hascompany").checked;
+                return myvalue;         
+            },
+        },
+      
+      ci:  {
+        required: true,                  
+        minlength: 3,
+        remote: {
+          url: "checkci",
+          type: "post",
+          data: {
+            ci: function() {
+              return $( "#ci" ).val();
+            }
+            },        
+           
+         }
+      },
+          
+      rif:  {
+        required: function () {
+			myvalue = $( "#hascompany" ).checked;
+			console.log(myvalue);
+			return myvalue;
+		},                  
+        minlength: 3,
+        remote: {
+          url: "checkrif",
+          type: "post",
+          data: {
+            rif: function() {
+              return $( "#rif" ).val();
+            }
+            },        
+           
+         }
+      },
+     
+       agree: "required",
+      
+      account: {
+          required: true,
+          minlength: 3,
+           remote: {
+          url: "checkaccount",
+          type: "post",
+          data: {
+            account: function() {
+              return $( "#account" ).val();
+            }
+            },        
+           
+         }
+      },
+      passwordone: {
+          required: true,
+          minlength: 6,
+          },
+          
+      passwordtwo: {
+      required: true,
+      minlength: 6,
+      equalTo: "#passwordone"
+      },
+      email: {
+        required: true,
+        email: true
+      },
+    },
+    messages : {
+      firstname: "Campo requerido",
+      lastname: "Campo requerido",
+      companyname: "Debe colocar el nombre",
+      rif: {
+	required: "Si es una empresa, el rif es requerido",
+	remote:"El número de rif ya fue registrado",
+	},
+      ci: {
+        required: "Campo requerido",
+        remote: "El número de cédula ya fue registrado"
+      },              
+      agree: '(*)',
+      account: {
+          required: "Coloque un nombre para su cuenta",
+          minlength: "Su nombre de cuenta debe tener al menos 3 cararacteres",
+          remote: "El nombre de cuenta ya existe"
+      },
+      passwordone: {
+          required: "Por favor, escriba una contraseña",
+          minlength: "Su contraseña debe ser mayor o igual a 6 caracteres"
+          },
+      passwordtwo: {
+          required: "Debe repetir la contraseña",
+          minlength: "Su contraseña debe ser mayor o igual a 6 caracteres",
+          equalTo: "Debe ser igual a la contraseña de arriba"
+      },
+      email: "Coloque una dirección de correo válida",               
+    }
+
+    });
+  });
+
+
+</script>   
+
+{% end %}
+
+{% block panel %}
+	
+<div class="content"> 
+  <div class="container">
+
+  <div>
+
+    <form class="form-horizontal" role="form" id="registerForm" name="registerForm" method="post" action="/register"> 
+
+      <div class="row">
+        
+          <div class="col-md-6">
+            <label for="firstname" class="control-label">Nombres<font color="red">*</font></label>
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Nombres">
+          </div>
+          <div class="col-md-6">
+              <label for="lastname" class="control-label">Apellidos*</label>
+              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellidos">
+          </div>
+
+      </div>
+
+      <div class="row">
+          <div class="col-md-1">      
+              <label for="CI" class="control-label">Cédula*</label>
+	</div>
+          <div class="col-md-1">      
+              <select name="ci_nac" id="ci_nac" class="form-control"    onchange="" >
+                <option value="V" >V</option>
+                <option value="E" >E</option>
+		</select>
+	</div>
+          <div class="col-md-4">              
+              <input type="text" class="form-control" id="ci" name="ci" placeholder="Ej. 121210">   
+          </div>
+<!--
+	<div class="col-md-1">    
+		<label for="rif" class="control-label">RIF*</label>                  
+	</div>
+	<div class="col-md-1">
+              <select name="rif_empresa_nac" id="rif_empresa_nac" class="form-control"    onchange="" >
+                <option value="J" >J</option>
+                <option value="G" >G</option>
+                <option value="P" >P</option>
+		</select>
+          </div>
+          <div class="col-md-4">
+              <input type="text" class="form-control" id="companyrif" name="companyrif"  placeholder="Ej. 12121010" >
+          </div>
+-->
+      </div>
+
+      <div class="row">
+       
+          <div class="col-md-12">
+                <label >
+                  <input id= "hascompany" name="hascompany" type="checkbox" value="false" onclick='this.value = this.checked; document.getElementById("companyname").disabled = !this.checked;document.getElementById("rif").disabled = !this.checked;document.getElementById("companydir").disabled = !this.checked' /> ¿Es una empresa?
+                </label> 
+          </div>
+
+      </div>
+
+      <div class="row company-data">
+       
+          <div class="col-md-2">
+              <label for="companyname" class="control-label">Nombre*</label>
+	  </div>
+          <div class="col-md-4">
+              <input type="text" class="form-control" id="companyname" name="companyname" placeholder="Nombre de la Empresa" disabled>
+          </div>
+
+	<div class="col-md-1">    
+		<label for="rif_empresa_nac" class="control-label">RIF*</label>                  
+	</div>
+ 	<div class="col-md-1">
+              <select name="rif_empresa_nac" id="rif_empresa_nac" class="form-control"    onchange="" >
+                <option value="J" >J</option>
+                <option value="V" >V</option>
+                <option value="G" >G</option>
+                <option value="E" >E</option>
+                <option value="P" >P</option>
+		</select>
+          </div>
+          <div class="col-md-4">
+              <input type="text" class="form-control" id="rif" name="rif"  placeholder="Ej. 12121010" >
+          </div>
+
+      </div>
+      <div class="row company-data">
+       
+          <div class="col-md-12">
+              <label for="companydir" class="control-label">Dirección de la empresa*</label>
+              <input type="text" class="form-control" id="companydir" name="companydir" placeholder="Dirección física de la empresa" disabled>
+          </div>
+
+      </div>
+
+          <div class="row">
+       
+          <div class="col-md-6">
+              <label class="control-label" for="state">Estado/Dpto*</label>
+              <select name="states" id="states" class="form-control"    onchange="onState(this.value)" >
+                <option value="" >Seleccione estado</option>
+                <option value="2" >Amazonas</option>
+                <option value="3" >Anzoátegui</option>
+                <option value="4" >Apure</option>
+                <option value="5" >Aragua</option>
+                <option value="6" >Barinas</option>
+                <option value="15" >Bolívar</option>
+                <option value="8" >Carabobo</option>
+                <option value="9" >Cojedes</option>
+                <option value="10" >Delta Amacuro</option>
+                <option value="25" >Dependencias</option>
+                <option value="1" >Distrito Capital</option>
+                <option value="11" >Falcón</option>
+                <option value="12" >Guárico</option>
+                <option value="13" >Lara</option>
+                <option value="14" >Mérida</option>
+                <option value="7" >Miranda</option>
+                <option value="16" >Monagas</option>
+                <option value="17" >Nueva Esparta</option>
+                <option value="18" >Portuguesa</option>
+                <option value="19" >Sucre</option>
+                <option value="20" >Táchira</option>
+                <option value="21" >Trujillo</option>
+                <option value="24" >Vargas</option>
+                <option value="22" >Yaracuy</option>
+                <option value="23" >Zulia</option>
+              </select>
+          </div>
+          <div class="col-md-6">
+              <label class="control-label" for="city">Ciudad*</label>
+       
+              <select name="cities" id="cities" class="form-control"  onClick="$(thecity).val(this.value)" disabled>
+              </select>
+          </div>
+
+      </div>
+
+      <div class="row">
+          <div class="col-md-6">
+              <label for="account" class="col-md-1 control-label" >Cuenta*</label>
+              <input type="text" class="form-control" id="account" name="account">
+          </div>
+          <div class="col-md-6">
+              <label class="col-md-1 control-label" for="email">Correo*</label>
+              <input type="text" class="form-control" id="email" name="email">
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6">
+              <label for="passwordone" class="control-label">Contraseña*</label>
+              <input type="password" class="form-control" id="passwordone" name="passwordone">
+          </div>
+          <div class="col-md-6">
+              <label for="passwordtwo" class="control-label">Repita Contraseña*</label>
+              <input type="password" class="form-control" id="passwordtwo" name="passwordtwo">
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-12">
+             <label for="agree" >
+              <input type="checkbox" id="agree" name="agree" value="yes">
+              Acepto las condiciones
+              </label>
+          </div>
+	<div class="col-md-12">
+              <a href="/tos"> Lea las condiciones y términos </a>
+          </div>
+
+      </div>
+      <br/>
+      <div class="row">
+          <div class="col-md-12" align="center">
+             <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+      </div>
+      <br/>
+      <input type="hidden" class="form-control" value="Venezuela" id="thecountry" name="thecountry">
+      <input type="hidden" class="form-control" value="DISTRITO CAPITAL" id="thestate" name="thestate">
+      <input type="hidden" class="form-control" value="Caracas" id="thecity" name="thecity">
+      
+    </form>
+   </div>
+  </div>
+</div>
+		
+{% end %}
+

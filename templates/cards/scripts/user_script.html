@@ -1,0 +1,37 @@
+<script type="text/javascript">
+					
+					function doSafetUnFollow(myobj, account ) {
+					      console.log("(1)..doSafetUnFollow....account:|" + account + "|"); 					      					      
+					      $.post('http://localhost:8080/ajaxforma_no_seguir_usuario',{  cuenta2: account }, 
+						    function(data) { 
+						    	console.log("(2)..data:......myname:"); 
+						    	console.log(data); 						
+						    	myresult = eval("(" + data + ")" );
+						    	console.log("result:" + myresult["result"]); 
+						    	if (myresult["result"] == "true") {
+						    	  mynewbutton = "<button class=\"btn btn-primary\" onclick=\"doSafetFollow(this.parentNode, '"+account +"' )\"><i class=\"glyphicon glyphicon-hand-right\"></i> Seguir</button>"
+							  $(myobj).html(mynewbutton);
+						    	}
+						    	
+						    });
+					      
+					      
+					}
+
+					function doSafetFollow(myobj, account ) {
+					      console.log("(1)..doSafetFollow....account:" + account); 					      					      
+					      $.post('http://localhost:8080/ajaxforma_seguir_usuario',{ cuenta2: account }, 
+						    function(data) { 
+						    	console.log("(2)..data:......myname:"); 
+						    	console.log(data); 
+						    	myresult = eval("(" + data + ")" );
+						    	console.log("result:" + myresult["result"]); 
+						    	if (myresult["result"] == "true") {
+						    	  mynewbutton = "<button class=\"btn btn-primary\" onclick=\"doSafetUnFollow(this.parentNode, '"+ account +"' )\"><i class=\"glyphicon glyphicon-thumbs-down\"></i> Dejar de seguir</button>"
+							  $(myobj).html(mynewbutton);
+						    	}
+						    	
+						    });
+					      
+					}
+</script>

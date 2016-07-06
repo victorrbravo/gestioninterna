@@ -1,0 +1,65 @@
+<script>
+myval = 0;
+</script>
+
+{% extends "layouts/tc_main_layout.html" %}
+
+{% block title %}Cargar boletas{% end %}
+
+{% block ownstyles %}
+
+{% end %}
+
+{% block ownscripts %}
+
+
+{% end %}
+
+
+
+{% block panel %}
+ 	<b>Carga de archivos correspondientes a boletas de estudiantes de primaria</b>
+
+
+<form name="loadscoreForm" action="/procesarboletas/" method="post" enctype="multipart/form-data">
+
+	<br>
+	Seleccionar el grado y sección:
+	<br>
+	<select name="gradoseccion">
+  		<option value="P-A">Preescolar-A</option>
+  		<option value="P-B">Preescolar-B</option>
+  		<option value="1-A">Primer Grado A</option>
+  		<option value="1-B">Primer Grado B</option>
+  		<option value="2-A">Segundo Grado A</option>
+  		<option value="2-B">Segudno Grado B</option>
+  		<option value="3-A">Tercer Grado A</option>
+  		<option value="3-B">Tercer Grado B</option>
+  		<option value="4-A">Cuarto Grado A</option>
+  		<option value="4-B">Cuarto Grado B</option>
+  		<option value="5-A">Quinto Grado A</option>
+  		<option value="5-B">Quinto Grado B</option>
+  		<option value="6">Sexto Grado</option> 
+	</select>
+
+	<br>
+	Seleccionar lapso:
+	<br>
+	<select name="lapso">
+  		<option value="1">Primer Lapso</option>
+  		<option value="2">Segundo Lapso</option>
+  		<option value="3">Tercer Lapso</option>
+	</select>
+
+	<br>
+	Seleccionar archivos de boletas: 
+	<br>
+	<input type="file" name="uploadField" multiple accept=".pdf"/>
+
+	<br>
+
+	<input type="submit" value="Cargar">
+</form>
+				
+
+{% end %}

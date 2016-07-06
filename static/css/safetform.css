@@ -1,0 +1,23 @@
+#safetform > table {
+	width: 100%;
+}
+
+td > .button {
+	margin-top: 15px;
+	text-align: right;
+}
+
+#safetform > .row:first{
+	display: none;
+}
+
+.img-content-loader , #safetform > h3, #safetform > br{
+	display: none;
+}
+
+.my-error-class {
+    color:#FF0000;  /* red */
+}
+.my-valid-class {
+    color:#00CC00; /* green */
+}

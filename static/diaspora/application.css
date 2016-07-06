@@ -1,0 +1,4730 @@
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-fix.scss */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #999999;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #999999;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #999999;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #999999;
+}
+
+/* line 8, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-fix.scss */
+input::input-placeholder,
+textarea::input-placeholder {
+  color: #999999;
+}
+
+/* line 15, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-fix.scss */
+#new_status_message_pane .modal {
+  position: absolute;
+  max-height: none;
+}
+
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-fix.scss */
+#new_status_message_pane .modal-body {
+  overflow-y: visible;
+  max-height: none;
+}
+
+/* line 72, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container.ps-active-x > .ps-scrollbar-x-rail, .ps-container.ps-active-y > .ps-scrollbar-y-rail {
+  display: block;
+}
+/* line 54, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container.ps-in-scrolling {
+  pointer-events: none;
+}
+/* line 56, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container.ps-in-scrolling > .ps-scrollbar-x-rail {
+  background-color: #eee;
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+}
+/* line 58, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container.ps-in-scrolling > .ps-scrollbar-x-rail > .ps-scrollbar-x {
+  background-color: #999;
+}
+/* line 62, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container.ps-in-scrolling > .ps-scrollbar-y-rail {
+  background-color: #eee;
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+}
+/* line 64, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container.ps-in-scrolling > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+  background-color: #999;
+}
+/* line 79, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container > .ps-scrollbar-x-rail {
+  display: none;
+  position: absolute;
+  /* please don't change 'position' */
+  border-radius: 4px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: background-color 0.2s linear, opacity 0.2s linear;
+  transition: background-color 0.2s linear, opacity 0.2s linear;
+  bottom: 3px;
+  /* there must be 'bottom' for ps-scrollbar-x-rail */
+  height: 8px;
+}
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x {
+  position: absolute;
+  /* please don't change 'position' */
+  background-color: #aaa;
+  border-radius: 4px;
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  bottom: 0;
+  /* there must be 'bottom' for ps-scrollbar-x */
+  height: 8px;
+}
+/* line 91, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container > .ps-scrollbar-y-rail {
+  display: none;
+  position: absolute;
+  /* please don't change 'position' */
+  border-radius: 4px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: background-color 0.2s linear, opacity 0.2s linear;
+  transition: background-color 0.2s linear, opacity 0.2s linear;
+  right: 3px;
+  /* there must be 'right' for ps-scrollbar-y-rail */
+  width: 8px;
+}
+/* line 96, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+  position: absolute;
+  /* please don't change 'position' */
+  background-color: #aaa;
+  border-radius: 4px;
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  right: 0;
+  /* there must be 'right' for ps-scrollbar-y */
+  width: 8px;
+}
+/* line 54, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover.ps-in-scrolling {
+  pointer-events: none;
+}
+/* line 56, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover.ps-in-scrolling > .ps-scrollbar-x-rail {
+  background-color: #eee;
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+}
+/* line 58, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover.ps-in-scrolling > .ps-scrollbar-x-rail > .ps-scrollbar-x {
+  background-color: #999;
+}
+/* line 62, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover.ps-in-scrolling > .ps-scrollbar-y-rail {
+  background-color: #eee;
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+}
+/* line 64, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover.ps-in-scrolling > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+  background-color: #999;
+}
+/* line 106, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover > .ps-scrollbar-x-rail,
+.ps-container:hover > .ps-scrollbar-y-rail {
+  opacity: 0.6;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  filter: alpha(opacity=60);
+}
+/* line 111, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover > .ps-scrollbar-x-rail:hover {
+  background-color: #eee;
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+}
+/* line 114, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover > .ps-scrollbar-x-rail:hover > .ps-scrollbar-x {
+  background-color: #999;
+}
+/* line 119, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover > .ps-scrollbar-y-rail:hover {
+  background-color: #eee;
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+}
+/* line 122, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/rails-assets-perfect-scrollbar-0.5.9/app/assets/stylesheets/perfect-scrollbar/perfect-scrollbar.scss */
+.ps-container:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y {
+  background-color: #999;
+}
+
+/* colors : http://www.colourlovers.com/palette/2134203/Awezome_in_argyle */
+/* Mixin file for sass.  Here is where we define our variables and
+   browser compatability functions used in all scss/sass files */
+/* Transision defaults */
+/* Style includes */
+/* mixins */
+/* core */
+@-webkit-keyframes opacity-pulse {
+  0% {
+    opacity: 0.3;
+  }
+  65% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+@keyframes opacity-pulse {
+  0% {
+    opacity: 0.3;
+  }
+  65% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+@-webkit-keyframes ease-over {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes ease-over {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@-webkit-keyframes ease-out {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+}
+@keyframes ease-out {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+}
+/* flash message animations - header height is about 40px */
+@-webkit-keyframes expose {
+  0% {
+    top: -100px;
+  }
+  15% {
+    top: 34px;
+  }
+  85% {
+    top: 34px;
+  }
+  100% {
+    top: -100px;
+  }
+}
+@keyframes expose {
+  0% {
+    top: -100px;
+  }
+  15% {
+    top: 34px;
+  }
+  85% {
+    top: 34px;
+  }
+  100% {
+    top: -100px;
+  }
+}
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_flash_messages.scss */
+#flash_notice,
+#flash_alert,
+#flash_error {
+  position: fixed;
+  z-index: 999;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #666666;
+}
+/* line 16, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_flash_messages.scss */
+#flash_notice.expose,
+#flash_alert.expose,
+#flash_error.expose {
+  -webkit-animation: expose 10s ease-in-out;
+          animation: expose 10s ease-in-out;
+}
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_flash_messages.scss */
+#flash_notice .message,
+#flash_alert .message,
+#flash_error .message {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  display: inline-block;
+  padding: 10px 12px;
+  min-width: 400px;
+  max-width: 800px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_flash_messages.scss */
+#flash_notice .message {
+  color: #666666;
+  background-color: #F4F899;
+  border-color: #b1b80d;
+}
+
+/* line 49, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_flash_messages.scss */
+#flash_error .message,
+#flash_alert .message {
+  background-color: #CA410B;
+  border-color: #9a3108;
+}
+
+/* ===== sprites ===== */
+/* line 552, icons/*.png */
+.icons-sprite, .icons-arrow_down, .icons-arrow_down_small, .icons-arrow_up_small, .icons-asterisk_white_mobile, .icons-back_white, .icons-bookmark, .icons-camera, .icons-check_yes_ok, .icons-check_yes_ok_lighter, .icons-check_yes_ok_white, .icons-coffee, .icons-cog, .icons-comment_mobile_grey, .icons-compose_mobile, .icons-compose_mobile2, .icons-create_participation, .icons-deletelabel, .icons-destroy_participation, .icons-globe, .icons-heart, .icons-heart_mobile_grey, .icons-heart_mobile_red, .icons-home_grey, .icons-ignoreuser, .icons-list_white, .icons-mail, .icons-mail_big, .icons-mail_grey, .icons-mail_white, .icons-marker, .icons-mention, .icons-menu, .icons-message, .icons-monotone_add_plus, .icons-monotone_check_yes, .icons-monotone_close_exit_delete, .icons-monotone_email_letter_round, .icons-monotone_pen_write, .icons-monotone_plus_add_round, .icons-monotone_question, .icons-monotone_wrench_settings, .icons-my_activity, .icons-notifications_grey, .icons-notifications_white, .icons-padlock-closed, .icons-padlock-open, .icons-pen_write, .icons-pencil, .icons-pencil_mobile_grey, .icons-pencil_mobile_grey_mobile, .icons-photo, .icons-plus, .icons-question, .icons-report, .icons-reshare_mobile, .icons-search_grey, .icons-search_white, .icons-smiley_laughing, .icons-user_grey, .icons-users {
+  background-image: url(/assets/icons-s8e6765e95c.png);
+  background-repeat: no-repeat;
+}
+
+/* line 168, branding/*.png */
+.branding-sprite, .branding-apple-splash, .branding-asterisk, .branding-asterisk_white, .branding-ball, .branding-ball_small, .branding-header-logo, .branding-header-logo2x, .branding-logo, .branding-logo_small, .branding-logo_white, .branding-logo_white2x, .branding-logo_white4x, .branding-powered_by_diaspora, .branding-white2x, .branding-white_on_grey {
+  background-image: url(/assets/branding-s122b948e8d.png);
+  background-repeat: no-repeat;
+}
+
+/* line 264, social_media_logos/*.png */
+.social_media_logos-sprite, .social_media_logos-email-16x16, .social_media_logos-email-24x24, .social_media_logos-email-32x32, .social_media_logos-email-48x48, .social_media_logos-facebook-16x16, .social_media_logos-facebook-24x24, .social_media_logos-facebook-32x32, .social_media_logos-facebook-48x48, .social_media_logos-feed-16x16, .social_media_logos-feed-24x24, .social_media_logos-feed-32x32, .social_media_logos-feed-48x48, .social_media_logos-tumblr-16x16, .social_media_logos-tumblr-24x24, .social_media_logos-tumblr-32x32, .social_media_logos-tumblr-48x48, .social_media_logos-twitter-16x16, .social_media_logos-twitter-24x24, .social_media_logos-twitter-32x32, .social_media_logos-twitter-48x48, .social_media_logos-website-16x16, .social_media_logos-website-24x24, .social_media_logos-website-32x32, .social_media_logos-website-48x48, .social_media_logos-wordpress-16x16, .social_media_logos-wordpress-24x24, .social_media_logos-wordpress-32x32, .social_media_logos-wordpress-48x48 {
+  background-image: url(/assets/social_media_logos-sf975e0c9b2.png);
+  background-repeat: no-repeat;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-arrow_down {
+  background-position: 0 0;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-arrow_down_small {
+  background-position: 0 -50px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-arrow_up_small {
+  background-position: 0 -60px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-asterisk_white_mobile {
+  background-position: 0 -70px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-back_white {
+  background-position: 0 -203px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-bookmark {
+  background-position: 0 -235px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-camera {
+  background-position: 0 -251px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-check_yes_ok {
+  background-position: 0 -265px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-check_yes_ok_lighter {
+  background-position: 0 -283px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-check_yes_ok_white {
+  background-position: 0 -301px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-coffee {
+  background-position: 0 -319px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-cog {
+  background-position: 0 -335px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-comment_mobile_grey {
+  background-position: 0 -463px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-compose_mobile {
+  background-position: 0 -550px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-compose_mobile2 {
+  background-position: 0 -712px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-create_participation {
+  background-position: 0 -912px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-deletelabel {
+  background-position: 0 -926px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-destroy_participation {
+  background-position: 0 -940px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-globe {
+  background-position: 0 -954px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-heart {
+  background-position: 0 -970px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-heart_mobile_grey {
+  background-position: 0 -982px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-heart_mobile_red {
+  background-position: 0 -1077px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-home_grey {
+  background-position: 0 -1172px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-ignoreuser {
+  background-position: 0 -1188px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-list_white {
+  background-position: 0 -1202px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-mail {
+  background-position: 0 -1234px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-mail_big {
+  background-position: 0 -1247px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-mail_grey {
+  background-position: 0 -1295px;
+}
+/* line 59, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-mail_grey:hover, .icons-mail_grey.mail_grey-hover {
+  background-position: 0 -1306px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-mail_white {
+  background-position: 0 -1317px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-marker {
+  background-position: 0 -1365px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-mention {
+  background-position: 0 -1379px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-menu {
+  background-position: 0 -1397px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-message {
+  background-position: 0 -1424px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-monotone_add_plus {
+  background-position: 0 -1442px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-monotone_check_yes {
+  background-position: 0 -1462px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-monotone_close_exit_delete {
+  background-position: 0 -1482px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-monotone_email_letter_round {
+  background-position: 0 -1496px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-monotone_pen_write {
+  background-position: 0 -1624px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-monotone_plus_add_round {
+  background-position: 0 -1752px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-monotone_question {
+  background-position: 0 -1772px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-monotone_wrench_settings {
+  background-position: 0 -1792px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-my_activity {
+  background-position: 0 -1808px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-notifications_grey {
+  background-position: 0 -1824px;
+}
+/* line 59, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-notifications_grey:hover, .icons-notifications_grey.notifications_grey-hover {
+  background-position: 0 -1840px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-notifications_white {
+  background-position: 0 -1856px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-padlock-closed {
+  background-position: 0 -1936px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-padlock-open {
+  background-position: 0 -1952px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-pen_write {
+  background-position: 0 -1968px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-pencil {
+  background-position: 0 -2096px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-pencil_mobile_grey {
+  background-position: 0 -2108px;
+}
+/* line 59, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-pencil_mobile_grey:active, .icons-pencil_mobile_grey.pencil_mobile_grey-active {
+  background-position: 0 -2209px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-pencil_mobile_grey_mobile {
+  background-position: 0 -2310px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-photo {
+  background-position: 0 -2411px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-plus {
+  background-position: 0 -2433px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-question {
+  background-position: 0 -2449px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-report {
+  background-position: 0 -2465px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-reshare_mobile {
+  background-position: 0 -2479px;
+}
+/* line 59, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-reshare_mobile:active, .icons-reshare_mobile.reshare_mobile-active {
+  background-position: 0 -2579px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-search_grey {
+  background-position: 0 -2679px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-search_white {
+  background-position: 0 -2693px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-smiley_laughing {
+  background-position: 0 -2725px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-user_grey {
+  background-position: 0 -2853px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-users {
+  background-position: 0 -2869px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-apple-splash {
+  background-position: 0 0;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-asterisk {
+  background-position: 0 -960px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-asterisk_white {
+  background-position: 0 -1114px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-ball {
+  background-position: 0 -1268px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-ball_small {
+  background-position: 0 -1922px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-header-logo {
+  background-position: 0 -2244px;
+}
+/* line 59, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-header-logo:hover, .branding-header-logo.header-logo-hover {
+  background-position: 0 -2345px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-header-logo2x {
+  background-position: 0 -2282px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-logo {
+  background-position: 0 -2383px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-logo_small {
+  background-position: 0 -2423px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-logo_white {
+  background-position: 0 -2437px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-logo_white2x {
+  background-position: 0 -2458px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-logo_white4x {
+  background-position: 0 -2498px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-powered_by_diaspora {
+  background-position: 0 -2578px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-white2x {
+  background-position: 0 -2589px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.branding-white_on_grey {
+  background-position: 0 -2629px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-email-16x16 {
+  background-position: 0 0;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-email-24x24 {
+  background-position: 0 -16px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-email-32x32 {
+  background-position: 0 -40px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-email-48x48 {
+  background-position: 0 -72px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-facebook-16x16 {
+  background-position: 0 -120px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-facebook-24x24 {
+  background-position: 0 -136px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-facebook-32x32 {
+  background-position: 0 -160px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-facebook-48x48 {
+  background-position: 0 -192px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-feed-16x16 {
+  background-position: 0 -240px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-feed-24x24 {
+  background-position: 0 -256px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-feed-32x32 {
+  background-position: 0 -280px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-feed-48x48 {
+  background-position: 0 -312px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-tumblr-16x16 {
+  background-position: 0 -360px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-tumblr-24x24 {
+  background-position: 0 -376px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-tumblr-32x32 {
+  background-position: 0 -400px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-tumblr-48x48 {
+  background-position: 0 -432px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-twitter-16x16 {
+  background-position: 0 -480px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-twitter-24x24 {
+  background-position: 0 -496px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-twitter-32x32 {
+  background-position: 0 -520px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-twitter-48x48 {
+  background-position: 0 -552px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-website-16x16 {
+  background-position: 0 -600px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-website-24x24 {
+  background-position: 0 -616px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-website-32x32 {
+  background-position: 0 -640px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-website-48x48 {
+  background-position: 0 -672px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-wordpress-16x16 {
+  background-position: 0 -720px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-wordpress-24x24 {
+  background-position: 0 -736px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-wordpress-32x32 {
+  background-position: 0 -760px;
+}
+
+/* line 84, /home/diaspora/.rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+.social_media_logos-wordpress-48x48 {
+  background-position: 0 -792px;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+html,
+body {
+  /* hack to ensure fixed elements at height: 100%; are in relation to the window */
+  max-height: 100%;
+}
+
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+body {
+  margin-top: 40px;
+  padding: none;
+  font-size: 13px;
+}
+/* line 12, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+body.lock {
+  overflow: hidden;
+}
+
+/* new link color */
+/* line 19, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+a {
+  color: #2a9ceb;
+}
+
+/* bootstrap extentions */
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.icon-red {
+  background-image: url(/assets/img/glyphicons-halflings-red.png);
+}
+
+/* line 23, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.icon-blue {
+  background-image: url(/assets/img/glyphicons-halflings-blue.png);
+}
+
+/* line 26, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.avatar.micro {
+  height: 20px;
+  width: 20px;
+}
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.avatar.small {
+  height: 35px;
+  width: 35px;
+}
+
+/* line 37, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.author-name {
+  color: inherit;
+}
+
+/* line 41, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.photo-fill {
+  background: no-repeat center center fixed;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 52, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+#top-right-nav {
+  z-index: 10;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+/* line 58, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+#top-right-nav > a {
+  -webkit-transition: opacity 0.1s linear;
+          transition: opacity 0.1s linear;
+  opacity: 0.4;
+  margin-left: 5px;
+}
+/* line 64, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+#top-right-nav > a:hover {
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+/* line 71, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px;
+  z-index: 30;
+  box-shadow: inset 0 -10px 10px -8px rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid #333;
+  color: #fff;
+  background-color: #333;
+  background-size: cover;
+  background-attachment: fixed;
+}
+/* line 88, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+#header h1 {
+  opacity: 0.4;
+}
+
+/* bootstrap label fixes for Roboto */
+/* line 94, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.label {
+  padding: 2px 5px;
+  padding-bottom: 3px;
+}
+/* line 98, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.label span {
+  display: inline-block;
+  position: relative;
+  top: 1px;
+  font-family: Roboto-Bold;
+}
+
+/* line 106, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.profile-image-container {
+  border-radius: 140px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 0, 0, 0.5), inset 0 -2px 4px rgba(255, 255, 255, 0.3);
+  background-size: cover;
+  height: 140px;
+  width: 140px;
+  background-position: center;
+  background-image: url(/assets/user/default.png);
+  display: inline-block;
+  margin-bottom: 5px;
+}
+/* line 123, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.profile-image-container.small {
+  height: 40px;
+  width: 40px;
+  border: 2px solid #fff;
+}
+/* line 129, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.profile-image-container.smaller {
+  height: 34px;
+  width: 34px;
+  border: 2px solid #ccc;
+}
+/* line 135, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.profile-image-container.micro {
+  height: 24px;
+  width: 24px;
+  border: 2px solid #fff;
+}
+
+/* line 142, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+#back-to-top {
+  display: block;
+  color: white;
+  position: fixed;
+  z-index: 49;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0;
+  font-size: 2.9em;
+  padding: 0 12px 0 12px;
+  border-radius: 10px;
+  background-color: #aaa;
+  line-height: 1.5;
+}
+/* line 154, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+#back-to-top:hover {
+  opacity: 0.85 !important;
+}
+/* line 155, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+#back-to-top.visible {
+  opacity: 0.5;
+}
+
+/* general purpose classes */
+/* line 161, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.small-horizontal-spacer {
+  min-height: 20px;
+}
+
+/* line 165, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+.big-horizontal-spacer {
+  height: 50px;
+}
+
+/* responsive */
+@media (max-width: 767px) {
+  /* line 171, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_base.scss */
+  body {
+    padding: 0;
+  }
+}
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_buttons.scss */
+.btn.creation {
+  background: #33acff;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=$from, endColorstr=$to);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#66c1ff, endColorstr=#0097FF)";
+  background: -webkit-linear-gradient(top, #66c1ff 0%, #0097FF 100%);
+  background: linear-gradient(to bottom, #66c1ff 0%, #0097FF 100%);
+  color: #fff;
+  border: 1px solid #777777;
+  text-shadow: none;
+}
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_buttons.scss */
+.btn.creation:hover {
+  background: #0097FF;
+  border: 1px solid #515151;
+}
+
+/* line 12, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_buttons.scss */
+.btn-group.open > .btn.creation {
+  background: #0097FF;
+}
+
+/* line 16, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_buttons.scss */
+.btn.green {
+  background: #a7e568;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=$from, endColorstr=$to);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#c1ed94, endColorstr=#8EDE3D)";
+  background: -webkit-linear-gradient(top, #c1ed94 0%, #8EDE3D 100%);
+  background: linear-gradient(to bottom, #c1ed94 0%, #8EDE3D 100%);
+  color: #2B2B2B;
+  border: 1px solid #777777;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_buttons.scss */
+.btn.green:hover {
+  background: #8EDE3D;
+  border: 1px solid #515151;
+}
+
+/* line 27, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_buttons.scss */
+.btn-group.open > .btn.green {
+  background: #8EDE3D;
+}
+
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_buttons.scss */
+.btn.delete {
+  color: #a00808;
+}
+
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_interactions.scss */
+.stream_container .controls, #single-post-interactions .controls {
+  z-index: 6;
+  float: right;
+}
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_interactions.scss */
+.stream_container .controls .block_user,
+.stream_container .controls .comment_report,
+.stream_container .controls .create_participation,
+.stream_container .controls .delete,
+.stream_container .controls .destroy_participation,
+.stream_container .controls .post_report, #single-post-interactions .controls .block_user,
+#single-post-interactions .controls .comment_report,
+#single-post-interactions .controls .create_participation,
+#single-post-interactions .controls .delete,
+#single-post-interactions .controls .destroy_participation,
+#single-post-interactions .controls .post_report {
+  display: inline-block;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_interactions.scss */
+.stream_container .controls .block_user .icons-create_participation,
+.stream_container .controls .block_user .icons-deletelabel,
+.stream_container .controls .block_user .icons-destroy_participation,
+.stream_container .controls .block_user .icons-ignoreuser,
+.stream_container .controls .block_user .icons-report,
+.stream_container .controls .comment_report .icons-create_participation,
+.stream_container .controls .comment_report .icons-deletelabel,
+.stream_container .controls .comment_report .icons-destroy_participation,
+.stream_container .controls .comment_report .icons-ignoreuser,
+.stream_container .controls .comment_report .icons-report,
+.stream_container .controls .create_participation .icons-create_participation,
+.stream_container .controls .create_participation .icons-deletelabel,
+.stream_container .controls .create_participation .icons-destroy_participation,
+.stream_container .controls .create_participation .icons-ignoreuser,
+.stream_container .controls .create_participation .icons-report,
+.stream_container .controls .delete .icons-create_participation,
+.stream_container .controls .delete .icons-deletelabel,
+.stream_container .controls .delete .icons-destroy_participation,
+.stream_container .controls .delete .icons-ignoreuser,
+.stream_container .controls .delete .icons-report,
+.stream_container .controls .destroy_participation .icons-create_participation,
+.stream_container .controls .destroy_participation .icons-deletelabel,
+.stream_container .controls .destroy_participation .icons-destroy_participation,
+.stream_container .controls .destroy_participation .icons-ignoreuser,
+.stream_container .controls .destroy_participation .icons-report,
+.stream_container .controls .post_report .icons-create_participation,
+.stream_container .controls .post_report .icons-deletelabel,
+.stream_container .controls .post_report .icons-destroy_participation,
+.stream_container .controls .post_report .icons-ignoreuser,
+.stream_container .controls .post_report .icons-report, #single-post-interactions .controls .block_user .icons-create_participation,
+#single-post-interactions .controls .block_user .icons-deletelabel,
+#single-post-interactions .controls .block_user .icons-destroy_participation,
+#single-post-interactions .controls .block_user .icons-ignoreuser,
+#single-post-interactions .controls .block_user .icons-report,
+#single-post-interactions .controls .comment_report .icons-create_participation,
+#single-post-interactions .controls .comment_report .icons-deletelabel,
+#single-post-interactions .controls .comment_report .icons-destroy_participation,
+#single-post-interactions .controls .comment_report .icons-ignoreuser,
+#single-post-interactions .controls .comment_report .icons-report,
+#single-post-interactions .controls .create_participation .icons-create_participation,
+#single-post-interactions .controls .create_participation .icons-deletelabel,
+#single-post-interactions .controls .create_participation .icons-destroy_participation,
+#single-post-interactions .controls .create_participation .icons-ignoreuser,
+#single-post-interactions .controls .create_participation .icons-report,
+#single-post-interactions .controls .delete .icons-create_participation,
+#single-post-interactions .controls .delete .icons-deletelabel,
+#single-post-interactions .controls .delete .icons-destroy_participation,
+#single-post-interactions .controls .delete .icons-ignoreuser,
+#single-post-interactions .controls .delete .icons-report,
+#single-post-interactions .controls .destroy_participation .icons-create_participation,
+#single-post-interactions .controls .destroy_participation .icons-deletelabel,
+#single-post-interactions .controls .destroy_participation .icons-destroy_participation,
+#single-post-interactions .controls .destroy_participation .icons-ignoreuser,
+#single-post-interactions .controls .destroy_participation .icons-report,
+#single-post-interactions .controls .post_report .icons-create_participation,
+#single-post-interactions .controls .post_report .icons-deletelabel,
+#single-post-interactions .controls .post_report .icons-destroy_participation,
+#single-post-interactions .controls .post_report .icons-ignoreuser,
+#single-post-interactions .controls .post_report .icons-report {
+  height: 14px;
+  width: 14px;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_interactions.scss */
+.stream_container .controls > a:hover, #single-post-interactions .controls > a:hover {
+  text-decoration: none;
+}
+/* line 30, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_interactions.scss */
+.stream_container .stream_element .controls > a, .stream_container .comment .controls > a, .stream_container .photo .controls > a, .stream_container .stream_element:hover .comment .controls > a, #single-post-interactions .stream_element .controls > a, #single-post-interactions .comment .controls > a, #single-post-interactions .photo .controls > a, #single-post-interactions .stream_element:hover .comment .controls > a {
+  -webkit-transition: opacity 0.1s linear;
+          transition: opacity 0.1s linear;
+  opacity: 0;
+}
+/* line 36, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_interactions.scss */
+.stream_container .stream_element:hover .controls > a, .stream_container .comment:hover .controls > a, .stream_container .photo:hover .controls > a, .stream_container .stream_element:hover .comment:hover .controls > a, #single-post-interactions .stream_element:hover .controls > a, #single-post-interactions .comment:hover .controls > a, #single-post-interactions .photo:hover .controls > a, #single-post-interactions .stream_element:hover .comment:hover .controls > a {
+  opacity: 0.3;
+}
+/* line 37, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_interactions.scss */
+.stream_container .stream_element:hover .controls > a:hover, .stream_container .comment:hover .controls > a:hover, .stream_container .photo:hover .controls > a:hover, .stream_container .stream_element:hover .comment:hover .controls > a:hover, #single-post-interactions .stream_element:hover .controls > a:hover, #single-post-interactions .comment:hover .controls > a:hover, #single-post-interactions .photo:hover .controls > a:hover, #single-post-interactions .stream_element:hover .comment:hover .controls > a:hover {
+  opacity: 1;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_spinner.scss */
+#paginate, #infscr-loading {
+  margin-top: 10px;
+  padding: 8px 0;
+  text-align: center;
+  width: 100%;
+  display: block;
+  clear: both;
+}
+
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_spinner.scss */
+.loaded {
+  -webkit-animation: fade-in 0.16s linear;
+          animation: fade-in 0.16s linear;
+}
+
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_spinner.scss */
+.loader {
+  -webkit-mask-image: url(/assets/static-loader.png);
+          mask-image: url(/assets/static-loader.png);
+  -webkit-animation: spin 1s infinite ease-in-out, fade-in 0.2s ease-in;
+          animation: spin 1s infinite ease-in-out, fade-in 0.2s ease-in;
+  background-image: url(/assets/static-loader.png);
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+/* line 34, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_spinner.scss */
+.loader.hidden {
+  display: none;
+}
+
+/* font overrides */
+/* Roboto */
+@font-face {
+  font-family: Roboto;
+  src: url(/assets/fonts/Roboto-Regular.ttf);
+  weight: normal;
+}
+@font-face {
+  font-family: Roboto-Bold;
+  src: url(/assets/fonts/Roboto-Bold.ttf);
+  weight: normal;
+}
+@font-face {
+  font-family: Roboto-Light;
+  src: url(/assets/fonts/Roboto-Light.ttf);
+  weight: normal;
+}
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_typography.scss */
+body, p, h1, h2, h3, h4, h5, h6, textarea, input, * {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: normal;
+}
+
+/* line 25, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_typography.scss */
+a {
+  font-family: inherit;
+}
+
+/* login */
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_login.scss */
+#login,
+#forgot_password,
+#reset_password {
+  padding-top: 25px;
+}
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_login.scss */
+#login .branding-asterisk,
+#forgot_password .branding-asterisk,
+#reset_password .branding-asterisk {
+  margin: auto;
+  width: 154px;
+  height: 154px;
+  margin-bottom: 12px;
+}
+/* line 13, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_login.scss */
+#login form.block-form,
+#forgot_password form.block-form,
+#reset_password form.block-form {
+  max-width: 400px;
+}
+
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration > .container-fluid {
+  margin-top: 5%;
+}
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration #create-something-text {
+  font-size: 100px;
+  line-height: 100px;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration #diaspora-hearts {
+  font-size: 30px;
+  margin-top: 0.2em;
+  margin-bottom: 1em;
+  white-space: nowrap;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration #pod-name {
+  text-align: center;
+  margin: 12px;
+  font-size: 35px;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration #create-something-text,
+#registration #diaspora-hearts {
+  font-family: Roboto-Light;
+}
+/* line 29, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration form {
+  max-width: 400px;
+}
+/* line 32, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration form .captcha_img {
+  position: absolute;
+  left: 10px;
+  width: 120px;
+  top: 169px;
+}
+/* line 39, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration form #user_captcha {
+  font-size: 16px;
+  height: 40px;
+  padding: 10px 10px 10px 130px;
+  line-height: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid #DDDDDD;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* line 51, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#registration form #terms > a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* line 58, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#welcome-to-diaspora {
+  -webkit-box-shadow: inset 0 -2px 10px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: inset 0 -2px 10px rgba(0, 0, 0, 0.35);
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  background: orange;
+}
+/* line 66, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#welcome-to-diaspora .right {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+/* line 71, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#welcome-to-diaspora h1, #welcome-to-diaspora h3 {
+  color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 78, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#welcome-to-diaspora:hover #gs-skip-x {
+  opacity: .4;
+  -webkit-transition: opacity 0.25s linear;
+          transition: opacity 0.25s linear;
+}
+/* line 82, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_registration.scss */
+#welcome-to-diaspora:hover #gs-skip-x:hover {
+  opacity: 1;
+}
+
+/* le declarations */
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing {
+  overflow: hidden;
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #sign_up {
+  text-align: center;
+  position: relative;
+  z-index: 20;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 50px;
+}
+/* line 23, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #sign_up form label.control-label {
+  width: 80px !important;
+  text-align: right;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #sign_up form .controls {
+  margin-left: 100px;
+}
+/* line 26, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #sign_up form input[type='submit'] {
+  -webkit-transition: background 0.1s linear;
+          transition: background 0.1s linear;
+  box-shadow: 0 0 0 0;
+  font-size: 1.2em;
+  background: #99CC00;
+  color: #fff;
+  text-shadow: 0 -1px 0 #669900;
+  border: 1px solid #999999;
+}
+/* line 36, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #sign_up form input[type='submit']:hover {
+  background: #91bd0f;
+}
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #sign_up form input[type='submit']:active {
+  box-shadow: 0 0 0 0;
+  background: #ff442c;
+}
+/* line 48, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #invites {
+  margin: 20px 0;
+}
+/* line 52, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  color: #333;
+  text-align: center;
+}
+/* line 62, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #landing_banner {
+  text-align: center;
+  padding: 50px;
+  margin-bottom: 50px;
+  color: #ccc;
+  background: #222;
+}
+/* line 63, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #landing_banner .container {
+  position: relative;
+}
+/* line 73, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #landing_banner h2 {
+  font-weight: 100;
+}
+/* line 77, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #landing_banner .landing-logo {
+  margin-bottom: 15px;
+  height: 60px;
+}
+/* line 82, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #landing_banner .landing-banner-right {
+  position: absolute;
+  right: 0;
+}
+/* line 86, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #landing_banner .landing-banner-right a {
+  color: #ccc;
+  font-size: 1.2em;
+  font-weight: 100;
+  padding: 5px 10px;
+}
+/* line 94, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #landing_banner .login-button {
+  border-radius: 3px;
+  border: 1px solid #666;
+  background: #111;
+}
+/* line 99, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #landing_banner .login-button:hover {
+  background: #222;
+  border: 1px solid #999999;
+  text-decoration: none;
+}
+/* line 107, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #steps {
+  text-align: center;
+}
+/* line 109, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_landing.scss */
+#landing #steps p {
+  color: #666666;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+input,
+input[type=email],
+input[type=text],
+input[type=password],
+textarea {
+  /* Bootstrap reset */
+}
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+input, input:active, input:invalid, input:invalid:required, input:focus, input:active:focus, input:invalid:focus, input:invalid:required:focus,
+input[type=email],
+input[type=email]:active,
+input[type=email]:invalid,
+input[type=email]:invalid:required,
+input[type=email]:focus,
+input[type=email]:active:focus,
+input[type=email]:invalid:focus,
+input[type=email]:invalid:required:focus,
+input[type=text],
+input[type=text]:active,
+input[type=text]:invalid,
+input[type=text]:invalid:required,
+input[type=text]:focus,
+input[type=text]:active:focus,
+input[type=text]:invalid:focus,
+input[type=text]:invalid:required:focus,
+input[type=password],
+input[type=password]:active,
+input[type=password]:invalid,
+input[type=password]:invalid:required,
+input[type=password]:focus,
+input[type=password]:active:focus,
+input[type=password]:invalid:focus,
+input[type=password]:invalid:required:focus,
+textarea,
+textarea:active,
+textarea:invalid,
+textarea:invalid:required,
+textarea:focus,
+textarea:active:focus,
+textarea:invalid:focus,
+textarea:invalid:required:focus {
+  border-color: #DDDDDD;
+  box-shadow: none;
+  color: #666666;
+}
+
+/* autocomplete colors */
+/* line 21, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+input:-webkit-autofill {
+  background-color: #fff !important;
+  background-image: none !important;
+}
+
+/* Forms described here are only used on the public pages at the moment */
+/* line 27, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form {
+  margin: 20px auto;
+}
+/* line 30, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form label {
+  color: #666666;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+/* line 37, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset {
+  margin-bottom: 1em;
+  background-color: #fff;
+  position: relative;
+  /* To correctly place the entypo icon */
+}
+/* line 42, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset input {
+  color: #666666;
+  margin: 0px;
+  border-bottom-width: 0px;
+  border-radius: 0px;
+}
+/* line 49, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset .form-control {
+  font-size: 16px;
+  height: 40px;
+  padding: 10px;
+  padding-left: 40px;
+}
+/* line 57, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset .form-control:first-of-type, form.block-form fieldset .form-control:first-of-type:focus, form.block-form fieldset .form-control:first-of-type:invalid, form.block-form fieldset .form-control:first-of-type:invalid:focus, form.block-form fieldset .form-control:first-of-type:invalid:required, form.block-form fieldset .form-control:first-of-type:invalid:required:focus {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+/* line 69, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset .form-control:last-of-type, form.block-form fieldset .form-control:last-of-type:focus, form.block-form fieldset .form-control:last-of-type:invalid, form.block-form fieldset .form-control:last-of-type:invalid:focus, form.block-form fieldset .form-control:last-of-type:invalid:required, form.block-form fieldset .form-control:last-of-type:invalid:required:focus {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-width: 1px;
+}
+/* line 81, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset .entypo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  text-align: center;
+  color: #999999;
+  font-size: 20px;
+}
+/* line 91, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset .entypo:nth-of-type(2) {
+  top: 50px;
+}
+/* line 95, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset .entypo:nth-of-type(3) {
+  top: 90px;
+}
+/* line 99, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset .entypo:nth-of-type(4) {
+  top: 130px;
+}
+/* line 103, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_forms.scss */
+form.block-form fieldset ::-webkit-input-placeholder {
+  text-transform: uppercase;
+}
+form.block-form fieldset ::-moz-placeholder {
+  text-transform: uppercase;
+}
+form.block-form fieldset :-ms-input-placeholder {
+  text-transform: uppercase;
+}
+form.block-form fieldset ::placeholder {
+  text-transform: uppercase;
+}
+
+/* navs */
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_navs.scss */
+.nav.nav-tabs li > a {
+  color: #666666;
+}
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_navs.scss */
+.nav.nav-tabs li > a .entypo, .nav.nav-tabs li > a .mentionIcon {
+  color: #666666;
+  margin-right: 5px;
+}
+/* line 8, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_navs.scss */
+.nav.nav-tabs li > a .mentionIcon {
+  font-weight: 700;
+}
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_navs.scss */
+.nav.nav-tabs li.active > a {
+  background-color: #EEEEEE;
+  color: black;
+}
+/* line 13, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_navs.scss */
+.nav.nav-tabs li.active > a .entypo, .nav.nav-tabs li.active > a .mentionIcon {
+  color: black;
+}
+
+/* profile and settings pages */
+/* Specific styles for the settings pages (profile, user account, privacy, services) */
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_settings.scss */
+#inner_account_delete {
+  width: 700px;
+}
+
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_settings.scss */
+.as-selections #tags {
+  border: none;
+  box-shadow: none;
+}
+
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_settings.scss */
+.enclosed-checkbox label {
+  margin-bottom: 0;
+}
+
+/* line 15, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_settings.scss */
+#profile_photo_upload .avatar {
+  max-width: 150px;
+}
+
+/* new SPV */
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+.timeago {
+  color: #999999;
+  border-bottom: none;
+}
+
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  background: url(/assets/header-bg.png) #282323;
+  z-index: 1001;
+  padding: 6px 0;
+  color: #CCC;
+  height: 26px;
+  position: fixed;
+  width: 100%;
+  min-width: 620px;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #000;
+  /* When the user is not connected */
+}
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header > div > div.container {
+  height: 26px;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .diaspora_header_logo {
+  float: left;
+  margin-top: -6px;
+  height: 38px;
+  width: 65px;
+}
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .ie-user-menu-active {
+  height: 150px;
+}
+/* line 33, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header a.header_root_link {
+  display: inline-block;
+  margin-top: 5px;
+}
+/* line 38, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header a {
+  color: #CCC;
+  color: #939393;
+}
+/* line 42, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header a:hover, body > header a:focus {
+  background: none;
+  color: #FAFAFA;
+}
+/* line 46, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header a:focus {
+  outline: thin dotted #999999;
+  text-decoration: none;
+}
+/* line 52, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header.landing {
+  height: 40px;
+}
+/* line 54, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header.landing .right {
+  top: 10px;
+}
+/* line 57, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges {
+  display: inline-block;
+  margin-top: 2px;
+  float: left;
+  width: 61px;
+}
+/* line 63, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges a:hover {
+  text-decoration: none;
+}
+/* line 65, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges .badge {
+  width: 22px;
+  position: relative;
+  top: 2px;
+  display: inline;
+  margin: 0 2px;
+  font-weight: bold;
+  font-size: smaller;
+}
+/* line 74, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges .badge .badge_count {
+  border-radius: 2px;
+  z-index: 3;
+  position: absolute;
+  top: -4px;
+  left: 15px;
+  padding: 1px 2px;
+  background-color: #A80000;
+  line-height: 12px;
+  color: #fff;
+}
+/* line 86, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges .badge:hover .badge_count {
+  background-color: #c20000;
+}
+/* line 88, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges .badge .icons-notifications_grey {
+  height: 16px;
+}
+/* line 90, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges .badge.active .icons-notifications_grey:hover {
+  background-position: 0 -1824px;
+}
+/* line 94, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges .badge .icons-mail_grey {
+  height: 11px;
+}
+/* line 96, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges .badge a.badge_link {
+  display: block;
+  width: 100%;
+  height: 16px;
+  float: left;
+}
+/* line 104, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_badge, body > header #nav_badges #conversations_badge {
+  float: left;
+  padding: 0px 3px;
+}
+/* line 109, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #conversations_badge {
+  padding-top: 3px;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+/* line 115, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_badge.active {
+  z-index: 10;
+  background-color: #fff;
+  border: 1px solid #999999;
+  border-bottom: 0px;
+  margin-left: 0px;
+  padding-bottom: 12px;
+}
+/* line 124, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown {
+  background: white;
+  border: solid #999999 1px;
+  box-shadow: 0 0px 13px rgba(20, 20, 20, 0.5);
+  left: 300px;
+  width: 380px;
+  display: none;
+  float: left;
+  color: #2B2B2B;
+}
+/* line 134, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown a {
+  color: #3F8FBA;
+}
+/* line 135, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown a.disabled {
+  color: #999999;
+  cursor: default;
+}
+/* line 140, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .header {
+  border-bottom: 1px solid #DDDDDD;
+  padding: 5px 10px 5px 5px;
+}
+/* line 144, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .header h4 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: black;
+}
+/* line 151, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .header a {
+  font-size: 11px;
+  font-weight: bold;
+}
+/* line 157, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .ajax_loader {
+  text-align: center;
+  padding: 15px;
+}
+/* line 161, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notifications {
+  overflow: hidden;
+  position: relative;
+  max-height: 325px;
+}
+/* line 167, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element {
+  border-bottom: 1px solid #DDDDDD;
+  padding: 5px;
+  min-height: 35px;
+  line-height: 18px;
+}
+/* line 173, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element > .avatar {
+  height: 35px;
+  width: 35px;
+  float: left;
+}
+/* line 179, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element .notification_message {
+  margin-left: 40px;
+}
+/* line 181, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element .notification_message .tooltip {
+  position: fixed;
+}
+/* line 184, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element .unread-toggle {
+  padding: 9px 9px;
+  position: relative;
+}
+/* line 187, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element .unread-toggle .entypo {
+  cursor: pointer;
+  color: #bfbfbf;
+  font-size: 17px;
+  line-height: 17px;
+}
+/* line 193, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element .unread-toggle .tooltip {
+  position: fixed;
+}
+/* line 198, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element.unread {
+  background-color: #EEEEEE;
+  color: black;
+}
+/* line 202, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .notification_element.unread .unread-toggle .entypo {
+  color: black;
+}
+/* line 207, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .view_all {
+  background-color: #3F8FBA;
+  border-bottom: 1px solid #999999;
+  text-align: center;
+}
+/* line 211, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #nav_badges #notification_dropdown .view_all a {
+  display: block;
+  padding: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* line 222, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search {
+  float: right;
+  margin-right: 10px;
+  position: relative;
+}
+/* line 227, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search form {
+  position: absolute;
+  right: 0;
+}
+/* line 231, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search form input {
+  box-shadow: 0 1px 1px #444;
+  border-radius: 15px;
+  -webkit-transition: width 0.1s linear;
+          transition: width 0.1s linear;
+  width: 100px;
+  background-color: #444;
+  border: 1px solid #222;
+  font-size: 13px;
+  padding: 4px;
+  margin-top: 1px;
+}
+/* line 242, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search form input:hover {
+  background-color: #555;
+}
+/* line 244, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search form input.active {
+  background-color: #FAFAFA;
+  background-color: rgba(160, 160, 160, 0.6);
+}
+/* line 249, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search form input:focus {
+  outline: none;
+  background-color: white;
+  width: 200px;
+}
+/* line 255, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search form input::input-placeholder {
+  text-shadow: none;
+}
+/* line 256, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search form input::-webkit-input-placeholder {
+  text-shadow: none;
+}
+body > header #global_search form input::-moz-placeholder {
+  text-shadow: none;
+}
+body > header #global_search form input:-ms-input-placeholder {
+  text-shadow: none;
+}
+body > header #global_search form input::placeholder {
+  text-shadow: none;
+}
+/* line 257, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header #global_search form input.ac_loading::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+/* line 262, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#user_menu {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 0 #000;
+  color: #939393;
+  min-width: 100px;
+  cursor: pointer;
+  z-index: 10;
+  display: inline;
+  visibility: hidden;
+  top: -4px;
+  float: right;
+  margin: -2px -3px 0px 0px;
+  padding: 0;
+}
+/* line 278, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#user_menu > li {
+  display: block;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+/* line 283, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#user_menu > li:first-child {
+  visibility: visible;
+}
+/* line 287, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#user_menu > li:last-child {
+  border-bottom: 1px solid #333;
+}
+/* line 292, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#user_menu.active {
+  box-shadow: 0 0px 13px rgba(20, 20, 20, 0.5);
+  background-color: #221e1e;
+  visibility: visible;
+}
+/* line 297, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#user_menu.active > li {
+  border-color: #999999;
+}
+/* line 303, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-menu-item a {
+  padding: 4px 8px 4px 40px;
+  height: 100%;
+  color: #999999;
+}
+/* line 308, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-menu-item a:hover {
+  background-color: #3F8FBA;
+  color: #FAFAFA;
+  text-decoration: none;
+}
+/* line 315, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-menu-trigger {
+  padding: 10px 25px 10px 40px;
+}
+/* line 318, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-menu-trigger:hover {
+  color: #FAFAFA;
+}
+/* line 320, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-menu-trigger:hover .user-name {
+  color: #FAFAFA;
+}
+/* line 326, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-name:hover {
+  background-color: transparent;
+  text-decoration: none;
+}
+/* line 331, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-name:focus {
+  :outline: none;
+}
+/* line 334, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-menu-more-indicator {
+  position: absolute;
+  right: 5px;
+}
+/* line 339, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .user-menu-avatar {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  display: block;
+}
+/* line 348, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .header-nav {
+  font-weight: bold;
+  float: left;
+  height: 100%;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+/* line 355, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .header-nav a {
+  padding: 0 10px;
+  width: 100%;
+}
+/* line 358, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .header-nav a:hover {
+  text-decoration: none;
+}
+/* line 361, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .header-nav > span {
+  height: 100%;
+  display: inline-block;
+  margin-left: -4px;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+/* line 368, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header .header-nav > span:last-child {
+  margin-left: -5px;
+}
+/* line 375, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#landing_nav {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  margin: 0;
+  padding: 0;
+}
+/* line 382, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#landing_nav > li {
+  text-shadow: 0 1px 0 #000;
+  display: inline;
+  margin-right: 0.5em;
+}
+/* line 387, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#landing_nav > li a {
+  color: #3F8FBA;
+}
+/* line 390, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#landing_nav > li a.login {
+  border-radius: 5px;
+  box-shadow: 0 1px 1px #666;
+  padding: 5px 8px;
+  background-color: #000;
+  border-top: 1px solid #000;
+}
+/* line 397, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#landing_nav > li a.login:hover {
+  background-color: #222;
+}
+/* line 401, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+body > header ul#landing_nav > li:last-child {
+  margin-right: 0;
+}
+
+/*
+ * Extract here from application.sass because
+ * needed for the header in the bootstrap part
+ */
+/* line 411, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+ul.dropdown {
+  padding: 0px;
+}
+/* line 414, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+ul.dropdown li {
+  display: none;
+}
+/* line 417, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+ul.dropdown li a {
+  display: block;
+}
+/* line 419, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+ul.dropdown li:first-child {
+  display: block;
+}
+/* line 422, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+ul.dropdown li:first-child a {
+  height: auto;
+  display: inline;
+}
+/* line 429, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+ul.dropdown.active {
+  z-index: 30;
+}
+/* line 431, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/header.scss */
+ul.dropdown.active li {
+  display: block;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/footer.scss */
+footer {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  color: #999999;
+}
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/footer.scss */
+footer .container {
+  width: 95%;
+  margin: 4em auto 0 auto;
+  padding: 0.5em 0 1em 0;
+  border-top: 1px solid #DDDDDD;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/footer.scss */
+footer .branding-powered_by_diaspora {
+  display: inline-block;
+  margin-top: 3px;
+  height: 11px;
+  width: 145px;
+}
+/* line 21, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/footer.scss */
+footer ul#footer_nav {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  float: right;
+}
+/* line 27, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/footer.scss */
+footer ul#footer_nav > li {
+  display: inline;
+  margin-right: 1em;
+}
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/footer.scss */
+footer ul#footer_nav > li.separator {
+  margin-left: -.35em;
+  margin-right: .65em;
+  opacity: 0.6;
+}
+/* line 37, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/footer.scss */
+footer ul#footer_nav > li:last-child {
+  margin: 0;
+}
+/* line 42, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/footer.scss */
+footer ul#footer_nav a {
+  color: #777777;
+}
+
+/* line 5, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header .container {
+  width: 950px;
+}
+/* line 9, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header .container .header-nav span a {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+/* line 16, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header .container li {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+/* line 21, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header #conversations_badge, header #notification_badge {
+  background: none;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header #notification_badge.active {
+  border-radius: 0;
+}
+/* line 29, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header #global_search form input {
+  height: 15px;
+  color: black;
+}
+/* line 36, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header #notification_dropdown h4 {
+  margin: 0;
+}
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header #notification_dropdown .right a {
+  font-weight: bold;
+}
+/* line 44, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header #notification_dropdown .notification_element {
+  font-size: 13px;
+}
+/* line 46, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bootstrap-headerfix.scss */
+header #notification_dropdown .notification_element .timeago {
+  border: medium none;
+  cursor: text;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/opengraph.scss */
+.opengraph-container {
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  font-style: normal;
+  margin: 10px 0px 10px 0px;
+  border-top: solid 1px #DDDDDD;
+  border-bottom: solid 1px #DDDDDD;
+  padding: 10px 0px 5px 0px;
+  overflow: hidden;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/opengraph.scss */
+.opengraph-container a {
+  color: #000;
+}
+/* line 13, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/opengraph.scss */
+.opengraph-container a img {
+  margin: 5px 5px 5px 0px;
+  float: left;
+  max-width: 150px;
+  padding-right: 5px;
+}
+/* line 19, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/opengraph.scss */
+.opengraph-container a .og-title {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/opengraph.scss */
+.opengraph-container a:hover {
+  color: #3F8FBA;
+}
+/* line 27, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/opengraph.scss */
+.opengraph-container .og-description {
+  color: #999999;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-container {
+  padding-top: 20px;
+}
+
+/* line 5, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content {
+  border-right: solid 1px #cccccc;
+  padding-right: 12px;
+}
+/* line 8, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DDDDDD;
+}
+/* line 12, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #post-info .author {
+  color: #2B2B2B;
+}
+/* line 13, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #post-info .info {
+  color: #b3b3b3;
+  font-size: 12px;
+}
+/* line 16, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #post-info .info .post-time a {
+  color: #999999;
+}
+/* line 17, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #post-info .info .post_scope {
+  margin-right: 5px;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #post-info .info .status-message-location {
+  padding-top: 2px;
+  line-height: 13px;
+}
+/* line 23, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #post-info .avatar.medium {
+  max-width: 75px;
+}
+/* line 26, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #post-info .bd {
+  padding-left: 10px;
+}
+/* line 30, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head .row-fluid.reshare {
+  border-top: 1px solid #eaeaea;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+/* line 35, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #reshare-info {
+  line-height: 15px;
+}
+/* line 37, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #reshare-info i.retweet {
+  color: #666666;
+  font-size: 28px;
+  line-height: 30px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+/* line 44, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #reshare-info .post-context {
+  font-size: 12px;
+}
+/* line 47, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #reshare-info .post-context #single-post-moderation {
+  margin-left: 5px;
+}
+/* line 50, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #reshare-info .post-context #single-post-moderation > div.info {
+  display: inline-block;
+}
+/* line 55, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #reshare-info .post-time a {
+  color: #999999;
+  font-size: 12px;
+}
+/* line 59, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #reshare-info .avatar {
+  height: 30px;
+  width: 30px;
+}
+/* line 63, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #reshare-info .img {
+  margin-right: 10px;
+}
+/* line 65, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions {
+  padding-right: 5px;
+}
+/* line 67, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions i {
+  font-size: 28px;
+  line-height: 30px;
+}
+/* line 71, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions i.comment:hover {
+  color: #424242;
+}
+/* line 74, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions .post_report i.gray:hover {
+  color: #A80000;
+}
+/* line 77, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions i.heart.gray:hover {
+  color: #A80000;
+}
+/* line 80, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions i.heart.red:hover {
+  color: #f55f5a;
+}
+/* line 83, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions i.retweet:hover {
+  color: #3f8fba;
+}
+/* line 86, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions time {
+  float: right;
+  margin-left: 3px;
+}
+/* line 90, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions a {
+  margin: 0 0 0 6px;
+}
+/* line 92, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-actions a:hover {
+  text-decoration: none;
+}
+/* line 98, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-moderation a:hover {
+  text-decoration: none;
+}
+/* line 101, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-moderation i {
+  padding-right: 5px;
+  vertical-align: top;
+}
+/* line 104, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-moderation i:hover {
+  color: #424242;
+}
+/* line 108, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-moderation a.post_report > i {
+  font-size: 13px;
+}
+/* line 111, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #head #single-post-moderation i.cross {
+  font-size: 20px;
+}
+/* line 117, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body {
+  margin-left: 20px;
+  padding-top: 20px;
+  width: auto;
+}
+/* line 121, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body p {
+  margin: 0 0 1em 0;
+  word-wrap: break-word;
+}
+/* line 125, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body .photo_attachments {
+  padding-bottom: 10px;
+  text-align: center;
+}
+/* line 128, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body .photo_attachments img {
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+}
+/* line 129, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body .photo_attachments img.big_stream_photo {
+  display: block;
+  max-width: 90%;
+}
+/* line 133, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body .photo_attachments img.thumb_small {
+  display: inline;
+  max-width: 50px;
+  max-height: 50px;
+}
+/* line 143, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body .oembed {
+  background: url(/assets/ajax-loader2.gif) no-repeat center center;
+  float: left;
+  width: 95%;
+}
+/* line 147, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body .oembed .thumb {
+  position: relative;
+  cursor: pointer;
+}
+/* line 56, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#single-post-content #body .oembed .thumb .video-overlay {
+  background-color: rgba(0, 0, 0, 0.65);
+  background-image: url(/assets/buttons/playbtn.png);
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 60px 60px;
+  border-radius: 70px 10px 10px 70px;
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 60px;
+  margin-top: -40px;
+  padding: 10px 7px 10px 80px;
+  overflow: hidden;
+  line-height: 60px;
+}
+/* line 80, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#single-post-content #body .oembed .thumb .video-overlay > div {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+/* line 86, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#single-post-content #body .oembed .thumb .video-overlay > div > div {
+  opacity: 1;
+  overflow: hidden;
+  text-shadow: -1px -1px 0 #000, 0 0 7px #111;
+  color: #F0F0F0;
+  font-size: 0.9em;
+  text-overflow: ellipsis;
+}
+/* line 95, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#single-post-content #body .oembed .thumb .video-overlay .title {
+  font-weight: bold;
+  white-space: nowrap;
+  line-height: .95em;
+}
+/* line 100, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#single-post-content #body .oembed .thumb .video-overlay .meta {
+  font-size: .94em;
+  line-height: 1.3em;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+/* line 106, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#single-post-content #body .oembed .thumb .video-overlay .meta a {
+  color: #9bc6dd;
+}
+/* line 109, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#single-post-content #body .oembed .thumb .video-overlay .meta a:visited {
+  color: #3F8FBA;
+}
+/* line 113, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#single-post-content #body .oembed .thumb .video-overlay .desc {
+  font-size: .91em;
+  line-height: .97em;
+  max-height: 35px;
+}
+/* line 150, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-content #body .oembed iframe, #single-post-content #body .oembed .thumb img {
+  width: 100%;
+  min-height: 60%;
+}
+
+/* line 158, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-interactions {
+  border-left: 1px solid #cccccc;
+  position: relative;
+  left: -1px;
+  margin-left: 0;
+  padding-left: 15px;
+}
+/* line 165, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-interactions .comment.media .img {
+  margin-left: 5px;
+}
+/* line 169, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-interactions .no_comments {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #EEEEEE;
+  text-align: center;
+  border-radius: 4px;
+  margin-bottom: 30px;
+}
+/* line 178, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-interactions a {
+  color: #3F8FBA;
+}
+/* line 182, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-interactions .count i {
+  display: inline-block;
+  text-align: center;
+  width: 25px;
+  vertical-align: middle;
+}
+/* line 188, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-interactions .count span {
+  margin-left: -3px;
+  width: 30px;
+  display: inline-block;
+  text-align: center;
+}
+/* line 195, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/single-post-view.scss */
+#single-post-interactions #reshares, #single-post-interactions #likes, #single-post-interactions #comments-meta {
+  margin-left: 7px;
+  margin-bottom: 8px;
+}
+
+/* colors : http://www.colourlovers.com/palette/2134203/Awezome_in_argyle */
+/* Mixin file for sass.  Here is where we define our variables and
+   browser compatability functions used in all scss/sass files */
+/* Transision defaults */
+/* Style includes */
+/* mixins */
+/* line 5, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_poll.scss */
+.poll_form {
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+  margin: 10px 0px 10px 0px;
+  padding: 10px 0px 5px 0px;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_poll.scss */
+.poll_form .poll_content {
+  margin-top: 5px;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_poll.scss */
+.poll_form .toggle_result_wrapper {
+  display: inline-block;
+  margin-top: 10px;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_poll.scss */
+.poll_form form {
+  margin-bottom: 0px;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_poll.scss */
+.poll_form .progress {
+  background-image: none;
+  box-shadow: 0 0 0;
+  margin-bottom: 5px;
+  height: 10px !important;
+}
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_poll.scss */
+.poll_form .progress .bar {
+  background-image: none;
+  background-color: #999999;
+  color: #666666;
+  text-align: left;
+}
+/* line 35, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_poll.scss */
+.poll_form .submit[disabled] {
+  cursor: default;
+  color: #999;
+}
+/* line 39, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_poll.scss */
+.poll_form .submit[disabled]:hover, .poll_form .submit[disabled]:active {
+  background-image: none;
+}
+
+/* conversations */
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element {
+  border-bottom: 1px solid #DDDDDD;
+}
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element:first-child {
+  border-top: none;
+}
+/* line 5, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element a.author {
+  font-weight: bold;
+  unicode-bidi: bidi-override;
+}
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element .avatar {
+  width: 50px;
+  height: 50px;
+}
+/* line 15, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element p {
+  margin: 0 0 1em 0;
+  word-wrap: break-word;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element p:last-child {
+  margin-bottom: 0;
+}
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.new_message {
+  border-bottom: none;
+}
+/* line 21, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element .timestamp {
+  font-size: 11px;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation {
+  padding: 8px;
+}
+/* line 26, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .media {
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+/* line 32, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation:hover:not(.selected) .subject,
+#conversations_container .stream_element.conversation:hover:not(.selected) .last_author,
+#conversations_container .stream_element.conversation:hover:not(.selected) .last_message, #conversations_container .stream_element.conversation.selected .subject,
+#conversations_container .stream_element.conversation.selected .last_author,
+#conversations_container .stream_element.conversation.selected .last_message {
+  color: white;
+}
+/* line 37, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation:hover:not(.selected) .timeago, #conversations_container .stream_element.conversation.selected .timeago {
+  color: #EEEEEE;
+}
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation:hover, #conversations_container .stream_element.conversation.unread:hover, #conversations_container .stream_element.conversation.selected:hover {
+  background-color: #4f9bc3;
+  cursor: pointer;
+}
+/* line 44, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation.unread {
+  background-color: #f2f2f2;
+}
+/* line 45, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation.selected {
+  background-color: #3F8FBA;
+}
+/* line 47, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .avatar {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+/* line 53, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .last_author, #conversations_container .stream_element.conversation .last_message {
+  font-size: 12px;
+  line-height: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 60, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .last_author {
+  color: #666666;
+}
+/* line 62, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .message_count, #conversations_container .stream_element.conversation .unread_message_count {
+  margin-left: 3px;
+  float: right;
+  font-size: 12px;
+  font-weight: normal;
+}
+/* line 69, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .participants_count {
+  opacity: 0.5;
+  float: left;
+  background-color: #fff;
+  margin-top: 35px;
+  margin-left: -50px;
+  text-align: center;
+  width: 50px;
+  height: 15px;
+  line-height: 15px;
+  font-size: 13px;
+  font-weight: bold;
+}
+/* line 71, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .participants_count:before {
+  content: '+';
+}
+/* line 84, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .participants {
+  display: none;
+  float: left;
+  clear: both;
+  margin-top: 5px;
+  padding-top: 5px;
+  height: 25px;
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px dotted #DDDDDD;
+}
+/* line 94, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .participants .avatar {
+  margin: 0 5px 0 0;
+  height: 25px;
+  width: 25px;
+}
+/* line 101, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .img {
+  line-height: 15px;
+}
+/* line 103, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .subject {
+  font-size: 13px;
+}
+/* line 105, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .subject > * {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* line 112, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversations_container .stream_element.conversation .timeago {
+  float: right;
+  line-height: normal;
+  font-weight: normal;
+  color: #3F8FBA;
+}
+
+/* line 122, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants {
+  box-shadow: 0 2px 3px -3px #666;
+  background-color: #FFFFFF;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 5px;
+  line-height: 0px;
+}
+/* line 131, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants a.close_conversation {
+  display: block;
+  margin-top: 10px;
+  float: right;
+}
+/* line 136, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants a.close_conversation .icons-deletelabel {
+  height: 14px;
+  width: 14px;
+}
+/* line 142, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants .avatar {
+  height: 30px;
+  width: 30px;
+}
+/* line 147, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants .avatars {
+  text-align: right;
+  margin-top: 9px;
+}
+/* line 152, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants a img {
+  margin-bottom: 4px;
+}
+/* line 154, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants .conversation_controls {
+  margin-bottom: 10px;
+}
+/* line 157, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants .conversation_controls a {
+  margin-right: 10px;
+}
+/* line 161, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .conversation_participants a:hover {
+  text-decoration: none;
+}
+/* line 163, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_show .stream .stream_element {
+  padding: 10px;
+}
+
+/* line 168, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#left_pane {
+  border-right: solid 1px #DDDDDD;
+}
+/* line 170, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#left_pane h3 {
+  padding-bottom: 0;
+}
+/* line 174, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#left_pane #left_pane_header {
+  padding: 10px;
+  padding-right: 20px;
+  border-bottom: 1px solid #DDDDDD;
+}
+/* line 181, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#left_pane #conversation_inbox a:hover {
+  text-decoration: none;
+}
+
+/* line 188, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#conversation_new label {
+  font-weight: bold;
+}
+
+/* line 191, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#no_conversations,
+#no_conversation_text {
+  font-weight: bold;
+  color: #ccc;
+  text-align: center;
+  margin-top: 100px;
+}
+
+/* line 199, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#no_conversation_text {
+  font-size: 20px;
+}
+
+/* line 203, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#no_conversation_controls {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* line 209, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#new_conversation_pane ul.as-selections {
+  width: 100% !important;
+}
+/* line 210, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#new_conversation_pane input#contact_ids {
+  box-shadow: none;
+}
+/* line 211, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/conversations.scss */
+#new_conversation_pane label {
+  font-weight: bold;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/facebox.scss */
+.facebox_content {
+  display: none;
+}
+
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/facebox.scss */
+#facebox input[type='text'], #facebox input.text {
+  width: 98%;
+}
+
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/facebox.scss */
+#facebox_header {
+  position: relative;
+  padding-bottom: 10px;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/facebox.scss */
+#facebox_header .right {
+  z-index: 3;
+  right: 1em;
+  top: 14px;
+  color: #ccc;
+}
+/* line 17, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/facebox.scss */
+#facebox_header .right img {
+  vertical-align: top;
+  position: relative;
+  top: 0px;
+}
+/* line 25, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/facebox.scss */
+#facebox_header h3 .description, #facebox_header h4 .description {
+  margin-top: 0px;
+}
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/facebox.scss */
+#facebox_header .tiny_text {
+  font-size: 11px;
+  font-weight: normal;
+}
+
+/* publisher */
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher {
+  z-index: 1;
+  color: #999999;
+}
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher.closed #button_container,
+#publisher.closed #location_container,
+#publisher.closed #hide_publisher,
+#publisher.closed #photodropzone_container,
+#publisher.closed .options_and_submit {
+  display: none !important;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher.closed #publisher_textarea_wrapper {
+  border: 1px solid #DDDDDD !important;
+}
+/* line 17, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher .mentions-autocomplete-list ul {
+  width: 100% !important;
+}
+/* line 19, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form {
+  margin: 0;
+}
+/* line 21, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #fileInfo {
+  display: none !important;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #hide_publisher {
+  margin-top: 10px;
+}
+/* line 26, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_spinner {
+  text-align: center;
+}
+/* line 32, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form .options_and_submit #publisher_service_icons .btn-link {
+  text-decoration: none;
+}
+/* line 33, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form .options_and_submit #publisher_service_icons .btn-link.question_mark .entypo {
+  color: #999999;
+}
+/* line 34, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form .options_and_submit #publisher_service_icons .btn-link.question_mark:hover .entypo {
+  color: black;
+}
+/* line 35, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form .options_and_submit #publisher_service_icons .btn-link.service_icon {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+/* line 39, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form .options_and_submit #publisher_service_icons .dim {
+  opacity: 0.3;
+}
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form .options_and_submit #publisher_service_icons .social_media_logos-wordpress-16x16 {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+}
+/* line 48, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper {
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid #999999;
+}
+/* line 53, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper input[type='text']#status_message_text {
+  border: none;
+  box-shadow: none;
+  margin: none;
+}
+/* line 59, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper textarea {
+  border: none;
+  margin: 0;
+  box-shadow: none;
+  resize: none;
+  height: 50px;
+}
+/* line 67, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.active textarea {
+  min-height: 70px;
+}
+/* line 71, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .help-block {
+  font-size: 13px;
+  line-height: 30px;
+  padding-left: 10px;
+  margin-bottom: 0;
+  color: #cccccc;
+}
+/* line 77, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .help-block a {
+  color: #88bbd7;
+}
+/* line 80, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .mentions-input-box .mentions {
+  line-height: 20px !important;
+}
+/* line 84, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.with_attachments .row-fluid#photodropzone_container {
+  border-top: 1px dashed #DDDDDD;
+}
+/* line 88, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .row-fluid#poll_creator_container {
+  display: none;
+  border-top: 1px dashed #DDDDDD;
+  padding: 4px 6px 4px 6px;
+  box-sizing: border-box;
+}
+/* line 93, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .row-fluid#poll_creator_container .remove-answer.entypo.cross {
+  display: none;
+  color: #bfbfbf;
+  line-height: 30px;
+  font-size: 18px;
+  cursor: pointer;
+}
+/* line 96, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .row-fluid#poll_creator_container .remove-answer.entypo.cross.active {
+  display: block;
+}
+/* line 97, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .row-fluid#poll_creator_container .remove-answer.entypo.cross:hover {
+  color: black;
+}
+/* line 104, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.with_location .row-fluid#location_container {
+  height: 30px;
+  border-top: 1px dashed #DDDDDD;
+}
+/* line 106, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.with_location .row-fluid#location_container #hide_location {
+  display: none !important;
+}
+/* line 108, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.with_location .row-fluid#location_container input[type='text'] {
+  margin-bottom: 0;
+  color: #999999;
+}
+/* line 113, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.active .row-fluid#button_container {
+  border-top: 1px solid #DDDDDD;
+}
+/* line 117, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #photodropzone {
+  margin: 0;
+}
+/* line 119, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #photodropzone > li.publisher_photo {
+  list-style: none;
+  float: left;
+  margin: 8px;
+  height: 80px;
+  width: 80px;
+  overflow: hidden;
+  line-height: 80px;
+  vertical-align: middle;
+}
+/* line 129, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #photodropzone > li.publisher_photo img {
+  vertical-align: middle;
+  width: 80px;
+}
+/* line 134, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #photodropzone > li.publisher_photo .x {
+  display: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  text-align: center;
+  background-color: white;
+  color: black;
+  font-size: 50px;
+  line-height: 50px;
+  font-style: bold;
+  position: absolute;
+  z-index: 2;
+  opacity: 0.85;
+  cursor: pointer;
+  top: 15px;
+  left: 15px;
+}
+/* line 152, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #photodropzone > li.publisher_photo .x:before {
+  content: '\2716';
+  font-family: 'entypo';
+}
+/* line 158, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #photodropzone > li.publisher_photo:hover .x {
+  display: inline-block;
+}
+/* line 162, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #photodropzone > li.publisher_photo .progress {
+  width: 100%;
+  height: 20px;
+  margin: 30px 0;
+}
+/* line 168, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #photodropzone > li.publisher_photo .ajax-loader {
+  display: none;
+}
+/* line 172, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #upload_error {
+  color: white;
+  font-style: bold;
+  border-top: 1px solid white;
+  background-color: #A80000;
+  text-align: center;
+}
+/* line 180, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #publisher-images {
+  margin-right: 5px;
+}
+/* line 182, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #publisher-images #file-upload,
+#publisher form #publisher_textarea_wrapper #publisher-images #locator,
+#publisher form #publisher_textarea_wrapper #publisher-images #poll_creator,
+#publisher form #publisher_textarea_wrapper #publisher-images #hide_location {
+  text-decoration: none !important;
+  font-size: 16px;
+  padding: 4px 5px;
+}
+/* line 189, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #publisher-images #file-upload i,
+#publisher form #publisher_textarea_wrapper #publisher-images #locator i,
+#publisher form #publisher_textarea_wrapper #publisher-images #poll_creator i,
+#publisher form #publisher_textarea_wrapper #publisher-images #hide_location i {
+  color: #999999;
+}
+/* line 193, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #publisher-images #file-upload:hover i,
+#publisher form #publisher_textarea_wrapper #publisher-images #locator:hover i,
+#publisher form #publisher_textarea_wrapper #publisher-images #poll_creator:hover i,
+#publisher form #publisher_textarea_wrapper #publisher-images #hide_location:hover i {
+  color: black;
+}
+/* line 195, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #publisher-images #file-upload input[type='file'],
+#publisher form #publisher_textarea_wrapper #publisher-images #locator input[type='file'],
+#publisher form #publisher_textarea_wrapper #publisher-images #poll_creator input[type='file'],
+#publisher form #publisher_textarea_wrapper #publisher-images #hide_location input[type='file'] {
+  cursor: pointer;
+}
+/* line 197, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #publisher-images #file-upload input[type='file']::-webkit-file-upload-button,
+#publisher form #publisher_textarea_wrapper #publisher-images #locator input[type='file']::-webkit-file-upload-button,
+#publisher form #publisher_textarea_wrapper #publisher-images #poll_creator input[type='file']::-webkit-file-upload-button,
+#publisher form #publisher_textarea_wrapper #publisher-images #hide_location input[type='file']::-webkit-file-upload-button {
+  cursor: pointer;
+}
+/* line 202, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper #publisher-images #hide_location {
+  display: none;
+}
+/* line 207, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.with_location #publisher-images #hide_location {
+  display: inline-block;
+}
+/* line 208, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.with_location #publisher-images #locator {
+  display: none;
+}
+/* line 211, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .counter {
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  right: 100px;
+  bottom: -31px;
+  font-size: 13px;
+}
+/* line 219, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper.with_location .counter {
+  bottom: -62px;
+}
+/* line 222, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .warning {
+  color: orange;
+}
+/* line 225, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher form #publisher_textarea_wrapper .exceeded {
+  color: red;
+}
+/* line 232, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/publisher.scss */
+#publisher .aspect_dropdown .radio {
+  min-height: 0px;
+  padding-left: 0px;
+}
+
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li .status_indicator {
+  width: 19px;
+  height: 14px;
+  display: inline-block;
+}
+/* line 9, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li .icon-ok, .aspect_dropdown li .icon-refresh {
+  padding-right: 5px;
+  display: none;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li.selected .icon-ok {
+  display: inline-block;
+}
+/* line 15, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li.selected .icon-refresh {
+  display: none;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li.loading .icon-refresh {
+  display: inline-block;
+}
+/* line 19, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li.loading .icon-ok {
+  display: none;
+}
+/* line 21, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li a {
+  cursor: pointer;
+  padding-left: 10px;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li a .text {
+  color: #333333;
+}
+/* line 25, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+.aspect_dropdown li a:hover {
+  background: #EEEEEE;
+}
+
+/* line 35, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+#new_aspect .checkbox {
+  margin: 0px;
+}
+/* line 39, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+#new_aspect label[for="aspect_contacts_visible"],
+#new_aspect label[for="aspect_chat_enabled"] {
+  display: inline;
+}
+/* line 44, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/aspects.scss */
+#new_aspect .bottom_submit_section {
+  padding-top: 20px;
+}
+
+/* bookmarklet */
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bookmarklet.scss */
+#bookmarklet {
+  padding: 10px 10px 30px 10px;
+  margin-top: 0;
+}
+
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/bookmarklet.scss */
+body.page-status_messages.action-bookmarklet {
+  margin-top: 0px;
+}
+
+/* notifications */
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .nav.nav-tabs li > a .badge.badge-default {
+  display: none;
+}
+/* line 9, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .header {
+  border-bottom: 1px solid #DDDDDD;
+  margin-bottom: 10px;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .header .btn-toolbar, #notifications_container .stream .header h4 {
+  margin-bottom: 10px;
+  line-height: 40px;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .year_container {
+  margin-top: 40px;
+}
+/* line 19, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .year {
+  background-color: white;
+  color: #999;
+  font-size: 40px;
+  line-height: 40px;
+  margin-bottom: -20px;
+  text-align: center;
+}
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .year_container + .day_group {
+  border-top: 1px solid #DDDDDD;
+  padding-top: 60px;
+}
+/* line 33, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .day_group + .day_group {
+  border-top: 1px dashed #DDDDDD;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .day_group .date {
+  text-align: center;
+  color: #999;
+}
+/* line 43, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .day_group .date .day {
+  font-size: 40px;
+  line-height: 40px;
+}
+/* line 47, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .day_group .date .month {
+  font-size: 16px;
+  line-height: 16px;
+}
+/* line 54, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .media, #notifications_container .stream .media-body {
+  overflow: visible;
+}
+/* line 58, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media {
+  padding: 10px;
+  margin: 0px;
+  font-size: 13px;
+  line-height: 18px;
+  border-bottom: 1px solid #DDDDDD;
+}
+/* line 64, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media:last-child {
+  border: none !important;
+}
+/* line 66, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media.unread {
+  background-color: #EEEEEE;
+}
+/* line 68, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media.unread .unread-toggle {
+  opacity: 1 !important;
+}
+/* line 70, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media.unread .unread-toggle .entypo {
+  color: black;
+}
+/* line 75, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media:hover .unread-toggle {
+  opacity: 1 !important;
+}
+/* line 78, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media .avatar {
+  width: 35px;
+  height: 35px;
+}
+/* line 83, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media .unread-toggle {
+  padding: 9px 5px;
+  opacity: 0;
+}
+/* line 85, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media .unread-toggle .entypo {
+  cursor: pointer;
+  color: #bfbfbf;
+  font-size: 17px;
+  line-height: 17px;
+}
+/* line 94, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .stream_element.media .btn-group.aspect_membership_dropdown {
+  margin: 5px 0;
+}
+/* line 97, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .pagination {
+  text-align: center;
+}
+/* line 99, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/notifications.scss */
+#notifications_container .stream .no_notifications {
+  text-align: center;
+}
+
+/* help */
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+h2.help_header {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+ul#help_nav {
+  display: inline;
+  padding: 0;
+  font-size: large;
+  position: absolute;
+  left: 198px;
+  top: 5px;
+}
+/* line 15, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+ul#help_nav > li {
+  display: inline;
+  margin-right: 1em;
+  font-weight: 700;
+}
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+ul#help_nav > li a {
+  padding: 2px;
+  font-weight: normal;
+}
+
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq_nav h4 {
+  font-weight: 700;
+}
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq_nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 35, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq_nav ul li {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+/* line 38, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq_nav ul li a {
+  font-weight: normal;
+}
+/* line 41, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq_nav ul li .section-selected {
+  font-weight: bold;
+}
+
+/* line 48, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq {
+  text-align: justify;
+}
+/* line 49, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq h1, #faq h2 {
+  text-align: center;
+  font-weight: 700;
+}
+/* line 54, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq ul, #faq ol {
+  margin: 0;
+  padding: 10px 0 10px 20px;
+  text-align: left;
+}
+/* line 59, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq ul > li {
+  list-style-type: disc !important;
+}
+/* line 65, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question {
+  background-color: #f2f2f2;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+/* line 69, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question a.toggle {
+  text-decoration: none;
+  color: black;
+}
+/* line 73, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question h4 {
+  text-align: left;
+  font-weight: 700;
+  margin: 0px;
+  padding: 10px 20px;
+}
+/* line 80, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question.collapsed {
+  border: 2px solid #f2f2f2;
+}
+/* line 84, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question.opened {
+  border: 2px solid #8ede3d;
+}
+/* line 86, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question.opened h4 {
+  background-color: #8ede3d;
+}
+/* line 90, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question .answer {
+  border-radius: 0px 0px 4px 4px;
+  background-color: white;
+  padding: 10px 20px;
+}
+/* line 95, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question .answer div.help-chat-icons {
+  text-align: center;
+  font-size: 50px;
+  line-height: 70px;
+}
+/* line 100, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question .answer div.help-chat-icons i.entypo {
+  color: #bfbfbf;
+}
+/* line 103, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/help.scss */
+#faq .question .answer div.help-chat-icons i.entypo.chat {
+  color: #000000;
+}
+
+/* getting started */
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there .avatar {
+  width: 50px;
+  height: 50px;
+}
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there .well .media {
+  overflow: visible;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there .awesome {
+  text-align: center;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there .awesome .btn.creation {
+  text-shadow: none;
+}
+/* line 19, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there .hero-unit {
+  margin: 20px 42px;
+  padding: 40px 80px;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there h2 {
+  margin-top: 80px;
+}
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there p, #hello-there form {
+  margin-left: 30px;
+}
+/* line 32, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there ul.as-selections {
+  width: 100%;
+}
+/* line 36, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/getting-started.scss */
+#hello-there ul.as-selections li.as-original input {
+  margin-bottom: 15px;
+}
+
+/* people */
+/* line 3, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/people.scss */
+#people_search #search_title .term {
+  font-weight: 700;
+}
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/people.scss */
+#people_search #search_title small {
+  margin-left: 15px;
+}
+
+/* line 8, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/people.scss */
+#people_stream .media, #people_stream .media-body {
+  overflow: visible;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/people.scss */
+#people_stream .stream_element.media {
+  border-bottom: 1px solid #DDDDDD;
+  padding: 10px;
+  margin: 0px;
+  font-size: 13px;
+  line-height: 16px;
+  min-height: 50px;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/people.scss */
+#people_stream .stream_element.media .avatar {
+  width: 50px;
+  height: 50px;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/people.scss */
+#people_stream .stream_element.media .btn-group.aspect_membership_dropdown {
+  margin: 12px 0;
+}
+/* line 23, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/people.scss */
+#people_stream .stream_element.media .thats_you {
+  line-height: 50px;
+  margin-right: 10px;
+}
+/* line 27, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/people.scss */
+#people_stream .stream_element.media .info {
+  font-size: 11px;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invite_code {
+  cursor: text;
+  display: block;
+  margin-top: 5px;
+}
+
+/* line 8, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal .modal-header, #invitationsModal .modal-body {
+  color: #333333;
+  font-size: 13px;
+  text-align: initial;
+}
+/* line 13, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal #paste_link {
+  font-weight: 700;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal #invite_code {
+  margin-top: 10px;
+}
+/* line 15, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal #codes_left {
+  color: #999999;
+}
+/* line 16, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal .control-label {
+  width: 120px;
+}
+/* line 17, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal .controls {
+  margin-left: 140px;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal #email_invitation {
+  padding-top: 10px;
+  margin-top: 20px;
+  border-top: 1px dashed #DDDDDD;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal #email_invitation label {
+  font-weight: 700;
+}
+/* line 23, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/invitations.scss */
+#invitationsModal #email_invitation #already_sent {
+  color: #999999;
+  font-size: 12px;
+}
+
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header {
+  margin-bottom: 20px;
+  border-left: 1px solid #dddddd;
+  padding-left: 10px;
+  padding-top: 20px;
+  margin-left: -10px;
+  margin-top: -20px;
+}
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #edit_profile, #profile_container .profile_header #unblock_user_button, #profile_container .profile_header .aspect_dropdown {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+/* line 16, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info h2 {
+  line-height: 35px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+/* line 21, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info #name {
+  font-weight: 700;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info #diaspora_handle {
+  color: #999999;
+  font-size: 20px;
+}
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info #sharing_message {
+  cursor: default;
+  font-size: 20px;
+}
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info #sharing_message.circle {
+  color: #999;
+}
+/* line 33, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info #sharing_message.circle:before {
+  content: '\26aa';
+}
+/* line 35, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info #sharing_message.entypo.check {
+  color: #5b9b1a;
+}
+/* line 37, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info .description {
+  margin-bottom: 20px;
+}
+/* line 39, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info .description .tag {
+  background-color: transparent;
+  font-size: 13px;
+}
+/* line 43, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info .description .tag:not(.entypo) {
+  font-weight: 700;
+}
+/* line 46, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info .description .entypo.tag {
+  margin: 0 5px;
+  font-weight: normal;
+}
+/* line 49, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #author_info .description .entypo.tag:hover {
+  text-decoration: none;
+}
+/* line 54, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar {
+  border-top: 1px dashed #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+  min-height: 50px;
+  margin-top: 10px;
+}
+/* line 59, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar #profile_buttons {
+  padding: 10px 0;
+}
+/* line 61, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar #profile_buttons > .profile_button {
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 25px;
+}
+/* line 65, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar #profile_buttons > .profile_button .entypo.profile-header-icon, #profile_container .profile_header #profile_horizontal_bar #profile_buttons > .profile_button .profile-header-icon {
+  font-size: 24.5px;
+  line-height: 30px;
+  color: #bfbfbf;
+}
+/* line 69, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar #profile_buttons > .profile_button .entypo.profile-header-icon:hover, #profile_container .profile_header #profile_horizontal_bar #profile_buttons > .profile_button .profile-header-icon:hover {
+  color: black;
+}
+/* line 71, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar #profile_buttons > .profile_button #mention_button {
+  font-weight: 700;
+}
+/* line 75, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav {
+  list-style: none;
+  margin: 0;
+}
+/* line 78, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav > li {
+  display: inline-block;
+}
+/* line 80, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav > li.active {
+  border-bottom: 3px solid #0097FF;
+}
+/* line 82, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav > li.active a {
+  color: black;
+}
+/* line 84, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav > li.active a .entypo {
+  color: black;
+}
+/* line 87, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav > li a {
+  padding: 10px 15px;
+  font-size: 16px;
+  line-height: 46px;
+  color: gray;
+}
+/* line 92, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav > li a .entypo {
+  color: gray;
+  margin-right: 2px;
+}
+/* line 96, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav > li a:hover {
+  color: black;
+  text-decoration: none;
+}
+/* line 98, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .profile_header #profile_horizontal_bar ul#profile_nav > li a:hover .entypo {
+  color: black;
+}
+/* line 107, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container #profile {
+  padding: 10px 20px;
+}
+/* line 109, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container #profile #profile_photo {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #DDDDDD;
+  text-align: center;
+}
+/* line 116, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container #profile ul#profile_information {
+  margin: 0;
+  list-style: none;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+/* line 121, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container #profile ul#profile_information > li {
+  margin-bottom: 2em;
+}
+/* line 123, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container #profile ul#profile_information > li h4 {
+  font-weight: bold;
+}
+/* line 129, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/profile.scss */
+#profile_container .stream_container > .pagination {
+  text-align: center;
+}
+
+/* stream */
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+.tag {
+  display: inline-block;
+  font-weight: bold;
+}
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+.tag:hover {
+  text-decoration: underline;
+  background-color: #eff6fa;
+}
+
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+a.tag {
+  color: #3F8FBA;
+}
+
+/* line 12, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+h1.tag {
+  border-bottom: 2px dotted #3F8FBA;
+}
+/* line 14, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+h1.tag:hover {
+  border-bottom: 2px dotted #3F8FBA;
+}
+
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+.info .tag {
+  background-color: #efefef;
+  color: #999999;
+  border-bottom: 1px dotted #999999;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+.info .tag:hover {
+  border-bottom: 1px solid #999999;
+}
+
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+#tags_show .span3 h4 {
+  margin: 25px 0 15px;
+}
+/* line 30, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+#tags_show .span3 .side_stream #people_stream .name {
+  display: block;
+}
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/tag.scss */
+#tags_show .span3 .side_stream #people_stream .name, #tags_show .span3 .side_stream #people_stream .diaspora_handle, #tags_show .span3 .side_stream #people_stream .tags {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream-faces.scss */
+#selected_aspect_contacts .avatar {
+  height: 32px;
+  width: 32px;
+  margin-bottom: 2px;
+}
+
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream-faces.scss */
+.stream-faces a:hover {
+  text-decoration: none;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream.scss */
+.stream_container {
+  border-left: 1px solid #DDDDDD;
+  padding-left: 10px;
+  padding-top: 20px;
+  margin-left: -10px;
+  margin-top: -20px;
+}
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream.scss */
+.stream_container #publisher {
+  margin-bottom: 15px;
+}
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream.scss */
+.stream_container .well#ignore-info {
+  text-align: center;
+}
+
+/* line 3, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media,
+#main_stream > div > .photo > .media {
+  margin: 0px;
+}
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element.deleting > .media,
+#main_stream > div > .photo.deleting > .media {
+  opacity: 0.3;
+}
+/* line 8, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element.deleting .controls,
+#main_stream > div > .photo.deleting .controls {
+  display: none !important;
+}
+
+/* line 13, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream > div > .photo > .media {
+  overflow: visible;
+}
+/* line 15, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream > div > .photo > .media > .bd {
+  position: relative;
+  overflow: inherit;
+}
+/* line 18, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream > div > .photo > .media > .bd > .controls {
+  position: absolute;
+  right: 6px;
+  top: 1px;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+}
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream > div > .photo > .media:hover > .bd > .controls {
+  background: #fff;
+}
+/* line 30, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream > div > .photo .thumbnail {
+  height: 200px;
+  padding: 10px;
+  margin: 0 5px 10px;
+  text-align: center;
+  line-height: 200px;
+  border: 1px solid #DDDDDD;
+  background: #fefefe;
+  box-shadow: 3px 3px 2px #eee;
+}
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream > div > .photo .thumbnail img.big_photo {
+  max-height: 200px;
+}
+
+/* line 45, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element {
+  border-bottom: 1px solid #DDDDDD;
+  padding: 10px;
+}
+/* line 49, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media > .img > .avatar {
+  margin-top: 5px;
+}
+/* line 51, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media > .img > .avatar.small {
+  height: 50px;
+  width: 50px;
+}
+/* line 56, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .author {
+  font-weight: bold;
+  margin-bottom: 4px;
+  unicode-bidi: bidi-override;
+}
+/* line 61, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media a.author {
+  color: #3F8FBA;
+}
+/* line 62, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .feedback {
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 11px;
+}
+/* line 67, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .likes {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 16px;
+}
+/* line 71, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .likes .bd {
+  display: inline-block;
+}
+/* line 72, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .likes .entypo.heart {
+  display: inline-block;
+  font-size: 16px;
+  vertical-align: top;
+  margin-top: -2px;
+  margin-right: 5px;
+}
+/* line 80, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .youtube-player, #main_stream .stream_element > .media .vimeo-player {
+  border: none;
+  height: 304px;
+  width: 410px;
+}
+/* line 85, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .photo_attachments {
+  margin-top: 7px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+/* line 89, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .photo_attachments img {
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+}
+/* line 90, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .photo_attachments img.big_stream_photo {
+  display: block;
+  max-width: 90%;
+}
+/* line 94, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .photo_attachments img.thumb_small {
+  display: inline;
+  max-width: 50px;
+  max-height: 50px;
+}
+/* line 104, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .stream_photo {
+  float: left;
+  margin-top: 6px;
+}
+/* line 108, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .status-message-location .near-from {
+  font-size: 11px;
+  color: #999999;
+}
+/* line 112, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .grey {
+  color: #999999;
+}
+/* line 113, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .post-content p:last-of-type {
+  margin-bottom: 0;
+}
+/* line 114, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element > .media .nsfw-shield {
+  color: #999999;
+  padding: 5px 10px;
+  background-color: #EEEEEE;
+  border: 1px solid #DDDDDD;
+  border-radius: 3px;
+}
+/* line 123, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element div.reshare {
+  border-left: 2px solid #DDDDDD;
+  margin-top: 3px;
+}
+/* line 127, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element div.reshare > .media .avatar {
+  margin-top: 5px;
+  height: 30px;
+  width: 30px;
+}
+/* line 134, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element .collapsible {
+  overflow: hidden;
+  position: relative;
+}
+/* line 138, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element .collapsible p {
+  margin: 0 0 0.8em;
+}
+/* line 141, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element .collapsible p:last-of-type {
+  margin: 0;
+}
+/* line 145, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element .collapsible .expander {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  text-align: center;
+  line-height: 48px;
+  font-size: .8em;
+  color: #2B2B2B;
+  text-shadow: 0 0 7px #FFF;
+  cursor: pointer;
+  border-bottom: 2px solid #DDDDDD;
+  border-radius: 0 0 3px 3px;
+  background: rgba(238, 238, 238, 0.5);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=$from, endColorstr=$to);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=rgba(255, 255, 255, 0), endColorstr=#EEE)";
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #EEE 95%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #EEE 95%);
+  background-color: transparent;
+}
+/* line 163, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element .collapsible .oembed {
+  background: url(/assets/ajax-loader2.gif) no-repeat center center;
+  float: left;
+  width: 100%;
+}
+/* line 168, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element .collapsible .oembed .thumb {
+  position: relative;
+  cursor: pointer;
+}
+/* line 56, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#main_stream .stream_element .collapsible .oembed .thumb .video-overlay {
+  background-color: rgba(0, 0, 0, 0.65);
+  background-image: url(/assets/buttons/playbtn.png);
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 60px 60px;
+  border-radius: 70px 10px 10px 70px;
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 60px;
+  margin-top: -40px;
+  padding: 10px 7px 10px 80px;
+  overflow: hidden;
+  line-height: 60px;
+}
+/* line 80, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#main_stream .stream_element .collapsible .oembed .thumb .video-overlay > div {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+/* line 86, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#main_stream .stream_element .collapsible .oembed .thumb .video-overlay > div > div {
+  opacity: 1;
+  overflow: hidden;
+  text-shadow: -1px -1px 0 #000, 0 0 7px #111;
+  color: #F0F0F0;
+  font-size: 0.9em;
+  text-overflow: ellipsis;
+}
+/* line 95, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#main_stream .stream_element .collapsible .oembed .thumb .video-overlay .title {
+  font-weight: bold;
+  white-space: nowrap;
+  line-height: .95em;
+}
+/* line 100, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#main_stream .stream_element .collapsible .oembed .thumb .video-overlay .meta {
+  font-size: .94em;
+  line-height: 1.3em;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+/* line 106, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#main_stream .stream_element .collapsible .oembed .thumb .video-overlay .meta a {
+  color: #9bc6dd;
+}
+/* line 109, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#main_stream .stream_element .collapsible .oembed .thumb .video-overlay .meta a:visited {
+  color: #3F8FBA;
+}
+/* line 113, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/_mixins.scss */
+#main_stream .stream_element .collapsible .oembed .thumb .video-overlay .desc {
+  font-size: .91em;
+  line-height: .97em;
+  max-height: 35px;
+}
+/* line 172, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element .collapsible .oembed iframe, #main_stream .stream_element .collapsible .oembed .thumb img {
+  width: 100%;
+}
+/* line 178, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element.highlighted {
+  padding-left: 8px;
+  border-left: 3px solid #0097FF;
+}
+/* line 183, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/stream_element.scss */
+#main_stream .stream_element.post_preview {
+  background-color: #e5f5ff;
+  border: 1px solid #0097FF;
+}
+
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .show_comments {
+  margin-top: 5px;
+  border-top: 1px solid #DDDDDD;
+}
+/* line 5, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .show_comments a {
+  color: #999999;
+  font-size: 13px;
+}
+/* line 9, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .show_comments .media {
+  margin-top: 10px;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .comments > .comment, .comment_stream .comment.new_comment_form_wrapper {
+  margin: 0;
+  border-top: 1px dotted #DDDDDD;
+  padding: 10px 0;
+}
+/* line 12, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .comments > .comment .avatar, .comment_stream .comment.new_comment_form_wrapper .avatar {
+  margin-top: 5px;
+  height: 30px;
+  width: 30px;
+}
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .comments > .comment .comment-content p:last-of-type, .comment_stream .comment.new_comment_form_wrapper .comment-content p:last-of-type {
+  margin-bottom: 0;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .comments > .comment .info, .comment_stream .comment.new_comment_form_wrapper .info {
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 11px;
+}
+/* line 28, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .comments > .comment > .highlighted, .comment_stream .comment.new_comment_form_wrapper > .highlighted {
+  border-left: 3px solid #3F8FBA;
+  padding-left: 3px;
+}
+/* line 33, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .submit_button {
+  padding-left: 12px;
+  width: 95%;
+  display: none;
+}
+/* line 34, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .submit_button input {
+  float: right;
+}
+/* line 41, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream .comment_box {
+  width: 95%;
+  height: 30px;
+}
+/* line 45, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream textarea.comment_box:focus, .comment_stream textarea.comment_box:valid, .comment_stream textarea.comment_box:active {
+  border-color: #999999;
+}
+/* line 47, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/comments.scss */
+.comment_stream textarea.comment_box:focus + .submit_button, .comment_stream textarea.comment_box:valid + .submit_button, .comment_stream textarea.comment_box:active + .submit_button {
+  display: block;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/chat.scss */
+body > .container-fluid.chat-roster-shown {
+  padding-right: 224px;
+}
+/* line 3, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/chat.scss */
+body > .container-fluid.chat-roster-shown #back-to-top {
+  right: 244px;
+}
+
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/chat.scss */
+body > .container-fluid.chat-roster-hidden #back-to-top {
+  right: 54px;
+}
+
+/* right bar */
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#home_user_badge {
+  min-height: 50px;
+  margin-bottom: 20px;
+  margin-left: 4px;
+}
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#home_user_badge img {
+  float: left;
+}
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#home_user_badge h4 {
+  margin-left: 60px;
+  padding-top: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* line 16, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#home_user_badge h4 a {
+  color: inherit;
+  font-weight: bold;
+}
+
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#stream_selection > li {
+  margin-bottom: 10px;
+}
+
+/* line 29, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#tags_list {
+  /* ---- override app/stylesheets/vendor/autoSuggest.css ---- */
+  /* ---- end override app/stylesheets/vendor/autoSuggest.css ---- */
+}
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#tags_list .tag_input {
+  width: 100%;
+}
+/* line 35, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#tags_list .as-result {
+  margin-top: -1px;
+  margin-left: 1px;
+}
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#tags_list .as-list {
+  color: black;
+  position: static;
+  /* override absolute */
+  margin: 0px;
+  border-radius: 0px 0px 3px 3px;
+  box-shadow: 0px 1px 1px #666;
+}
+/* line 41, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#tags_list .as-list em {
+  background-color: #aabbcc;
+  color: black;
+  padding: 0px;
+}
+/* line 54, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+#tags_list .as-result-item.active {
+  color: black;
+  text-shadow: none;
+  background-color: #E7F2F7;
+  border-color: #E7F2F7;
+}
+
+/* line 63, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar {
+  padding-top: 20px;
+}
+/* line 67, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section {
+  margin-bottom: 20px;
+}
+/* line 70, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .title {
+  position: relative;
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 2px;
+}
+/* line 75, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .title.no_icon {
+  padding-left: 8px;
+}
+/* line 77, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .title .right {
+  right: 4px;
+  top: 3px;
+  font-size: smaller;
+  font-weight: bold;
+  color: #666666;
+}
+/* line 85, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .title h5.title-header {
+  margin-left: 5px;
+}
+/* line 89, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .title h5 {
+  font-size: 12px;
+  margin: 0;
+  color: #666666;
+  font-weight: bold;
+}
+/* line 97, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .content {
+  padding: 8px;
+  color: #999999;
+  font-size: 11px;
+}
+/* line 102, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .content p, .rightBar .section .content ul {
+  margin: 5px 0px;
+}
+/* line 106, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .content ul {
+  padding-left: 0;
+}
+/* line 109, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .content ul li {
+  list-style: none;
+}
+/* line 114, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/sidebar.scss */
+.rightBar .section .content > #invite_code {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 11px;
+  height: 30px;
+}
+
+/* contacts */
+/* line 3, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header {
+  border-bottom: 1px solid #DDDDDD;
+  margin-top: 10px;
+  min-height: 53px;
+}
+/* line 7, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #change_aspect_name {
+  cursor: pointer;
+}
+/* line 8, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #aspect_name_form {
+  display: none;
+}
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #aspect_name_form form {
+  margin: 0px;
+}
+/* line 11, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #aspect_name_form input {
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+/* line 15, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #aspect_name_form .btn {
+  margin-top: 10px;
+}
+/* line 17, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #contact_list_search {
+  margin: 6px 30px 0 0;
+  width: 150px;
+}
+/* line 20, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #contact_list_search:focus {
+  width: 250px;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #aspect_controls > .contacts_button {
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 25px;
+}
+/* line 27, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #chat_privilege_toggle > .enabled {
+  color: #000;
+}
+/* line 30, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header .entypo.contacts-header-icon {
+  font-size: 24.5px;
+  line-height: 40px;
+  color: #bfbfbf;
+}
+/* line 34, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header .entypo.contacts-header-icon:hover {
+  color: black;
+}
+/* line 36, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .header #suggest_member.btn {
+  margin-top: 8px;
+}
+/* line 40, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .stream_element .contact_remove-from-aspect, #contacts_container #people_stream.contacts .stream_element .contact_add-to-aspect {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 50px;
+  margin: 10px;
+  color: #bfbfbf;
+}
+/* line 47, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .stream_element .contact_remove-from-aspect:hover, #contacts_container #people_stream.contacts .stream_element .contact_add-to-aspect:hover {
+  color: black;
+}
+/* line 49, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .stream_element.in_aspect {
+  border-left: 3px solid #8EDE3D;
+  background-color: #e7f8d6;
+}
+/* line 53, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .stream_element:not(.in_aspect) {
+  border-left: 3px solid white;
+}
+/* line 56, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#contacts_container #people_stream.contacts .no_contacts {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* line 64, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#aspect_nav li.aspect > a {
+  padding-left: 30px;
+}
+/* line 65, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#aspect_nav li.new_aspect > a {
+  padding-left: 30px;
+}
+
+/* line 68, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/contacts.scss */
+#no_contacts {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar {
+  color: #222222;
+}
+/* line 3, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar .avatar {
+  width: 50px;
+  height: 50px;
+}
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+/* line 16, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar a {
+  color: #777777;
+  font-weight: bold;
+  text-decoration: none;
+}
+/* line 22, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar .selected {
+  color: black;
+}
+/* line 23, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar .selected a {
+  color: black;
+}
+/* line 25, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar .hoverable {
+  display: block;
+  margin-right: 6px;
+  padding: 4px;
+}
+/* line 29, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar .hoverable:hover {
+  background-color: #E7F2F7;
+}
+/* line 31, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar .hoverable .label {
+  background-color: #EEEEEE;
+  color: #999999;
+}
+/* line 37, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar .selectable {
+  display: block;
+  margin-left: 21px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* line 45, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar #aspects_list .hoverable > .action, #leftNavBar #tags_list .hoverable > .action {
+  visibility: hidden;
+  float: right;
+  margin: 0 3px;
+}
+/* line 51, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar #aspects_list .hoverable:hover > .action, #leftNavBar #tags_list .hoverable:hover > .action {
+  visibility: visible;
+}
+/* line 57, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar #aspects_list .entypo.check {
+  float: left;
+  visibility: hidden;
+}
+/* line 60, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar #aspects_list .entypo.check.selected {
+  visibility: visible;
+}
+/* line 63, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar #aspects_list .selected + a {
+  color: #333333;
+}
+/* line 69, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/leftnavbar.scss */
+#leftNavBar #tags_list .delete_tag_following {
+  font-size: 20px;
+  line-height: 15px;
+}
+
+/* code */
+/* line 1, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_code.scss */
+code {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* line 6, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_code.scss */
+pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+/* line 9, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_code.scss */
+pre code {
+  white-space: pre;
+}
+
+/* statistics */
+/* line 2, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_statistics.scss */
+.page-statistics h1 {
+  text-align: center;
+}
+/* line 4, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_statistics.scss */
+.page-statistics h3 {
+  margin: 0px;
+  padding: 10px;
+  background-color: #8EDE3D;
+}
+/* line 10, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_statistics.scss */
+.page-statistics .span-3 {
+  width: 30%;
+  height: 150px;
+  text-align: center;
+  border: 1px solid #DDDDDD;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+/* line 17, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_statistics.scss */
+.page-statistics .span-3 .data {
+  word-wrap: break-word;
+  overflow: hidden;
+  margin-top: 25px;
+  font-size: 25px;
+  line-height: 30px;
+}
+/* line 24, /home/jredondo/Proyectos/RedSocial/src/diaspora-cenditel/redsur/app/assets/stylesheets/new_styles/_statistics.scss */
+.page-statistics .span-3 .serv-disabled {
+  background-color: #EEEEEE;
+}

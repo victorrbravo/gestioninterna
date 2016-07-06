@@ -1,0 +1,49 @@
+<script>
+myval = 0;
+</script>
+
+{% extends "layouts/tc_main_layout.html" %}
+
+{% block title %}Agregar publicación{% end %}
+
+{% block ownstyles %}
+	<link href="/static/css/safetform.css" rel="stylesheet">
+
+	<style type="text/css">
+
+		#safetform input[type="file"]{
+			display:none;
+		}
+
+		#safetform div.column {
+			margin-top: 15px;
+		}
+
+		#safetform input[type="radio"]{
+			margin-left: 20px;
+		}
+	</style>
+
+{% end %}
+
+{% block ownscripts %}
+<script src="/static/ckeditor/ckeditor.js"></script>
+
+
+{% end %}
+
+
+
+{% block panel %}
+
+			<div class="panel panel-primary">
+		      <div class="panel-heading">{{title}}</div>
+		      <div class="panel-body">
+		        {% raw mycode %}
+		      </div>
+		    </div>
+		
+
+				
+
+{% end %}

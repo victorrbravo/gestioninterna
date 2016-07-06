@@ -1,0 +1,150 @@
+{# One column Main Layout #}
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>{% block title %}Gestión Interna{% end %}</title>
+        
+    <!-- jQuery -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/bs/js/bootstrap.js"></script>
+    
+    <!-- jQuery UI -->
+    <link href="/static/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/static/jquery-ui/jquery.ui.datepicker-es.js"></script>
+    
+    <!-- Bootstrap -->
+    <link href="/static/bs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bs-tags/dist/bootstrap-tagsinput.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/bs-tags/dist/bootstrap-tagsinput.min.js"></script>
+
+    <!-- Font-Awesome -->
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- jQuery Plugins -->
+    <script src="/static/validation/dist/jquery.validate.js"></script>
+    <script src="/static/bootbox.min.js"></script>
+
+
+    <!-- jQuery Smartmenu -->
+    <link  href="/static/smartmenus/css/jquery.smartmenus.css" rel="stylesheet">
+    <script src="/static/smartmenus/js/jquery.smartmenus.js"></script>
+    <script src="/static/smartmenus/js/jquery.smartmenus.bootstrap.js"></script>
+
+    <!-- jQuery Pretty photo -->
+    <link  href="/static/css/prettyPhoto.css" rel="stylesheet">
+    <script src="/static/js/jquery.prettyPhoto.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- jQWidgets -->
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="/static/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxnumberinput.js"></script>
+
+    <!-- UTILS -->
+    <link href="/static/bs/css/profilecard.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="/static/bootbox.min.js"></script>
+    <script src="/static/bootstrap-filestyle.min.js"></script>
+    <script type="text/javascript" src="/static/js/move-top.js"></script>
+    <script type="text/javascript" src="/static/js/easing.js"></script> 
+    <link href="/static/bscombo/css/bootstrap-combobox.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/bscombo/js/bootstrap-combobox.js"></script>   
+        
+
+    <!--Weetup-->
+    <link href="/static/css/weetup.css" rel="stylesheet">
+    <link href="/static/css/user.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/js/follow.js"></script>
+
+    <!--theme-style-->
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/flexslider.css" type="text/css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Weetup" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <!--Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+
+    
+
+	<script type="text/javascript">
+    	jQuery(document).ready(function($) {
+    		jQuery(".scroll").click(function(event){		
+    			event.preventDefault();
+    			jQuery('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+    		});
+    	});
+	</script>
+    
+    {% block ownstyles %}{% end %}
+    {% block ownscripts %}{% end %}
+
+
+</head>
+<body class="bb-js">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3&appId=13979487924";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
+    {% block menu %}
+        {% include "menu/menu.html" %}
+    {% end %}
+	
+	<!-- Panels -->
+	<div class="content">	
+
+        <div class="container container-weetup">
+           <div class="row">                    
+                <div class="content-fixed-menu">    
+                	{% block content %}{% end %}
+                <div>
+            </div>
+                
+        </div>
+
+	</div>
+	
+    <div class="bb-alert alert alert-info" style="display:none;">
+        <span>The examples populate this alert with dummy content</span>
+    </div>
+    
+	<div id="dialogshow" name="dialogshow" title="Información del producto"></div>
+	
+	<!-- Footer -->
+	<div>
+    	<script type="text/javascript">
+    			jQuery(document).ready(function() {							
+    				jQuery().UItoTop({ easingType: 'easeOutQuart' });
+    			});
+    		</script>
+    	<a href="#" id="toTop" style="display: block;">
+            <span id="toTopHover" style="opacity: 1;"> </span>
+        </a>
+	</div>
+
+</body>
+</html>

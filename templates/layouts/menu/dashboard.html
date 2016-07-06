@@ -1,0 +1,91 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Weetup</a>
+    </div>
+    <!-- /.navbar-header -->
+
+    <ul class="nav navbar-top-links navbar-right">
+
+        <!-- /.dropdown -->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
+                </li>
+            </ul>
+            <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+    </ul>
+    <!-- /.navbar-top-links -->
+
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+
+				<li>
+                	<a href="#"><i class="fa fa-key fa-fw"></i> Admin<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+						<li>
+							<a href="#adminAnuncios">Anuncios<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="/gopanel/Draft/none/none/0">Aprobar</a></li>                  
+							</ul>
+						</li>		                          
+						<li><a href="/gousers">Personas</a></li>
+						<!-- <li><a href="/gomgntusers/none/">Usuarios</a></li>               -->
+						<li><a href="#preguntas">Preguntas</a></li>              
+                    </ul>
+    		    </li>
+    		    <li>
+                	<a href="#"><i class="fa fa-wrench fa-fw"></i> Dashboard<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+						<li>
+							<a href="#dashboardAnuncios">Anuncios<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+                              <li><a  href="/goform/addad/agregar_anuncio/none">Agregar</a></li>                  
+                              <li><a  href="/goform/editad/gestionar_anuncio/none">Modificar</a></li>
+                              <li><a  href="/goform/deletead/borrar_anuncio/none">Eliminar</a></li>    
+                              <li class="divider"></li>
+                              <li><a tabindex="-1" href="/goform/changestate/Siguiente_estado_anuncios/none">Cambiar estado</a></li>
+                              <li><a tabindex="-1" href="/showstats/publish/estado_anuncios/">Ver estadísticas</a></li>                          
+                          	</ul>
+						</li>
+
+						<li>
+							<a href="/goform/gocategory__categorias/agregar_categoría/none">Categorías</a>
+						</li>
+
+						<li>
+							<a href="/goform/gosubcategory__subcategorias/agregar_subcategoría/none">Sub-Categorías</span></a>
+						</li>
+
+						<li>
+							<a href="#ciudades">Ciudades</a>
+						</li>
+
+
+						
+						<li><a href="/gousers">Personas</a></li>
+						<!-- <li><a href="/gomgntusers/none/">Usuarios</a></li>               -->
+
+						<li><a href="/showcomm/none/none/none">Preguntas</a></li>               
+                    	</ul>
+                	</li>
+                  </ul>
+                </li> 
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+</nav>

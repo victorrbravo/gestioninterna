@@ -1,0 +1,35 @@
+{% try %}
+
+{% if True  %}
+
+<script type="text/javascript">
+$( document ).ready(function() {
+console.log("hola tag");
+//$('input').tagsinput({
+//	freeInput:false
+
+//});
+//$('input').attr('readonly', true);
+ $('input').css("border", "0px solid white");
+});
+</script>
+
+	<div class="panel panel-default">
+    <div class="panel-heading">
+        <b> Filtros </b>
+    </div>        
+
+		<div class="panel-body">	
+<input type="text" value="Mérida,16Gb" data-role="tagsinput"><br/>
+	
+			<script type="text/javascript">
+		
+			</script>
+		</div>
+	</div>
+{% end %}
+{% except %}		
+{% end %}	
+
+
+

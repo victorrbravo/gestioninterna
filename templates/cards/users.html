@@ -1,0 +1,152 @@
+<script>
+
+	function doSafetEdit( currid ) {
+		console.log("(1)..doSafetEdit....currid" + currid); 
+		myurl = "http://localhost:8080/goform/edituser/modificar_usuario/" +currid;											      
+
+		window.location = myurl;
+
+	}
+
+	function doSafetDelete( currid ) {
+		console.log("(1)..doSafetDelete...."); 
+		bootbox.confirm("¿Está seguro de eliminar este usuario?", 
+		function(result) {					
+		    
+		    console.log(currid);
+		    if (result) {
+			    myname = "thesafetrow_" + currid
+			    console.log("myname: " + myname);
+			    
+			    //$('#' + myname).html("Hola");
+			    $.post('http://localhost:8080/ajaxforma_borrar_usuario',{ cuenta: currid }, 
+			    function(data) { 
+				    console.log("(2)..data:......myname:"); 
+				    console.log(data); 
+				    mydata = eval('(' + data + ')');
+				    if (mydata["result"] == "true" ) {
+					      console.log("Yes deleted!"); 
+					      $('#' + myname).hide();						       
+				    }
+				    else {
+					console.log("error, no deleted"); 							      
+				    }
+				    
+			    
+			    })					    					    
+		    }
+		    
+		    console.log("pass");
+		    
+
+		});
+
+	}
+
+</script>
+	
+<div class="panel panel-primary">
+	<div class="panel-heading">Personas</div>
+		<div class="panel-body">
+
+			{% for pub in pubs %} 
+				<div class="col-md-12">	
+					<div class="panel panel-default">
+						    <div class="panel-body" style="padding-bottom:0px">
+						        <div class="card hovercard">
+						            <div class="col-md-4">
+							            <div class="avatar avatar-absolute" align="center">
+							               <a href="/showprofile/{{pub['cuenta']}}/"><img src="{{pub['foto']}}" /></a>
+							            </div>
+						        	</div>
+						        	<div class="col-md-8" align="center" style="margin-top:10px">
+							            <div class="info">
+							                <div class="title">
+							                    <a href="/showprofile/{{pub['cuenta']}}/">
+							                        ${{pub['cuenta']}}                  
+							                    </a>
+							                </div>
+							                <div class="desc">
+							                    {{ pub['apellidos'] }}, {{ pub['nombres'] }}                                               
+							                </div>
+							                <div class="desc">
+							                   <div>{{ pub['geo_ciudad']  }}&nbsp;</div>                       
+							                </div>
+							            </div>
+						        	</div>
+						            
+						            
+						            <div class="col-xs-12 divider text-center" style="margin-top:10px">
+						                <div class="col-xs-4 col-sm-4 col-md-4 emphasis">
+						                    <a href="#">
+						                    <h4 style="margin:0px">
+						                        <strong  class="lbl-user-account profile-followers-{{ pub['cuenta'] }}">
+						                            <b> {{ pub['followers'] }} </b>
+						                        </strong>
+						                    </h4>                    
+						                    <p><small>Seguidores</a></small></p>
+						                </div>
+						                <div class="col-xs-4 col-sm-4 col-md-4 emphasis">
+						                    <a href="#">
+						                    <h4 style="margin:0px">
+						                        <strong class="lbl-user-account">
+						                            <b> {{ pub['followings'] }} </b>
+						                        </strong>
+						                    </h4>              
+						                    <p style="margin-right:-16px"><small>Siguiendo</a></small></p>
+						                </div>
+						                <div class="col-xs-4 col-sm-4 col-md-4 emphasis">
+						                    <a href="#">
+						                    <h4 style="margin:0px">
+						                        <strong class="lbl-user-account">
+						                            <b> {{ pub['publications'] }} </b>
+						                        </strong>
+						                    </h4>                        
+						                    <p><small>Publicados</a></small></p>
+						                </div>
+						            </div>
+						        </div>
+						    </div>
+
+					   <div class="panel-footer">
+					   <p class="text-right">
+					   {% if pub['cuenta']  == current_user %}
+					   <span> 
+						      <button class="btn btn-default">
+						      <i class="glyphicon glyphicon-user"></i> Usted</button>
+					   </span>
+					   
+					   {% elif pub['sigue'] %}
+					   <span> 
+						      <button class="btn btn-primary " onclick="doSafetUnFollow(this.parentNode, '{{ pub['cuenta'] }}' )">
+						      <i class="glyphicon glyphicon-thumbs-down"></i> Dejar de seguir</button>
+					   </span>
+					   {% else %}
+					   <span> 
+						      <button class="btn btn-primary " onclick="doSafetFollow(this.parentNode, '{{ pub['cuenta'] }}' )">
+						    <i class="glyphicon glyphicon-thumbs-up"></i> Seguir</button>
+					    </span>
+					   {% end %}
+					  
+<!--					  <button class="btn btn-success" onclick="console.log('view')" >
+					   <i class="glyphicon glyphicon-eye-open"></i></button>-->
+					   {% if user_perm==3 %}
+						<button class="btn btn-success" onclick="doSafetEdit( {{ pub['id'] }} )">
+						<i class="glyphicon glyphicon-pencil"></i></button>
+					   {% end %}
+					    {% if user_perm==3 %}
+						  <button class="btn btn-danger"  onclick="doSafetDelete( '{{ pub['cuenta'] }}' )">
+						  <i class="glyphicon glyphicon-trash"  ></i></button>
+					   {% end %}
+					   </p>
+					  </div>
+
+
+
+
+						</div>
+					</div>
+			{% end %}
+
+		</div>
+</div>	

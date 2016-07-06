@@ -1,0 +1,37 @@
+<script>
+myval = 0;
+</script>
+
+{% extends "layouts/tc_main_layout.html" %}
+
+{% block title %}Listar{% end %}
+
+{% block ownstyles %}
+
+{% end %}
+
+{% block ownscripts %}
+
+
+{% end %}
+
+
+
+{% block panel %}
+ 	<table border=1>
+	
+   {% for record in mylist %}
+	<tr>
+	<td> {{record['id']}} </td>
+
+	<td> {{record['nombres']}} </td>
+	<td> {{record['apellidos']}} </td>
+	<td> {{record['ci']}} </td>
+
+	</tr>
+    {% end %}
+			
+	</table>
+				
+
+{% end %}
