@@ -11,11 +11,11 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 
 <operation  name="Vacaciones"  desc="Creacion de una solicitud" icon="vacation.png">
 </operation>
-<operation  name="Generar_solicitud_vacaciones"  desc="Modificar un proyecto poa existente" icon="firmadoc.png" action= ""
+<operation  name="Modificar_solicitud_vacaciones"  desc="Modificar un proyecto poa existente" icon="firmadoc.png" action= ""
 postaction="" >
 	<command id ="1" type="actualizar" table="vacaciones">
 		<fields>
-			<field type="combolisttable" options="id:vacaciones:where usuario='_USERNAME' and status='iniciado'::'(' || id || ') ' || nombre || '-' || usuario " mandatory="yes" title="periodo_vacacional"   changekey="yes" primarykey="yes">
+			<field type="combolisttable" options="id:vacaciones:where usuario='_USERNAME' and status='iniciado'::'(' || id || ') ' || nombre || '-' || usuario " mandatory="yes" title="id"   changekey="yes" primarykey="yes">
 				id
 			</field>
 
