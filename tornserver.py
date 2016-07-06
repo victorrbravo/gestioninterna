@@ -902,7 +902,7 @@ class LegacyLoadDataHandler(tornado.web.RequestHandler):
         print ".....LegacyLoadDataHandler.........4...myid:|%s|"  % (myid)
         print ".....LegacyLoadDataHandler.........4...op:|%s|"  % (myop)
         print ".....LegacyLoadDataHandler.........4...mypri:|%s|"  % (mypri)
-        print ".....LegacyLoadDataHandler.........4...mymod:|%s|"  % (mypri)
+        print ".....LegacyLoadDataHandler.........4...mymod:|%s|"  % (mymod)
         
        
        #myother = u"%s"  % (self.get_argument("formkey").decode("utf-8") ) 
@@ -925,7 +925,7 @@ class LegacyLoadDataHandler(tornado.web.RequestHandler):
         myupdate = unicode(myinflow.generateModifyHTML(myop,mypri,myid, myother,myform))
         
         print ".....LegacyLoadDataHandler.........6"    
-        print "*********myupdate....:|%s|"  % (myupdate)
+       # print "*********myupdate....:|%s|"  % (myupdate)
         
         print "*********myupdate: len:%d"  % (len(myupdate))
         self.write(myupdate)

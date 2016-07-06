@@ -59,7 +59,8 @@ postaction="" >
 			<field type="datetime" mandatory="no" options="calendarPopup::true,readonly,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados})"  title="Fecha_final_periodo_hasta" format="time_t" validation="" changefor="dias_solicitados">
 				fechafin
 			</field>
-			<field type="datetime" mandatory="no" options="calendarPopup::true,readonly,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados}+1)"  title="Fecha_de_incorporación" format="time_t" validation="" changefor="dias_solicitados">
+
+			<field type="datetime" icon="resumen.png" mandatory="yes" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="fecha_de_incorporación" primarykey="no" format="time_t" changefor="dias_solicitados">
 				fechaincorporacion
 			</field>
 
