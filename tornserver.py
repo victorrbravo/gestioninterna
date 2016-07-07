@@ -789,7 +789,7 @@ class LoginHandler(tornado.web.RequestHandler):
     def goPanel(self):
 	 print "LoginHandler................redirigiendo........"
 #	 self.redirect("goform/addgeneric/agregar_Alumno/0")	
-	 self.redirect("goform/addgeneric/Generar_solicitud_vacaciones/0")	
+	 self.redirect("goform/addgeneric/Modificar_solicitud_vacaciones/0")	
 	 return
 #        mypubs = []
  #       mypubs.append({ "summary": "Venta 2"})
@@ -838,7 +838,7 @@ class GoLoginHandler(tornado.web.RequestHandler):
 	if True:
 		print "Ingresando a GoLoginHandler....1"
 
-		self.redirect("goform/addgeneric/Generar_solicitud_vacaciones/0")		    
+		self.redirect("goform/addgeneric/Modificar_solicitud_vacaciones/0")		    
 		return
       
 
@@ -1483,7 +1483,7 @@ class GoLoginHandler(tornado.web.RequestHandler):
       
       
 	if True:
-		self.redirect("goform/addgeneric/Generar_solicitud_vacaciones/0")		    
+		self.redirect("goform/addgeneric/Modificar_solicitud_vacaciones/0")		    
 		return
       
 
