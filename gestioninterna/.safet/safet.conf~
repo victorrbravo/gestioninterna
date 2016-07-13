@@ -66,7 +66,7 @@ none =  imgs/none.png
 # Por defecto Encendidas (on) todas las categorias para el registro (log)
 [Log]
 # Establece la ruta absoluta donde reside el archivo de registro
-log.filepath = /home/debian/.safet/log
+log.filepath = /home/vbravo/.safet/log
 
 # Habilita la opcion de registro de mensajes de depuracion
 log.debug = on
@@ -112,7 +112,7 @@ xmlrepository.name = media
 [Input]
 
 # Establece la ruta absoluta para la entrada/modificacion de datos
-input.path = /home/debian/.safet/input
+input.path = /home/vbravo/.safet/input
 #input.file = deflista.xml
 input.file = deftrac.xml
 
@@ -125,21 +125,21 @@ system.evalexit = on
 
 
 [Widgets]
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoUser.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoColoreado.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoSolicitudVacaciones.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVacaciones.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVacacionesg.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVacacionesnv.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacaciones.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacacionesE.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacacionesT.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacacionessp.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoUser.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoColoreado.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/FlujoSolicitudVacaciones.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/SolicitudVacacionesg.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/SolicitudVacacionesnv.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesE.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesT.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml
 
-widgets.getfilewidget.* = /home/debian/.safet/flowfiles/reporteReunion.xml
+widgets.getfilewidget.* = /home/vbravo/.safet/flowfiles/reporteReunion.xml
 
 widgets.texteditwidget.wiki.leftbold = '''
 widgets.texteditwidget.wiki.rightbold = '''
@@ -184,10 +184,10 @@ functions.bdays.* = 24/12/2013<SAFETSEPARATOR/>25/12/2013<SAFETSEPARATOR/>31/12/
 
 
 generaloptions.consoleactions.* = SAFET Ver Planificación;operacion:Comparar_gráfico_de_flujo Nombre_grafo: POA 32 en Propuesta Desarrollo Planificado: POA Proyecto Seguridad Formato DDOC 2011 Version 2
-generaloptions.consoleactions.* = SAFET Tickets activos;operacion:Listar_datos Cargar_archivo_flujo: /home/debian/.safet/flowfiles/flujogeneralactivos.xml Variable: VariableActivos parameters.Por_Hito:24Junio2011_1y2FuncionalidadesArquitectura
-generaloptions.consoleactions.* = SAFET Gráfico de Proyectos Sociales;operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/debian/.safet/flowfiles/flujoAppPlanificacionProyectoSocial.xml
-generaloptions.consoleactions.* = SAFET Gráfico de Proyectos Técnicos;operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml
-generaloptions.consoleactions.* = SAFET Gráfico por Clave de Proyectos Técnicos;operacion:Generar_gráfico_para_clave Cargar_archivo_flujo: /home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml Clave:14
+generaloptions.consoleactions.* = SAFET Tickets activos;operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujogeneralactivos.xml Variable: VariableActivos parameters.Por_Hito:24Junio2011_1y2FuncionalidadesArquitectura
+generaloptions.consoleactions.* = SAFET Gráfico de Proyectos Sociales;operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujoAppPlanificacionProyectoSocial.xml
+generaloptions.consoleactions.* = SAFET Gráfico de Proyectos Técnicos;operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftware.xml
+generaloptions.consoleactions.* = SAFET Gráfico por Clave de Proyectos Técnicos;operacion:Generar_gráfico_para_clave Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftware.xml Clave:14
 generaloptions.consoleactions.* = SAFET Comparar Gráfico POA Seguridad;operacion:Comparar_gráfico_de_flujo Nombre_grafo: En Actores POA Seguridad 2011 Planificado: POA Proyecto Seguridad Formato DDOC 2011
 
 
@@ -289,10 +289,10 @@ stats.todate = *
 # Establece variables de configuracion para la libreria Libdigidoc utilizada por Libsafet
 [Libdigidoc]
 # Ruta del archivo de configuracin digidoc para usarlo con protocolo OCSP
-libdigidoc.configfilepath = /home/debian/.safet/digidoc.conf
+libdigidoc.configfilepath = /home/vbravo/.safet/digidoc.conf
 
 
-libdigidoc.x509storepath =  /home/debian/.safet/certs
+libdigidoc.x509storepath =  /home/vbravo/.safet/certs
 
 # Tipo de validacin de firma de Digidoc "ocsp" : via protocolo OCSP, "keystore": Repositorio
 # de claves del navegador Mozilla / Firefox
@@ -364,7 +364,7 @@ defaultvalues.graphs.daysproject = 45
 reports.protocol = file 
 
 # ruta para obtener la plantilla (HTML)
-reports.path = /home/debian/.safet/reports
+reports.path = /home/vbravo/.safet/reports
 
 # nombre de la plantilla HTML + AJAX
 reports.general.template = /var/www/media/templates/listgenerationg.html

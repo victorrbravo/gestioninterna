@@ -54,8 +54,8 @@ import re
 
 from tornado.options import define, options
 
-#MYHOME = "/home/usuario/safet/gestioninterna"
-MYHOME = "/home/usuario/safet/gestioninterna"
+#MYHOME = "/home/vbravo/gits/gestioninterna"
+MYHOME = "/home/vbravo/gits/gestioninterna"
 
 define("port", default=8080, help="run on the given port", type=int)
 
@@ -116,7 +116,7 @@ class GoRegisterHandler(tornado.web.RequestHandler):
 
 def resendPassword(myaccount,mylist):
     currerror =  ""
-    myuser = "comprador"
+    myuser = "invitado"
     mypass = "clavecomprador"
 
 
@@ -162,7 +162,7 @@ class  DoResetPassHandler(tornado.web.RequestHandler):
 	print "getDoReset"
         print "DoResetPass selurl: |%s|" % (name_operation)
         loader = tornado.template.Loader(os.path.join(MYHOME,"templates")) 
-        current_user="comprador"
+        current_user="invitado"
         current_pass="clavecomprador"
 	print "DoReset ...1"
     	mykey = name_operation.rpartition("/")[2]
@@ -189,7 +189,7 @@ class  DoResetPassHandler(tornado.web.RequestHandler):
 
 	print "postDoResetPass myaccount: |%s|" % (myaccount)
 
-        current_user="comprador"
+        current_user="invitado"
         current_pass="clavecomprador"
 	
 	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
@@ -215,7 +215,7 @@ class MgnResetPassHandler(tornado.web.RequestHandler):
     def get(self,name_operation):
         print "GoResetPass **get: |%s|" % (name_operation)
         loader = tornado.template.Loader(os.path.join(MYHOME,"templates")) 
-        current_user="comprador"
+        current_user="invitado"
         current_pass="clavecomprador"
         imgcaptcha = ImageCaptcha() 
         pathcaptcha = ""
@@ -232,7 +232,7 @@ class MgnResetPassHandler(tornado.web.RequestHandler):
 	
             try:
 		idg = "1"
-            	pathcaptcha = "/home/usuario/safet/gestioninterna"  + "/static/captcha/out%s.png" % (idg)
+            	pathcaptcha = "/home/vbravo/gits/gestioninterna"  + "/static/captcha/out%s.png" % (idg)
 	        urlcaptcha = "/static/captcha/out%s.png" % (idg)
 
 	    	print "pass 4"
@@ -259,7 +259,7 @@ class MgnResetPassHandler(tornado.web.RequestHandler):
         
     def post(self,name_operation): 
          print "post: %s" % (name_operation)
-         current_user="comprador"
+         current_user="invitado"
          current_pass="clavecomprador"
          imgcaptcha = ImageCaptcha() 
          
@@ -482,8 +482,13 @@ class ProcessFilesHandler(tornado.web.RequestHandler):
 	def post(self,name_operation):
 	 #    print ".........ProcessAjaxFormHandler........post:" + name_operation
 	    print "ProcessFilesHandler................1"
-	    current_user = "vbravo"
-	    current_pass = "marinone1"
+	    current_user = self.get_secure_cookie("user")
+	    current_pass = self.get_secure_cookie("pass")
+        
+	    loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
+	    if not current_user:
+		self.write('{ "error": "No está autenticado. No puede ingresar a esta página", "result": "false" }' )		
+            return        
 	    
 	    print "ProcessFilesHandler................2"
 	    myoperation = QString(u"operacion:%1 ").arg(name_operation)
@@ -565,13 +570,14 @@ class ProcessFilesHandler(tornado.web.RequestHandler):
 class ProcessFormHandler(tornado.web.RequestHandler):    
 	def post(self,name_operation,name_template,currid):
 	    print "***post:" + name_operation
-	    current_user = "vbravo"
-	    current_pass = "marinone1"	    
+	    
+	    current_user = self.get_secure_cookie("user")
+	    current_pass = self.get_secure_cookie("pass")
+        
 	    current_ticket  = ""
-	       
-	      
-	    print "ProcessForm...1"
-	    #print "current_user" + current_user
+	       	      
+	    print "***ProcessForm...1"
+	    print "***current_user" + current_user
 	    loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
 	    if not current_user:
 		self.write(loader.load("message.html").generate(mymessage=u"No está autenticado. No puede ingresar a esta página."))
@@ -669,10 +675,12 @@ class ProcessFormHandler(tornado.web.RequestHandler):
             print "Processs form 3"
 	    myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
 	    result = myinflow.login(current_user,current_pass)		
-	    print "Process form result...login...%d" % (result)
+	    print "Process form result...login...|%s|" % (result)
+	    
+	    print "Process form result...operation:|%s| " % (myoperation)
 	    
 	    isinserted = myinflow.toInputForm(myoperation )	    	    
-	    print "Process form result...login...%s" % (isinserted)
+	    print "Process .........isinserted:" + isinserted
 	    
 	    myinflow.log("*ProcessForm")
 	    myinflow.log("myoperation:" + myoperation)
@@ -831,17 +839,6 @@ def escapeSafet(currstr):
     return result
 	
 	
-class GoLoginHandler(tornado.web.RequestHandler):
-    def get(self):            
-        #self.write(loader.load("login.html").generate(mymessage=False))
-  
-	if True:
-		print "Ingresando a GoLoginHandler....1"
-
-		self.redirect("goform/addgeneric/Modificar_solicitud_vacaciones/0")		    
-		return
-      
-
         
 
 class CheckAccountHandler(tornado.web.RequestHandler):
@@ -852,7 +849,7 @@ class CheckAccountHandler(tornado.web.RequestHandler):
         
         myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH) 
 
-	current_user = "comprador"
+	current_user = "invitado"
 	current_pass = "clavecomprador"
         result = myinflow.login(current_user,current_pass)
        
@@ -883,7 +880,7 @@ class LegacyLoadDataHandler(tornado.web.RequestHandler):
  	if current_user==None or len(current_user) == 0:
 	    print "*************"
 	    print "Current user is EMPTY"
-	    current_user="comprador"
+	    current_user="invitado"
 	    current_pass="clavecomprador"	    
 	    self.set_secure_cookie("user", current_user)
 	    self.set_secure_cookie("pass", current_pass)
@@ -934,8 +931,13 @@ class LegacyLoadDataHandler(tornado.web.RequestHandler):
 class ListHandler(tornado.web.RequestHandler):
     def get(self,nameflow,namevar):
         print ".....ListHandler.........1"
-        current_user = "vbravo"
-        current_pass = "marinone1"
+        current_user = self.get_secure_cookie("user")
+        current_pass = self.get_secure_cookie("pass")
+        
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
+        if not current_user:
+            self.write('{ "error": "No está autenticado. No puede ingresar a esta página", "result": "false" }' )		
+            return        
 
 
         print ".....ListHandler.........2"
@@ -1022,8 +1024,13 @@ class LoadDataHandler(tornado.web.RequestHandler):
    #	current_user = self.get_secure_cookie("user")
    #     current_pass = self.get_secure_cookie("pass")
        
-        current_user = "vbravo"
-        current_pass = "marinone1"
+        current_user = self.get_secure_cookie("user")
+        current_pass = self.get_secure_cookie("pass")
+        
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
+        if not current_user:
+            self.write('{ "error": "No está autenticado. No puede ingresar a esta página", "result": "false" }' )		
+            return        
      
  
    	
@@ -1065,7 +1072,7 @@ class CheckCIHandler(tornado.web.RequestHandler):
 	print "myId: %s" % (myci)
 	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)         
     
-	current_user = "comprador"
+	current_user = "invitado"
 	current_pass = "clavecomprador"
         result = myinflow.login(current_user,current_pass)
        
@@ -1103,7 +1110,7 @@ class CheckRIFHandler(tornado.web.RequestHandler):
 	print "myId: %s" % (myrif)
 	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)         
     
-	current_user = "comprador"
+	current_user = "invitado"
 	current_pass = "clavecomprador"
         result = myinflow.login(current_user,current_pass)
        
@@ -1276,7 +1283,7 @@ class GoChangePassHandler(tornado.web.RequestHandler):
         if current_user==None or len(current_user) == 0:
 	    print "*************"
 	    print "Current user is EMPTY"
-	    current_user="comprador"
+	    current_user="invitado"
 	    current_pass="clavecomprador"	    
 	    self.set_secure_cookie("user", current_user)
 	    self.set_secure_cookie("pass", current_pass)
@@ -1296,7 +1303,7 @@ class GoChangePassHandler(tornado.web.RequestHandler):
 	mysubs = getUserInfo(current_user,current_pass,myoperation)
 
         
-        myoperation  = u"operacion:Listar_datos  Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/anuncios.xml Variable: vTodas"
+        myoperation  = u"operacion:Listar_datos  Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/anuncios.xml Variable: vTodas"
         myanuncios = getUserInfo(current_user,current_pass,myoperation)
         #print "myanuncios:" + myanuncios
         
@@ -1383,10 +1390,11 @@ class GoFormHandler(tornado.web.RequestHandler):
     def get(self,name_template,name_operation,currid,currmessage=None):                    
     
         #print "mycurrid:|%s|" % (currid)
-        current_user = "vbravo"
-        current_pass = "marinone1"
+        current_user = self.get_secure_cookie("user")
+        current_pass = self.get_secure_cookie("pass")
 	title = name_operation.replace("_"," ")
      
+         
       
       
         myoperation = u"%s" % (tornado.escape.url_unescape(name_operation) )
@@ -1446,8 +1454,8 @@ class GoLoginHandler(tornado.web.RequestHandler):
         current_user = self.get_secure_cookie("user")
         current_pass = self.get_secure_cookie("pass")
         
-	if current_user!=None and current_user!="comprador":
-		self.redirect("/goregister")		    
+	if current_user!=None and current_user!="invitado":
+		self.redirect("/gologout")		    
 		return
 		
 
@@ -1493,9 +1501,14 @@ class ProcessAjaxFormHandler(tornado.web.RequestHandler):
 	def post(self,name_operation):
 	 #    print ".........ProcessAjaxFormHandler........post:" + name_operation
 	    print "AjaxForm................1"
-	    current_user = "vbravo"
-	    current_pass = "marinone1"
-	  
+	    current_user = self.get_secure_cookie("user")
+	    current_pass = self.get_secure_cookie("pass")
+
+	    
+	    if current_user!=None and current_user!="invitado":
+		self.write("{ \"message\": \"user unauthorized\", \"error\": \"True\" } ")
+		return
+
 	    
 	    #print "current_user:" + current_user
 	    
@@ -1635,7 +1648,7 @@ mycontroller = [
 	    (r"/forma_([^\s]+)/([^\s]+)/(\d+|none)", ProcessFormHandler),
             (r"/goform/([^\s]+)/([^\s]+)/(\d+|none)/?([^\s]*)", GoFormHandler),    
 	    (r"/ajaxforma_([^\s]+)", ProcessAjaxFormHandler),       
-            (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': "/home/usuario/github/boletas/boletas/static"}),
+            (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': "/home/vbravo/github/boletas/boletas/static"}),
 
         ]
 

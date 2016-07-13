@@ -5,7 +5,7 @@ Creado     : Víctor Bravo
 Autor      : Victor Bravo
 Descripcion: Archivo de Entrada para SAFET - Inflow
 -->
-<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion" >  
 <operation  name="Gráfico de Flujo de Trabajo"  desc="Agregar,Modificar,Eliminar,Listar" icon="plus.png">
 </operation>

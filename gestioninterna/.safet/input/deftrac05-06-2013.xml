@@ -6,7 +6,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 
 -->
 
-<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion">
 <operation  name="Gestión de Reuniones del Consejo Directivo"  desc="Consejo Directivo" icon="acts.png">
 </operation>
@@ -406,7 +406,7 @@ changefor="id">
                                 id
                         </field>
                         <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
-                               path="/home/debian/.safet/flowfiles/flujoAppPrueba.xml"
+                               path="/home/vbravo/.safet/flowfiles/flujoAppPrueba.xml"
                                title="Siguiente_Estado" changefor="Numero_de_actividad">
                                status
                         </field>

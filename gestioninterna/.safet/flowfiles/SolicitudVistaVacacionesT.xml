@@ -7,7 +7,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 -->
 
 <!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
-<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
 <yawl  version="0.01">
 <workflow id="Vista completa de el proceso vacaciones" desc="Planilla que se generar con los datos de una solicitud de vista_vacaciones">
 <token key="id"  keysource="vista_vacaciones">

@@ -6,7 +6,7 @@ Autor      : nombre_autor
 Descripcion: Archivo generado por plantilla de la Libreria SAFET
 -->        
 <!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
-<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
 <yawl  version="0.01">
 <workflow id="Control y Seguimientos de las correspondencias">
         <token key="id"  keysource="correspondencia">
@@ -24,7 +24,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
                        title="Mostrar_en_grafico" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show" defaultvalue="Porc,Tokens" >
                 </parameter>
 <parameter type="string" options="" mandatory="no" 
-                       title="Plantilla" configurekey="Reports/reports.general.template" defaultvalue="/home/debian/.safet/reports/sf_plantillaListaRedes.html" >
+                       title="Plantilla" configurekey="Reports/reports.general.template" defaultvalue="/home/vbravo/.safet/reports/sf_plantillaListaRedes.html" >
                 </parameter> 
 
 <parameter type="string" options="" mandatory="no"

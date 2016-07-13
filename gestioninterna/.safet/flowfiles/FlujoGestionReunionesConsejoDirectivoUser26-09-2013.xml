@@ -7,7 +7,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 -->
 
 <!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
-<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
 <yawl  version="0.01">
 <workflow id="Actas Pendientes por Firma segun Usuario" desc="Proceso que realiza para la gestion de las reuniones del consejo directivo">
 <token key="reuniones.id"  keysource="reuniones">

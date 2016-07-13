@@ -6,7 +6,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 
 -->
 
-<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion">
 <operation  name="POA"  desc="Acciones del Plan Operativo Anual" icon="proyecto.png">
 </operation>
@@ -364,13 +364,13 @@ changefor="id">
 				id
 			</field>		
 		<field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionAseguramientoCalidad.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionAseguramientoCalidad.xml"
 				 title="Siguiente_Estado" changefor="Numero_de_actividad">
 				status
 		</field>
 
 		<field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionAseguramientoCalidad.xml"  title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionAseguramientoCalidad.xml"  title="Porcentaje"
                                 changefor="Siguiente_Estado" >
                                 porcentaje
                 </field>
@@ -436,12 +436,12 @@ primarykey="yes" title="Numero_de_actividad" >
 				id
 			</field>		
 		<field type="comboflow" mandatory="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftwareContratado.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftwareContratado.xml"
 				 title="Siguiente_Estado" changefor="Numero_de_actividad" changekey="yes">
 				status
 		</field>
 		<field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftwareContratado.xml" 					title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftwareContratado.xml" 					title="Porcentaje"
 				changefor="Siguiente_Estado" >
 				porcentaje
 		</field> 		
@@ -507,12 +507,12 @@ primarykey="yes" title="Numero_de_actividad" >
 				id
 			</field>		
 		<field type="comboflow" mandatory="yes" options="next" changekey="yes"
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml"
 				 title="Siguiente_Estado" changefor="Numero_de_actividad">
 				status
 		</field>
 		<field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml" title="Porcentaje_a_agregar"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml" title="Porcentaje_a_agregar"
 				changefor="Siguiente_Estado">
 				porcentaje
 		</field> 
@@ -570,12 +570,12 @@ primarykey="yes" title="Numero_de_actividad" >
 				id
 			</field>		
 		<field type="comboflow" mandatory="yes"  primarykey="no" changekey="yes"  options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml" title="Siguiente_Estado"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftware.xml" title="Siguiente_Estado"
 				changefor="Numero_de_actividad">
 				status
 		</field>
 		<field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml" title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftware.xml" title="Porcentaje"
 				changefor="Siguiente_Estado">
 				porcentaje
 		</field>
@@ -640,13 +640,13 @@ primarykey="yes" title="Numero_de_actividad" >
                                 id
                         </field>
                 <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftwarePlanificacion.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftwarePlanificacion.xml"
                                  title="Siguiente_Estado" changefor="Numero_de_actividad">
                                 status
                 </field>
 
                 <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftwarePlanificacion.xml"  title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftwarePlanificacion.xml"  title="Porcentaje"
                                 changefor="Siguiente_Estado" >
                                 porcentaje
                 </field>
@@ -707,13 +707,13 @@ primarykey="yes" title="Numero_de_actividad" >
                                 id
                         </field>
                 <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionMapaIndustrial.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMapaIndustrial.xml"
                                  title="Siguiente_Estado" changefor="Numero_de_actividad">
                                 status
                 </field>
 
                 <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionMapaIndustrial.xml"  title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMapaIndustrial.xml"  title="Porcentaje"
                                 changefor="Siguiente_Estado" >
                                 porcentaje
                 </field>
@@ -774,13 +774,13 @@ primarykey="yes" title="Numero_de_actividad" >
                                 id
                         </field>
                 <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml"
                                  title="Siguiente_Estado" changefor="Numero_de_actividad">
                                 status
                 </field>
 
                 <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml"  title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml"  title="Porcentaje"
                                 changefor="Siguiente_Estado" >
                                 porcentaje
                 </field>
@@ -840,12 +840,12 @@ primarykey="yes" title="Numero_de_actividad" >
                                 id
                         </field>
                 <field type="comboflow" mandatory="yes" options="next" changekey="yes"
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml"
                                  title="Siguiente_Estado" changefor="Numero_de_actividad">
                                 status
                 </field>
                 <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml" title="Porcentaje_a_agregar"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml" title="Porcentaje_a_agregar"
                                 changefor="Siguiente_Estado">
                                 porcentaje
                 </field>
@@ -902,13 +902,13 @@ primarykey="yes" title="Numero_de_actividad" >
                                 id
                         </field>
                 <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml"
                                  title="Siguiente_Estado" changefor="Numero_de_actividad">
                                 status
                 </field>
 
                 <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml"  title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml"  title="Porcentaje"
                                 changefor="Siguiente_Estado" >
                                 porcentaje
                 </field>
@@ -968,13 +968,13 @@ primarykey="yes" title="Numero_de_actividad" >
                                 id
                         </field>
                 <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionAsambleasSocialistas.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionAsambleasSocialistas.xml"
                                  title="Siguiente_Estado" changefor="Numero_de_actividad">
                                 status
                 </field>
 
                 <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionAsambleasSocialistas.xml"  title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionAsambleasSocialistas.xml"  title="Porcentaje"
                                 changefor="Siguiente_Estado" >
                                 porcentaje
                 </field>
@@ -1034,13 +1034,13 @@ primarykey="yes" title="Numero_de_actividad" >
                                 id
                         </field>
                 <field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml"
                                  title="Siguiente_Estado" changefor="Numero_de_actividad">
                                 status
                 </field>
 
                 <field type="comboflow" mandatory="yes" validation="\d+"  primarykey="no" options="textualinfo,oneoption" 
-                                  path="/home/debian/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml"  title="Porcentaje"
+                                  path="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml"  title="Porcentaje"
                                 changefor="Siguiente_Estado" >
                                 porcentaje
                 </field>
@@ -1395,7 +1395,7 @@ changefor="id">
 				id
 			</field>		
 		<field type="comboflow" mandatory="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/flujofirmado.xml" title="Siguiente_Estado"
+                                  path="/home/vbravo/.safet/flowfiles/flujofirmado.xml" title="Siguiente_Estado"
 changefor="id_ticket">
 				status
 			</field>

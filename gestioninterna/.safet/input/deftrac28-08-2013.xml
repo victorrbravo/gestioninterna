@@ -6,7 +6,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 
 -->
 
-<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion">
 <operation  name="Desarrollo del Consejo Directivo"  desc="Acciones de datos para las actividades" icon="meeting.png">
 </operation>
@@ -100,8 +100,8 @@ changefor="id" >
 </command>
 </operation>
 <operation  name="Enviar_convocatoria_por_correo"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general  Cargar_archivo_flujo: /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml Variable: vConvocada"
-dataaction="operacion:Listar_datos  Cargar_archivo_flujo: /home/debian/.safet/flowfiles/listaAdjuntos.xml Variable: vPorReunion parameters.Por_reunion: %1"
+action="operacion:Listar_datos_general  Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml Variable: vConvocada"
+dataaction="operacion:Listar_datos  Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/listaAdjuntos.xml Variable: vPorReunion parameters.Por_reunion: %1"
 >
 <command id ="1" type="agregar" table="reuniones" >
 	<fields>
@@ -214,7 +214,7 @@ action=""
 			status
 		</field>
 		<field type="output" mandatory="no" 
-		path="/home/debian/.safet/flowfiles/reporteReunion.xml"
+		path="/home/vbravo/.safet/flowfiles/reporteReunion.xml"
  		options="variable::vPorReunion,parameters::Por_reunion" title="Mostrar_tabla"  validation="" 
 		changefor="id">
                         id_reunion
@@ -246,7 +246,7 @@ action=""
 
 </operation>
 <operation  name="Firmar_acta_de_reunión"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos  Cargar_archivo_flujo: /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoUser.xml Variable: vfirma__USERNAME"
+action="operacion:Listar_datos  Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoUser.xml Variable: vfirma__USERNAME"
 >
 <command id ="1" type="actualizar" table="reuniones" >
 	<fields>
@@ -254,7 +254,7 @@ action="operacion:Listar_datos  Cargar_archivo_flujo: /home/debian/.safet/flowfi
 				id
 			</field>
 		<field type="comboflow" mandatory="yes" options="neighbour,beforefunction:select '{#currvalue}' in (select nombres || ' ' || apellidos  from consejero_reunion join personal on cedula=id_personal where id_reunion={#keyvalue1});" 
-                                  path="/home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml"
+                                  path="/home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml"
 				 title="Siguiente_Estado" changefor="id">
 				status
 		</field>
@@ -291,7 +291,7 @@ action=""
 				id
 			</field>
 		<field type="comboflow" mandatory="yes" options="next" 
-                                  path="/home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivosf.xml"
+                                  path="/home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivosf.xml"
 				 title="Siguiente_Estado" changefor="id">
 				status
 		</field>
@@ -321,7 +321,7 @@ action=""
 </operation>
 
 <operation  name="Registrar_escritura_en_libro"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" 
-action="operacion:Listar_datos  Cargar_archivo_flujo: /home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml Variable: vPasar_actas_al_libro"
+action="operacion:Listar_datos  Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml Variable: vPasar_actas_al_libro"
 >
 <command id ="1" type="actualizar" table="reuniones" >
 	<fields>
@@ -387,7 +387,7 @@ action="operacion:Listar_datos  Cargar_archivo_flujo: /home/debian/.safet/flowfi
 				ruta
 			</field>
 		<field type="output" mandatory="no" 
-		path="/home/debian/.safet/flowfiles/reporteAdjunto.xml"
+		path="/home/vbravo/.safet/flowfiles/reporteAdjunto.xml"
  		options="variable::vPorReunion,parameters::Por_reunion" title="Mostrar_tabla"  validation="" 
 		changefor="id_reunion">
                         id_reunion
@@ -425,7 +425,7 @@ action="operacion:Listar_datos  Cargar_archivo_flujo: /home/debian/.safet/flowfi
                 </field>
 
 		<field type="output" mandatory="no" 
-		path="/home/debian/.safet/flowfiles/reporteConfirmacion.xml"
+		path="/home/vbravo/.safet/flowfiles/reporteConfirmacion.xml"
  		options="variable::vPorReunion,parameters::Por_reunion" title="Mostrar_tabla"  validation="" 
 		changefor="id_reunion">
                         id_reunion
@@ -460,7 +460,7 @@ action="operacion:Listar_datos  Cargar_archivo_flujo: /home/debian/.safet/flowfi
                 </field>
 
 		<field type="output" mandatory="no" 
-		path="/home/debian/.safet/flowfiles/reporteReunion.xml"
+		path="/home/vbravo/.safet/flowfiles/reporteReunion.xml"
  		options="variable::vPorReunion,parameters::Por_reunion" title="Mostrar_tabla"  validation="" 
 		changefor="id_reunion">
                         id_reunion
@@ -723,7 +723,7 @@ action="" >
 				id
 			</field>
 		<field type="comboflow" mandatory="yes" options="neighbour" 
-                                  path="/home/debian/.safet/flowfiles/SolicitudVacaciones.xml"
+                                  path="/home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml"
 				 title="Siguiente_Estado" changefor="id">
 				status
 		</field>
@@ -777,7 +777,7 @@ action="" >
 <operation  name="Imprimir_planilla_vacaciones" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="">
 <command id ="1" type="agregar" table="vacaciones" >
 	<fields>
- <field type="string" mandatory="no" options="type::button,action::Listar_datos_general,fieldsaction::Cargar_archivo_flujo::/home/debian/.safet/flowfiles/SolicitudVacaciones.xml;Variable::vVacaciones_solicitadas;parameters.Por_usuario::_USERNAME"  title="Imprimir planilla" desc="Archivo"  >
+ <field type="string" mandatory="no" options="type::button,action::Listar_datos_general,fieldsaction::Cargar_archivo_flujo::/home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml;Variable::vVacaciones_solicitadas;parameters.Por_usuario::_USERNAME"  title="Imprimir planilla" desc="Archivo"  >
                                 imprimir_planilla
                         </field>
 
@@ -3054,7 +3054,7 @@ alida_visitantes
                                 id
                         </field>
 			
-			 <field type="comboflow" mandatory="yes" primarykey="yes" changekey="yes" options="neighbour" path="/home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Enviar_a" changefor="id">
+			 <field type="comboflow" mandatory="yes" primarykey="yes" changekey="yes" options="neighbour" path="/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Enviar_a" changefor="id">
                                 status
                         </field>
 
@@ -3148,7 +3148,7 @@ alida_visitantes
                         <field type="string" mandatory="no"  options="wiki" title="Instrucciones_adicionales" >
                                 instrucciones_adicionales
                         </field>
-			<field type="comboflow" mandatory="yes" primarykey="yes" changekey="yes" options="neighbour" path="/home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" changefor="Correspondencia">
+			<field type="comboflow" mandatory="yes" primarykey="yes" changekey="yes" options="neighbour" path="/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" changefor="Correspondencia">
                                 status
                         </field>
 
@@ -5211,7 +5211,7 @@ alida_visitantes
                         <field type="combolistliteral" mandatory="no" title="Prioridad" desc="Se le asigna la prioridad para dar respuesta a la correspondencia" options="Normal::Normal::Normal,Media::Media::Media,Alta::Alta::Alta"  >
                                 prioridad
                         </field>
-			 <field type="comboflow" mandatory="yes"  changefor="Correspondencia" options="next" path="/home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" >
+			 <field type="comboflow" mandatory="yes"  changefor="Correspondencia" options="next" path="/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" >
                                status
                         </field>
 	
@@ -5322,7 +5322,7 @@ alida_visitantes
                                 prioridad
                         </field>
 
-			<field type="comboflow" mandatory="yes" primarykey="yes" changekey="yes" options="neighbour" path="/home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" changefor="Correspondencia">
+			<field type="comboflow" mandatory="yes" primarykey="yes" changekey="yes" options="neighbour" path="/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" changefor="Correspondencia">
                                 status
                         </field>
 
@@ -5434,7 +5434,7 @@ alida_visitantes
                                 prioridad
                         </field>
 
-			<field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="neighbour" path="/home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" changefor="Correspondencia">
+			<field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="neighbour" path="/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" changefor="Correspondencia">
                                 status
                         </field>
 
@@ -5707,7 +5707,7 @@ alida_visitantes
                                 prioridad
                         </field>
 
-			<field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" path="/home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" changefor="Correspondencia">
+			<field type="comboflow" mandatory="yes" primarykey="no" changekey="yes" options="next" path="/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml" title="Siguiente_Estado" changefor="Correspondencia">
                                 status
                         </field>
 

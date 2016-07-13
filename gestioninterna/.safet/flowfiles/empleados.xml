@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->        
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="empleados">
+        <token key="id"  keysource="personal">
+        </token>
+<parameter title="Tarea a borrar" path="/home/vbravo/.safet/flowfiles/empleados.xml" options="" type="combotask" mandatory="no"/>
+ <parameter title="Nodo anterior" path="/home/vbravo/.safet/flowfiles/empleados.xml" options="" type="combotask" mandatory="no"/>
+<parameter title="Nodo a agregar" path="/home/vbravo/.safet/flowfiles/empleados.xml" options="" type="string" mandatory="no"/>
+<parameter title="Textualinfo"  options="" type="string" mandatory="no"/>
+<parameter title="Paralelo al nodo siguiente"  options="No::No::No,Si::Si::Si" type="combolistliteral" mandatory="no"/>
+        <condition id="inicial" type="start">
+                <port side="forward" type="split"   >
+                         <connection source="Todas" query="select id from personal"  options=">0" >
+                        </connection>
+                </port>
+        </condition>
+        <task id="Todas"  title="Todas">
+                <port side="forward" type="split" >
+                        <connection source="final" query="true" options="" >
+                        </connection>
+                </port>
+                <variable id="vTodas" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select nombres,apellidos,cargo,cedula,estado,nombre_cuenta_correo_electronico,nombre_cuenta_intranet,lista_servidores_acceso,fecha_ingreso,fecha_retiro,fecha_reincorporacion,status,departamento,usuario,proyecto,nombre_cuenta_correo_personal,telefono_habitacion,telefono_personal,domicilio,tipo,representante from personal" >
+                </variable>
+        </task>
+<condition id="final">
+                <port side="forward" type="split">
+                        <connection source="">
+                        </connection>
+                </port>
+        </condition>
+</workflow>
+        <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+        </configuration>
+</yawl>

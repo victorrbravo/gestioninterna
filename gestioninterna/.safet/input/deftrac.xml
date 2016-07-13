@@ -6,7 +6,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 
 -->
 
-<!DOCTYPE operations SYSTEM "file:///home/usuario/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion">
 
 <operation  name="Empleados"  desc="Creacion de una solicitud" icon="vacation.png">
@@ -15,7 +15,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 postaction="" >
 	<command id ="1" type="agregar" table="personal">
 		<fields>
-			<field  type="agregar" sequence="personal_id_seq" title="Solicitud_registro" typesequence="current">
+		  <field  type="string" sequence="personal_id_seq" title="Solicitud_registro" typesequence="next" primarykey="yes">
                                 id
                         </field>
 
@@ -26,7 +26,7 @@ postaction="" >
                         <field type="string"  mandatory="yes" title="Apellidos" >
                                 apellidos
                         </field>
-			<field type="string" mandatory="yes" primarykey="yes" validation="[VE][0-9]{3,8}" title="Cédula">
+			<field type="string" mandatory="yes" primarykey="no" validation="[VE][0-9]{3,10}" title="Cédula">
 				cedula
 			</field>
 			<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="yes" title="Cargo_asignado">
@@ -64,7 +64,7 @@ postaction="" >
 			<field type="stringbox" options="wiki" mandatory="yes" title="Domicilio">
 				domicilio 
 			</field>
-			<field type="combolisttable" literal="Activo" mandatory="yes" title="Status">
+			<field type="string" literal="Activo" mandatory="yes" title="Status">
 				estado
 			</field>
 		</fields>
@@ -227,7 +227,7 @@ options="readonly" changefor="id">
 				id
 			</field>
 		<field type="comboflow" mandatory="yes" options="next" 
-                                  path="/home/usuario/.safet/flowfiles/SolicitudVistaVacacionessp.xml" title="status" changefor="periodo">
+                                  path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" title="status" changefor="periodo">
                                 status
                         </field>
 		</fields>
@@ -260,7 +260,7 @@ options="readonly" changefor="id">
 
 <operation  name="Enviar_solicitud_por_correo"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
 action=""
-dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:%1"
+dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:%1"
 >
 <command id ="1" type="agregar" table="vacaciones" >
 	<fields>
@@ -279,14 +279,14 @@ dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/usuario/.safet/fl
 </command>
 </operation>
 <operation  name="Firmar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/usuario/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Presidencia" >
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Presidencia" >
 <command id ="1" type="actualizar" table="vacaciones" >
 	<fields>
 	<field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
 		<field type="comboflow" mandatory="yes" options="neighbour" 
-                                  path="/home/usuario/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
+                                  path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
 				 title="Siguiente_Estado" changefor="id">
 				status
 		</field>
@@ -315,14 +315,14 @@ action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/usuario/.safet
 
 </operation>
 <operation  name="Firmar_solicitud_SAFET01"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/usuario/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Talento" >
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Talento" >
 <command id ="1" type="actualizar" table="vacaciones" >
 	<fields>
 	<field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
 		<field type="comboflow" mandatory="yes" options="neighbour" 
-                                  path="/home/usuario/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
+                                  path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
 				 title="Siguiente_Estado" changefor="id">
 				status
 		</field>
@@ -351,14 +351,14 @@ action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/usuario/.safet
 
 </operation>
 <operation  name="Firmar_solicitud_SAFET02"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/usuario/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Direccion" >
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Direccion" >
 <command id ="1" type="actualizar" table="vacaciones" >
 	<fields>
 	<field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
 		<field type="comboflow" mandatory="yes" options="neighbour" 
-                                  path="/home/usuario/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
+                                  path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
 				 title="Siguiente_Estado" changefor="id">
 				status
 		</field>
@@ -498,7 +498,7 @@ action="" >
 <operation  name="Imprimir_planilla_vacaciones" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="">
 <command id ="1" type="agregar" table="vacaciones" >
 	<fields>
- <field type="string" mandatory="no" options="type::button,action::Listar_datos_general,fieldsaction::Cargar_archivo_flujo::/home/usuario/.safet/flowfiles/SolicitudVacaciones.xml;Variable::vVacaciones_solicitadas;parameters.Por_usuario::_USERNAME"  title="Imprimir planilla" desc="Archivo"  >
+ <field type="string" mandatory="no" options="type::button,action::Listar_datos_general,fieldsaction::Cargar_archivo_flujo::/home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml;Variable::vVacaciones_solicitadas;parameters.Por_usuario::_USERNAME"  title="Imprimir planilla" desc="Archivo"  >
                                 imprimir_planilla
                         </field>
 
@@ -506,7 +506,7 @@ action="" >
 </command>
 </operation>
 <operation  name="Talento_humano" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png" 
-action="operacion:Listar_datos_general  Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/FlujoSolicitudVacaciones.xml Variable: vTalento_humano"
+action="operacion:Listar_datos_general  Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/FlujoSolicitudVacaciones.xml Variable: vTalento_humano"
 
 postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto:Nueva Solicitud de VACACIONES Destinatarios: yverdi@cenditel.gob.ve  vbravo@cenditel.gob.ve configurekey.Email/email.template.1: El trabajador  {#nombreapellido}. ha realizado una solicitud de vacaciones que usted tiene pendiente para revisión.  Puede ver la planilla en el enlace  http://localhost/media/{#safetdocumentid:SolicitudVistaVacacionessp:vSolicitud}**RETURN** Puede chequear el trámite de vacaciones en el sistema de Gestión Interna disponible en el enlace http://localhost/intranet"
 

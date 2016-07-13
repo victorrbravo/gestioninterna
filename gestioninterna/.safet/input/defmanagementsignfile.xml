@@ -5,62 +5,116 @@ Creado     : Víctor Bravo
 Autor      : Victor Bravo
 Descripcion: Archivo de Entrada para SAFET - Inflow
 -->
-<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion">
 
-<operation  name="Operaciones de Firma" icon="default.png" >
+<operation  name="Operaciones de Diseño de gráficos" icon="default.png" >
 </operation>
-<operation  name="Firmar_electronicamente_con_Tarjeta" icon="firmadoc.png" >
+<operation  name="Crear_nuevo_grafo" icon="firmadoc.png" >
 <command id ="1" type="agregar" table="ticket">
 	<fields>
-		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="no" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)" title="Cargar_Archivo_a_Firmar">
-			Cargar_Archivo_1
+		<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre_del_grafo" desc="Nombre que se colocará al grafo (También es el nombre del archivo de flujo de trabajo) ">
+			Nombre_del_grafo
 		</field>
-		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="no" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)" title="Cargar_Segundo_Archivo_a_Firmar">
-			Cargar_Archivo_2
+			<field type="combolisttable" options="table_name:information_schema.tables:where  table_schema='public'::table_name" mandatory="yes" primarykey="yes"
+			title="Tabla_para_clave" >
+				Tabla_para_clave 
+			</field>		
+			<field type="combofields" options="ticket" mandatory="yes" 			title="Campo_de_la_clave" >
+				Campo_de_la_clave 
+			</field>		
+	<field type="combofields" icon="resumen.png" mandatory="yes" validation="" title="Campo_para_estado" desc="sql">
+			Campo_para_estado
 		</field>
-		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="no" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)" title="Cargar_Tercer_Archivo_a_Firmar">
-			Cargar_Archivo_3
+	<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Opcion_para_estado" desc="sql">
+			Opcion_para_estado
 		</field>
-		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="no" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)" title="Cargar_Cuarto_Archivo_a_Firmar">
-			Cargar_Archivo_4
+	<field type="listfields" icon="resumen.png" mandatory="yes" validation="" title="Campos_Variable" desc="sql">
+			Campos_variable
 		</field>
+	<field type="string" icon="resumen.png" mandatory="no" validation="" title="Nombre_tarea" desc="Nombre de la primera tarea a colocar en el grafo">
+			Nombre_tarea
+		</field>
+		<field type="string" icon="resumen.png" mandatory="no" validation="" title="Titulo_tarea" desc="El título que aparece en la tarea">
+			Titulo_tarea
+		</field>
+		<field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_registro_rol" desc="El campo que se visualiza para cada cambio de estado">
+			Campo_registro_rol
+		</field>
+		<field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_registro_fecha" desc="sql">
+			Campo_registro_fecha
+		</field>
+	
 
-		<field type="filename" options="save," mandatory="contenedores" desc="Nombre y ruta (path) del contenedor (Archivo .ddoc)" repetible="no" validation=".+\.ddoc$" filter="Archivos firmados electrónicamente (*.ddoc);;Todos (*)">
-			Nombre_contenedor
-		</field>
-		<field type="filename" options="" mandatory="contenedores" desc="Nombre y ruta (path) de un contenedor (Archivo .ddoc) existente" repetible="no" validation=".+\.ddoc$" >
-		Cargar_contenedor
-		</field>
 	</fields>
 </command>
 </operation>
-<operation  name="Firmar_electrónicamente_con_P12" icon="firmadoc.png" >
-<command id ="1" type="agregar" table="ticket">
-	<fields>
-		<field type="filename" mandatory="no" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="yes" filter="Archivos Adobe PDF (*.pdf);;Archivos de texto (*.txt);;Archivos OpenOffice Writer (*.odt);;Todos (*)">
-			Cargar_Archivo
-		</field>
-		<field type="filename" options="save" mandatory="contenedores" desc="Nombre y ruta (path) del contenedor (Archivo .ddoc)" repetible="no" filter="Archivos firmados (*.ddoc);;Todos (*)" validation=".+\.ddoc$">
-			Nombre_contenedor
-		</field>
-		<field type="filename" mandatory="contenedores" desc="Nombre y ruta (path) de un contenedor (Archivo .ddoc) existente" repetible="no" filter="Archivos firmados (*.ddoc);;Todos (*)" validation=".+\.ddoc$">
-		Cargar_contenedor
+<operation  name="Agregar_nodo_a_gráfico_de_flujo" >
+        <command id ="1" type="agregar" table="lista">
+                <fields>
+<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)"  primarykey="yes">
+                        Cargar_archivo_flujo
+                </field>
+                <field type="combotask" mandatory="yes" validation="" >
+                        Nodo_anterior
+                </field>
+                <field type="string" icon="resumen.png" mandatory="yes" validation="" title="Nombre_nuevo_nodo" desc="Nombre_nuevo_nodo">
+                        Nombre_nuevo_nodo
+                </field>
+        <field type="combolistliteral" mandatory="no" title="Es_paralelo_al_nodo_anterior" desc="Es_paralelo_al_nodo_anterior" options="No::No::No,Si::Si::Si" >
+                        Es_paralelo_al_nodo_anterior
+                </field>
+		<field type="string" icon="resumen.png" mandatory="no" validation="" title="Titulo_tarea" desc="El título que aparece en la tarea">
+			Titulo_tarea
 		</field>
 
-	</fields>
-</command>
+                <field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_options" desc="Campo_options">
+                        Campo_options
+                </field>
+                <field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_query" desc="Campo_query">
+                        Campo_query
+                </field>
+                <field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_title" desc="Campo_title">
+                        Campo_title
+                </field>
+                <field type="string" icon="resumen.png" mandatory="no" validation="" title="Campo_documentsource" desc="Campo_documentsource">
+                        Campo_documentsource
+                </field>
+                </fields>
+        </command>
+</operation>
+<operation  name="Cambiar_conexión_de_gráfico_de_flujo" >
+        <command id ="1" type="agregar" table="lista">
+                <fields>
+<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)"  primarykey="yes">
+                        Cargar_archivo_flujo
+                </field>
+                <field type="combotask" mandatory="yes" validation="" >
+                        Nodo_origen
+                </field>
+<field type="combotask" mandatory="yes" validation="" options="incfinal::on" >
+                        Nodo_destino_actual
+                </field>
+<field type="combotask" mandatory="yes" validation="" >
+                        Nuevo_nodo_destino
+                </field>
+                </fields>
+        </command>
 </operation>
 
-<operation  name="Verificar_firma_electrónica"  icon="seal.png"  >
-	<command id ="1" type="agregar" table="ticket">
-		<fields>
-			<field type="filename" mandatory="yes" desc="Cargar Archivo en el contenedor actual para ser firmado" repetible="yes" filter="Archivos digidoc Firmados (*.ddoc);;Todos (*)">
-				Cargar_Archivo
-		</field>
-			
-		</fields>
-	</command>
+
+<operation  name="Borrar_nodo_de_gráfico"  icon="seal.png"  >
+	  <command id ="1" type="agregar" table="lista">
+                <fields>
+<field type="filename" mandatory="yes" title="Cargar_archivo_flujo" desc="Cargar un archivo de flujo para generar un reporte" filter="Archivos de flujo (*.xml);;Todos (*)"  primarykey="yes">
+                        Cargar_archivo_flujo
+                </field>
+                <field type="combotask" mandatory="yes" validation="" >
+                        Nodo_a_borrar
+                </field>
+                </fields>
+        </command>
+
 </operation>
 </operations>
 

@@ -6,7 +6,7 @@ Autor      : nombre_autor
 Descripcion: Archivo generado por plantilla de la Libreria SAFET
 -->        
 <!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
-<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
 <yawl  version="0.01">
 <workflow id="Control y Seguimientos de las correspondencias">
 <token key="id_guarura"  keysource="correspondencia">

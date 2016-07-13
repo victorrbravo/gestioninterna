@@ -691,7 +691,7 @@ def safetconsole(req,selurl):
     currerror = ""
     form = util.FieldStorage(req,keep_blank_values=1)
     myoperation = form.get("inputform",None).decode("latin_1")
-#    myoperation = "operacion:Generar_grafico_coloreado Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/flujogeneral.xml"	
+#    myoperation = "operacion:Generar_grafico_coloreado Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujogeneral.xml"	
     myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
     myinflow.setMediaPath(safetconfig.MEDIA_PATH)
     result = myinflow.login(sess['user'],sess['pass'])

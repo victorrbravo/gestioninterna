@@ -62,6 +62,8 @@ if ((typeof YAHOO !== "undefined") && (YAHOO.util) && (YAHOO.util.Event)) {
 var titul = 'Nuevos tickets';
 
 document.write('<h1 id="title1">'+'Listado de la variable: ' + safettitle  + '</h1>');
+document.write('<h2 id="title2"></h2>');
+document.write('<h3 id="title3"></h3>');
 
 </script>
 	
@@ -86,6 +88,13 @@ myDataTable = null;
 safetproccessData = function() {
 
         document.getElementById("title1").innerHTML= "Lista de tickets de "+ safettitle +" ("+ safetlistcount+")";
+	if ( safetvariable != "" ) {
+		document.getElementById("title2").innerHTML= "Variable: \""+ safetvariable + "\"";
+	}
+	if ( safetkey != "" ) {
+		document.getElementById("title3").innerHTML= "Clave: \""+ safetkey + "\"";
+	}
+
 
         var myDataSource = new YAHOO.util.DataSource(safetlist);
         myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;

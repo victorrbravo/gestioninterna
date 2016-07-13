@@ -72,6 +72,7 @@
 			visible CDATA #IMPLIED
  			order (asc|desc|none) "asc" 
 			icon CDATA #IMPLIED
+			position CDATA #IMPLIED
 			index CDATA #IMPLIED  
 			filter CDATA #IMPLIED
 			changefor CDATA #IMPLIED

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE yawl SYSTEM "file:///home/debian/.safet/dtd/yawlworkflow.dtd">
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
 <yawl  version="0.01">
 <workflow id="Adjuntos reuniones" desc="">
 <token key="reuniones.id"  keysource="reuniones">

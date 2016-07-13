@@ -5,7 +5,7 @@ Creado     : Víctor Bravo
 Autor      : Victor Bravo
 Descripcion: Archivo de Entrada para SAFET - Inflow
 -->
-<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion"  >  
 <operation  name="Reportes"  desc="Reportes, Listas, Formas" icon="report.png">
 </operation>
@@ -41,7 +41,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/SolicitudVacaciones.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -58,7 +58,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_proyecto_AUTANA" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionAUTANA.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionAUTANA.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -74,7 +74,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_proyecto_Tibisay_seguridad" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/actualizacion_software.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/actualizacion_software.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
 
@@ -90,7 +90,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Listar_datos_para_clave_Solicitud_vacaciones" >
         <command id ="1" type="agregar" table="vacaciones">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
                                 Cargar_archivo_flujo
                         </field>
 
@@ -120,7 +120,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_reuniones" >
 	<command id ="1" type="agregar" table="reuniones">
 		<fields>
-	                <field type="string" literal="/home/debian/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                <field type="string" literal="/home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
 	                        Cargar_archivo_flujo
 	                </field>
 
@@ -135,7 +135,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Solicitud_de_vacaciones" >
         <command id ="1" type="agregar" table="vacaciones">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
 
@@ -149,7 +149,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_vacaciones" >
         <command id ="1" type="agregar" table="vacaciones">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
 
@@ -169,7 +169,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_correspondencia_y_denuncias" >
         <command id ="1" type="agregar" table="correspondencia">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/FlujoControldeCorrespondencia.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
 
@@ -184,7 +184,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Solicitud_correspondencia_guarura" >
         <command id ="1" type="agregar" table="correspondencia">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/FlujoControldeCorrespondenciaGuarura.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondenciaGuarura.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
                                 Cargar_archivo_flujo
                         </field>
 

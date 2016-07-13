@@ -5,7 +5,7 @@ Creado     : Víctor Bravo
 Autor      : Victor Bravo
 Descripcion: Archivo de Entrada para SAFET - Inflow
 -->
-<!DOCTYPE operations SYSTEM "file:///home/debian/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion"  >  
 <operation  name="Reportes"  desc="Reportes, Listas, Formas" icon="report.png">
 </operation>
@@ -42,7 +42,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Listar_datos_para_clave_proyecto_software" >
 	<command id ="1" type="agregar" table="ticket">
 		<fields>
-	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPrueba.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
+	                <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPrueba.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" >
 	                        Cargar_archivo_flujo
 	                </field>
 
@@ -106,7 +106,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_actualizacion_software" >
 	<command id ="1" type="agregar" table="ticket">
 		<fields>
-	                <field type="string" literal="/home/debian/.safet/flowfiles/actualizacion_software.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                <field type="string" literal="/home/vbravo/.safet/flowfiles/actualizacion_software.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
 	                        Cargar_archivo_flujo
 	                </field>
 
@@ -122,7 +122,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_gestion_interna" >
 	<command id ="1" type="agregar" table="ticket">
 		<fields>
-	                <field type="string" literal="/home/debian/.safet/flowfiles/gestion_interna.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                <field type="string" literal="/home/vbravo/.safet/flowfiles/gestion_interna.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
 	                        Cargar_archivo_flujo
 	                </field>
 
@@ -137,7 +137,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Aseguramiento_Calidad" >
 	<command id ="1" type="agregar" table="ticket">
 		<fields>
-	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionAseguramientoDeCalidad.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionAseguramientoDeCalidad.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
 	                        Cargar_archivo_flujo
 	                </field>
 
@@ -152,7 +152,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Planificación" >
 	<command id ="1" type="agregar" table="ticket">
 		<fields>
-	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionProyectoPlanificacion.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionProyectoPlanificacion.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
 	                        Cargar_archivo_flujo
 	                </field>
 
@@ -167,7 +167,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Software" >
 	<command id ="1" type="agregar" table="ticket">
 		<fields>
-	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionSoftware.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSoftware.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
 	                        Cargar_archivo_flujo
 	                </field>
 
@@ -186,7 +186,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Educativo" >
 	<command id ="1" type="agregar" table="ticket">
 		<fields>
-	                <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+	                <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSalvaPantalla.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
 	                        Cargar_archivo_flujo
 	                </field>
 
@@ -201,29 +201,29 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_proyecto_mapa_industrial" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="combolistliteral" options="/home/debian/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml,/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" input="cn::1">
+                        <field type="combolistliteral" options="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml,/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml,/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml,/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml,/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml,/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo" input="cn::1">
                                 Cargar_archivo_flujo
                         </field>
-   <field type="string" literal="91" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml">
+   <field type="string" literal="91" mandatory="yes" input="cn::1::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistema_ECO_ALBA.xml">
                         Clave
                 </field>
 
-    <field type="string" literal="90" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml">
+    <field type="string" literal="90" mandatory="yes" input="cn::1::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMetodologia_MIV.xml">
                         Clave
                 </field>
-		<field type="string" literal="92" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml">
-                        Clave
-                </field>
-
-		<field type="string" literal="100" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml">
+		<field type="string" literal="92" mandatory="yes" input="cn::1::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSIGMIV.xml">
                         Clave
                 </field>
 
-		<field type="string" literal="101" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml">
+		<field type="string" literal="100" mandatory="yes" input="cn::1::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaIntercambioDeDatosMIV.xml">
                         Clave
                 </field>
 
-		<field type="string" literal="106" mandatory="yes" input="cn::1::/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml">
+		<field type="string" literal="101" mandatory="yes" input="cn::1::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCalidadInformacionMIV.xml">
+                        Clave
+                </field>
+
+		<field type="string" literal="106" mandatory="yes" input="cn::1::/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaSimulacionMIV.xml">
                         Clave
                 </field>
 
@@ -236,7 +236,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_proyecto_aplicacion_firma_cifrado_contrasena_dispositivo_movil" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppMovil.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppMovil.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -251,7 +251,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Communitas" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCommunitas.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -266,7 +266,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Cuenta_Cuento" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionCuentaCuento.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -281,7 +281,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Medios_Comunitarios" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionMediosComunitarios.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -299,7 +299,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Asamblea_Socialista" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionAsambleasSocialistas.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionAsambleasSocialistas.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -314,7 +314,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Contraloria_Social" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -329,7 +329,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Contraloria_Social_PRUEBA" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionContraloriaSocialPrueba09042012.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionContraloriaSocialPrueba09042012.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -344,7 +344,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Sistema_institucional_comunicacion_divulgacion" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaComunicacional.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaComunicacional.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -360,7 +360,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_Proyecto_Prueba" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaComunicacionalP.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaComunicacionalP.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -374,7 +374,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_fondos_públicos" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionContraloriaSocial.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -389,7 +389,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_proyecto_AUTANA" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionAUTANA.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionAUTANA.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -404,7 +404,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_proyecto_Sistema_indicadores_seguimiento_proyectos" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionSistemaIndicadores.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionSistemaIndicadores.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -420,7 +420,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_proyecto_Television_digital_abierta" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionTelevisionDigital.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionTelevisionDigital.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -439,7 +439,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_tareas_por_correspondencia" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionPrueba.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionPrueba.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -454,7 +454,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_tareas_por_asignacion_directa" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionPrueba1.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionPrueba1.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
@@ -469,7 +469,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Generar_gráfico_para_clave_tareas_general" >
         <command id ="1" type="agregar" table="ticket">
                 <fields>
-                        <field type="string" literal="/home/debian/.safet/flowfiles/flujoAppPlanificacionPrueba2.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/flujoAppPlanificacionPrueba2.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"
