@@ -39,7 +39,7 @@ myval = 0;
 			<div class="panel panel-primary">
 		      <div class="panel-heading">{{title}}</div>
 		      <div class="panel-body">
-		     	   {% raw mycode %}
+		        {% raw mycode %}
 		      </div>
 		    </div>
 		

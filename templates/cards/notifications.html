@@ -64,7 +64,7 @@
 		    lastcommentobj = "";
 		    return;
 	    }
-	    myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/comentarios.xml Variable: vPorPublicacion" +
+	    myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/comentarios.xml Variable: vPorPublicacion" +
 	    " parameters.ByPublication: " + currid; 
 	    
 	    $.post('http://localhost:8080/ajaxconsole',{ operation: myoperation
@@ -120,7 +120,7 @@
 	}
 	
 	function doSafetGetLazy( curroffset ) {
-	myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujo_publicaciones.xml Variable: vPublished" 
+	myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/flujo_publicaciones.xml Variable: vPublished" 
 	    + " parameters.CurrOffset: " + curroffset;
 	
 	    

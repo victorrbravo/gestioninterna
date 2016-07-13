@@ -44,7 +44,7 @@ from PIL import Image
 
 
 #from torndsession.sessionhandler import SessionBaseHandler
-from captcha.image import *
+#from captcha.image import *
 
 
 import PIL
@@ -54,8 +54,8 @@ import re
 
 from tornado.options import define, options
 
-#MYHOME = "/home/vbravo/gits/gestioninterna"
-MYHOME = "/home/vbravo/gits/gestioninterna"
+#MYHOME = "/home/usuario/safet/gestioninterna"
+MYHOME = "/home/usuario/safet/gestioninterna"
 
 define("port", default=8080, help="run on the given port", type=int)
 
@@ -232,7 +232,7 @@ class MgnResetPassHandler(tornado.web.RequestHandler):
 	
             try:
 		idg = "1"
-            	pathcaptcha = "/home/vbravo/github/website"  + "/static/captcha/out%s.png" % (idg)
+            	pathcaptcha = "/home/usuario/safet/gestioninterna"  + "/static/captcha/out%s.png" % (idg)
 	        urlcaptcha = "/static/captcha/out%s.png" % (idg)
 
 	    	print "pass 4"
@@ -1296,7 +1296,7 @@ class GoChangePassHandler(tornado.web.RequestHandler):
 	mysubs = getUserInfo(current_user,current_pass,myoperation)
 
         
-        myoperation  = u"operacion:Listar_datos  Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/anuncios.xml Variable: vTodas"
+        myoperation  = u"operacion:Listar_datos  Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/anuncios.xml Variable: vTodas"
         myanuncios = getUserInfo(current_user,current_pass,myoperation)
         #print "myanuncios:" + myanuncios
         
@@ -1635,7 +1635,7 @@ mycontroller = [
 	    (r"/forma_([^\s]+)/([^\s]+)/(\d+|none)", ProcessFormHandler),
             (r"/goform/([^\s]+)/([^\s]+)/(\d+|none)/?([^\s]*)", GoFormHandler),    
 	    (r"/ajaxforma_([^\s]+)", ProcessAjaxFormHandler),       
-            (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': "/home/vbravo/github/boletas/boletas/static"}),
+            (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': "/home/usuario/github/boletas/boletas/static"}),
 
         ]
 

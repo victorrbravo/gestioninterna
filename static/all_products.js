@@ -136,7 +136,7 @@ if (mycurrobj == lastcommentobj ) {
 	lastcommentobj = "";
 	return;
 }
-myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/comentarios.xml Variable: vPorPublicacion" +
+myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/comentarios.xml Variable: vPorPublicacion" +
 " parameters.ByPublication: " + currid; 
 
 $("#divForLoading").show();
@@ -237,7 +237,7 @@ function doSafetAddComment( currid ) {
 
 		    if (myresult["result"] == "true") {
 		       myid = myresult["id"];
-		       myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/comentarios.xml Variable: vPorId parameters.ById:" + myid
+		       myoperation = "operacion:Listar_datos Cargar_archivo_flujo: /home/usuario/.safet/flowfiles/comentarios.xml Variable: vPorId parameters.ById:" + myid
 		       console.log("myoperation: " + myoperation);
 
 		       $("#divForLoading").show(); 	      
