@@ -947,18 +947,26 @@ class ListHandler(tornado.web.RequestHandler):
         myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
         result = myinflow.login(current_user,current_pass)
      
+	print ".....ListHandler.........3"
      	myoperation = u"operacion:Listar_datos Cargar_archivo_flujo: " + safetconfig.HOMESAFET_PATH + "/.safet/flowfiles/%s.xml Variable: %s" % (nameflow,namevar)
     
 	print "*** myoperation**"
 	print myoperation
+	print "*" * 80
+	print ".....ListHandler.........4"
 	isinserted = myinflow.toInputConsole(myoperation)
-
 	print isinserted
+	
+	print ".....ListHandler.........5"
 	mylist = []
 	if isinserted:
 		  mystr = u"%s" % (myinflow.currentJSON())
+		  print "*" * 80
+		  print u"JSON....mystr:|%s|" % (mystr)
+		  print "*" * 80
 		  mylist = json.loads(mystr)["safetlist"]
-		  print "JSON"
+		  
+		  
 			  
 	else:
 		  mystr = u"%s" % (myinflow.currentError())		  
