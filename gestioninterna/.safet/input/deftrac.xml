@@ -70,6 +70,79 @@ postaction="" >
 		</fields>
 	</command>
 </operation>
+<operation  name="modificar_empleado"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action="" >
+<command id ="1" type="actualizar" table="personal" >
+	<fields>
+	<field type="combolisttable" options="id:personal::' ' || id || ' Nombres:' || apellidos || ',' || nombres " mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+				id
+			</field>
+			<field type="string" mandatory="yes" title="Nombres" >
+                                nombres
+                        </field>
+
+                        <field type="string"  mandatory="yes" title="Apellidos" >
+                                apellidos
+                        </field>
+			<field type="string" mandatory="yes"  validation="[VE][0-9]{3,10}" title="Cédula">
+				cedula
+			</field>
+			<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="yes" title="Cargo_asignado">
+				cargo
+			</field>
+
+			<field type="datetime" mandatory="yes" title="fecha_de_ingreso" format="time_t" options="calendarPopup::true,displayFormat::dd/MM/yy" >
+				fecha_ingreso
+			</field>
+
+			<field type="combolistliteral" options="Desarrollo::Desarrollo::Desarrollo,Investigacion::Investigacion::Investigacion,Administracion::Administracion::Administracion,Reflexion::Reflexion::Reflexion,Apropiacion::Apropiacion::Apropiacion,Redes::Redes::Redes,Soporte::Soporte::Soporte,Directiva::Directiva::Directiva" mandatory="yes" title="Departamento_dependencia" >
+				departamento
+			</field>
+
+			<field type="string" mandatory="yes" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
+				proyecto
+			</field>
+
+			<field type="string" mandatory="yes" title="Usuario_sistema" validation="[A-Za-z]\D{2,}">
+				usuario
+			</field>
+
+			<field type="string" mandatory="yes" title="Correo_Institucional" validation="">
+				nombre_cuenta_correo_electronico
+			</field>
+
+			<field type="string" mandatory="yes" title="Telefono_habitacion" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
+				telefono_habitacion
+			</field>
+
+			<field type="string" mandatory="yes" title="Telefono_personal" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
+				telefono_personal
+			</field>
+
+			<field type="stringbox" options="wiki" mandatory="yes" title="Domicilio">
+				domicilio 
+			</field>
+			<field type="string" literal="Activo" mandatory="yes" title="Status">
+				estado
+			</field>
+
+	</fields>
+</command>
+
+</operation>
+
+<operation  name="borrar_empleado"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action="" >
+<command id ="1" type="eliminar" table="personal" >
+	<fields>
+	<field type="combolisttable" options="id:personal::' ' || id || ' Nombres:' || apellidos || ',' || nombres " mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+				id
+			</field>
+
+	</fields>
+</command>
+
+</operation>
 
 
 
