@@ -5,7 +5,7 @@ myval = 0;
 {% extends "lists/listquery.html" %}
 
 {% block title %}
-Dashboard
+Listado General
 {% end %}
 
 {% block listscripts %}

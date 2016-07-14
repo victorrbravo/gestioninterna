@@ -27,7 +27,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
                         <connection source="final" query="true" options="" >
                         </connection>
                 </port>
-                <variable id="vTodas" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select nombres,apellidos,cargo,cedula,estado,nombre_cuenta_correo_electronico,nombre_cuenta_intranet,fecha_ingreso,fecha_retiro,fecha_reincorporacion,status,departamento,usuario,proyecto,nombre_cuenta_correo_personal,telefono_habitacion,telefono_personal,domicilio,tipo,representante from personal" >
+                <variable id="vTodas" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select nombres,apellidos,cargo,cedula,estado,nombre_cuenta_correo_electronico,nombre_cuenta_intranet,lista_servidores_acceso,fecha_ingreso,fecha_retiro,fecha_reincorporacion,status,departamento,usuario,proyecto,nombre_cuenta_correo_personal,telefono_habitacion,telefono_personal,domicilio,tipo,representante from personal" >
                 </variable>
         </task>
 <condition id="final">

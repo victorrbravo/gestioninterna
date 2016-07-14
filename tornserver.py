@@ -961,9 +961,9 @@ class ListHandler(tornado.web.RequestHandler):
 	mylist = []
 	if isinserted:
 		  mystr = u"%s" % (myinflow.currentJSON())
-		  print "*" * 80
-		  print u"JSON....mystr:|%s|" % (mystr)
-		  print "*" * 80
+		  #print "*" * 80
+		  #print u"JSON....mystr:|%s|" % (mystr)
+		  #print "*" * 80
 		  mylist = json.loads(mystr)["safetlist"]
 		  
 		  
@@ -973,7 +973,7 @@ class ListHandler(tornado.web.RequestHandler):
 		  print "error: %s" % (mystr)
 	
 	print "....ListHandler...write"	
-	print mylist	
+	#print mylist	
 	mykeys = []
 	if len(mylist) > 0:
 	  for key in mylist[0].keys():
