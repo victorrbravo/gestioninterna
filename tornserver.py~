@@ -973,7 +973,7 @@ class ListHandler(tornado.web.RequestHandler):
 		  print "error: %s" % (mystr)
 	
 	print "....ListHandler...write"	
-	print mylist	
+	#print mylist	
 	mykeys = []
 	if len(mylist) > 0:
 	  for key in mylist[0].keys():

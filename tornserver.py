@@ -1463,7 +1463,7 @@ class GoLoginHandler(tornado.web.RequestHandler):
         current_pass = self.get_secure_cookie("pass")
         
 	if current_user!=None and current_user!="invitado":
-		self.redirect("/gologout")		    
+		self.redirect("/logout")		    
 		return
 		
 

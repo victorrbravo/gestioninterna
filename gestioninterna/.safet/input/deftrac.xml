@@ -150,10 +150,12 @@ action="" >
 <operation  name="Vacaciones"  desc="Creacion de una solicitud" icon="vacation.png">
 </operation>
 <operation  name="Modificar_solicitud_vacaciones"  desc="Modificar un proyecto poa existente" icon="firmadoc.png" action= ""
-postaction="" >
+postaction="correovacaciones" >
 	<command id ="1" type="actualizar" table="vacaciones">
 		<fields>
-			<field type="combolisttable" options="id:vacaciones:where usuario='_USERNAME' and status='iniciado'::'(' || id || ') ' || nombre || '-' || usuario " mandatory="yes" title="periodo_vacacional"   changekey="yes" primarykey="yes" >
+			<field type="combolisttable" 
+			options="id:vacaciones:where usuario='_USERNAME' and status='iniciado'::'(' || id || ') ' || nombre || '-' || usuario " mandatory="yes" 
+			title="Periodo_vacacional"   changekey="yes" primarykey="yes" >
 				id
 			</field>
 
@@ -161,25 +163,24 @@ postaction="" >
 				fechasolicitud
 			</field>
 
-			<field type="string" mandatory="no" options="readonly" changefor="id" title="usuario" >
-                		usuario
-            		</field>
+		<field type="string" mandatory="no" options="readonly" changefor="id" title="usuario" position="open_and_close,md-4"  >
+                 usuario
+            </field>
 
-			<field type="string" icon="resumen.png" mandatory="yes" options="readonly" changefor="id" title="nombre" position="open,md-4">
+			<field type="string" icon="resumen.png" format="time_t" mandatory="no" options="readonly" changefor="id" title="nombre" position="open,md-4">
                                 nombre
                         </field>
 			
-			<field type="string" mandatory="no" title="Cedula_personal" options="readonly,wiki" changefor="id" position="close,md-6">
+			<field type="string" mandatory="no" title="Cédula" options="readonly,wiki" changefor="id" position="close,md-6">
                                 id_cedula
                         </field>
 
 			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Dias_a_disfrutar" 
-position="open_and_close,md-6"
-options="readonly" changefor="id">
+position="open_and_close,md-6" options="readonly" changefor="id">
 				diasadisfrutar
 			</field>
 
-			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Dias_disfrutados" options="readonly" changefor="id" position="open_and_close,md-6">
+			<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Dias_disfrutados" options="readonly" changefor="id" position="open_and_close,md-6">
 				diasdisfrutados
 			</field>
 
@@ -187,20 +188,25 @@ options="readonly" changefor="id">
 				diaspordisfrutar
 			</field>
 
-			<field type="datetime" icon="resumen.png" mandatory="yes" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="fecha_de_inicio" primarykey="no" format="time_t">
+			<field type="datetime" icon="resumen.png" mandatory="yes" options="calendarPopup::true" position="open,md-6"  title="fecha_de_inicio"  format="time_t">
 				fechainicio
 			</field>
 
-			<field type="string" icon="resumen.png" mandatory="yes" primarykey="no" title="dias_solicitados"  changekey="yes" validation="validatefunction:CASE WHEN {#diasdisfrutados}=0 THEN {#diassolicitados} >= ({#diaspordisfrutar}/2+1) AND {#diaspordisfrutar} >= {#diassolicitados}  ELSE {#diaspordisfrutar} = {#diassolicitados} END" >
+			<field type="string" icon="resumen.png" mandatory="yes" primarykey="no" title="dias_solicitados" position="close,md-6"  changekey="yes" validation="validatefunction:CASE WHEN {#diasdisfrutados}=0 THEN {#diassolicitados} >= ({#diaspordisfrutar}/2+1) AND {#diaspordisfrutar} >= {#diassolicitados}  ELSE {#diaspordisfrutar} = {#diassolicitados} END" >
 				diassolicitados
 			</field>
 
 
-			<field type="datetime" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados})"  title="Fecha_final_periodo_hasta" format="time_t" validation="" changefor="dias_solicitados">
+			<field type="datetime" mandatory="no" 
+			
+			options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados})"  
+			title="Fecha_final_periodo_hasta" format="time_t" validation="" changefor="dias_solicitados" position="open,md-6">
 				fechafin
 			</field>
 
-			<field type="datetime" icon="resumen.png" mandatory="yes" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="fecha_de_incorporación" primarykey="no" format="time_t" changefor="dias_solicitados">
+			<field type="datetime" icon="resumen.png" mandatory="yes" 
+			options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados}+1)"  title="fecha_de_incorporación" 
+			primarykey="no" format="time_t" changefor="dias_solicitados" position="close,md-6">
 				fechaincorporacion
 			</field>
 
@@ -211,6 +217,19 @@ options="readonly" changefor="id">
 			 <field type="combolisttable" icon="resumen.png" mandatory="no" validation=".*" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '">
                                 cedula_suplente_2
                         </field>
+			 <field title="Desarrollo" desc="Activo" validation="" position="open,md-6" options="type::checkbox,Sí::true" icon="resumen.png" type="string" mandatory="no">
+			      enviar_desarrollo
+			  </field>
+			 <field title="Investigación" desc="Activo" validation="" position="close,md-6" options="type::checkbox,Sí::true" icon="resumen.png" type="string" mandatory="no">
+			      enviar_investigacion
+			  </field>
+		      <field title="Apropiación" desc="Activo" validation="" position="open,md-6" options="type::checkbox,Si::true" icon="resumen.png" type="string" mandatory="no">
+			      enviar_apropiacion
+			  </field>
+		      <field title="Reflexión" desc="Activo" validation="" position="close,md-6" options="type::checkbox,Si::True" icon="resumen.png" type="string" mandatory="no">
+			      enviar_reflexion
+			  </field>
+
 
 
 			<field type="string" literal="Talento_humano" mandatory="yes" title="Estatus">
@@ -220,11 +239,12 @@ options="readonly" changefor="id">
 			<field type="string" mandatory="yes" function="'( ' || cedula || ' ) ' || nombres ||' '|| apellidos || ' fecha ingreso ' || to_timestamp(fecha_ingreso)::date from personal where usuario='_USERNAME'" input="no" title="Informacion_usuario">
 				informacion_usuario
 			</field>
+			
 		</fields>
 	</command>
 	 <command id ="1" type="agregar" table="vacaciones_registro" >
                 <fields>	
-			<field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="current">
+			<field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
                                 id
                         </field>
 
@@ -262,10 +282,10 @@ options="readonly" changefor="id">
 	<command id ="1" type="agregar" table="vacaciones">
                 <fields>
 
-                        <field  type="agregar" sequence="vacaciones_id_seq" title="Periodo_vacacional">
+                        <field  type="agregar" sequence="vacaciones_id_seq" title="id">
                                 id
                         </field>
-                        <field type="number" mandatory="yes" title="Cedula_personal">
+                        <field type="number" mandatory="yes" title="Cédula">
                                 id_cedula
                         </field>
 
@@ -273,16 +293,17 @@ options="readonly" changefor="id">
                                 usuario
                         </field>
 
-                        <field type="number"  mandatory="yes" function="case when sum(diassolicitados) = diasadisfrutar then (nombre+1) else nombre end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar,nombre limit 1" title="nombre" >
+                        <field type="string" format="integer"  mandatory="yes" 
+			function="case when sum(diassolicitados) = diasadisfrutar then (nombre+1) else nombre end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar,nombre limit 1" title="nombre" >
                                 nombre
                         </field>
-                        <field type="number"  mandatory="yes" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else diasadisfrutar end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_a_disfrutar" >
+                        <field type="string" format="integer"   mandatory="yes" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else diasadisfrutar end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_a_disfrutar" >
                                 diasadisfrutar
                         </field>
-                        <field type="number"  mandatory="yes" function="case when sum(diassolicitados) = diasadisfrutar then (0) else (sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_disfrutado" >
+                        <field type="string" format="integer" function="case when sum(diassolicitados) = diasadisfrutar then (0) else (sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_disfrutado" >
                                 diasdisfrutados
                         </field>
-                        <field type="number"  mandatory="yes" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else (diasadisfrutar-sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_por_disfrutar" >
+                        <field type="string" format="integer" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else (diasadisfrutar-sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_por_disfrutar" >
                                 diaspordisfrutar
                         </field>
 
@@ -331,26 +352,28 @@ options="readonly" changefor="id">
 
 </operation>
 
-<operation  name="Enviar_solicitud_por_correo"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+<operation  name="enviar_solicitud_por_correo"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
 action=""
 dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:%1"
 >
 <command id ="1" type="agregar" table="vacaciones" >
-	<fields>
-			<field type="combolisttable" options="id:vacaciones::'Solicitud Nro ' || id || ' Periodo:' || nombre || '-' || usuario || ' Días:' || diassolicitados " mandatory="yes" title="Periodo_vacacional"   changekey="yes" primarykey="yes" order="desc" >
-				id
-			</field>
-
-		<field type="string"  mandatory="yes"  title="Asunto" changefor="id">
-			asunto
-		</field>
-		<field type="stringbox"  mandatory="yes"  title="Destinatarios" changefor="id">
-			destinatarios
-		</field>
-
-	</fields>
+   <fields>
+    <field title="Periodo_vacacional" changekey="yes" options="id:vacaciones" order="desc" type="combolisttable" mandatory="yes" primarykey="yes">
+                                id
+                        </field>
+    <field changefor="id" title="Asunto" type="string" mandatory="no">
+                        asunto
+                </field>
+    <field changefor="id" title="Base" type="string" mandatory="no">
+                        base
+                </field>
+    <field changefor="id" title="Destinatarios" type="stringbox" mandatory="no">
+                        destinatarios
+                </field>
+   </fields>
 </command>
 </operation>
+
 <operation  name="Firmar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
 action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Presidencia" >
 <command id ="1" type="actualizar" table="vacaciones" >
