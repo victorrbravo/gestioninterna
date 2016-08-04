@@ -11,8 +11,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 <workflow id="Generar planilla de solicitud de vista_vacaciones" desc="Planilla que se generar con los datos de una solicitud de vista_vacaciones">
 <token key="vista_vacaciones.id"  keysource="vista_vacaciones">
 </token>
-<parameter type="" icon="hito.png" desc= "ByPeriod" mandatory="no" options=""  
-	  title="ByPeriod" defaultvalue="0">
+<parameter type="" icon="hito.png" desc= "ByPeriod" mandatory="no" options="" title="ByPeriod" >
 </parameter>	
      
 <condition id="inicial" type="start">
@@ -28,8 +27,8 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 
 	</port>
 	 <variable id="vSolicitud" scope="task"  type="sql" config="1"   tokenlink="" 
-                documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia,nombre_cuenta_correo_electronico from vista_vacaciones"
- rolfield=""  timestampfield="" 
+                documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+ rolfield=""  timestampfield="" groupby="ORDER BY id DESC" 
 
  >
      </variable>

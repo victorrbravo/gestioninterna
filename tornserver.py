@@ -40,7 +40,7 @@ import wsgiref.simple_server
 import re
 import PIL
 from PIL import Image
-
+from collections import OrderedDict
 
 
 #from torndsession.sessionhandler import SessionBaseHandler
@@ -964,7 +964,7 @@ class ListHandler(tornado.web.RequestHandler):
 		  #print "*" * 80
 		  #print u"JSON....mystr:|%s|" % (mystr)
 		  #print "*" * 80
-		  mylist = json.loads(mystr)["safetlist"]
+		  mylist = json.loads(mystr, object_pairs_hook=OrderedDict)["safetlist"]
 		  
 		  
 			  
@@ -972,17 +972,17 @@ class ListHandler(tornado.web.RequestHandler):
 		  mystr = u"%s" % (myinflow.currentError())		  
 		  print "error: %s" % (mystr)
 	
-	print "....ListHandler...write"	
-	#print mylist	
+#	print "....ListHandler...write"	
+#	print "*" * 80
+#	print mylist[0]
+#	print "*" * 80
 	mykeys = []
+#	print "1." + ("*" * 80)
 	if len(mylist) > 0:
-	  for key in mylist[0].keys():
-	    if key == "id":
-		mykeys = [key] + mykeys 
-	    else:
-		mykeys = mykeys + [key]
+		mykeys = mylist[0].keys()
 	
-    	self.write(loader.load("listparents.html").generate(mylist = mylist, mykeys = mykeys, current_user ="vbravo", user_id=1))
+	
+    	self.write(loader.load("listparents.html").generate(mylist = mylist, mykeys = mykeys, current_user = current_user, user_id=1))
 
 	
 
@@ -1508,12 +1508,13 @@ class GoLoginHandler(tornado.web.RequestHandler):
 class ProcessAjaxFormHandler(tornado.web.RequestHandler):    
 	def post(self,name_operation):
 	 #    print ".........ProcessAjaxFormHandler........post:" + name_operation
-	    print "AjaxForm................1"
+	    print "AjaxForm................1*"
 	    current_user = self.get_secure_cookie("user")
 	    current_pass = self.get_secure_cookie("pass")
 
+	    print u"AjaxForm................1.....current_user:|%s|" % (current_user)
 	    
-	    if current_user!=None and current_user!="invitado":
+	    if current_user==None or current_user=="invitado":
 		self.write("{ \"message\": \"user unauthorized\", \"error\": \"True\" } ")
 		return
 

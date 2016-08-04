@@ -306,7 +306,12 @@ position="open_and_close,md-6" options="readonly" changefor="id">
                         <field type="string" format="integer" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else (diasadisfrutar-sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_por_disfrutar" >
                                 diaspordisfrutar
                         </field>
-
+			<field type="string" format="integer" function="extract(epoch from now()+'10 day')::int" title="fecha_inicio" >
+                                fechainicio
+                        </field>
+			<field type="string" format="integer" function="extract(epoch from now()+'15 day')::int" title="fecha_fin" >
+                                fechafin
+                        </field>			
                         <field type="string" mandatory="yes" literal="iniciado">
                                 status
                         </field>
@@ -315,15 +320,19 @@ position="open_and_close,md-6" options="readonly" changefor="id">
 
 </operation>
 <operation  name="Siguiente_estado_solicitud"  desc="Cambia el siguiente estado de las vacaciones" icon="firmadoc.png">
-	<command id ="1" type="actualizar" table="vacaciones">
-		<fields>
-			<field type="combolisttable" options="id:vacaciones:where status!='Archivar_solicitud_procesada'::'(' || id || ') ' ||  nombre || '-' || usuario " mandatory="yes" title="periodo"   changekey="yes" primarykey="yes" order="desc" >
-				id
-			</field>
-		<field type="comboflow" mandatory="yes" options="next" 
-                                  path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" title="status" changefor="periodo">
-                                status
+	<command id ="1" type="actualizar" table="vacaciones">		
+	      <fields>
+		 <field type="combolisttable" options="id:vacaciones::'(' || id || ') ' ||  nombre || '-' || usuario " mandatory="yes" 
+		 title="id"   changekey="yes" primarykey="yes" order="desc" position="open_and_close,md-4"  >
+                                id
                         </field>
+
+	      <field changefor="id" title="Siguiente_Estado"
+	      path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" options="next" 
+	      position="open_and_close,md-4" 
+		  type="comboflow" mandatory="yes">
+                                status
+               </field>		
 		</fields>
 	</command>
 	 <command id ="1" type="agregar" table="vacaciones_registro" >
@@ -339,7 +348,7 @@ position="open_and_close,md-6" options="readonly" changefor="id">
                                 propietario
                         </field>
 
-			 <field type="number" mandatory="yes" primarykey="yes" title="periodo">
+			 <field type="number" mandatory="yes" primarykey="yes" title="id">
                                 id_vacaciones
                         </field>
 			 <field type="string"  mandatory="yes" title="status">

@@ -17,12 +17,42 @@ Listado General
 
 {% block buttons %}
 
-<button id="sendemailbutton">Borrar</button>
+<button id="deletebutton">Borrar</button>
 
 <button id="loadscorebutton">Modificar</button>
 
 
 <script type="text/javascript">
+
+function doDeleteVacation(myobj, mypubid) {
+  
+     console.log("(1)..doDeleteVacation....mypubid:" + mypubid);
+            
+  $.post('/ajaxforma_Borrar_solicitud', { id: mypubid },
+            function(data) {
+                console.log("(2)..data:...doSafetSendEmail...*myname....data:");
+                console.log(data);
+                mycontainer = '#container_' + mypubid;
+                console.log(".....mycontainer:" + mycontainer);
+                
+                myresult = eval("(" + data + ")" );
+                
+                console.log("result:" + myresult["result"]);
+                if (myresult["result"] == "true") {                
+		  
+		  $(myobj).animate({'line-height':0},1000).hide(1);
+                  $(myobj).remove();
+                }
+                else {
+		  $(mycontainer).html("<font color='red'> NO enviado</font>");                
+                }
+
+            });
+
+}
+
+
+
 
 function doSafetSendEMail(myobj, mypubid, mydest, myfile) {
   
@@ -43,7 +73,8 @@ function doSafetSendEMail(myobj, mypubid, mydest, myfile) {
                 
                 console.log("result:" + myresult["result"]);
                 if (myresult["result"] == "true") {                
-		  $(mycontainer).html("enviado");
+                  console.log("remove");
+		  $(myobj).remove();
                   //$(myobj).html("<button>Enviado</button>");
                 }
                 else {
@@ -107,13 +138,15 @@ $("#loadscorebutton").click(function() {
 
 
  
- $( "#sendemailbutton" ).click(function() {
+ $( "#deletebutton" ).click(function() {
   var myrows = mytable.rows( { selected: true } );
   console.log("count " + myrows.count()); 
   
   for(i=0;i < myrows.count(); i++) {
-      console.log("send id:" + myrows.data()[i][1]);
-     doSafetSendEMail(this, myrows.data()[i][1], myrows.data()[i][4], myrows.data()[i][6]);
+      myid = myrows.data()[i][1];      
+      console.log("send id:" + myid);     
+      doDeleteVacation(eval('rowtable_'+myid),myid);
+      
   }	
   
 });

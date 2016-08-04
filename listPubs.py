@@ -19,6 +19,8 @@ myinflow.setHostURL(myurl)
 myconsult = u"operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujogeneralsesiones.xml"
 myconsult =u"operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujo_publicaciones.xml"
 myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:47"
+#myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud"
+
 print myconsult
 
 result = myinflow.login("vbravo","zpinquar") 
@@ -34,15 +36,19 @@ if not result:
 	print "Consult failed error: %s"  % (myinflow.currentError())
 	exit()
 
-print myinflow.currentJSON()
+myjson = u"%s" % (myinflow.currentJSON())
+print myjson
+
+mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
+print mypubs
 
 exit()
-mypubs = json.loads(u"%s" % (myinflow.currentJSON()) )["safetlist"]
+mypubs = json.loads(u"%s" % (myinflow.currentJSON()) )["safetlist"][0]
 print u"Result:\n"
-print mypubs
-for record in mypubs:
-	#print record["orden"] + " " + record["id"] + " " +  record["owner"]
-	print  record["id"] + " " +  record["owner"]
+print u"%s" % (mypubs)
+#for record in mypubs:
+#	#print record["orden"] + " " + record["id"] + " " +  record["owner"]
+#	print  record["id"] + " " +  record["owner"]
 #	print record["summary"] + " "  +  record["owner"]
 
 

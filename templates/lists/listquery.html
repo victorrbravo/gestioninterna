@@ -28,10 +28,11 @@ myval = 0;
     $(document).ready(function() {
     mytable = $('#example').DataTable( {
         columnDefs: [ {
-            orderable: false,
+            orderable: true,
             className: 'select-checkbox',
-            targets:   0
-        } ],
+            targets:   [0]
+        }
+        ],
         select: {
             style:    'multi',
             selector: 'td:first-child'
@@ -45,7 +46,7 @@ myval = 0;
 	    "infoEmpty": "No records available",
             "infoFiltered": "(filtered from _MAX_ total records)"
         },        
-        order: [[ 1, 'asc' ]]
+        order: [[ 1, 'desc' ]]
     } );
     
    
@@ -88,12 +89,12 @@ myval = 0;
         
         <tbody>
   {% for record in mylist %}            
-            <tr>
+            <tr name="rowtable_{{record['id']}}" id="rowtable_{{record['id']}}"  >
                 <td></td>
                 {% for key in mykeys %}    
 		    <td>{{record[key]}}</td>
 	      {%  end %}
-	      <td><span id="container_{{record['id']}}"><input type="file" name="datafile_{{record['id']}}" id="datafile_{{record['id']}}" size="40"></span></td>
+	      <td></td>
             </tr>
    {%  end %}
             </tbody>
