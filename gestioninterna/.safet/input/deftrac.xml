@@ -322,17 +322,18 @@ position="open_and_close,md-6" options="readonly" changefor="id">
 <operation  name="Siguiente_estado_solicitud"  desc="Cambia el siguiente estado de las vacaciones" icon="firmadoc.png">
 	<command id ="1" type="actualizar" table="vacaciones">		
 	      <fields>
-		 <field type="combolisttable" options="id:vacaciones::'(' || id || ') ' ||  nombre || '-' || usuario " mandatory="yes" 
-		 title="id"   changekey="yes" primarykey="yes" order="desc" position="open_and_close,md-4"  >
+		 <field type="combolisttable" options="id:vacaciones:where status!='Archivar_solicitud_procesada'::'(' || id || ') ' ||  nombre || '-' || usuario || '-' || status" mandatory="yes" 
+		 title="periodo_vacacional"   changekey="yes" primarykey="yes" order="desc" position="open_and_close,md-4"  >
                                 id
                         </field>
-
-	      <field changefor="id" title="Siguiente_Estado"
+                       
+	      <field changefor="periodo_vacacional" title="Siguiente_Estado"
 	      path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" options="next" 
 	      position="open_and_close,md-4" 
 		  type="comboflow" mandatory="yes">
                                 status
                </field>		
+	       	
 		</fields>
 	</command>
 	 <command id ="1" type="agregar" table="vacaciones_registro" >
@@ -348,10 +349,13 @@ position="open_and_close,md-6" options="readonly" changefor="id">
                                 propietario
                         </field>
 
-			 <field type="number" mandatory="yes" primarykey="yes" title="id">
+			 <field type="number" mandatory="yes" primarykey="yes" title="periodo_vacacional">
                                 id_vacaciones
                         </field>
-			 <field type="string"  mandatory="yes" title="status">
+			 <field type="string"  mandatory="yes" function="nombre from vacaciones where vacaciones.id={#id_vacaciones}" title="nombre">
+                                nombre_periodo
+                        </field>
+			 <field type="string"  mandatory="yes" title="Siguiente_Estado">
                                 status
                         </field>
 

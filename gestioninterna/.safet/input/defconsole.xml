@@ -39,9 +39,9 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 </command>
 </operation>
 <operation  name="Generar_gráfico_para_clave" >
-        <command id ="1" type="agregar" table="ticket">
+        <command id ="1" type="agregar" table="vacaciones">
                 <fields>
-                        <field type="string" literal="/home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
+                        <field type="string" literal="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesGraph.xml" mandatory="yes" changekey="yes" title="Cargar_archivo_flujo">
                                 Cargar_archivo_flujo
                         </field>
                         <field type="combolisttable"

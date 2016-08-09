@@ -12,6 +12,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 <workflow id="Generar planilla de solicitud de vista_vacaciones" desc="Planilla que se generar con los datos de una solicitud de vista_vacaciones">
 <token key="id"  keysource="vista_vacaciones">
 </token>
+
 <parameter type="string" options="" mandatory="no"
                        title="Mostrar_en_grafico" configurekey="Plugins.Graphviz/plugins.graphviz.extrainfo.show" defaultvalue="InfoText,InfoDate" >
 </parameter>
@@ -30,20 +31,18 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 	<port side="forward" type="split"  >
 		<connection   source="TalentoHumano" query="select status from vista_vacaciones"  options="Talento_humano" tokenlink="" >
 		</connection>
-
 	</port>
 	 <variable id="vSolicitud" scope="task"  type="sql" config="1"   tokenlink="" 
                 documentsource="select id,id_cedula from vista_vacaciones"
- 
-rolfield="(select nombre_periodo from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='iniciado' limit 1)"  
+		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='iniciado' limit 1)"  
 timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='iniciado' limit 1)" 
 
->
+		>
      </variable>
 </task>
 <task id="TalentoHumano"  title="todas" >
 	<port side="forward" type="split" pattern="or" >
-		<connection   source="DireccionEjecutiva" query="select status from vista_vacaciones"  options="DireccionEjecutiva" tokenlink="" >
+		<connection   source="DireccionInterna" query="select status from vista_vacaciones"  options="Direccion_interna" tokenlink="" >
 		</connection>
 		<connection   source="Iniciado" query="select status from vista_vacaciones"  options="iniciado" tokenlink="" back="yes" >
 		</connection>
@@ -51,51 +50,66 @@ timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_r
 	</port>
 	 <variable id="vTalentoHumano" scope="task"  type="sql" config="1"   tokenlink="" 
                 documentsource="select id,id_cedula from vista_vacaciones"
- 
-rolfield="(select nombre_periodo from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Talento_humano' limit 1)"  
+		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Talento_humano' limit 1)"  
 timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Talento_humano' limit 1)" 
+
+		>
+     </variable>
+</task>
+
+<task id="DireccionInterna"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"   pattern="none" >
+	    <connection source="DireccionEjecutiva" query="select status from vista_vacaciones" options="Direccion_ejecutiva" >
+        </connection>	
+	</port>
+	 <variable id="vDireccionInterna" scope="task"  type="sql" config="1"   tokenlink=""
+                 documentsource="select id,id_cedula from vista_vacaciones"
+		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Direccion_interna' limit 1)"  
+timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Direccion_interna' limit 1)" 
 
  >
      </variable>
 </task>
 
 <task id="DireccionEjecutiva"  title="Planilla vista_vacaciones" >
-	<port side="forward" type="split"  >
-	    <connection source="Presidencia" query="select status from vista_vacaciones" options="Presidencia" >
-        </connection>
+	<port side="forward" type="split"   pattern="none" >
+	    <connection source="Finanzas" query="select status from vista_vacaciones" options="Finanzas" >
+        </connection>	
 	</port>
 	 <variable id="vDireccionEjecutiva" scope="task"  type="sql" config="1"   tokenlink=""
                  documentsource="select id,id_cedula from vista_vacaciones"
-rolfield="(select nombre_periodo from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='DireccionEjecutiva' limit 1)"  
-timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='DireccionEjecutiva' limit 1)" 
+		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Direccion_ejecutiva' limit 1)"  
+timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Direccion_ejecutiva' limit 1)" 
 
  >
      </variable>
 </task>
-<task id="Presidencia"  title="Aprobacion del Presidente" >
-	<port side="forward" type="split" pattern="none" >
-		<connection source="Archivar_solicitud_procesada" query="select status from vista_vacaciones" options="Archivar_solicitud_procesada" tokenlink="" >
-
+<task id="Finanzas"  title="Aprobacion del Presidente" >
+	<port side="forward" type="split" pattern="or" >
+		<connection source="Archivar_solicitud_procesada" query="select status from vista_vacaciones" options="procesada" tokenlink="" >
+		</connection>
+		<connection   source="TalentoHumano" query="select status from vista_vacaciones"  options="Talento_humano" tokenlink="" back="yes" >
 		</connection>
 	</port>
-	 <variable id="vPresidencia" scope="task"  type="sql" config="1"   tokenlink=""
+	 <variable id="vFinanzas" scope="task"  type="sql" config="1"   tokenlink=""
                  documentsource="select id,id_cedula, nombreapellido from vista_vacaciones"
-rolfield="(select nombre_periodo from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Presidencia' limit 1)"  
-timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Presidencia' limit 1)" 
+		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Finanzas' limit 1)"  
+timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Finanzas' limit 1)" 
 
  >
      </variable>
 </task>
 <task id="Archivar_solicitud_procesada"  title="solicitud_archivada" >
-	<port side="forward" type="split"  >
+	<port side="forward" type="split"  pattern="or">
 		<connection source="final" query="true" options="" tokenlink="" >
-
 		</connection>
-
+	      <connection   source="TalentoHumano" query="select status from vista_vacaciones"  options="Talento_humano" tokenlink="" back="yes" >
+		</connection>
 	</port>
 	 <variable id="vArchivar" scope="task"  type="sql" config="1"   tokenlink=""
                  documentsource="select id,id_cedula from vista_vacaciones"
- rolfield=""  timestampfield="" 
+ 		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='procesada' limit 1)"  
+timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='procesada' limit 1)" 
  >
      </variable>
 </task>

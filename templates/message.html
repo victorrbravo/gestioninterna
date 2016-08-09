@@ -1,0 +1,15 @@
+<div class="row clearfix">
+	{% if successmessage %}
+		<div class="alert alert-success">
+		      <a href="#" class="close" data-dismiss="alert">&times;</a>
+		      {{ successmessage }}
+		 </div>
+	{% end %}	
+
+	{% if mymessage %}
+		<div class="alert alert-warning">
+			<a href="#" class="close" data-dismiss="alert">&times;</a>
+			{{ mymessage }}
+		</div>					
+	{% end %}   			    
+</div>
