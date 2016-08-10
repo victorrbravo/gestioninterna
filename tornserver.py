@@ -1470,13 +1470,20 @@ class GeneratePdfParametroHandler(tornado.web.RequestHandler):
             myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
             result = myinflow.login(current_user,current_pass)
             myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: "+ safetconfig.HOMESAFET_PATH +"/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:"+parameters+""
-            myinflow.toInputConsole(myconsult)  
+	    print myconsult
+            result = myinflow.toInputConsole(myconsult)  
+	    print "result"
+	    print result
             myjson = u"%s" % (myinflow.currentJSON())
+	    print "myjson:" + myjson		
             mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
             print mypubs['fechasolicitud']
-            self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='jsulbaran',user_id=1))            
-        except:
-            self.write(loader.load("generatepdfParameter.html").generate(error = "Usuario no existe...??",mymessage=False,current_user='jsulbaran',user_id=1))
+            render_to_pdf(mypubs,'Planilla_Vacaciones.pdf')
+            self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo',user_id=1))            
+        except Exception as e:
+	    print "Exception: "
+	    print e
+            self.write(loader.load("generatepdfParameter.html").generate(error = "Usuario no existe...??",mymessage=False,current_user='vbravo',user_id=1))
 
 class GeneratePdfHandler(tornado.web.RequestHandler):
     """
@@ -1488,7 +1495,7 @@ class GeneratePdfHandler(tornado.web.RequestHandler):
         current_pass = self.get_secure_cookie("pass")
         
         safet_data = [{"id":"28","nombre": "(28)  ( Cedula V12778889)"}]
-        self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='jsulbaran',user_id=1))
+        self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='vbravo',user_id=1))
       
     def post(self):
         

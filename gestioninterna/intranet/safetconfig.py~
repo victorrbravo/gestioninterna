@@ -8,7 +8,7 @@ SERVER_URL        =  u"http://localhost/intranet"
 LOGIN_URL         =  u"http://localhost//intranet/login"
 TEMPLATES_PATH    =  u"/var/www/media/templates"
 TEMPLATES_URL     =  u"http://localhost/media/templates/"
-HOMESAFET_PATH    =  u"/home/debian"
+HOMESAFET_PATH    =  u"/home/vbravo"
 MEDIA_PATH        =  u"/var/www/media"
 MEDIA_URL         =  u"http://localhost/media"
 
