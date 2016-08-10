@@ -1478,8 +1478,11 @@ class GeneratePdfParametroHandler(tornado.web.RequestHandler):
 	    print "myjson:" + myjson		
             mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
             print mypubs['fechasolicitud']
-            render_to_pdf(mypubs,'Planilla_Vacaciones.pdf')
-            self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo',user_id=1))            
+            
+            if render_to_pdf(mypubs,'Planilla_Vacaciones.pdf'):
+                self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo',user_id=1))            
+            else:
+                self.write(loader.load("generatepdfParameter.html").generate(error = "Usuario no existe...??",mymessage=False,current_user='vbravo',user_id=1))
         except Exception as e:
 	    print "Exception: "
 	    print e

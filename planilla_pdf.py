@@ -26,7 +26,7 @@ def Plantilla_HTML(mydata):
             </style>
         </head>
         <body>
-        <center><img SRC="static/a.png" NAME="gráficos" WIDTH=514 HEIGHT=32 ></center>
+        <center><img SRC="static/logo_planilla_vacaciones.png" NAME="gráficos" WIDTH=514 HEIGHT=32 ></center>
          <P ALIGN=CENTER ><FONT COLOR="#000080" style="font-size: 12pt"><B>SOLICITUD DE VACACIONES</B></FONT></P>
         <br>
         <table width="100%"  cellspacing="0" cellpadding="5" >
