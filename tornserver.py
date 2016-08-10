@@ -41,6 +41,7 @@ import re
 import PIL
 from PIL import Image
 from collections import OrderedDict
+from reportes import render_to_pdf
 
 
 #from torndsession.sessionhandler import SessionBaseHandler
@@ -1454,6 +1455,60 @@ class LogoutHandler(tornado.web.RequestHandler):
         loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
         self.write(loader.load("login.html").generate(mymessage=False))
 
+class GeneratePdfParametroHandler(tornado.web.RequestHandler):
+    """
+       Permite generar el pdf de cualquier usuario con tal solo el
+       pasarle el parametro
+    """
+    
+    def get(self,parameters):
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))
+        current_user = self.get_secure_cookie("user")
+        current_pass = self.get_secure_cookie("pass")
+        
+        try:
+            myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+            result = myinflow.login(current_user,current_pass)
+            myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: "+ safetconfig.HOMESAFET_PATH +"/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:"+parameters+""
+            myinflow.toInputConsole(myconsult)  
+            myjson = u"%s" % (myinflow.currentJSON())
+            mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
+            print mypubs['fechasolicitud']
+            self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='jsulbaran',user_id=1))            
+        except:
+            self.write(loader.load("generatepdfParameter.html").generate(error = "Usuario no existe...??",mymessage=False,current_user='jsulbaran',user_id=1))
+
+class GeneratePdfHandler(tornado.web.RequestHandler):
+    """
+       Permite generar el pdf solo del usuario logueado
+    """
+    def get(self):
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates")) 
+        current_user = self.get_secure_cookie("user")
+        current_pass = self.get_secure_cookie("pass")
+        
+        safet_data = [{"id":"28","nombre": "(28)  ( Cedula V12778889)"}]
+        self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='jsulbaran',user_id=1))
+      
+    def post(self):
+        
+        loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
+        try:
+
+            myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+            result = myinflow.login(self.get_secure_cookie("user"),self.get_secure_cookie("pass"))
+            myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: "+ safetconfig.HOMESAFET_PATH +"/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:"+self.get_argument("usuario")
+            myinflow.toInputConsole(myconsult)  
+            myjson = u"%s" % (myinflow.currentJSON())
+            mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
+            render_to_pdf(mypubs,'Planilla_Vacaciones.pdf')
+            
+            self.write(loader.load("generatepdf.html").generate(safet_data = "",mymessage=False,current_user='jsulbaran',user_id=1))
+        except:
+            # un usuario login
+            safet_data = [{"id":"28","nombre": "(28)  ( Cedula V12778889)"}]
+            self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='jsulbaran',user_id=1))
+
 
 	
 class GoLoginHandler(tornado.web.RequestHandler):
@@ -1649,6 +1704,8 @@ mycontroller = [
             (r"/loaddata", LegacyLoadDataHandler),            
             (r"/checkrif", CheckRIFHandler),
             (r"/gologin", GoLoginHandler),
+            (r"/generatepdf/", GeneratePdfHandler),
+            (r"/generatepdf/([0-9]+)", GeneratePdfParametroHandler),            
             (r"/logout", LogoutHandler),
             (r"/goregister", GoRegisterHandler),
 	    (r"/listar/([^\s]+)/([^\s]+)", ListHandler),

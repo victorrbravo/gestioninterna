@@ -1,0 +1,69 @@
+<script>
+myval = 0;
+</script>
+
+{% extends "layouts/tc_main_layout.html" %}
+
+{% block title %}Generar PDF{% end %}
+
+{% block ownstyles %}
+	<link href="/static/css/safetform.css" rel="stylesheet">
+
+	<style type="text/css">
+
+		#safetform input[type="file"]{
+			display:none;
+		}
+
+		#safetform div.column {
+			margin-top: 15px;
+		}
+
+		#safetform input[type="radio"]{
+			margin-left: 20px;
+		}
+	</style>
+
+{% end %}
+
+{% block ownscripts %}
+<script src="/static/ckeditor/ckeditor.js"></script>
+
+
+{% end %}
+
+
+
+{% block panel %}
+
+<div class="panel panel-primary">
+<div class="panel-heading">Titulo</div>
+<div class="panel-body">
+        {% if safet_data %}
+        <form name="loadscoreForm" action="/generatepdf/" method="post" enctype="multipart/form-data">
+
+                <br>
+                Seleccionar el usuario:
+                <br>
+                <select name="usuario" id = "id_usuario">
+                        <option value="">Seleccionar.....</option>
+                        {% for dato in safet_data %}
+                                <option value="{{dato['id']}}">{{ dato['nombre'] }}</option>
+                        {% end %}
+                </select>
+                <br>
+                <br/>
+                
+                <input type="submit" value="Generar Planilla">
+        </form>
+        {% else %}
+        <center>
+            <i><p style='margin-left: 2em;' class="text-primary"><label> <font style="font-size: 14pt">Planilla de Vacaciones</font></label></p></i><br>
+            <embed src="/static/Planilla_Vacaciones.pdf" width="750" height="950"></embed>
+            <br>
+        </center>
+        {% end %}
+
+</div>
+</div>
+{% end %}
