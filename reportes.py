@@ -16,8 +16,8 @@ def render_to_pdf(mydata,nombre_archivo):
         pdf = pisa.CreatePDF(html,pdfFile)
         pdfFile.close()
                 
-        os.system("rm static/Planilla_Vacaciones.pdf")
-        os.system("mv Planilla_Vacaciones.pdf static/")
+        os.system("rm static/tmp/Planilla_Vacaciones.pdf")
+        os.system("mv Planilla_Vacaciones.pdf static/tmp/")
         
         return True
     except:

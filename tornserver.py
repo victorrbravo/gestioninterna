@@ -1479,10 +1479,9 @@ class GeneratePdfParametroHandler(tornado.web.RequestHandler):
             mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
             print mypubs['fechasolicitud']
             
-            if render_to_pdf(mypubs,'Planilla_Vacaciones.pdf'):
-                self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo',user_id=1))            
-            else:
-                self.write(loader.load("generatepdfParameter.html").generate(error = "Usuario no existe...??",mymessage=False,current_user='vbravo',user_id=1))
+            render_to_pdf(mypubs,'Planilla_Vacaciones.pdf')
+            self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo',user_id=1))            
+            
         except Exception as e:
 	    print "Exception: "
 	    print e
@@ -1497,7 +1496,7 @@ class GeneratePdfHandler(tornado.web.RequestHandler):
         current_user = self.get_secure_cookie("user")
         current_pass = self.get_secure_cookie("pass")
         
-        safet_data = [{"id":"28","nombre": "(28)  ( Cedula V12778889)"}]
+        safet_data = [{"id":"64","nombre": "(64) Victor R., Bravo B ( Cedula V12797664)"}]
         self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='vbravo',user_id=1))
       
     def post(self):
@@ -1516,7 +1515,7 @@ class GeneratePdfHandler(tornado.web.RequestHandler):
             self.write(loader.load("generatepdf.html").generate(safet_data = "",mymessage=False,current_user='jsulbaran',user_id=1))
         except:
             # un usuario login
-            safet_data = [{"id":"28","nombre": "(28)  ( Cedula V12778889)"}]
+            safet_data = [{"id":"64","nombre": "(64) Victor R., Bravo B ( Cedula V12797664)"}]
             self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='jsulbaran',user_id=1))
 
 
