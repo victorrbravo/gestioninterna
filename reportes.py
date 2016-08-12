@@ -9,15 +9,19 @@ def render_to_pdf(mydata,nombre_archivo):
     """
     Conviente la respuesta en un archivo pdf
     """    
-    html = Plantilla_HTML(mydata)
-    pdfFile = file(nombre_archivo, "wb")
-    pdf = pisa.CreatePDF(html,pdfFile)
-    pdfFile.close()
-    
-    os.system("rm static/Planilla_Vacaciones.pdf")
-    os.system("mv Planilla_Vacaciones.pdf static/")
-    
-    return True
+    try:
+            
+        html = Plantilla_HTML(mydata)
+        pdfFile = file(nombre_archivo, "wb")
+        pdf = pisa.CreatePDF(html,pdfFile)
+        pdfFile.close()
+                
+        os.system("rm static/tmp/Planilla_Vacaciones.pdf")
+        os.system("mv Planilla_Vacaciones.pdf static/tmp/")
+        
+        return True
+    except:
+        return False
     
   
 
