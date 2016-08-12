@@ -1,0 +1,36 @@
+operacion:enviar_compra_por_correo id:%1 Asunto: Venta Realizada Destinatarios: {#emailowner} Base:notifications__email__last_notification_seller  configurekey.Email/email.template.1:Felicitaciones.<br/>
+Su producto: <br/>
+<b> '{#summary{0}}' </b> <br/> 
+<img src='http://novoapps.info{#foto1}'>
+<br/>
+
+Ha sido comprado por: <b> {#buyer} </b> <br/>
+El correo del comprador es: <b> {#buyeremail} </b>  <br/>
+El telefono del comprador es: <b> {#buyerphone} </b>  <br/>
+
+<b> Precio: {#price} </b> <br/>
+
+<br/>
+<br/>
+Weetup 2015. todos los derechos reservados.
+##SAFETSEPARATOR##
+operacion:enviar_compra_por_correo id:%1 Asunto: Compra Realizada Destinatarios:_EMAIL   Base:notifications__email__last_notification_buyer  configurekey.Email/email.template.1:
+
+Hola _REALNAME <br/> 
+<br/>
+Usted acaba de realizar la compra  del siguiente producto <br/> 
+<b> '{#summary{0}}' </b> <br/> 
+
+<img src='http://novoapps.info{#foto1}'>
+
+<b> Precio: {#price} </b> <br/>
+
+<br/>
+Contacte a: <br/>
+<b> {#emailowner} </b> <br/>
+<b> {#apellidosowner}, {#nombresowner} </b> <br/>
+<b> Telefono: {#telefonoowner} </b> <br/>
+ 
+<br/>
+weetup 2015. todos los derechos reservados.
+

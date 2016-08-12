@@ -45,7 +45,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 
 <task id="DireccionInterna"  title="Planilla vista_vacaciones" >
 	<port side="forward" type="split"   pattern="none" >
-	    <connection source="DireccionEjecutiva" query="select status from vista_vacaciones" options="Direccion_ejecutiva" >
+	    <connection source="DireccionEjecutiva" query="select status from vista_vacaciones" options="Direccion_ejecutiva" >	       
         </connection>	
 	</port>
 	 <variable id="vDireccionInterna" scope="task"  type="sql" config="1"   tokenlink=""
@@ -59,6 +59,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 	<port side="forward" type="split"   pattern="none" >
 	    <connection source="Finanzas" query="select status from vista_vacaciones" options="Finanzas" >
         </connection>	
+	
 	</port>
 	 <variable id="vDireccionEjecutiva" scope="task"  type="sql" config="1"   tokenlink=""
                  documentsource="select id,id_cedula from vista_vacaciones"
@@ -67,11 +68,10 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
      </variable>
 </task>
 <task id="Finanzas"  title="Aprobacion del Presidente" >
-	<port side="forward" type="split" pattern="or" >
+	<port side="forward" type="split" pattern="none" >
 		<connection source="Archivar_solicitud_procesada" query="select status from vista_vacaciones" options="Archivar_solicitud_procesada" tokenlink="" >
 		</connection>
-		<connection   source="TalentoHumano" query="select status from vista_vacaciones"  options="Talento_humano" tokenlink="" back="yes" >
-		</connection>
+		
 	</port>
 	 <variable id="vFinanzas" scope="task"  type="sql" config="1"   tokenlink=""
                  documentsource="select id,id_cedula, nombreapellido from vista_vacaciones"

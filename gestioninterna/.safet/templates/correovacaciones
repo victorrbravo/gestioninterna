@@ -1,0 +1,36 @@
+operacion:enviar_solicitud_por_correo Periodo_vacacional:%1 Asunto:Planilla de vacaciones  Destinatarios: {#nombre_cuenta_correo_electronico}  configurekey.Email/email.template.1: Se ha generado la planilla de vacaciones correspondiente al periodo solicitado <br/>.
+<br/>
+
+Estimado: {#nombreapellido}
+<br/>
+Su solicitud de fecha {#fechasolicitud} ha sido ingresada.
+<br/>
+<br/>
+Usted ha solicitado un total de {#diassolicitados} habiles.
+
+<br/>
+<br/>
+Desde la fecha: {#fechainicio}
+
+<br/>
+Hasta la fecha: {#fechafin}
+
+<br/>
+<br/>
+<br/>
+Su planilla la puede descargar en el sistema de Gestion Interna,
+En el menu "Vacaciones", opcion "Planilla PDF Actual"
+
+<br/>
+<br/>
+
+Se le enviara un correo cuando la solicitud sea procesada.
+
+<br/>
+<br/>
+Usted debera  reincorporarse en  fecha {#fechaincorporacion},
+<br/>
+<br/>
+Gestion Interna Cenditel 2016.
+
+

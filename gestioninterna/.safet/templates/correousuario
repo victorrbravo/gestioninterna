@@ -1,0 +1,10 @@
+operacion:enviar_usuario_por_correo id:%1 Asunto: Alguien lo siguio  Destinatarios: {#email}   configurekey.Email/email.template.1: Alguien lo siguio<br/>
+
+Para ver quien lo siguio consulte la lista de <a href='http://63.142.253.204/shownotifications/none/_SAFETTICKET'>notificaciones</a>
+
+
+
+<br/>
+<br/>
+Weetup 2015. todos los derechos reservados.
+

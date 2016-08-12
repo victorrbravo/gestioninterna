@@ -1,0 +1,8 @@
+operacion:enviar_comentario_por_correo id:%1 Asunto: Se ha realizado una pregunta  Destinatarios: {#emailowner}   configurekey.Email/email.template.1: Se ha realizado una pregunta<br/>
+
+Para responde a la pregunta, siga el siguiente este <a href='http://63.142.253.204/showcomm/_SAFETTICKET/none/{#publication_id}'>enlace</a>
+
+<br/>
+<br/>
+Weetup 2016. todos los derechos reservados.
+
