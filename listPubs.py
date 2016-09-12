@@ -20,8 +20,10 @@ myconsult = u"operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/v
 myconsult =u"operacion:Generar_gráfico_coloreado Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/flujo_publicaciones.xml"
 myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:63"
 #myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud"
+
 myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud "
 
+myconsult = u"operacion:Listar_datos Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml Variable: vTrimestre"
 print myconsult
 
 result = myinflow.login("vbravo","zpinquar") 
@@ -40,8 +42,8 @@ if not result:
 myjson = u"%s" % (myinflow.currentJSON())
 print myjson
 
-mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
-print mypubs
+#mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
+#print mypubs
 
 exit()
 mypubs = json.loads(u"%s" % (myinflow.currentJSON()) )["safetlist"][0]

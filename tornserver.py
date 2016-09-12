@@ -41,7 +41,7 @@ import re
 import PIL
 from PIL import Image
 from collections import OrderedDict
-from reportes import render_to_pdf
+#from reportes import render_to_pdf
 
 
 #from torndsession.sessionhandler import SessionBaseHandler
@@ -979,11 +979,12 @@ class ListHandler(tornado.web.RequestHandler):
 #	print "*" * 80
 	mykeys = []
 #	print "1." + ("*" * 80)
-	if len(mylist) > 0:
+	mycount = len(mylist)
+	if mycount > 0:
 		mykeys = mylist[0].keys()
 	
 	
-    	self.write(loader.load("listparents.html").generate(mylist = mylist, mykeys = mykeys, current_user = current_user, user_id=1))
+    	self.write(loader.load("listparents.html").generate(mylist = mylist, mykeys = mykeys, current_user = current_user, user_id=1, mycount = mycount))
 
 	
 
