@@ -1,0 +1,29 @@
+# 
+
+# deb cdrom:[Debian GNU/Linux 8.3.0 _Jessie_ - Official amd64 NETINST Binary-1 20160123-18:59]/ jessie main
+
+#deb cdrom:[Debian GNU/Linux 8.3.0 _Jessie_ - Official amd64 NETINST Binary-1 20160123-18:59]/ jessie main
+###DEBIAN JESSIE ESTABLE###
+## Repositorio Oficial
+deb http://http.us.debian.org/debian/ jessie main contrib non-free
+deb-src http://http.us.debian.org/debian/ jessie main contrib non-free
+
+## Repositorio de Seguridad
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
+
+deb http://debian.cenditel/debian/ jessie main
+deb-src http://debian.cenditel/debian/ jessie main
+
+deb http://security.debian.org/ jessie/updates main
+deb-src http://security.debian.org/ jessie/updates main
+
+# jessie-updates, previously known as 'volatile'
+deb http://debian.cenditel/debian/ jessie-updates main
+deb-src http://debian.cenditel/debian/ jessie-updates main
+
+
+deb http://dl.google.com/linux/chrome/deb/ stable main
+
+
+deb http://tibisay.cenditel.gob.ve/repositorio jessie main

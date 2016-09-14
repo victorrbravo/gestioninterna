@@ -1,26 +1,34 @@
 # -*- coding: utf-8 -*-
 
-import ho.pisa as pisa
+from xhtml2pdf import pisa
+import cStringIO as StringIO
+
 from planilla_pdf import Plantilla_HTML
 import os
 
 
 def render_to_pdf(mydata,nombre_archivo):
-    """
-    Conviente la respuesta en un archivo pdf
-    """    
     try:
-            
+        print "render 1"    
+	#html = u""
         html = Plantilla_HTML(mydata)
-        pdfFile = file(nombre_archivo, "wb")
-        pdf = pisa.CreatePDF(html,pdfFile)
-        pdfFile.close()
-                
-        os.system("rm static/tmp/Planilla_Vacaciones.pdf")
-        os.system("mv Planilla_Vacaciones.pdf static/tmp/")
+
+	result = StringIO.StringIO()
+
+	pdf = pisa.pisaDocument(StringIO.StringIO(html), dest=result)                
         
-        return True
-    except:
+	if not pdf.err:
+		myfile = open("test.pdf","w")
+		myfile.write(result.getvalue())
+
+		myfile.close()
+		print "no error...ok!"
+		return True
+
+        return False
+    except Exception as e:
+	print "PDF exception"
+	print e
         return False
     
   

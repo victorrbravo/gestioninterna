@@ -41,7 +41,7 @@ import re
 import PIL
 from PIL import Image
 from collections import OrderedDict
-#from reportes import render_to_pdf
+from reportes import render_to_pdf
 
 
 #from torndsession.sessionhandler import SessionBaseHandler
@@ -1473,12 +1473,13 @@ class GeneratePdfParametroHandler(tornado.web.RequestHandler):
             myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: "+ safetconfig.HOMESAFET_PATH +"/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:"+parameters+""
 	    print myconsult
             result = myinflow.toInputConsole(myconsult)  
-	    print "result"
-	    print result
-            myjson = u"%s" % (myinflow.currentJSON())
-	    print "myjson:" + myjson		
+            myjson = u"%s" % (myinflow.currentJSON())	    
+
             mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
-            print mypubs['fechasolicitud']
+	    print "mypubs"
+	    print mypubs
+
+            print "dias: %s" % (mypubs['diassolicitados'])
             
             render_to_pdf(mypubs,'Planilla_Vacaciones.pdf')
             self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo',user_id=1))            
