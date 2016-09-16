@@ -142,7 +142,7 @@ def Plantilla_HTML(mydata):
         </tr>
         <tr>
             <td  STYLE="border: 1px solid #000000;" align="left">
-            SUPLENTE(S):
+              SUPLENTE(S):
             """
     HTML += str(mydata['nombres_suplente_1'])                  
     HTML += """                                    

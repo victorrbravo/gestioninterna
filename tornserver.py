@@ -1475,7 +1475,7 @@ class GeneratePdfParametroHandler(tornado.web.RequestHandler):
 	    print "mypubs"
 	    print mypubs
 
-            print "dias: %s" % (mypubs['diassolicitados'])
+            print "nombres_suplente_1: %s" % (mypubs['nombres_suplente_1'])
             name_file = 'planilla.pdf'
             render_to_pdf(mypubs,name_file)
             self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo', name_file = name_file,user_id=1))            

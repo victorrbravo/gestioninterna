@@ -27,7 +27,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 
 	</port>
 	 <variable id="vSolicitud" scope="task"  type="sql" config="1"   tokenlink="" 
-                documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
  rolfield=""  timestampfield="" groupby="ORDER BY id DESC" 
 
  >
@@ -41,7 +41,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
         </connection>
 	</port>
 	 <variable id="vVacaciones_solicitadas" scope="task"  type="sql" config="1"   tokenlink="" 
-                documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia ,nombre_cuenta_correo_electronico from vista_vacaciones"
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia ,nombre_cuenta_correo_electronico from vista_vacaciones"
  rolfield="(select nombre_periodo from vista_vacaciones_registro where vista_vacaciones_registro.id_vista_vacaciones=vista_vacaciones.id and vista_vacaciones_registro.status='Archivar_solicitud_procesada' limit 1)"  timestampfield="(select fecha_accion from vista_vacaciones_registro where vista_vacaciones_registro.id_vista_vacaciones=vista_vacaciones.id and vista_vacaciones_registro.status='Archivar_solicitud_procesada' limit 1)" 
 
  >
@@ -54,7 +54,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 
 	</port>
 	 <variable id="vFirmadas" scope="task"  type="sql" config="1"   tokenlink="" 
-                documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia ,nombre_cuenta_correo_electronico from vista_vacaciones"
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia ,nombre_cuenta_correo_electronico from vista_vacaciones"
  rolfield="cn::Victor Rafael Bravo Bravo"  timestampfield="cn::Victor Rafael Bravo Bravo"
 
  >

@@ -24,8 +24,8 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 	<connection   source="Iniciado" query="select status from vista_vacaciones"  options="iniciado" tokenlink="" >
 		</connection>
 	</port>
-	 <variable id="VPor_usuario" scope="task"  type="sql" config="1"   tokenlink="" 
-                documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+	 <variable id="vPor_usuario" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
  rolfield=""  timestampfield="" groupby="ORDER BY id DESC" 
 
  >
@@ -39,7 +39,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 		</connection>
 	</port>
 	 <variable id="vIniciado" scope="task"  type="sql" config="1"   tokenlink="" 
-                documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones" >
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones" >
      </variable>
 </task>
 <task id="TalentoHumano"  title="todas" >
@@ -51,7 +51,7 @@ Descripcion: Archivo generado por plantilla de la Libreria SAFET
 
 	</port>
 	 <variable id="vTalentoHumano" scope="task"  type="sql" config="1"   tokenlink="" 
-                documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
 groupby="ORDER BY id DESC" 
 >
      </variable>
@@ -63,7 +63,7 @@ groupby="ORDER BY id DESC"
         </connection>	
 	</port>
 	 <variable id="vDireccionInterna" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
 
  >
      </variable>
@@ -76,7 +76,7 @@ groupby="ORDER BY id DESC"
 	
 	</port>
 	 <variable id="vDireccionEjecutiva" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
 
  >
      </variable>
@@ -88,7 +88,7 @@ groupby="ORDER BY id DESC"
 		
 	</port>
 	 <variable id="vFinanzas" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
 
  >
      </variable>
@@ -101,7 +101,7 @@ groupby="ORDER BY id DESC"
 		</connection>
 	</port>
 	 <variable id="vArchivar" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
  rolfield=""  timestampfield="" 
  >
      </variable>
