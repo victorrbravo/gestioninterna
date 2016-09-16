@@ -18,9 +18,10 @@ def render_to_pdf(mydata,nombre_archivo):
 	pdf = pisa.pisaDocument(StringIO.StringIO(html), dest=result)                
         
 	if not pdf.err:
-		myfile = open("test.pdf","w")
+	        name_file = "static/tmp/" + nombre_archivo
+		print name_file
+		myfile = open(name_file,"w")
 		myfile.write(result.getvalue())
-
 		myfile.close()
 		print "no error...ok!"
 		return True

@@ -47,7 +47,6 @@ from reportes import render_to_pdf
 #from torndsession.sessionhandler import SessionBaseHandler
 #from captcha.image import *
 
-
 import PIL
 from PyQt4.QtCore import *
 
@@ -58,6 +57,7 @@ from tornado.options import define, options
 #MYHOME = "/home/vbravo/gits/gestioninterna"
 MYHOME = "/home/vbravo/gits/gestioninterna"
 
+
 define("port", default=8080, help="run on the given port", type=int)
 
 sizeLarge = (320,320)
@@ -66,10 +66,6 @@ sizeSmall = (64,64)
 
 sizeProfile = (85,100)
  
-
-
-
-
     
 
 def resetpass(selurl):
@@ -1456,21 +1452,21 @@ class LogoutHandler(tornado.web.RequestHandler):
         loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
         self.write(loader.load("login.html").generate(mymessage=False))
 
+
 class GeneratePdfParametroHandler(tornado.web.RequestHandler):
-    """
-       Permite generar el pdf de cualquier usuario con tal solo el
-       pasarle el parametro
-    """
-    
-    def get(self,parameters):
+    def post(self):
         loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))
         current_user = self.get_secure_cookie("user")
         current_pass = self.get_secure_cookie("pass")
         
+	print "GeneratePdfParametroHandler...1"
+	id_form = self.get_argument("id_form")
+	print "GeneratePdfParametroHandler...2...id_form:|%s|"  % (id_form)
+
         try:
             myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
             result = myinflow.login(current_user,current_pass)
-            myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: "+ safetconfig.HOMESAFET_PATH +"/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:"+parameters+""
+            myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: "+ safetconfig.HOMESAFET_PATH +"/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:"+id_form+""
 	    print myconsult
             result = myinflow.toInputConsole(myconsult)  
             myjson = u"%s" % (myinflow.currentJSON())	    
@@ -1480,14 +1476,18 @@ class GeneratePdfParametroHandler(tornado.web.RequestHandler):
 	    print mypubs
 
             print "dias: %s" % (mypubs['diassolicitados'])
-            
-            render_to_pdf(mypubs,'Planilla_Vacaciones.pdf')
-            self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo',user_id=1))            
+            name_file = 'planilla.pdf'
+            render_to_pdf(mypubs,name_file)
+            self.write(loader.load("generatepdfParameter.html").generate(error = "",mymessage=False,current_user='vbravo', name_file = name_file,user_id=1))            
             
         except Exception as e:
 	    print "Exception: "
 	    print e
             self.write(loader.load("generatepdfParameter.html").generate(error = "Usuario no existe...??",mymessage=False,current_user='vbravo',user_id=1))
+	
+	return
+
+
 
 class GeneratePdfHandler(tornado.web.RequestHandler):
     """
@@ -1497,29 +1497,28 @@ class GeneratePdfHandler(tornado.web.RequestHandler):
         loader = tornado.template.Loader(os.path.join(MYHOME,"templates")) 
         current_user = self.get_secure_cookie("user")
         current_pass = self.get_secure_cookie("pass")
-        
-        safet_data = [{"id":"64","nombre": "(64) Victor R., Bravo B ( Cedula V12797664)"}]
+
+	safet_data = []
+		
+
+	try:     
+	        myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+	        result = myinflow.login(current_user,current_pass)
+
+		myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesUser.xml Variable: vTalentoHumano"
+		myinflow.toInputConsole(myconsult)  
+        	myjson = u"%s" % (myinflow.currentJSON())
+        	safet_data = json.loads(u"%s" % (myjson) )["safetlist"]
+	except Exception as e:
+		print "GeneratePdfException"
+		print e
+		print "=" * 80
+
+   
+	print "get...GeneratePDfHandler...1"        
         self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='vbravo',user_id=1))
       
-    def post(self):
-        
-        loader = tornado.template.Loader(os.path.join(MYHOME,"templates"))        
-        try:
-
-            myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
-            result = myinflow.login(self.get_secure_cookie("user"),self.get_secure_cookie("pass"))
-            myconsult = u"operacion:Listar_datos Cargar_archivo_flujo: "+ safetconfig.HOMESAFET_PATH +"/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:"+self.get_argument("usuario")
-            myinflow.toInputConsole(myconsult)  
-            myjson = u"%s" % (myinflow.currentJSON())
-            mypubs = json.loads(u"%s" % (myjson) )["safetlist"][0]
-            render_to_pdf(mypubs,'Planilla_Vacaciones.pdf')
-            
-            self.write(loader.load("generatepdf.html").generate(safet_data = "",mymessage=False,current_user='jsulbaran',user_id=1))
-        except:
-            # un usuario login
-            safet_data = [{"id":"64","nombre": "(64) Victor R., Bravo B ( Cedula V12797664)"}]
-            self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='jsulbaran',user_id=1))
-
+    
 
 	
 class GoLoginHandler(tornado.web.RequestHandler):
@@ -1706,7 +1705,6 @@ f["filename"])
 
 
 
-
 mycontroller = [           
             (r"/", GoLoginHandler),
             (r"/register", RegisterHandler),
@@ -1716,7 +1714,7 @@ mycontroller = [
             (r"/checkrif", CheckRIFHandler),
             (r"/gologin", GoLoginHandler),
             (r"/generatepdf/", GeneratePdfHandler),
-            (r"/generatepdf/([0-9]+)", GeneratePdfParametroHandler),            
+            (r"/generateformpdf/", GeneratePdfParametroHandler),            
             (r"/logout", LogoutHandler),
             (r"/goregister", GoRegisterHandler),
 	    (r"/listar/([^\s]+)/([^\s]+)", ListHandler),
@@ -1726,49 +1724,46 @@ mycontroller = [
             (r"/goform/([^\s]+)/([^\s]+)/(\d+|none)/?([^\s]*)", GoFormHandler),    
 	    (r"/ajaxforma_([^\s]+)", ProcessAjaxFormHandler),       
             (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': "/home/vbravo/github/boletas/boletas/static"}),
-
         ]
 
 
-
-## IF IS LOCAL
-###################################33
-
 class Application(tornado.web.Application):
-    def __init__(self):
-        settings = {
-            'static_path': os.path.join(MYHOME, "static"),
-            'cookie_secret': "32oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=",
-            'login_url': "/auth/login",
+   def __init__(self):
+       settings = {
+           'static_path': os.path.join(MYHOME, "static"),
+           'cookie_secret': "32oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=",
+           'login_url': "/auth/login",
             
-            'google_oauth': {
-                'key': 'client_id',
-                'secret': 'client_secret',
-                'redirect_uri': 'http://localhost:8080/login/google',
-                'scope': ['openid', 'email', 'profile']
-            },
-            'twitter_consumer_key': '5H74LPWThxV6HfgEEETdO7XBA',
-            'twitter_consumer_secret': 'vuj9kHkPOLwDm3PTaaTlhGl15YARGryw9PSoUXf25TYIjhjUwj',
-            'google_oauth': {
-                'key': '572851633771',
-                'secret': '7Hhn4WXM7RQHaildm0n0aOjv'
-            }
-        }
-        print os.path.join(MYHOME, "static")
+           'google_oauth': {
+               'key': 'client_id',
+               'secret': 'client_secret',
+               'redirect_uri': 'http://localhost:8080/login/google',
+               'scope': ['openid', 'email', 'profile']
+           },
+           'twitter_consumer_key': '5H74LPWThxV6HfgEEETdO7XBA',
+           'twitter_consumer_secret': 'vuj9kHkPOLwDm3PTaaTlhGl15YARGryw9PSoUXf25TYIjhjUwj',
+           'google_oauth': {
+               'key': '572851633771',
+               'secret': '7Hhn4WXM7RQHaildm0n0aOjv'
+           }
+       }
+       print os.path.join(MYHOME, "static")
 
-        handlers = mycontroller
+       handlers = mycontroller
         
-        tornado.web.Application.__init__(self, handlers, **settings)
+       tornado.web.Application.__init__(self, handlers, **settings)
 
 
 def main():
-    tornado.options.parse_command_line()
-    http_server = tornado.httpserver.HTTPServer(Application())
-    http_server.listen(options.port)
-    tornado.ioloop.IOLoop.instance().start()
+   tornado.options.parse_command_line()
+   http_server = tornado.httpserver.HTTPServer(Application())
+   http_server.listen(options.port)
+   tornado.ioloop.IOLoop.instance().start()
 
 
 
 if __name__ == "__main__":
-    main()
-myconfkey
+   main()
+
+
+

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Generar planilla de solicitud de vista_vacaciones" desc="Planilla que se generar con los datos de una solicitud de vista_vacaciones">
+<token key="id"  keysource="vista_vacaciones">
+</token>
+    
+<condition id="inicial" type="start">
+	<port side="forward" type="split"  >
+		<connection   source="Por_usuario" query="select usuario from vista_vacaciones"  options="_USERNAME" tokenlink="" >
+		</connection>
+	</port>
+</condition>
+<task id="Por_usuario"  title="{#ByUserCedula}" >
+	<port side="forward" type="split"  >
+	<connection   source="Iniciado" query="select status from vista_vacaciones"  options="iniciado" tokenlink="" >
+		</connection>
+	</port>
+	 <variable id="VPor_usuario" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+ rolfield=""  timestampfield="" groupby="ORDER BY id DESC" 
+
+ >
+     </variable>
+</task>
+
+
+<task id="Iniciado"  title="todas" >
+	<port side="forward" type="split"  >
+		<connection   source="TalentoHumano" query="select status from vista_vacaciones"  options="Talento_humano" tokenlink="" >
+		</connection>
+	</port>
+	 <variable id="vIniciado" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones" >
+     </variable>
+</task>
+<task id="TalentoHumano"  title="todas" >
+	<port side="forward" type="split" pattern="or" >
+		<connection   source="DireccionInterna" query="select status from vista_vacaciones"  options="Direccion_interna" tokenlink="" >
+		</connection>
+		<connection   source="Iniciado" query="select status from vista_vacaciones"  options="iniciado" tokenlink="" back="yes" >
+		</connection>
+
+	</port>
+	 <variable id="vTalentoHumano" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+groupby="ORDER BY id DESC" 
+>
+     </variable>
+</task>
+
+<task id="DireccionInterna"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"   pattern="none" >
+	    <connection source="DireccionEjecutiva" query="select status from vista_vacaciones" options="Direccion_ejecutiva" >	       
+        </connection>	
+	</port>
+	 <variable id="vDireccionInterna" scope="task"  type="sql" config="1"   tokenlink=""
+                 documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+
+ >
+     </variable>
+</task>
+
+<task id="DireccionEjecutiva"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"   pattern="none" >
+	    <connection source="Finanzas" query="select status from vista_vacaciones" options="Finanzas" >
+        </connection>	
+	
+	</port>
+	 <variable id="vDireccionEjecutiva" scope="task"  type="sql" config="1"   tokenlink=""
+                 documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+
+ >
+     </variable>
+</task>
+<task id="Finanzas"  title="Aprobacion del Presidente" >
+	<port side="forward" type="split" pattern="none" >
+		<connection source="Archivar_solicitud_procesada" query="select status from vista_vacaciones" options="Archivar_solicitud_procesada" tokenlink="" >
+		</connection>
+		
+	</port>
+	 <variable id="vFinanzas" scope="task"  type="sql" config="1"   tokenlink=""
+                 documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+
+ >
+     </variable>
+</task>
+<task id="Archivar_solicitud_procesada"  title="solicitud_archivada" >
+	<port side="forward" type="split"  pattern="or">
+		<connection source="final" query="true" options="" tokenlink="" >
+		</connection>
+	      <connection   source="TalentoHumano" query="select status from vista_vacaciones"  options="Talento_humano" tokenlink="" back="yes" >
+		</connection>
+	</port>
+	 <variable id="vArchivar" scope="task"  type="sql" config="1"   tokenlink=""
+                 documentsource="select id_cedula, status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia from vista_vacaciones"
+ rolfield=""  timestampfield="" 
+ >
+     </variable>
+</task>
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+

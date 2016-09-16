@@ -40,15 +40,15 @@ myval = 0;
 <div class="panel-heading">Titulo</div>
 <div class="panel-body">
         {% if safet_data %}
-        <form name="loadscoreForm" action="/generatepdf/" method="post" enctype="multipart/form-data">
+        <form name="loadscoreForm" action="/generateformpdf/" method="post" enctype="multipart/form-data">
 
                 <br>
-                Seleccionar el usuario:
+                Seleccionar la planilla a imprimir:
                 <br>
-                <select name="usuario" id = "id_usuario">
+                <select name="id_form" id = "id_form">
                         <option value="">Seleccionar.....</option>
                         {% for dato in safet_data %}
-                                <option value="{{dato['id']}}">{{ dato['nombre'] }}</option>
+                                <option value="{{dato['id']}}">( {{ dato['id'] }}) - {{ dato['nombreapellido'] }}</option>
                         {% end %}
                 </select>
                 <br>

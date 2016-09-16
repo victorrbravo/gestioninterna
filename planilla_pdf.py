@@ -33,32 +33,30 @@ def Plantilla_HTML(mydata):
         <tr>
             <td STYLE="border: 1px solid #000000;" COLSPAN=2 width="50%" align="left">
             SOLICITUD Nº:    
+            """
+    HTML += str(mydata['id'])       
+    HTML += """
             </td>
             <td STYLE="border: 1px solid #000000;" COLSPAN=3 width="50%" align="left" >
                FECHA DE LA SOLICITUD: 
         """
-    print "plantilla..2"
+    
     HTML += str(mydata['fechasolicitud'])[:10]
-    print "plantilla..3"
+    
     HTML +="""  
             </td>
         </tr>
         <tr>
             <td STYLE="border: 1px solid #000000;" width="40%"  align="left"  >
             APELLIDOS Y NOMBRES: 
-            <br>
         """
-    print "plantilla..4"
     HTML += str(mydata['nombreapellido'])
-    print "plantilla..5"
     HTML += """  
             </td>                    
             <td STYLE="border: 1px solid #000000;" COLSPAN=3  align="left" >
             CEDULA DE IDENTIDAD: 
-            <br>
         """
     HTML += str(mydata['id_cedula'])
-    print "plantilla..6"
     HTML += """  
             </td>
             <td STYLE="border: 1px solid #000000;" align="left" width="20%" >
@@ -75,14 +73,14 @@ def Plantilla_HTML(mydata):
             <td STYLE="border: 1px solid #000000;"  COLSPAN=3  align="left">
                CARGO:   
         """
-    HTML += str(mydata['cargo_1'])
+    HTML += str(mydata['cargo'])
     HTML +="""  
             </td>                    
             <td  STYLE="border: 1px solid #000000;" COLSPAN=2  align="left">
             DEPENDENCIA: 
         """
     HTML += str(mydata['departamento'])
-    print "plantilla..8"
+
     HTML += """  
             </td>                   
         </tr>
@@ -94,25 +92,44 @@ def Plantilla_HTML(mydata):
             DÍAS SOLICITADOS:  
             """
     HTML += str(mydata['diassolicitados'])
-    print "plantilla..9"
+
     HTML += """ 
             </td>
             <td  STYLE="border: 1px solid #000000;" align="left">
-            DIAS PENDIENTES:              
+            DIAS PENDIENTES:     
+            """
+    HTML += str(mydata['diasadicionales'])              
+    
+    HTML += """
             </td>
             <td  STYLE="border: 1px solid #000000;" align="left">
             PLANIFICACIÓN ESTIMADA:              
+            """
+    HTML += str(mydata['diasadisfrutar'])              
+    
+    HTML += """
+            
             </td>    
         </tr>
         <tr>
             <td  STYLE="border: 1px solid #000000;" align="left">
             VACACIONES SOLICITADAS:
             <br>DESDE:
+            """
+    HTML += str(mydata['fechainicio'][:10])                  
+    HTML += """
+            
             <br>HASTA:
+            """
+    HTML += str(mydata['fechafin'][:10])                  
+    HTML += """
+            
             </td>    
             <td  STYLE="border: 1px solid #000000;" align="left">
             NÚMERO DE DÍAS HÁBILES
-            <br>
+            """
+    HTML += str(mydata['diassolicitados'])                  
+    HTML += """            
             <br>
             <br> 
             </td>
@@ -125,13 +142,17 @@ def Plantilla_HTML(mydata):
         </tr>
         <tr>
             <td  STYLE="border: 1px solid #000000;" align="left">
-            SUPLENTE(S) INTERNO(S):
-            <br>
+            SUPLENTE(S):
+            """
+    HTML += str(mydata['nombres_suplente_1'])                  
+    HTML += """                                    
             <br>            
             </td>	    
             <td  STYLE="border: 1px solid #000000;" align="left">
-            CARGO(S) SUPLENTE(S) INTERNO(S):
-            <br>
+            CARGO(S) SUPLENTE(S):
+            """
+    HTML += str(mydata['cargo_suplente_1'])                  
+    HTML += """                                    
             <br>            
             </td>
             <td  STYLE="border: 1px solid #000000;" align="left">
