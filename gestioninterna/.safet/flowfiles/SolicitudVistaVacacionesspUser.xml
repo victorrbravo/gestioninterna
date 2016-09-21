@@ -53,7 +53,7 @@ configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalu
 
 	</port>
 	 <variable id="vSolicitud" scope="task"  type="sql" config="1"   tokenlink="" 
-                documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,'' as observaciones_presidencia from vista_vacaciones"
+                documentsource="select id,id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,'' as observaciones_presidencia from vista_vacaciones"
  rolfield=""  timestampfield="" 
 
  >
@@ -66,7 +66,7 @@ configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalu
         </connection>
 	</port>
 	 <variable id="vTalento_humano" scope="task"  type="sql" config="1"   tokenlink=""
-                documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from vista_vacaciones"
+                documentsource="select id,id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from vista_vacaciones"
 
  rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and status='Talento_humano' limit 1) as rol"  timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Talento_humano' limit 1) as tiempo" 
 
@@ -80,7 +80,7 @@ configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalu
         </connection>
 	</port>
 	 <variable id="vDireccionEjecutiva" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from vista_vacaciones"
  rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and status='DireccionEjecutiva' limit 1) as rol"  timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='DireccionEjecutiva' limit 1) as tiempo" 
 
 
@@ -107,7 +107,7 @@ configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalu
 
 	</port>
 	 <variable id="vPresidencia" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from vista_vacaciones"
  rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and status='Presidencia' limit 1) as rol"  timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Presidencia' limit 1) as tiempo" 
 
 
@@ -122,7 +122,7 @@ configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalu
 
 	</port>
 	 <variable id="vArchivar" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia from vista_vacaciones"
  rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and status='Archivar_solicitud_procesada' limit 1) as rol"  timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Archivar_solicitud_procesada' limit 1) as tiempo" 
 
 
@@ -137,7 +137,7 @@ configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalu
 
 	</port>
 	 <variable id="vNoFirmada_Talento" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, '' as  observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, '' as  observaciones_presidencia from vista_vacaciones"
 
  rolfield="cn::Endira Mora"  timestampfield="cn::Endira Mora"
 >
@@ -152,7 +152,7 @@ configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalu
 
 	</port>
 	 <variable id="vNoFirmada_Direccion" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,'' as  observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,'' as  observaciones_presidencia from vista_vacaciones"
 
  rolfield="cn::Antonio Araujo Brett"  timestampfield="cn::Antonio Araujo Brett"
 >
@@ -167,7 +167,7 @@ configurekey="Plugins.Graphviz/plugins.graphviz.stats.colorgradient" defaultvalu
 
 	</port>
 	 <variable id="vNoFirmada_Presidencia" scope="task"  type="sql" config="1"   tokenlink=""
-                 documentsource="select id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,'' as  observaciones_presidencia from vista_vacaciones"
+                 documentsource="select id,id_cedula, nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,'' as  observaciones_presidencia from vista_vacaciones"
 
  rolfield="cn::Victor Rafael Bravo Bravo"  timestampfield="cn::Victor Rafael Bravo Bravo"
 >

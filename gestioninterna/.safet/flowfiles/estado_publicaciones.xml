@@ -1,0 +1,56 @@
+
+<!DOCTYPE yawl SYSTEM 'file:///home/vbravo/.safet/dtd/yawlworkflow.dtd'>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<yawl version="0.01">
+ <workflow id="estado_publicaciones">
+  <token keysource="vacaciones" key="id"/>
+  <parameter title="Textualinfo" options="" type="string" mandatory="no"/>
+  <parameter title="Paralelo al nodo siguiente" options="No::No::No,Si::Si::Si" type="combolistliteral" mandatory="no"/>
+  <condition type="start" id="inicial">
+   <port side="forward" type="split">
+     <connection query="select status from vacaciones" options="iniciado" 
+source="Borrador"/>
+   </port>
+  </condition>
+  <task title="" id="Borrador" textualinfo="">
+   <port side="forward" type="split" >
+    <connection query="select status from vacaciones" options="TalentoHumano" source="TalentoHumano"/>
+   </port>
+   <variable config="1" documentsource="select  id,status from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="viniciado" rolfield="" scope="task" timestampfield=""/>
+  </task>
+  <task title="" id="TalentoHumano" textualinfo="">
+   <port  side="forward" type="split" pattern="none" >
+    <connection query="select status from vacaciones" options="iniciado" back="yes"  source="Borrador"/>    
+     <connection query="select status from vacaciones" options="DireccionEjecutiva" source="DireccionEjectiva"/>
+    
+   </port>
+   <variable config="1" documentsource="select  id,status from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="vTalentoHumano" rolfield="" scope="task" timestampfield=""/>
+  </task>
+  
+  <task title="" id="DireccionEjectiva" textualinfo="" report="yes">
+   <port side="bottom" type="split" pattern="none" >
+        <connection query="select status from vacaciones" options="Presidencia" source="Entregado"/>     
+   </port>
+   <variable config="1" documentsource="select  idi,status from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="vDireccionEjecutiva" rolfield="" scope="task" timestampfield=""/>
+  </task>
+  <task title="" id="Entregado" textualinfo="">
+   <port side="forward" type="split" pattern="or" >
+     <connection query="select status from vacaciones" options="iniciado" back="yes"  source="Borrador"/>
+    <connection query="true" options="" source="final"/>
+   </port>
+   <variable config="1" documentsource="select  id,status from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="vPresidencia" rolfield="" scope="task" timestampfield=""/>
+  </task>
+  <condition id="final">
+   <port side="forward" type="split">
+    <connection source=""/>
+   </port>
+  </condition>
+ </workflow>
+ <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_"/>
+</yawl>

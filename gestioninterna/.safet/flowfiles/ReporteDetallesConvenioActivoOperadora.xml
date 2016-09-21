@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE yawl SYSTEM 'file:///home/c30/.safet/dtd/yawlworkflow.dtd'>
+<!--
+Documento  : ConvenioOperadora.xml
+Creado     : 27/10/2015 09:27 AM
+Autor      : Josè Sulbaràn
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+
+<yawl version="0.01">
+ <workflow id="operadora_recaudacion">
+<token keysource="operadora_operadora" key="razon_social"/>
+ 
+  <!-- ################################################# -->
+
+  <condition type="start" id="inicial">
+   <port side="forward" type="split">
+   <connection query=" select usuario_operadora_id from operadora_operadora" options=">0" source="Operadora"
+      tokenlink=""/>
+   </port>
+  </condition>
+  
+  <!-- ################################################ -->
+
+  <task title="" id="Operadora"> 
+   <port side="forward" type="split" >
+         
+   <connection query=" select operadora_convenio.pagado from operadora_operadora" options="false" source="Detalle" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][convenio_id,id:operadora_convenio]"/>
+
+   </port>
+
+  <variable config="1" documentsource="select usuario_operadora_id from operadora_operadora"
+    type="sql" tokenlink=""  id="vOperadora" rolfield="" scope="task" timestampfield=""/>
+  </task>
+
+ <!-- ################################################### -->
+
+<task title="" id="Detalle"> 
+   <port side="forward" type="split">
+         
+      <connection query="true" options="" source="final"/>  
+   </port>
+   
+  <variable config="1" documentsource="select distinct rif, operadora_convenio.numero, operadora_convenio.fecha,
+  operadora_convenio.fecha_firma, operadora_convenio.tributo_adeudado, operadora_convenio.multas,
+  operadora_convenio.intereses_moratorios,operadora_convenio.monto_fianza,operadora_convenio.monto_total,
+  operadora_convenio.monto_cuota,operadora_convenio.num_cuotas,operadora_convenio.tasa_anual,operadora_convenio.pagado from operadora_operadora" 
+    type="sql" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][convenio_id,id:operadora_convenio]"  id="vDetalle" rolfield="" scope="task" timestampfield=""/>
+  </task>
+
+ <!-- ################################################### -->
+
+
+
+  <condition id="final">
+   <port side="forward" type="split">
+    <connection source=""/>
+   </port>
+  </condition>
+  
+ </workflow>
+ <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_"/>
+</yawl>

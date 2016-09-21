@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE yawl SYSTEM 'file:///home/c30/.safet/dtd/yawlworkflow.dtd'>
+<!--
+Documento  : RecaudacionOperadora.xml
+Creado     : 27/10/2015 09:27 AM
+Autor      : Ing. Josè Sulbaràn
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+<yawl version="0.01">
+ <workflow id="operadora_operadora">
+<token keysource="operadora_operadora" key="usuario_operadora_id"/>
+
+
+
+<parameter title="Anho" options="" type="string" mandatory="no"/>
+ <parameter title="Periodo" options="" type="string" mandatory="no"/>
+ <parameter title="Rif" options="" type="string" mandatory="no"/>
+
+<!-- ##############################################################################-->
+
+  <condition type="start" id="inicial">
+   <port side="forward" type="split">
+   <connection query=" select usuario_operadora_id from operadora_operadora" options=">0" source="Operadoras"
+      tokenlink=""/>
+
+   </port>
+  </condition>
+   
+
+<!-- ##############################################################################-->  
+
+
+  <task title="Generales" id="Operadoras">
+   <port side="forward" type="split">
+    
+    <connection
+       query="select rif from operadora_operadora" options="{#Rif}"  source="Rif_De_Busqueda"
+       tokenlink=""/>
+       
+   </port>
+
+   <variable config="1" documentsource="select razon_social from operadora_operadora" type="sql" 
+    tokenlink="" 
+    id="vOperadoras" rolfield="" scope="task"
+    timestampfield=""/>
+
+  </task>
+
+<!-- ##############################################################################-->
+
+  <task title="{#Rif}" id="Rif_De_Busqueda">
+   <port side="forward" type="split">
+    
+    <connection
+       query="select  operadora_recaudacion.anho from operadora_operadora" options="{#Anho}"  source="Anho"
+       tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][recaudacion_id,id:operadora_recaudacion]"/>
+       
+
+   </port>
+   <variable config="1" documentsource="select razon_social from operadora_operadora" type="sql" 
+    tokenlink="" 
+    id="vOperadora_De_Busqueda" rolfield="" scope="task"
+    timestampfield=""/>
+
+  </task>
+
+ <!-- ##############################################################################-->
+
+  <task title="::safethide::" id="Anho"> 
+   <port side="forward" type="split" >
+    
+     <connection query=" select operadora_recaudacion.num_periodo from operadora_operadora" options="{#Periodo}" source="Declarada"
+      tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][recaudacion_id,id:operadora_recaudacion]"/>
+     
+   </port>
+
+  <variable config="1" documentsource="select razon_social, operadora_recaudacion.id from operadora_operadora" type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][recaudacion_id,id:operadora_recaudacion]" 
+    id="vAnho" rolfield="" scope="task"
+    timestampfield=""/>
+ 
+  </task>
+
+
+<!-- ##############################################################################-->
+  
+
+   <task title="Operadora a declarado" id="Declarada"> 
+   <port side="forward" type="split" pattern="or" >
+    
+
+     <connection query="select operadora_pago.estatus_pago_id from operadora_operadora" options="1"
+       source="Pago_en_Revision" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][recaudacion_id,id:operadora_recaudacion][id,declaracion_id:operadora_detallepago][pago_id,id:operadora_pago]"/>
+ 
+  <connection query=" select operadora_declaracion.moroso from operadora_operadora" options="true" source="Moroso"
+      tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]"/>
+  
+        
+ 
+   </port>
+
+  <variable config="1" documentsource="select  operadora_declaracion.id, razon_social, operadora_declaracion.operadora_id, operadora_declaracion.recaudacion_id,  operadora_recaudacion.anho, operadora_recaudacion.num_periodo from operadora_operadora " type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]" 
+    id="vDeclarada" rolfield="" scope="task"
+    timestampfield=""/>
+ 
+  </task>
+
+ 
+
+
+<!-- ##############################################################################-->  
+
+<task title="Mora de la operadora" id="Moroso">
+   <port side="forward" type="split">
+
+<connection query=" select operadora_declaracion.convenio_id from operadora_operadora" options=">0" source="Convenio"
+      tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]"/>
+ 
+         
+   </port>
+   <variable config="1" documentsource="select razon_social, operadora_declaracion.operadora_id, operadora_declaracion.moroso from operadora_operadora" type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]" 
+    id="vMoroso" rolfield="" scope="task"
+    timestampfield=""/>
+
+  </task>
+
+  <!-- ##############################################################################-->  
+
+<task title="Convenios de la operadora" id="Convenio">
+   <port side="forward" type="split">
+          
+     <connection query="select operadora_pago.estatus_pago_id from operadora_operadora" options="1"
+       source="Pago_en_Revision" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][recaudacion_id,id:operadora_recaudacion][id,declaracion_id:operadora_detallepago][pago_id,id:operadora_pago]"/>
+ 
+         
+   </port>
+   <variable config="1" documentsource="select  operadora_declaracion.convenio_id, razon_social, operadora_declaracion.operadora_id, operadora_declaracion.id from operadora_operadora" type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]" 
+    id="vConvenio" rolfield="" scope="task"
+    timestampfield=""/>
+
+  </task>
+
+
+
+<!-- ##############################################################################-->  
+
+  <task title="Operadora esta en estado de revision" id="Pago_en_Revision">
+   <port side="forward" type="split">
+    
+     <connection query="select operadora_pago.estatus_pago_id from operadora_operadora" options="2"
+       source="Pago_Revisado" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][recaudacion_id,id:operadora_recaudacion][id,declaracion_id:operadora_detallepago][pago_id,id:operadora_pago]"/>
+
+
+
+   </port>
+   <variable config="1" documentsource="select razon_social from operadora_operadora" type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][recaudacion_id,id:operadora_recaudacion][id,declaracion_id:operadora_detallepago][pago_id,id:operadora_pago]" 
+    id="Pago_en_Revision" rolfield="" scope="task"
+    timestampfield=""/>
+
+  </task>
+
+  
+  <!-- ##############################################################################-->  
+
+  <task title="Operadora esta en estado revisado" id="Pago_Revisado">
+   <port side="forward" type="split">
+    
+ <connection query="select operadora_declaracion.pagado from operadora_operadora" options="true"
+       source="Pago" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]"/>
+
+          
+   </port>
+   <variable config="1" documentsource="select razon_social, operadora_recaudacion.id,operadora_recaudacion.anho, operadora_recaudacion.num_periodo, operadora_declaracion.recaudacion_id, operadora_declaracion.id, operadora_detallepago.declaracion_id, operadora_detallepago.id,  operadora_pago.id, operadora_pago.estatus_pago_id from operadora_operadora" type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][recaudacion_id,id:operadora_recaudacion][id,declaracion_id:operadora_detallepago][pago_id,id:operadora_pago]" 
+    id="Pago_Revisado" rolfield="" scope="task"
+    timestampfield=""/>
+
+  </task>
+  
+  
+<!-- ##############################################################################-->  
+
+
+  <task title="Pago de la operadora" id="Pago">
+   <port side="forward" type="split">
+    
+        <connection query="true" options="" source="final"/>     
+
+   </port>
+   <variable config="1" documentsource="select razon_social from operadora_operadora" type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]" 
+    id="Pago" rolfield="" scope="task"
+    timestampfield=""/>
+
+  </task>
+
+
+
+
+<!-- ##############################################################################-->  
+
+
+  <condition id="final">
+   <port side="forward" type="split">
+    <connection source=""/>
+   </port>
+  </condition>
+  
+
+
+ </workflow>
+ <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_"/>
+</yawl>

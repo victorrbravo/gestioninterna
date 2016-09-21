@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE yawl SYSTEM 'file:///home/c30/.safet/dtd/yawlworkflow.dtd'>
+<!--
+Documento  : ConvenioOperadora.xml
+Creado     : 27/10/2015 09:27 AM
+Autor      : Josè Sulbaràn
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+
+<yawl version="0.01">
+ <workflow id="operadora_declaracion">
+<token keysource="operadora_recaudacion" key="anho"/>
+ 
+<parameter title="Anho"  type="string" mandatory="si"/>
+<parameter title="Periodo"  type="string" mandatory="si"/>
+<parameter title="Convenio"  type="string" mandatory="si"/>
+  <!-- ################################################# -->
+
+  <condition type="start" id="inicial">
+   <port side="forward" type="split">
+   <connection query=" select anho from operadora_recaudacion" options="{#Anho}" source="Anho"
+      tokenlink=""/>
+   </port>
+  </condition>
+  
+
+  <!-- ################################################ -->
+
+  <task title="" id="Anho"> 
+   <port side="forward" type="split">
+    
+   
+    <connection query=" select num_periodo from operadora_recaudacion" options="{#Periodo}" source="Trimestre"
+      tokenlink=""/>
+
+
+   </port>
+
+  <variable config="1" documentsource="select anho from operadora_recaudacion" 
+    type="sql" tokenlink=""  id="vAnho" rolfield="" scope="task" timestampfield=""/>
+  </task>
+
+
+
+
+  <!-- ################################################ -->
+
+  <task title="" id="Trimestre"> 
+   <port side="forward" type="split">
+    
+   
+    <connection query=" select pagado from operadora_recaudacion" options="{#Convenio}" source="Convenios"
+      tokenlink="[id,recaudacion_id:operadora_declaracion]"/>
+
+   </port>
+
+  <variable config="1" documentsource="select  num_periodo from operadora_recaudacion" 
+    type="sql" tokenlink=""  id="vTrimestre" rolfield="" scope="task" timestampfield=""/>
+  </task>
+
+
+  <!-- ################################################ -->
+
+  <task title="Activo/Desactivo" id="Convenios"> 
+   <port side="forward" type="split">
+    
+   
+      <connection query="select operadora_pago.id from operadora_recaudacion" options=">0"
+       source="DataPorEstadoSinConvenio" tokenlink="[id,recaudacion_id:operadora_declaracion][id,declaracion_id:operadora_detallepago][pago_id,id:operadora_pago][operadora_declaracion.operadora_id,usuario_operadora_id:operadora_operadora]
+       "/>
+ 
+
+   </port>
+
+  <variable config="1" documentsource="select  num_periodo, pagado, operadora_declaracion.convenio_id from operadora_recaudacion" 
+    type="sql" tokenlink="[id,recaudacion_id:operadora_declaracion]"  id="vConvenios" rolfield="" scope="task" timestampfield=""/>
+  </task>
+
+
+<!-- ################################################## -->
+
+  <task title="" id="DataPorEstadoSinConvenio"> 
+   <port side="forward" type="split">
+    
+   <connection query="true" options="" source="final"/>
+     
+   </port>
+
+  <variable config="1" documentsource="select distinct operadora_id, razon_social,rif, fecha_pago, convenio_id, operadora_declaracion.id, operadora_declaracion.pagado from operadora_recaudacion" type="sql" 
+    tokenlink="[id,recaudacion_id:operadora_declaracion][id,declaracion_id:operadora_detallepago][pago_id,id:operadora_pago][operadora_declaracion.operadora_id,usuario_operadora_id:operadora_operadora]
+       " 
+    id="vDataPorEstadoSinConvenio" rolfield="" scope="task"
+    timestampfield="" groupby= "order by fecha_pago DESC "/>
+  </task>
+
+  <!-- ################################################ -->
+
+  <condition id="final">
+   <port side="forward" type="split">
+    <connection source=""/>
+   </port>
+  </condition>
+
+  
+ </workflow>
+ <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_"/>
+</yawl>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->        
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="vacaciones">
+        <token key="id"  keysource="vacaciones">
+        </token>
+<parameter title="Tarea a borrar" path="/home/vbravo/.safet/flowfiles/vacaciones.xml" options="" type="combotask" mandatory="no"/>
+ <parameter title="Nodo anterior" path="/home/vbravo/.safet/flowfiles/vacaciones.xml" options="" type="combotask" mandatory="no"/>
+<parameter title="Nodo a agregar" path="/home/vbravo/.safet/flowfiles/vacaciones.xml" options="" type="string" mandatory="no"/>
+<parameter title="Textualinfo"  options="" type="string" mandatory="no"/>
+<parameter title="Paralelo al nodo siguiente"  options="No::No::No,Si::Si::Si" type="combolistliteral" mandatory="no"/>
+        <condition id="inicial" type="start">
+                <port side="forward" type="split"   >
+                         <connection source="Todas" query="select id from vacaciones"  options=">0" >
+                        </connection>
+                </port>
+        </condition>
+        <task id="Todas"  title="Todas">
+                <port side="forward" type="split" >
+                        <connection source="final" query="true" options="" >
+                        </connection>
+                </port>
+                <variable id="vTodas" scope="task"  type="sql" config="1"   tokenlink="" documentsource="select id,id_cedula,diasadisfrutar,diasdisfrutados,diaspordisfrutar,fechainicioperiodo,fechafinperiodo,fechainicio,fechafin,diashabiles,diasinhabiles,bonoacancelar,bonoporcancelar,sueldodelmes,sueldoanticipado,status,suplenteinterno_1,suplenteinterno_2,observaciones_talento_humano,fechaincorporacion,fechasolicitud,totalapagar,informacion_usuario,nombre,fecha_ingreso,usuario,observaciones_direccion_ejecutiva,observaciones_presidencia,diasadicionales,diassolicitados,cedula_suplente_1,cedula_suplente_2,acepta_suplente1,acepta_suplente2 from vacaciones" >
+                </variable>
+        </task>
+<condition id="final">
+                <port side="forward" type="split">
+                        <connection source="">
+                        </connection>
+                </port>
+        </condition>
+</workflow>
+        <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+        </configuration>
+</yawl>

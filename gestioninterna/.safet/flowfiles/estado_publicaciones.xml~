@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE yawl SYSTEM 'file:///home/vbravo/.safet/dtd/yawlworkflow.dtd'>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<yawl version="0.01">
+ <workflow id="estado_publicaciones">
+  <token keysource="vacaciones" key="id"/>
+  <parameter title="Textualinfo" options="" type="string" mandatory="no"/>
+  <parameter title="Paralelo al nodo siguiente" options="No::No::No,Si::Si::Si" type="combolistliteral" mandatory="no"/>
+  <condition type="start" id="inicial">
+   <port side="forward" type="split">
+     <connection query="select status from vacaciones" options="Iniciado" 
+source="Borrador"/>
+   </port>
+  </condition>
+  <task title="" id="Borrador" textualinfo="">
+   <port side="forward" type="split" >
+    <connection query="select status from vacaciones" options="TalentoHumano" source="Publicado"/>
+   </port>
+   <variable config="1" documentsource="select  id,type,publishtime,changetime,owner,version,status,summary,description,keywords,foto1,foto2,foto3,foto4,approved,price,case score when 0 then 'Negativa' when 1 then 'Neutra' when -1 then 'n/a' else 'Positiva' end as score_name from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="vDraft" rolfield="" scope="task" timestampfield=""/>
+  </task>
+  <task title="" id="Publicado" textualinfo="">
+   <port  side="forward" type="split" pattern="none" >
+    <connection query="select status from vacaciones" options="TalentoHumano" back="yes"  source="Borrador"/>    
+     <connection query="select status from vacaciones" options="DireccionEjecutiva" source="Vendido"/>
+    
+   </port>
+   <variable config="1" documentsource="select  id,type,publishtime,changetime,owner,version,status,summary,description,keywords,foto1,foto2,foto3,foto4,approved,price,case score when 0 then 'Negativa' when 1 then 'Neutra' when -1 then 'n/a' else 'Positiva' end as score_name from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="vPublished" rolfield="" scope="task" timestampfield=""/>
+  </task>
+  
+  <task title="" id="Compras" textualinfo="" report="yes" >  
+   <port pattern="none" side="forward" type="split">
+    <connection query="select status from vacaciones" options="Presidencia" source="Entregado"/>
+   </port>
+   <variable config="1" documentsource="select  id,type,publishtime,changetime,owner,version,status,summary,description,keywords,foto1,foto2,foto3,foto4,approved,price,case score when 0 then 'Negativa' when 1 then 'Neutra' when -1 then 'n/a' else 'Positiva' end as score_name from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="vSales" 
+rolfield="" scope="task" timestampfield=""/>
+  </task>
+  <task title="" id="Vendido" textualinfo="" report="yes">
+   <port side="bottom" type="split" pattern="none" >
+        <connection query="select status from vacaciones" options="Presidencia" source="Entregado"/>     
+   </port>
+   <variable config="1" documentsource="select  id,type,publishtime,changetime,owner,version,status,summary,description,keywords,foto1,foto2,foto3,foto4,approved,price,case score when 0 then 'Negativa' when 1 then 'Neutra' when -1 then 'n/a' else 'Positiva' end as score_name from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="vSold" rolfield="" scope="task" timestampfield=""/>
+  </task>
+  <task title="" id="Entregado" textualinfo="">
+   <port side="forward" type="split" pattern="or" >
+     <connection query="select status from vacaciones" options="iniciado" back="yes"  source="Borrador"/>
+    <connection query="true" options="" source="final"/>
+   </port>
+   <variable config="1" documentsource="select  id,type,publishtime,changetime,owner,version,status,summary,description,keywords,foto1,foto2,foto3,foto4,approved,price,case score when 0 then 'Negativa' when 1 then 'Neutra' when -1 then 'n/a' else 'Positiva' end as score_name from vacaciones" groupby="order by id desc" type="sql" tokenlink="" id="vDelivered" rolfield="" scope="task" timestampfield=""/>
+  </task>
+  <condition id="final">
+   <port side="forward" type="split">
+    <connection source=""/>
+   </port>
+  </condition>
+ </workflow>
+ <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_"/>
+</yawl>

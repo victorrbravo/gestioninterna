@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE yawl SYSTEM 'file:///home/c30/.safet/dtd/yawlworkflow.dtd'>
+<!--
+Documento  : ConvenioOperadora.xml
+Creado     : 27/10/2015 09:27 AM
+Autor      : Josè Sulbaràn
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+
+
+<yawl version="0.01">
+ <workflow id="operadora_recaudacion">
+<token keysource="operadora_operadora" key="usuario_operadora_id"/>
+ 
+<parameter title="Rif"  type="string" mandatory="si"/>
+
+  <!-- ################################################# -->
+
+  <condition type="start" id="inicial">
+   <port side="forward" type="split">
+   <connection query=" select usuario_operadora_id from operadora_operadora" options=">0" source="Operadoras"
+      tokenlink=""/>
+   </port>
+  </condition>
+  
+
+<!-- ##############################################################################-->  
+
+
+  <task title="Generales" id="Operadoras">
+   <port side="forward" type="split">
+    
+    <connection
+       query="select rif from operadora_operadora" options="{#Rif}"  source="Rif_De_Busqueda"
+       tokenlink=""/>
+       
+   </port>
+
+   <variable config="1" documentsource="select razon_social from operadora_operadora" type="sql" 
+    tokenlink="" 
+    id="vOperadoras" rolfield="" scope="task"
+    timestampfield=""/>
+
+  </task>
+
+
+  <!-- ################################################ -->
+
+  <task title="{#Rif}" id="Rif_De_Busqueda"> 
+   <port side="forward" type="split" >
+  
+
+        <connection query="select operadora_declaracion.convenio_id from operadora_operadora" options=">0"
+       source="Convenio" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]"/>
+
+     
+   </port>
+
+  <variable config="1" documentsource="select usuario_operadora_id from operadora_operadora " 
+    type="sql" tokenlink=""  id="vRif_De_Busqueda" rolfield="" scope="task" timestampfield=""/>
+  </task>
+
+<!-- ################################################### -->
+
+  <task title="Convenios que a realizado la operadora" id="Convenio"> 
+   <port side="forward" type="split" pattern="or">
+  
+
+        <connection query="select operadora_convenio.pagado from operadora_operadora" options="true"
+       source="Desactivo" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][convenio_id,id:operadora_convenio]"/>
+ 
+         
+     <connection query="select  operadora_convenio.pagado from operadora_operadora" options="false"
+       source="Activo" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][convenio_id,id:operadora_convenio][id,convenio_id:operadora_pagoconvenio]"/>
+
+
+     
+   </port>
+
+  <variable config="1" documentsource="select distinct operadora_declaracion.convenio_id from operadora_operadora " 
+    type="sql" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion]" 
+     id="vConvenio" rolfield="" scope="task" timestampfield=""/>
+  </task>
+
+ <!-- ################################################### -->
+
+  <task title="Operadora tiene convenio activo" id="Activo"> 
+   <port side="forward" type="split" >
+    
+      <connection query="select operadora_pagoconvenio.convenio_id from operadora_operadora" options=">0"
+       source="Cuotas" tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][convenio_id,id:operadora_convenio][id,convenio_id:operadora_pagoconvenio]"/>
+     
+   
+   </port>
+  <variable config="1" documentsource="select distinct operadora_declaracion.convenio_id, operadora_convenio.pagado from operadora_operadora " type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][convenio_id,id:operadora_convenio][id,convenio_id:operadora_pagoconvenio]" 
+    id="vActivo" rolfield="" scope="task"
+    timestampfield=""/>
+  </task>
+
+ 
+<!-- ################################################## -->
+
+  <task title="Total de cuotas a pagar" id="Cuotas"> 
+   <port side="forward" type="split" >
+    
+       <connection query="true" options="" source="final"/>
+   </port>
+
+  <variable config="1" documentsource="select operadora_pagoconvenio.convenio_id from operadora_operadora" type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][convenio_id,id:operadora_convenio][id,convenio_id:operadora_pagoconvenio]" 
+    id="vCuotas" rolfield="" scope="task"
+    timestampfield=""/>
+  </task>
+  
+  <!--   ####################################################  -->
+  
+<task title="Operadora tiene convenios desactivos" id="Desactivo"> 
+   <port side="forward" type="split" >
+      <connection query="true" options="" source="final"/>
+   </port>
+  <variable config="1" documentsource="select operadora_declaracion.id, operadora_declaracion.convenio_id, operadora_convenio.pagado from operadora_operadora " type="sql" 
+    tokenlink="[usuario_operadora_id,operadora_id:operadora_declaracion][convenio_id,id:operadora_convenio]" 
+    id="vDesactivo" rolfield="" scope="task"
+    timestampfield=""/>
+  </task>
+
+  
+
+  <condition id="final">
+   <port side="forward" type="split">
+    <connection source=""/>
+   </port>
+  </condition>
+  
+ </workflow>
+ <configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_"/>
+</yawl>
