@@ -60,12 +60,10 @@ def Plantilla_HTML(mydata):
     HTML += """  
             </td>
             <td STYLE="border: 1px solid #000000;" align="left" width="20%" >
-            FECHA DE INGRESO: 
+            INGRESO: 
             <br/>
-        """
-    print "plantilla..6.1 %s" % (mydata['fecha_ingreso'][:10])
+        """    
     HTML += str(mydata['fecha_ingreso'][:10])
-    print "plantilla..7"
     HTML +="""  
             </td>
         </tr>
@@ -136,8 +134,6 @@ def Plantilla_HTML(mydata):
             <td  STYLE="border: 1px solid #000000;" align="left">
             FIRMA DEL SOLICITANTE:
             <br>
-            <br>
-            <br> 
             </td>
         </tr>
         <tr>
@@ -158,18 +154,15 @@ def Plantilla_HTML(mydata):
             <td  STYLE="border: 1px solid #000000;" align="left">
             FIRMA(S) SUPLENTE(S) INTERNO(S):
             <br>
-            <br>            
             </td>
         </tr>	
         <tr>
             <td  STYLE="border: 1px solid #000000;" COLSPAN=2 align="left">
-            FIRMA CARA VISIBLE: (o encargado de área para el caso de gestión interna)
-            <br>
+            <font style="font-size: 8pt">FIRMA CARA VISIBLE: (o encargado de área para el caso de gestión interna)</font>
             <br>
             </td>	    
             <td  STYLE="border: 1px solid #000000;" align="left">
-            FIRMA DIRECTOR DEL ÁREA: 
-            <br>
+            <font style="font-size: 8pt">FIRMA DIRECTOR DEL ÁREA:  </font>
             <br>
             </td>
         </tr>
@@ -177,11 +170,9 @@ def Plantilla_HTML(mydata):
             <td  STYLE="border: 1px solid #000000;" COLSPAN=2 align="left">
             FIRMA DIRECTOR DEL ÁREA: (De ser el caso)
             <br>
-            <br>
             </td>	    
             <td  STYLE="border: 1px solid #000000;" align="left">
             FIRMA DIRECTOR DEL ÁREA (De ser el caso)
-            <br>
             <br>
             </td>
         </tr>	
@@ -195,17 +186,14 @@ def Plantilla_HTML(mydata):
             <td  STYLE="border: 1px solid #000000;" align="left">
             FIRMA ÁREA DE TALENTO HUMANO:
             <br>
-            <br>
             </td>	    
             <td  STYLE="border: 1px solid #000000;" align="left">
             FIRMA DIRECCIÓN GESTIÓN INTERNA:
-            <br>
             <br>
             </td>
             <td  STYLE="border: 1px solid #000000;" align="left">
             FIRMA DIRECCIÓN  EJECUTIVA:
             <br>
-            <br>  		
             </td>
         </tr>	
         </table>
@@ -219,7 +207,6 @@ def Plantilla_HTML(mydata):
             <td  width="28%" STYLE="border: 1px solid #000000;" align="left">
             FECHA DE REINCORPORACIÓN:
             <br>
-            <br>
             </td>	    
             <td  width="28%" STYLE="border: 1px solid #000000;" align="left">
             FECHA FINALIZACIÓN VACACIONES:
@@ -228,11 +215,9 @@ def Plantilla_HTML(mydata):
             <td COLSPAN=2 align="left">
             DÍAS HÁBILES A DISFRUTAR:
             <br>
-            <br>	
             </td>
             <td width="16%" STYLE="border: 1px solid #000000;" align="left">
             DÍAS INHÁBILES:
-            <br>
             <br>
             </td>	    
         </tr>
@@ -240,17 +225,14 @@ def Plantilla_HTML(mydata):
             <td  STYLE="border: 1px solid #000000;" align="left">
             DIAS ADICIONALES:
             <br>
-            <br>	    
             </td>	    
             <td STYLE="border: 1px solid #000000;" align="left">
             BONO VACACIONAL:
             <br>
-            <br>	    
             </td>
             <td  STYLE="border: 1px solid #000000;" COLSPAN=3  align="left">
             VACACIONES PENDIENTES PERÍODOS:
             <br>
-            <br>	    
             </td>
         </tr>	
         <tr>
@@ -261,24 +243,20 @@ def Plantilla_HTML(mydata):
             <td  STYLE="border: 1px solid #000000;" COLSPAN=4 align="left">
             COMENTARIOS:
             <br>
-            <br>
             </td>
         </tr>
         <tr>
             <td  STYLE="border: 1px solid #000000;" align="left">
             ENCARGADO(A) DE NÓMINA:
             <br>
-            <br>	    
             </td>	    
             <td  STYLE="border: 1px solid #000000;" COLSPAN=2  align="left">
             FIRMA:
             <br>
-            <br>	    
             </td>
             <td  STYLE="border: 1px solid #000000;" COLSPAN=2  align="left">
             FECHA:
             <br>
-            <br>	    
             </td>	    
         <tr>
             <td   STYLE="border: 1px solid #000000; background-color: #D5D5D5; padding: 0 0 0 0;" COLSPAN=5 align="center">
@@ -304,7 +282,6 @@ def Plantilla_HTML(mydata):
             BONO VACACIONAL:
             <br>
             <br>
-            <br>	    
             </td>	    
             <td STYLE="border: 1px solid #000000;"  COLSPAN=2 align="left">
             VACACIONES A CANCELAR:
@@ -315,7 +292,6 @@ def Plantilla_HTML(mydata):
             TOTAL A CANCELAR:
             <br>
             <br>
-            <br>	    
             </td>
         </tr>	
         </table>	
