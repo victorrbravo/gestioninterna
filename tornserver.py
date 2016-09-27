@@ -1424,6 +1424,7 @@ class GoFormHandler(tornado.web.RequestHandler):
         #print "current_user: %s"  % (current_user)
         #print "current_pass: %s"  % (current_pass)
         
+        
 
         current_html = getForm(current_user,current_pass,myoperation,currid,ori_template)
 	#print current_html
@@ -1432,16 +1433,82 @@ class GoFormHandler(tornado.web.RequestHandler):
         print "GoForm...pubs...2...name_template:|" + name_template + "|"
           
 	print "GoForm...pubs...3...name_template:|" + name_template + "|" 
-	   
+
+
+	minit = initializeItemMenu(current_user,current_pass)
+	print "=" * 80	
+	print ""
+	menues  = {}
+	
+	menues["agregar_empleado"] =  generateItemMenu("agregar_empleado",minit,current_user,current_pass)
+	print ""
+	menues["Modificar_solicitud_vacaciones"] =  generateItemMenu("Modificar_solicitud_vacaciones",minit,current_user,current_pass)
+	
+	print "=" * 80
+   
         try:
 	        mytemplate = u"%s.html" % (name_template)
 	
-		self.write(loader.load( mytemplate ).generate(current_user = current_user,mycode= current_html, title = title, user_id = "1"))
+		self.write(loader.load( mytemplate ).generate(current_user = current_user,mycode= current_html, title = title, user_id = "1", menues = menues))
 		print "GoForm...4"
 	except Exception as e:
 		print "exceptioni**:"
 		print e
-       
+ 
+
+def initializeItemMenu(current_user,current_pass):
+      myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+      myinflow.setHostURL(safetconfig.SERVER_URL)     
+      myinflow.setHostMediaPath(safetconfig.MEDIA_URL)
+      myinflow.setInputPath(safetconfig.HOMESAFET_PATH + "/.safet/input/deftrac.xml")
+
+
+      result = myinflow.login(current_user,current_pass)    
+
+      if not result:
+	      print "error from authentication"
+	      return []
+	    
+      menues = []		
+      try:
+	
+	mymenu =  u"%s" % (myinflow.menuCommands())
+	menues = json.loads(mymenu)
+      except Exception as e:
+	    print "Exception JSON initializeItemMenu"
+	    print "e"
+	    print "---------------------------------"
+
+      return menues
+
+	
+      
+    
+
+
+def generateItemMenu(action_name, menues, current_user,current_pass, prefix = "/goform/addgeneric"):
+      newaction = "/" + action_name
+      currentitem = None    
+      newentry = ""		
+      
+      for n in menues["actions"]:
+	    if  currentitem != None:
+		break
+	    for i in n["items"]:
+	            if newaction == i["href"]:
+			currentitem = i
+			break
+
+
+      if currentitem == None:
+	    return newentry
+
+      newentry = u'<li><a href="%s%s/0">%s</a></li>' % (prefix, currentitem["href"],currentitem["action_name"])
+      return newentry
+		      
+		
+    
+  
 
 class LogoutHandler(tornado.web.RequestHandler):
     def get(self):
