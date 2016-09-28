@@ -1,0 +1,70 @@
+<script>
+myval = 0;
+</script>
+
+{% extends "layouts/tc_main_layout.html" %}
+
+{% block title %}Gestión Interna - Talento Humano{% end %}
+
+{% block ownstyles %}
+	<link href="/static/css/safetform.css" rel="stylesheet">
+
+	<style type="text/css">
+
+		#safetform input[type="file"]{
+			display:none;
+		}
+
+		#safetform div.column {
+			margin-top: 15px;
+		}
+
+		#safetform input[type="radio"]{
+			margin-left: 20px;
+		}
+	</style>
+
+{% end %}
+
+{% block ownscripts %}
+<script src="/static/ckeditor/ckeditor.js"></script>
+
+<script>
+function returnToApplicant() {
+  console.log("returnToApplicant");
+  myid = $("#Periodo_vacacional").val();
+  console.log(myid);
+  $.post('/ajaxforma_Siguiente_estado_solicitud', {  
+  Siguiente_Estado: 'Iniciado', periodo_vacacional: myid },
+	function(data) {
+	      console.log("respuesta");
+	      console.log(data);
+	      console.log("...");
+	  });
+}
+
+</script>
+
+{% end %}
+
+
+
+{% block panel %}
+
+			<div class="panel panel-primary">
+		      <div class="panel-heading">{{title}}</div>
+		      <div class="panel-body">
+		     	   {% raw mycode %}
+		      </div>
+		    </div>
+		
+<div class="panel panel-success">
+		      <div class="panel-heading">Acciones</div>
+		      <div class="panel-body">
+		     	   
+		     	   <button type="input" class="btn btn-success" onclick="returnToApplicant()" id="returnToApplicant" name="returnToApplicant"> Devolver al solicitante </button>
+		      </div>
+		    </div>
+				
+
+{% end %}

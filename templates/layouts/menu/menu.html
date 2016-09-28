@@ -74,12 +74,11 @@
                             <li><a href="/generatepdf/">Planilla PDF Actual</a></li>                 
                             <li class="divider"></li>                           
                             <li><a href="/listar/SolicitudVistaVacaciones/vSolicitud">Listar</a></li>		
-
-                            <li><a href="/goform/addgeneric/Siguiente_estado_solicitud/0">Cambiar estado</a></li>              
+                            {% raw menues["Siguiente_estado_solicitud"] if 'Siguiente_estado_solicitud' in menues else '' %}
                             <li class="divider"></li>                           
-                            <li><a href="/goform/addgeneric/Talento_humano/0">Talento humano  <span style="background-color:red" class="badge badge-info ">3</span> </a></li>             				
-                            <li><a href="/goform/addgeneric/Direccion_ejecutiva/0">Dirección ejecutiva</a></li>              
-                            <li><a href="/goform/addgeneric/Finanzas/0">Finanzas</a></li>              
+                            {% raw menues["Talento_humano"] if 'Talento_humano' in menues else '' %}
+                            {% raw menues["Direccion_ejecutiva"] if 'Direccion_ejecutiva' in menues else '' %}                            
+                            {% raw menues["Finanzas"] if 'Finanzas' in menues else '' %}                            
                           </ul>
                       </li>
 

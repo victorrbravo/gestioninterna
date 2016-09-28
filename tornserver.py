@@ -528,7 +528,7 @@ class ProcessFilesHandler(tornado.web.RequestHandler):
 	    filefield.strip()
 	    myoperation = myoperation + " " + filefield
 	    myoperation = myoperation.trimmed()
-	    print "ProcessFilesHandler....myoperation:%s" % (myoperation)
+	    print "ProcessFilesHandler....myoperation:\n|%s|" % (myoperation)
 	    
 		
 	    print "ProcessFilesHandler................3"
