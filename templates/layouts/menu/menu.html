@@ -76,7 +76,8 @@
                             <li><a href="/listar/SolicitudVistaVacaciones/vSolicitud">Listar</a></li>		
                             {% raw menues["Siguiente_estado_solicitud"] if 'Siguiente_estado_solicitud' in menues else '' %}
                             <li class="divider"></li>                           
-                            {% raw menues["Talento_humano"] if 'Talento_humano' in menues else '' %}
+                            <li><a href="/goform/addrh/Talento_humano/0">Talento humano</a></li>
+                            <!-- {% raw menues["Talento_humano"] if 'Talento_humano' in menues else '' %} -->
                             {% raw menues["Direccion_ejecutiva"] if 'Direccion_ejecutiva' in menues else '' %}                            
                             {% raw menues["Finanzas"] if 'Finanzas' in menues else '' %}                            
                           </ul>
@@ -85,7 +86,7 @@
 			<li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Permisos<span class="caret"></span></a>      
                           <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                            <li><a href="/goform/addgeneric/agregar_permiso/0">Agregar</a></li>s
+                            <li><a href="/goform/addgeneric/agregar_permiso/0">Agregar</a></li>
                             <li><a href="/goform/addgeneric/modificar_permiso/0">Modificar</a></li>
                             <li><a href="/goform/addgeneric/borrar_permisol/0">Borrar</a></li>
                             <li class="divider"></li>                           
