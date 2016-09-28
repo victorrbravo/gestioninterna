@@ -976,11 +976,12 @@ class ListHandler(tornado.web.RequestHandler):
 	mykeys = []
 #	print "1." + ("*" * 80)
 	mycount = len(mylist)
+	menues = menuToList("/goform/addgeneric",current_user,current_pass)
 	if mycount > 0:
 		mykeys = mylist[0].keys()
 	
 	
-    	self.write(loader.load("listparents.html").generate(mylist = mylist, mykeys = mykeys, current_user = current_user, user_id=1, mycount = mycount))
+    	self.write(loader.load("listparents.html").generate(mylist = mylist, mykeys = mykeys, current_user = current_user, user_id=1, mycount = mycount, menues = menues))
 
 	
 
@@ -1430,22 +1431,14 @@ class GoFormHandler(tornado.web.RequestHandler):
 	#print current_html
         
         modify_html = ""
-        print "GoForm...pubs...2...name_template:|" + name_template + "|"
+        print "GoForm...pubs...2...***name_template:|" + name_template + "|"
           
-	print "GoForm...pubs...3...name_template:|" + name_template + "|" 
+	print "GoForm...pubs...3...***name_template:|" + name_template + "|" 
 
 
-	minit = initializeItemMenu(current_user,current_pass)
-	print "=" * 80	
-	print ""
-	menues  = {}
-	
-	menues["agregar_empleado"] =  generateItemMenu("agregar_empleado",minit,current_user,current_pass)
-	print ""
-	menues["Modificar_solicitud_vacaciones"] =  generateItemMenu("Modificar_solicitud_vacaciones",minit,current_user,current_pass)
-	
-	print "=" * 80
-   
+	menues = menuToList("/goform/addgeneric",current_user,current_pass)
+
+ 
         try:
 	        mytemplate = u"%s.html" % (name_template)
 	
@@ -1455,6 +1448,34 @@ class GoFormHandler(tornado.web.RequestHandler):
 		print "exceptioni**:"
 		print e
  
+
+def menuToList(prefix, current_user,current_pass):
+  	minit = initializeItemMenu(current_user,current_pass)
+	print "=" * 80	
+	print ""
+	menues  = {}
+
+	newentry = ""		
+	
+	for n in minit["actions"]:
+	      for i in n["items"]:
+		      if len(i["href"]) > 0:
+			  myaction = i["href"][1:]
+			  #print "action:" + myaction
+			  menues[ myaction ] = 	 u'<li><a href="%s%s/0">%s</a></li>' % (prefix, i["href"],i["action_name"])
+
+	
+	return menues
+	
+	
+	
+	#menues["agregar_empleado"] =  generateItemMenu("agregar_empleado",minit,current_user,current_pass)
+	#print ""
+	#menues["Modificar_solicitud_vacaciones"] =  generateItemMenu("Modificar_solicitud_vacaciones",minit,current_user,current_pass)
+	
+	print "=" * 80
+  
+  
 
 def initializeItemMenu(current_user,current_pass):
       myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
@@ -1485,26 +1506,6 @@ def initializeItemMenu(current_user,current_pass):
       
     
 
-
-def generateItemMenu(action_name, menues, current_user,current_pass, prefix = "/goform/addgeneric"):
-      newaction = "/" + action_name
-      currentitem = None    
-      newentry = ""		
-      
-      for n in menues["actions"]:
-	    if  currentitem != None:
-		break
-	    for i in n["items"]:
-	            if newaction == i["href"]:
-			currentitem = i
-			break
-
-
-      if currentitem == None:
-	    return newentry
-
-      newentry = u'<li><a href="%s%s/0">%s</a></li>' % (prefix, currentitem["href"],currentitem["action_name"])
-      return newentry
 		      
 		
     
@@ -1530,6 +1531,8 @@ class GeneratePdfParametroHandler(tornado.web.RequestHandler):
 	id_form = self.get_argument("id_form")
 	print "GeneratePdfParametroHandler...2...id_form:|%s|"  % (id_form)
 
+        menues = menuToList("/goform/addgeneric",current_user,current_pass) 
+
         try:
             myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
             result = myinflow.login(current_user,current_pass)
@@ -1550,7 +1553,7 @@ class GeneratePdfParametroHandler(tornado.web.RequestHandler):
         except Exception as e:
 	    print "Exception: "
 	    print e
-            self.write(loader.load("generatepdfParameter.html").generate(error = "Usuario no existe...??",mymessage=False,current_user='vbravo',user_id=1))
+            self.write(loader.load("generatepdfParameter.html").generate(error = "Usuario no existe...??",mymessage=False,current_user='vbravo',user_id=1, menues = menues))
 	
 	return
 
@@ -1566,6 +1569,8 @@ class GeneratePdfHandler(tornado.web.RequestHandler):
         current_pass = self.get_secure_cookie("pass")
 
 	safet_data = []
+	
+	menues = menuToList("/goform/addgeneric",current_user,current_pass)
 		
 
 	try:     
@@ -1583,7 +1588,7 @@ class GeneratePdfHandler(tornado.web.RequestHandler):
 
    
 	print "get...GeneratePDfHandler...1"        
-        self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='vbravo',user_id=1))
+        self.write(loader.load("generatepdf.html").generate(safet_data=safet_data,mymessage=False,current_user='vbravo',user_id=1, menues = menues))
       
     
 

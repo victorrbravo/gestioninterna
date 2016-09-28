@@ -57,20 +57,20 @@
 			<li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Empleados<span class="caret"></span></a>      
                           <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                             {% raw menues["agregar_empleado"] %}
-			    <li><a href="/goform/addgeneric/modificar_empleado/0">Modificar</a></li>
-			    <li><a href="/goform/addgeneric/borrar_empleado/0">Borrar</a></li>
-	                            <li class="divider"></li>                           
-        		                    <li><a href="/listar/empleados/vTodas">Listar</a></li>		
+                             {% raw menues["agregar_empleado"] if 'agregar_empleado' in menues else '' %}
+                             {% raw menues["modificar_empleado"] if 'modificar_empleado' in menues else '' %}
+			      {% raw menues["borrar_empleado"] if 'borrar_empleado' in menues else '' %}
+	                      <li class="divider"></li>                           
+        		      <li><a href="/listar/empleados/vTodas">Listar</a></li>		
                           </ul>
                       </li>
 
 			<li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vacaciones<span class="caret"></span></a>      
                           <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                            <li><a href="/goform/addgeneric/agregar_solicitud_vacaciones/0">Agregar</a></li>
-                            <li><a href="/goform/addgeneric/Modificar_solicitud_vacaciones/0">Modificar</a></li>
-                            <li><a href="/goform/addgeneric/Borrar_solicitud/0">Borrar</a></li>
+                          {% raw menues["agregar_solicitud_vacaciones"] if 'agregar_solicitud_vacaciones' in menues else '' %}
+                          {% raw menues["Modificar_solicitud_vacaciones"] if 'Modificar_solicitud_vacaciones' in menues else '' %}                                                      
+                          {% raw menues["Borrar_solicitud"] if 'Borrar_solicitud' in menues else '' %}                                                                                
                             <li><a href="/generatepdf/">Planilla PDF Actual</a></li>                 
                             <li class="divider"></li>                           
                             <li><a href="/listar/SolicitudVistaVacaciones/vSolicitud">Listar</a></li>		
@@ -86,9 +86,9 @@
 			<li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Permisos<span class="caret"></span></a>      
                           <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                            <li><a href="/goform/addgeneric/agregar_representante_legal/0">Agregar</a></li>
-                            <li><a href="/goform/addgeneric/modificar_representante_legal/0">Modificar</a></li>
-                            <li><a href="/goform/addgeneric/borrar_representante_legal/0">Borrar</a></li>
+                            <li><a href="/goform/addgeneric/agregar_permiso/0">Agregar</a></li>s
+                            <li><a href="/goform/addgeneric/modificar_permiso/0">Modificar</a></li>
+                            <li><a href="/goform/addgeneric/borrar_permisol/0">Borrar</a></li>
                             <li class="divider"></li>                           
                             <li><a href="/listar/empleados/vTodas">Listar</a></li>		
 
