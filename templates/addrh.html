@@ -33,14 +33,25 @@ myval = 0;
 function returnToApplicant() {
   console.log("returnToApplicant");
   myid = $("#Periodo_vacacional").val();
+  
+  if ( myid.length == 0  )  {
+      alert("Debe seleccionar un número de Solicitud");
+      return;
+      
+  }
   console.log(myid);
   $.post('/ajaxforma_Siguiente_estado_solicitud', {  
-  Siguiente_Estado: 'Iniciado', periodo_vacacional: myid },
+  Siguiente_Estado: 'iniciado', periodo_vacacional: myid },
 	function(data) {
 	      console.log("respuesta");
 	      console.log(data);
 	      console.log("...");
+	      document.getElementById("returnToApplicant").innerHTML = "Devuelto"
+	      alert("Se ha devuelto la solicitud Nro "  + myid + " al solicitante");    
 	  });
+	  
+
+	  
 }
 
 </script>
@@ -59,10 +70,11 @@ function returnToApplicant() {
 		    </div>
 		
 <div class="panel panel-success">
-		      <div class="panel-heading">Acciones</div>
+		      <div class="panel-heading">Acciones 1</div>
 		      <div class="panel-body">
 		     	   
-		     	   <button type="input" class="btn btn-success" onclick="returnToApplicant()" id="returnToApplicant" name="returnToApplicant"> Devolver al solicitante </button>
+		     	   <button type="input" class="btn btn-success" 
+		     	   onclick="returnToApplicant()" id="returnToApplicant" name="returnToApplicant"> Devolver al solicitante </button>
 		      </div>
 		    </div>
 				
