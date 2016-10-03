@@ -683,12 +683,14 @@ class ProcessFormHandler(tornado.web.RequestHandler):
 	    myinflow.log("myoperation:" + myoperation)
 	    myuserid = 1
 	        
-	    	    	    
+
+	    menues = menuToList("/goform/addgeneric",current_user,current_pass)
+
 	    if not isinserted:
 	      
 		myerror = u"%s" % (myinflow.currentError())
 		print u"error:%s" % (myerror)
-		self.write(loader.load("editprofile.html").generate(mycode=current_html,successmessage=None,mymessage= myerror, pubs = None, current_user = current_user,user_id = myuserid))
+		self.write(loader.load("editprofile.html").generate(mycode=current_html,successmessage=None,mymessage= myerror, pubs = None, current_user = current_user,user_id = myuserid ,menues =  menues ))
 		return
 	    currpostaction = myinflow.postAction()
 	    if len(currpostaction) > 0:
