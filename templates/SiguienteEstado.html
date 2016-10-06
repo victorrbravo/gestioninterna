@@ -45,7 +45,8 @@ myval = 0;
 <script>
 $(document).ready(function (){
 	function Cargar_Botonera(Periodo_vacacional){
-		status = thisStatus();
+		var status = thisStatus();
+		console.log(status);
 		if (Periodo_vacacional != '') {  
 			//$('#panel_2').show();
 			$('#' + status).show();
@@ -57,10 +58,31 @@ $(document).ready(function (){
 		}
 	}
     
+    $('#Devuelto').change(function(){
+		console.log("cambio devuelto");
+		msjDevuelto($(this).val());
+	});
+	
 	$('#Periodo_vacacional').change(function(){
+		console.log("cambio Periodo Vacacional");
 		Cargar_Botonera($(this).val());
 	});
 });
+//Función que se ejecuta luego que se carga los datos en el formulario
+function safetProcessAfter() {
+    console.log("....safetProcessAfter....1");
+    var devuelto = document.getElementById("Devuelto").value;
+    console.log(devuelto);
+    mjsDevuelto(devuelto);
+}
+
+//Función que verifica si exite observación de devuelto en una solicitud
+function mjsDevuelto(Devuelto) {
+	console.log("msjDevuelto");
+	if ( Devuelto != '') {
+		alert(Devuelto);
+	}
+}
 
 function DevolverInicio() {
    myid = $("#Periodo_vacacional").val();
@@ -119,27 +141,29 @@ function DevolverDireccionEjecutiva() {
 }
 
 function thisStatus() {
-
-	estados = ["Talento_humano","Direccion_gestion_interna","Direccion_ejecutiva","Finanzas"];
-	seccion = document.getElementById('safetform').action;
-	ban = -1;
-	cont = 0;
+	var estados = ["Talento_humano","Direccion_gestion_interna","Direccion_ejecutiva","Finanzas"];
+	var estado = "";
+	var seccion = document.getElementById('safetform').action;
+	var ban = -1;
+	var cont = 0;
 	while (ban == -1) {
 		if (seccion.search(estados[cont]) == -1) { 
 			cont += 1;
 		}
 		else {
 			console.log(estados[cont]);
+			estado = estados[cont].toLowerCase();
 			ban = 0;
 		}
 	}
-	return estados[cont].toLowerCase();
+	return estado;
 }
 
 function returnToApplicant() {
 	status = thisStatus();
-    var observacion = $('#id_observacion_'+status).val(),
-    myid = $("#Periodo_vacacional").val(),
+    var observacion = $('#id_observacion_'+status).val();
+    console.log(observacion);
+    myid = $("#Periodo_vacacional").val();
     Estado_devolver = $('#bottonSubmit_'+status).val();
     
     if (observacion != ''){ 
@@ -151,11 +175,12 @@ function returnToApplicant() {
         $('#gif').show();
         document.getElementById("cargando").innerHTML = 'Cambiando el solocitante al estado ('+Estado_devolver+')......';
         $.post(
-            '/ajaxforma_Siguiente_estado_solicitud', 
-            {  
-               Siguiente_Estado: Estado_devolver, 
-               periodo_vacacional: myid 
-            },
+            '/ajaxforma_Devolver_solicitud', 
+            {  id: myid, Estatus: Estado_devolver, Devuelto: observacion },
+            //{  
+            //   Siguiente_Estado: Estado_devolver, 
+            //   periodo_vacacional: myid 
+            //},
             function(data) {
                 console.log(data);
                 $('#gif').hide();
@@ -163,8 +188,7 @@ function returnToApplicant() {
                 $('#id_msjexito').val('Se cambio exitosamente el solicitante Nro('+myid+') al estado ('+Estado_devolver+').');                  
                  window.location.href = '/goform/SiguienteEstado/'+status+'/0';    
               }
-        );
-        
+        );      
     }
     else{
         document.getElementById("validar").innerHTML =  '\
