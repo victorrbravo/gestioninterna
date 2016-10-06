@@ -453,26 +453,18 @@ action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.saf
 	</command>
 </operation>
 
-<operation  name="Devolver_a_Talento_Humano"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" action=""
-postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto:Solicitud de VACACIONES DEVUELTA Destinatarios: emora@cenditel.gob.ve lgrisolia@cenditel.gob.ve vbravo@cenditel.gob.ve configurekey.Email/email.template.1: Ha sido devuelta de la Dirección Ejecutiva la solicitud del trabajador {#nombreapellido} por la siguiente causa **RETURN**{#observaciones_direccion_ejecutiva}.**RETURN**Sistema SAFET-Tibisay" >
+<operation  name="Devolver_solicitud"  desc="Devolver la solicitud" icon="firmadoc.png">
     <command id ="1" type="actualizar" table="vacaciones" >
 	    <fields>
-	        <field type="combolisttable" options="id:vacaciones:where status='DireccionEjecutiva' or status='DireccionGestionInterna' or status='Finanzas'::'Solicitud Nro ' || id || ' - ' || nombre || ' - ' ||  usuario" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+	        <field type="combolisttable" options="id:vacaciones:where status!='Archivar_solicitud_procesada'::'('|| id || ') ' || nombre || ' - ' ||  usuario" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 			    id
 			</field>
 			<field type="string" mandatory="yes" title="Estatus">
                 status
             </field>
-            <field type="stringbox" mandatory="no" options="wiki" title="Observaciones_Dirección_Gestión_Interna" desc="Observaciones por parte de la dirección ejecutiva" validation="">
-                observaciones_direccion_gestion_interna
+            <field type="string" mandatory="no" title="Devuelto" desc="Observaciones por lo que fue devuelto">
+                devuelto
             </field>
-            <field type="stringbox" mandatory="no" options="wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de la dirección ejecutiva" validation="">
-                observaciones_direccion_ejecutiva
-            </field>
-		    <field type="stringbox" mandatory="no" options="wiki" title="Observaciones_Finanzas" desc="Observaciones por parte de la dirección ejecutiva" validation="">
-                observaciones_finanzas
-            </field>
-		    
 	    </fields>
     </command>
     <command id ="1" type="eliminar" table="vacaciones_registro" >
@@ -589,7 +581,10 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			</field>		
    			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
 				observaciones_direccion_ejecutiva	
-			</field>		
+			</field>
+			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
+                devuelto
+            </field>		
 		</fields>
 	</command>
 	<command id ="1" type="agregar" table="vacaciones_registro" >
@@ -618,7 +613,7 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
             <field type="number" mandatory="yes" title="Periodo" >
                  nombre_periodo
             </field>
-			<field type="string" literal="Direccion_gestion_interna" mandatory="yes" primarykey="no">
+			<field type="string" literal="Direccion_gestion_interna" mandatory="yes" primarykey="no" >
                  status
             </field>
         </fields>
@@ -700,7 +695,10 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			</field>		
    			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
 				observaciones_direccion_ejecutiva	
-			</field>		
+			</field>
+			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
+                devuelto
+            </field>		
 		</fields>
 	</command>
 	<command id ="1" type="agregar" table="vacaciones_registro" >
@@ -795,6 +793,9 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
             </field>
     		<field type="string" literal="Finanzas" mandatory="no">
                 status
+            </field>
+            <field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
+                devuelto
             </field>
 		</fields>
 	</command>
@@ -896,7 +897,10 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			</field>
 			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Finanzas" desc="Observaciones por parte del personal de Finanzas" validation="">
 				observaciones_finanzas
-			</field>		
+			</field>
+			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="">
+                devuelto
+            </field>		
 		</fields>
 	</command>
 	<command id ="1" type="agregar" table="vacaciones_registro" >
