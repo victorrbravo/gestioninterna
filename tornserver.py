@@ -680,11 +680,14 @@ class ProcessFormHandler(tornado.web.RequestHandler):
 	    print "Process .........isinserted:" + isinserted
 	    
 	    myinflow.log("*ProcessForm")
-	    myinflow.log("myoperation:" + myoperation)
+	    myinflow.log("**myoperation:" + myoperation)
 	    myuserid = 1
 	        
 
 	    menues = menuToList("/goform/addgeneric",current_user,current_pass)
+	  
+	  
+	    print "-" * 80
 
 	    if not isinserted:
 	      
@@ -692,15 +695,14 @@ class ProcessFormHandler(tornado.web.RequestHandler):
 		print u"error:%s" % (myerror)
 		self.write(loader.load("editprofile.html").generate(mycode=current_html,successmessage=None,mymessage= myerror, pubs = None, current_user = current_user,user_id = myuserid ,menues =  menues ))
 		return
-	    currpostaction = myinflow.postAction()
-	    if len(currpostaction) > 0:
-		allpost = "%s".strip() %  (currpostaction)
-		postlist = allpost.split("##SAFETSEPARATOR##")
-		for currpost in postlist:
-			presult = myinflow.toInputForm(currpost,False)
-			myinflow.log("PRESULT POSTACTION RESULT:" + presult)
 
+	    currpostaction = myinflow.postAction()
 	    
+	    
+	    myresult = executeFormAction(current_user, current_pass, currpostaction)
+	    
+
+	    print "-" * 80
 	    #mydir = u"/goform/%s/%s/%s" % (name_template,name_operation, currid)
 	    mydir = u"/goform/%s/%s/%s/success" % (name_template,name_operation, currid)
 	    #print "mydir (redirect):%s" % (mydir)
@@ -709,6 +711,30 @@ class ProcessFormHandler(tornado.web.RequestHandler):
 	      
 	    
 	    self.redirect(mydir)
+
+def executeFormAction(current_user, current_pass, action):
+	myinflow = Safet.MainWindow(safetconfig.HOMESAFET_PATH)
+	myinflow.setHostURL(safetconfig.SERVER_URL)     
+	myinflow.setHostMediaPath(safetconfig.MEDIA_URL)
+	myinflow.setInputPath(safetconfig.HOMESAFET_PATH + "/.safet/input/deftrac.xml")
+	
+	result = myinflow.login(current_user,current_pass)		
+
+	if len(action) > 0:
+		allpost = "%s".strip() %  (action)
+		postlist = allpost.split("##SAFETSEPARATOR##")
+		for currpost in postlist:
+			print "before send_email"
+			print "currpost: |" + currpost + "|"
+			print ""
+			presult = myinflow.toInputForm(currpost,False)
+			print ""
+			print "after send_email:"
+			print "presult: " + presult
+			#myinflow.log("PRESULT POSTACTION RESULT:" + presult
+			
+	return True		
+     
 
 
 def getPubs(current_user,current_pass,name_operation, par1 = "", currvar = ""):
