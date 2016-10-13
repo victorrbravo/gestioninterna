@@ -14,11 +14,9 @@ Iniciado [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label=
 Iniciado -> TalentoHumano;
 TalentoHumano [style=filled,image="cloud.ps", fontname="Helvetica", shape=Mrecord, label="{ TalentoHumano\ntodas | or}",fillcolor="#ffff99" ,color="black"];
 TalentoHumano -> DireccionInterna;
-TalentoHumano_stats [style="dashed"  label=<vbravo<br/>03/10/2016 04:31pm<br/>hace un minuto  llego<br/>N/A>shape="box" fontcolor="black" fillcolor="antiquewhite"];
-TalentoHumano_stats -> TalentoHumano [style="dotted"];
 inicial [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
 inicial -> Iniciado;
 final [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
-final_stats [style="dashed"  label=<Total: 0<br/>  >shape="box" fontcolor="black" fillcolor="antiquewhite"];
+final_stats [style="dashed"  label=<Total: 0<br/>>shape="box" fontcolor="black" fillcolor="antiquewhite"];
 final_stats -> final [style="dotted"];
 }
