@@ -1,1054 +1,873 @@
-jue sep 8 15:28:25 2016 [  DEBUG  ] ***************************
-jue sep 8 15:28:25 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:28:25 2016 [  DEBUG  ] ***************************
-jue sep 8 15:28:25 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:28:25 2016 [  DEBUG  ] ***************************
-jue sep 8 15:28:25 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:28:25 2016 [  DEBUG  ] ***************************
-jue sep 8 15:28:25 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:28:25 2016 [  DEBUG  ] ***************************
-jue sep 8 15:28:25 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] Activada fuente de datos con id: "1"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::MainWindow...SafetYAWL::_CURRCONFpath...:|/home/vbravo/.safet|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::MainWindow...SafetYAWL::pathconf...:|/home/vbravo/.safet|
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Permises/permises.operation.97" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Permises/permises.accounts.97" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Permises/permises.types.97" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Permises/permises.roles.97" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::MainWindow...loadAuthorization()....(1)
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Auth/auth.account.3" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::MainWindow...loadInfo()....(1)
-jue sep 8 15:30:41 2016 [  DEBUG  ] check ADDING_PAR...1
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...checkDefaultValuesParameters....1
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...checkDefaultValuesParameters....wf is NULL
-jue sep 8 15:30:41 2016 [  DEBUG  ] check ADDING_PAR...2
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::login....testing ticketvalid...(1)...
-jue sep 8 15:30:41 2016 [ ACTION  ] El usuario (sistema de autorizacion a cambiado a "vbravo"
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........MainWindow::toInputConsole..........*action:|operacion:Listar_datos Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml Variable: vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...action:|operacion:Listar_datos Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml Variable: vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...CONFIGUREKEY..EXTRACT..config pos:|-1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...AFTER_CONFIGS_action:|operacion:Listar_datos Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml Variable: vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...PARLIST...*parlist.count()):|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...PARLIST...*parlist.count())...2:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...*PARLIST...par:|parameters.operacion:Listar_datos Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml Variable: vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....par field:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....par field:|Listar_datos Cargar_archivo_flujo|
+  { "safetvariable" : "vSolicitud",
+ "safetkey" : "",
+ "safettitle" : "vSolicitud",
+"safetreport" : "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud ",
+"safetlistcount" : "0",
+"safetlist" : [],
+"safetcolumns"  : [  ]
+}
 
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...PARLIST...AFTER_PARS...par....result:|operacion:Listar_datos Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml Variable: vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...mypars.count()):|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..........MainWindow::setParsValues.....values.count():|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::extractParameters...myconfigs.count():|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::toInputConsole...action (extractParameters)NEWACTION:|operacion:Listar_datos Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml Variable: vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........SafetTexParser;;toXml....myxml.second:|/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........SafetTexParser;;toXml....myxml.second:|vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] Cadena XML generada de la entrada: 
+
+vie oct 14 09:25:28 2016 [  DEBUG  ] Activada fuente de datos con id: "1"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::MainWindow...SafetYAWL::_CURRCONFpath...:|/home/vbravo/.safet|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::MainWindow...SafetYAWL::pathconf...:|/home/vbravo/.safet|
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Permises/permises.operation.100" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Permises/permises.accounts.100" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Permises/permises.types.100" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Permises/permises.roles.100" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::MainWindow...loadAuthorization()....(1)
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.27" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.28" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.29" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.30" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.31" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.32" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.33" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.34" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.35" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.36" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.37" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.38" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.39" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.40" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.41" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.42" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.43" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.44" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.45" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.46" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.47" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.48" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.49" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.50" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.51" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.52" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.tickets.53" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Auth/auth.account.55" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::MainWindow...loadInfo()....(1)
+vie oct 14 09:25:28 2016 [  DEBUG  ] check ADDING_PAR...1
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...checkDefaultValuesParameters....1
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...checkDefaultValuesParameters....wf is NULL
+vie oct 14 09:25:28 2016 [  DEBUG  ] check ADDING_PAR...2
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::login....testing ticketvalid...(1)...
+vie oct 14 09:25:28 2016 [ ACTION  ] El usuario (sistema de autorizacion a cambiado a "vbravo"
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........MainWindow::toInputConsole..........*action:|operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...action:|operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...CONFIGUREKEY..EXTRACT..config pos:|-1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...AFTER_CONFIGS_action:|operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...PARLIST...*parlist.count()):|2|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...PARLIST...*parlist.count())...2:|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...*PARLIST...par:|parameters.ByPeriod:72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....par field:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....par field:|72|
+
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...PARLIST...AFTER_PARS...par....result:|operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud |
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...mypars.count()):|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ..........MainWindow::setParsValues.....values.count():|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::extractParameters...myconfigs.count():|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::toInputConsole...action (extractParameters)NEWACTION:|operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud |
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetTexParser;;toXml....myxml.second:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetTexParser;;toXml....myxml.second:|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] Cadena XML generada de la entrada: 
 "<operacion parameter='Listar_datos'>
 <Cargar_archivo_flujo>
- /home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml
+ /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml
 </Cargar_archivo_flujo>
 <Variable>
- vTrimestre
+ vSolicitud
 </Variable>
 </operacion>
 "
-jue sep 8 15:30:41 2016 [ ACTION  ] La  entrada de Datos fue procesado correctamente...ok
-jue sep 8 15:30:41 2016 [ ACTION  ] ABRIENDO el archivo para manipulacion de entrada: ->"/home/vbravo/.safet/input/defconsole.xml"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...Cargado SafetTextParser...openXML DomModel (1)...
-jue sep 8 15:30:41 2016 [  DEBUG  ] Hay "0" errores guardados en la lista. De inmediato se procede a inicializar la lista de errores.
-jue sep 8 15:30:41 2016 [  DEBUG  ] MainWindow::loadPermisesHierarchy()...
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Hierarchy/hierarchy.path.1" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::doPermiseExecOperation...PERMISE....MainWindow::permises....:|96|...permise:|read|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::doPermiseExecOperation...PERMISE...nameop:|Listar_datos|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...........SafetTextParser::processXml.....OPERATIONACTION...nameoperation:|Listar_datos|
-jue sep 8 15:30:41 2016 [  DEBUG  ] SafetTextParser buildFields: keyvalue: |/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] SafetTextParser::buildFields....**(CURR**)fieldkeysvalues:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...replacing optionsi(2): (USERNAME)...|vbravo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] SafetTextParser::doFieldValidation..........value...(1)...:|/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....(BEFORE)....SafetTextParser::doFieldValidation......................keyvalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***(AFTER)...SafetTextParser::doFieldValidation..........value...(2)...:|/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............DomModel::selWidgetFromField.....................keyvalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(3)....fields.count():|2|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(4)
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....options:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...field:|Cargar_archivo_flujo|....UMANDA:|yes|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(5)
-jue sep 8 15:30:41 2016 [  DEBUG  ] currtype:4
-jue sep 8 15:30:41 2016 [  DEBUG  ] FileName...(1)
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...GetFileWidget::GetFileWidget....(1)
-jue sep 8 15:30:41 2016 [  DEBUG  ] FileName...(2)
-jue sep 8 15:30:41 2016 [  DEBUG  ] FileName...(3)
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...GetFileWidget::updateCombo()....(1)
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........GetFileWidget::updateCombo......._selected.count():|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...........GetFileWidget::updateCombo(out).............mimes.count():|14|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|0|...:|/home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivo.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|1|...:|/home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoUser.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|2|...:|/home/vbravo/.safet/flowfiles/FlujoGestionReunionesConsejoDirectivoColoreado.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|3|...:|/home/vbravo/.safet/flowfiles/FlujoSolicitudVacaciones.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|4|...:|/home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|5|...:|/home/vbravo/.safet/flowfiles/SolicitudVacacionesg.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|6|...:|/home/vbravo/.safet/flowfiles/SolicitudVacacionesnv.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|7|...:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|8|...:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesE.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|9|...:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesT.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|10|...:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|11|...:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|12|...:|/home/vbravo/.safet/flowfiles/FlujoControldeCorrespondencia.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....GetFileWidget::updateCombo....file...i:|13|...:|/home/vbravo/.safet/flowfiles/reporteReunion.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...........****GetFileWidget::updateCombo(out).............
-jue sep 8 15:30:41 2016 [  DEBUG  ] FileName...(4)
-jue sep 8 15:30:41 2016 [  DEBUG  ] FileName...(5)
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetTextParser::doFieldValidation............path: |/home/vbravo/.safet/input/defconsole.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetTextParser::doFieldValidation...nameoperation: |Listar_datos|,namefield: |Cargar_archivo_flujo|,value:|/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..GetFileWidget::isValid...setting...SafetYAWL::combovarglobal0
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..GetFileWidget::isValid...setting..value:|/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] SafetTextParser::doFieldValidation..........value...(1)...:|vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....(BEFORE)....SafetTextParser::doFieldValidation......................keyvalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***(AFTER)...SafetTextParser::doFieldValidation..........value...(2)...:|vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............DomModel::selWidgetFromField.....................keyvalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(3)....fields.count():|2|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(4)
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...field:|Variable|....UMANDA:|yes|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ................DomModel::changefor...changefor:|Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(5)
-jue sep 8 15:30:41 2016 [  DEBUG  ] currtype:5
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField.................**ComboVar....kevalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField.................ComboVar....kevalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] CmdWidget::html caption:|Variable|...UISMANDATORY:|yes|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....ComboWidget::updateCombo()....type:|1|...|1|....|2|
-jue sep 8 15:30:41 2016 [  DEBUG  ] combovariable
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............ComboWidget::updateComboVariableSafet...keyvalue (before): |Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...ComboWidget::updateComboVariableSafet...MainWindow::mymainwindow is NULL: 0
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........loadPlugins...:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........loadPlugins...EMPTY
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet.....->keyvalue: |/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet........mykeyvalue:|/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet...openXML()..
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet.....->myautofilter: ||
-jue sep 8 15:30:41 2016 [  DEBUG  ] Activada fuente de datos con id: "1"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Activo/Desactivo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Activo/Desactivo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetTextParser::doFieldValidation............path: |/home/vbravo/.safet/input/defconsole.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetTextParser::doFieldValidation...nameoperation: |Listar_datos|,namefield: |Variable|,value:|vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...........ComboWidget::isValid.....COMBOVALIDATION...value:|vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...CmdWidget::isValid...mypattern:|\w+|....myvalue=:|vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] combovariable
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............ComboWidget::updateComboVariableSafet...keyvalue (before): |Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........loadPlugins...:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........loadPlugins...EMPTY
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet.....->keyvalue: |/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet........mykeyvalue:|/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet...openXML()..
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet.....->myautofilter: ||
-jue sep 8 15:30:41 2016 [  DEBUG  ] Activada fuente de datos con id: "1"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Activo/Desactivo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Activo/Desactivo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ComboUpdate  QUITAR...QUITAR*** HACER VALIDACION CON AUTOFILTER Y VARIABLE
-jue sep 8 15:30:41 2016 [  DEBUG  ]   La Sentencia SQL a ejecutarse (1): 
- "INSERT INTO lista (Cargar_archivo_flujo,Variable)  VALUES ('/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml','vTrimestre'); "
-jue sep 8 15:30:41 2016 [  DEBUG  ]   La Sentencia SQL a ejecutarse (2): 
- "INSERT INTO lista (Cargar_archivo_flujo,Variable)  VALUES ('/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml','vTrimestre'); "
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...........PROCESSING POSTACTION. (1)..newvalue:|/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml|
-jue sep 8 15:30:41 2016 [  DEBUG  ] MainWindow::toInputConsole.............results.at(0):|INSERT INTO lista (Cargar_archivo_flujo,Variable)  VALUES ('/home/vbravo/.safet/flowfiles/ReportePorEstadoConvenio.xml','vTrimestre'); |
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
+vie oct 14 09:25:28 2016 [ ACTION  ] La  entrada de Datos fue procesado correctamente...ok
+vie oct 14 09:25:28 2016 [ ACTION  ] ABRIENDO el archivo para manipulacion de entrada: ->"/home/vbravo/.safet/input/defconsole.xml"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...Cargado SafetTextParser...openXML DomModel (1)...
+vie oct 14 09:25:28 2016 [  DEBUG  ] Hay "0" errores guardados en la lista. De inmediato se procede a inicializar la lista de errores.
+vie oct 14 09:25:28 2016 [  DEBUG  ] MainWindow::loadPermisesHierarchy()...
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Hierarchy/hierarchy.path.1" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::doPermiseExecOperation...PERMISE....MainWindow::permises....:|99|...permise:|read|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::doPermiseExecOperation...PERMISE...nameop:|Listar_datos|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........SafetTextParser::processXml.....OPERATIONACTION...nameoperation:|Listar_datos|
+vie oct 14 09:25:28 2016 [  DEBUG  ] SafetTextParser buildFields: keyvalue: |/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] SafetTextParser::buildFields....**(CURR**)fieldkeysvalues:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...replacing optionsi(2): (USERNAME)...|vbravo|
+vie oct 14 09:25:28 2016 [  DEBUG  ] SafetTextParser::doFieldValidation..........value...(1)...:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....(BEFORE)....SafetTextParser::doFieldValidation......................keyvalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ***(AFTER)...SafetTextParser::doFieldValidation..........value...(2)...:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............DomModel::selWidgetFromField.....................keyvalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(3)....fields.count():|2|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(4)
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....options:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...field:|Cargar_archivo_flujo|....UMANDA:|yes|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(5)
+vie oct 14 09:25:28 2016 [  DEBUG  ] currtype:4
+vie oct 14 09:25:28 2016 [  DEBUG  ] FileName...(1)
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...GetFileWidget::GetFileWidget....(1)
+vie oct 14 09:25:28 2016 [  DEBUG  ] FileName...(2)
+vie oct 14 09:25:28 2016 [  DEBUG  ] FileName...(3)
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...GetFileWidget::updateCombo()....(1)
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........GetFileWidget::updateCombo......._selected.count():|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........GetFileWidget::updateCombo(out).............mimes.count():|4|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........****GetFileWidget::updateCombo(out).............
+vie oct 14 09:25:28 2016 [  DEBUG  ] FileName...(4)
+vie oct 14 09:25:28 2016 [  DEBUG  ] FileName...(5)
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetTextParser::doFieldValidation............path: |/home/vbravo/.safet/input/defconsole.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetTextParser::doFieldValidation...nameoperation: |Listar_datos|,namefield: |Cargar_archivo_flujo|,value:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ..GetFileWidget::isValid...setting...SafetYAWL::combovarglobal0
+vie oct 14 09:25:28 2016 [  DEBUG  ] ..GetFileWidget::isValid...setting..value:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] SafetTextParser::doFieldValidation..........value...(1)...:|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....(BEFORE)....SafetTextParser::doFieldValidation......................keyvalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ***(AFTER)...SafetTextParser::doFieldValidation..........value...(2)...:|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............DomModel::selWidgetFromField.....................keyvalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(3)....fields.count():|2|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(4)
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...field:|Variable|....UMANDA:|yes|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ................DomModel::changefor...changefor:|Cargar_archivo_flujo|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField....(5)
+vie oct 14 09:25:28 2016 [  DEBUG  ] currtype:5
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField.................**ComboVar....kevalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............****DomModel::selWidgetFromField.................ComboVar....kevalue:|Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] CmdWidget::html caption:|Variable|...UISMANDATORY:|yes|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....ComboWidget::updateCombo()....type:|1|...|1|....|2|
+vie oct 14 09:25:28 2016 [  DEBUG  ] combovariable
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............ComboWidget::updateComboVariableSafet...keyvalue (before): |Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...ComboWidget::updateComboVariableSafet...MainWindow::mymainwindow is NULL: 0
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........loadPlugins...:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........loadPlugins...EMPTY
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet.....->keyvalue: |/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet........mykeyvalue:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet...openXML()..
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet.....->myautofilter: ||
+vie oct 14 09:25:28 2016 [  DEBUG  ] Activada fuente de datos con id: "1"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|_USERNAME|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|vbravo|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetTextParser::doFieldValidation............path: |/home/vbravo/.safet/input/defconsole.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetTextParser::doFieldValidation...nameoperation: |Listar_datos|,namefield: |Variable|,value:|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........ComboWidget::isValid.....COMBOVALIDATION...value:|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...CmdWidget::isValid...mypattern:|\w+|....myvalue=:|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] combovariable
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............ComboWidget::updateComboVariableSafet...keyvalue (before): |Cargar_archivo_flujo;/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........loadPlugins...:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........loadPlugins...EMPTY
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet.....->keyvalue: |/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet........mykeyvalue:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet...openXML()..
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboWidget::updateComboVariableSafet.....->myautofilter: ||
+vie oct 14 09:25:28 2016 [  DEBUG  ] Activada fuente de datos con id: "1"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|_USERNAME|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|vbravo|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ComboUpdate  QUITAR...QUITAR*** HACER VALIDACION CON AUTOFILTER Y VARIABLE
+vie oct 14 09:25:28 2016 [  DEBUG  ]   La Sentencia SQL a ejecutarse (1): 
+ "INSERT INTO lista (Cargar_archivo_flujo,Variable)  VALUES ('/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml','vSolicitud'); "
+vie oct 14 09:25:28 2016 [  DEBUG  ]   La Sentencia SQL a ejecutarse (2): 
+ "INSERT INTO lista (Cargar_archivo_flujo,Variable)  VALUES ('/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml','vSolicitud'); "
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........PROCESSING POSTACTION. (1)..newvalue:|/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml|
+vie oct 14 09:25:28 2016 [  DEBUG  ] MainWindow::toInputConsole.............results.at(0):|INSERT INTO lista (Cargar_archivo_flujo,Variable)  VALUES ('/home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml','vSolicitud'); |
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
 
 MainWindow::toInputConsole.............***parser.operationName():|Listar_datos|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........loadPlugins...EMPTY
-jue sep 8 15:30:41 2016 [  DEBUG  ] Hay "0" errores guardados en la lista. De inmediato se procede a inicializar la lista de errores.
-jue sep 8 15:30:41 2016 [  DEBUG  ] Activada fuente de datos con id: "1"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Activo/Desactivo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Activo/Desactivo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] MainWindow::evalConffileValues()...EVALCONFFILEVALUES....keys().count():0
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...mywf(1)...
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...mywf(2)...LOADINGCONF
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...mywf(3)..LOADINGCONF.
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...MYWF...mywf(4)..._currconfvalues.keys().count():|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...mywf(5)...
-jue sep 8 15:30:41 2016 [  DEBUG  ] check ADDING_PAR...1
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...checkDefaultValuesParameters....1
-jue sep 8 15:30:41 2016 [  DEBUG  ] check ADDING_PAR...2
-jue sep 8 15:30:41 2016 [  DEBUG  ] MainWindow::evalParsValues()..._currparsvalues.keys().count():1
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::changeHumanizeParameters...l.count():1
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::changeHumanizeParameters...strout:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::changeHumanizeParameters.......p....:|Listar_datos Cargar_archivo_flujo|mydate.isValid():|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strin:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strout:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...***.SafetWorkflow::putParameters..dodefaultvalue.....DOIT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetWorkflow::putParameters AUTOFILTERCOUNT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetWorkflow::putParameters RECURSIVEFILTERCOUNT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] REPLACING VARIABLES....
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] REPLACING VARIABLES....2 (documentsource)
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strin:|{#Periodo}|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....list.count():|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....rx.cap(0):|{#Periodo}|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....postitle:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....mytitle:|Periodo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par title:|Anho|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par title:|Periodo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par->defaultvalue():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strout:|IS NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strin:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strout:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...***.SafetWorkflow::putParameters..dodefaultvalue.....DOIT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetWorkflow::putParameters AUTOFILTERCOUNT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetWorkflow::putParameters RECURSIVEFILTERCOUNT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] REPLACING VARIABLES....
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] REPLACING VARIABLES....2 (documentsource)
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strin:|{#Convenio}|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....list.count():|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....rx.cap(0):|{#Convenio}|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....postitle:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....mytitle:|Convenio|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par title:|Anho|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par title:|Periodo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par title:|Convenio|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par->defaultvalue():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strout:|IS NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strin:|Activo/Desactivo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strout:|Activo/Desactivo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...***.SafetWorkflow::putParameters..dodefaultvalue.....DOIT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetWorkflow::putParameters AUTOFILTERCOUNT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetWorkflow::putParameters RECURSIVEFILTERCOUNT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] REPLACING VARIABLES....
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] REPLACING VARIABLES....2 (documentsource)
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strin:|>0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....list.count():|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strout:|>0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strin:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strout:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...***.SafetWorkflow::putParameters..dodefaultvalue.....DOIT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetWorkflow::putParameters AUTOFILTERCOUNT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .........SafetWorkflow::putParameters RECURSIVEFILTERCOUNT:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] REPLACING VARIABLES....
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] REPLACING VARIABLES....2 (documentsource)
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strin:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....list.count():|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strout:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...strin:|{#Anho}|
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....rx.cap(0):|{#Anho}|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....postitle:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......SafetWorkflow::replaceArg REPLACESQL....mytitle:|Anho|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par title:|Anho|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ..(parameter)...par->defaultvalue():||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...strout:|IS NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...list.count():|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...strin:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] key:|operacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] value:|Listar_datos Cargar_archivo_flujo|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...
-jue sep 8 15:30:41 2016 [  DEBUG  ] --------------
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...strout:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...list.count():|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....evalParsValues...AUTO_REPLACE*
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(1)..
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(2)..
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(3)..
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(1)..
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(2)..
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(3)..
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...MainWindow::processCommand......listDocuments...(1)...
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...*listDocuments...commands['v']: |vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(1)...
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(1)...curvar->id():|vTrimestre|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|select  num_periodo from operadora_recaudacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...INCLUDEVARIABLE....1...includ:|yes|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:| select anho from operadora_recaudacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|SELECT anho,anho from operadora_recaudacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert...t:2
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert...news:NOT NULL
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert....return:0
-jue sep 8 15:30:41 2016 [  DEBUG  ] RXFUNC...olement:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] RXFUNC...pattern:|[a-zA-Z0-9\-_]{3,}\([a-zA-Z0-9\-_\s',]*\)|
-jue sep 8 15:30:41 2016 [  DEBUG  ] RXFUNC...pos:|-1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2004|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2004|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2004|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2005|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2005|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2005|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2005|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2012|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2012|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2012|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2012|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2013|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2002|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2003|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2003|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2003|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2003|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2004|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2006|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2006|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2006|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2006|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2007|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2007|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2007|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2007|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2013|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2008|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2013|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2013|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2014|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2014|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2008|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2009|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2009|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2009|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2009|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2010|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2010|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2010|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2010|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2011|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2011|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2011|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2011|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2008|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2008|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2014|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2014|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2015|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2015|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2015|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2015|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::walkPath....CHECK_CLASSID...classid:|5|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:| select num_periodo from operadora_recaudacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|SELECT anho,num_periodo from operadora_recaudacion WHERE anho IN ('2013','2002','2003','2014','2004','2015','2005','2006','2007','2008','2009','2010','2011','2012')|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert...t:2
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert...news:NOT NULL
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert....return:0
-jue sep 8 15:30:41 2016 [  DEBUG  ] RXFUNC...olement:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] RXFUNC...pattern:|[a-zA-Z0-9\-_]{3,}\([a-zA-Z0-9\-_\s',]*\)|
-jue sep 8 15:30:41 2016 [  DEBUG  ] RXFUNC...pos:|-1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|1|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|2|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|3|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] 
-
-....STATIC...SafetYAWL::evalStaticValues....s1...:|4|. ope:|IS|..s2:|NOT NULL|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....***SafetYAWL::evalValues....value:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::walkPath....CHECK_CLASSID...classid:|2|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::walkPath....CHECK_CLASSID...YES
-jue sep 8 15:30:41 2016 [  DEBUG  ] .....SafetWorkflow::walkPath....**CHECK_CLASSID...currsql:|select anho from operadora_recaudacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ADDING CURR_SQL:|select anho from operadora_recaudacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ............SafetWorkflow::getStackExpression GETSTACK_CURR_SQL:|SELECT anho,  num_periodo from operadora_recaudacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...........CURR_SQL_E_IS_1
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|select anho from operadora_recaudacion|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...........SafetWorkflow::evalSQLKeyFilterStack.....CURRPAIR....Consulta 1: "select anho from operadora_recaudacion WHERE anho IN ('2013','2002','2003','2014','2004','2015','2005','2006','2007','2008','2009','2010','2011','2012') AND ( anho IS NOT NULL ) AND ( num_periodo IS NOT NULL )"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........(before)...SafetWorkflow::getSQLDocuments DOC_CURR_SQL_splitoperation:|select anho from operadora_recaudacion WHERE anho IN ('2013','2002','2003','2014','2004','2015','2005','2006','2007','2008','2009','2010','2011','2012') AND ( anho IS NOT NULL ) AND ( num_periodo IS NOT NULL )|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........(before)...SafetWorkflow::getSQLDocuments SPLITOPERATION:|select anho from operadora_recaudacion WHERE anho IN ('2013','2002','2003','2014','2004','2015','2005','2006','2007','2008','2009','2010','2011','2012') AND ( anho IS NOT NULL ) AND ( num_periodo IS NOT NULL )|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ........(after)...GROUPBY...SafetWorkflow::getSQLDocuments SPLITOPERATION:|select anho from operadora_recaudacion WHERE anho IN ('2013','2002','2003','2014','2004','2015','2005','2006','2007','2008','2009','2010','2011','2012') AND ( anho IS NOT NULL ) AND ( num_periodo IS NOT NULL ) |
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Result/result.count.forfield" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Result/result.count.type" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetWorkflow::getSQLDocuments...adding variable:|vTrimestre|
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Result/result.count.forfield" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Result/result.count.type" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Result/result.count.forfield" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [ WARNING ] No existe la clave "Result/result.count.type" en el archivo de configuracion "safet.conf"
-jue sep 8 15:30:41 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...recorriendo..JSON
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...columnorder:|0,1,2,8|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...current:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...mynewrec[0]:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...current:|1|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...mynewrec[1]:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...current:|2|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...mynewrec[2]:|113|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...current:|8|
-jue sep 8 15:30:41 2016 [  DEBUG  ] .......:SafetDocument::JSON_FIELD...mynewrec[3]:|8|
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] ...SafetDocument...JSON_FIELD:|anho|.....mynewrec[0]:|0|
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
-jue sep 8 15:30:41 2016 [  DEBUG  ] ***************************
-jue sep 8 15:30:41 2016 [  DEBUG  ] cadena:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........loadPlugins...EMPTY
+vie oct 14 09:25:28 2016 [  DEBUG  ] Hay "0" errores guardados en la lista. De inmediato se procede a inicializar la lista de errores.
+vie oct 14 09:25:28 2016 [  DEBUG  ] Activada fuente de datos con id: "1"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|_USERNAME|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|vbravo|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::addChild..ADDCHILD..(1)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....***SafetWorkflow::addChild..ADDCHILD.(2)..ptask->title():|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] MainWindow::evalConffileValues()...EVALCONFFILEVALUES....keys().count():0
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...mywf(1)...
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...mywf(2)...LOADINGCONF
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...mywf(3)..LOADINGCONF.
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...MYWF...mywf(4)..._currconfvalues.keys().count():|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::evalConffileValues...mywf(5)...
+vie oct 14 09:25:28 2016 [  DEBUG  ] check ADDING_PAR...1
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...checkDefaultValuesParameters....1
+vie oct 14 09:25:28 2016 [  DEBUG  ] check ADDING_PAR...2
+vie oct 14 09:25:28 2016 [  DEBUG  ] MainWindow::evalParsValues()..._currparsvalues.keys().count():1
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::changeHumanizeParameters...l.count():1
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::changeHumanizeParameters...strout:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::changeHumanizeParameters.......p....:|72|mydate.isValid():|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strin:|vbravo|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strout:|vbravo|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...***.SafetWorkflow::putParameters..dodefaultvalue.....DOIT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetWorkflow::putParameters AUTOFILTERCOUNT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetWorkflow::putParameters RECURSIVEFILTERCOUNT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] REPLACING VARIABLES....
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] REPLACING VARIABLES....2 (documentsource)
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strin:|Archivar_solicitud_procesada|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....list.count():|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strout:|Archivar_solicitud_procesada|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strin:|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strout:|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...***.SafetWorkflow::putParameters..dodefaultvalue.....DOIT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetWorkflow::putParameters AUTOFILTERCOUNT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetWorkflow::putParameters RECURSIVEFILTERCOUNT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] REPLACING VARIABLES....
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] REPLACING VARIABLES....2 (documentsource)
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strin:|yes|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....list.count():|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strout:|yes|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strin:|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strout:|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...***.SafetWorkflow::putParameters..dodefaultvalue.....DOIT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetWorkflow::putParameters AUTOFILTERCOUNT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetWorkflow::putParameters RECURSIVEFILTERCOUNT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] REPLACING VARIABLES....
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] REPLACING VARIABLES....2 (documentsource)
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strin:|Direccion_ejecutiva|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....list.count():|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strout:|Direccion_ejecutiva|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strin:|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::putParameters...strout:|Planilla vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...***.SafetWorkflow::putParameters..dodefaultvalue.....DOIT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetWorkflow::putParameters AUTOFILTERCOUNT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........SafetWorkflow::putParameters RECURSIVEFILTERCOUNT:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] REPLACING VARIABLES....
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] REPLACING VARIABLES....2 (documentsource)
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strin:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....list.count():|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ......SafetWorkflow::putParameters....strout:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...strin:|{#ByPeriod}|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...strout:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...list.count():|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...strin:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] key:|ByPeriod|
+vie oct 14 09:25:28 2016 [  DEBUG  ] value:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...
+vie oct 14 09:25:28 2016 [  DEBUG  ] --------------
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...strout:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetWorkflow::putParameters....condition...list.count():|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....evalParsValues...AUTO_REPLACE*
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(1)..
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(2)..
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(3)..
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(1)..
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(2)..
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....SafetWorkflow::evalAutofilters()...(3)..
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...MainWindow::processCommand......listDocuments...(1)...
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...*listDocuments...commands['v']: |vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(1)...
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(1)...curvar->id():|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...INCLUDEVARIABLE....1...includ:|yes|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|select id from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|SELECT vista_vacaciones.id,id from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert...t:2
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert...news:72
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert....return:1
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|193|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|194|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|196|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|200|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|199|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|202|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|204|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|207|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|209|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|210|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|191|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|211|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|212|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|213|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|214|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|217|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|218|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|219|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|220|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|224|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|229|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|231|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|230|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|232|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|216|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|205|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|206|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|221|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|195|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|208|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|222|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|223|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|233|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|234|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|235|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|237|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|236|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|238|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|240|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|241|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|243|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|242|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|239|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|244|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|248|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|225|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|246|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|201|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|73|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|72|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|247|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|192|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|215|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....SafetWorkflow::walkPath....CHECK_CLASSID...classid:|5|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ADDING CURR_SQL:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............SafetWorkflow::getStackExpression GETSTACK_CURR_SQL:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........CURR_SQL_E_IS_1
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........SafetWorkflow::evalSQLKeyFilterStack.....CURRPAIR....Consulta 1: "SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 )"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........(before)...SafetWorkflow::getSQLDocuments DOC_CURR_SQL_splitoperation:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 )|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........(before)...SafetWorkflow::getSQLDocuments SPLITOPERATION:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 )|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........(after)...GROUPBY...SafetWorkflow::getSQLDocuments SPLITOPERATION:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 ) ORDER BY id DESC|
+vie oct 14 09:25:28 2016 [  ERROR  ] Error SQL tipo: "2". Mensaje: "QPSQL: Unable to create query". Errores en la  Sentencia SQL:
+"SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 ) ORDER BY id DESC"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Result/result.count.forfield" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Result/result.count.type" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Result/result.count.forfield" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Result/result.count.type" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(before)...tmphowmany:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(before)...howmanydocuments:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...recorriendo..(1)
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...recorriendo..(2)
+vie oct 14 09:25:28 2016 [  DEBUG  ] .......................................->SafetWorkflow::getDocuments....str:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(1)...
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(1)...curvar->id():|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...INCLUDEVARIABLE....1...includ:|yes|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|select id from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|SELECT vista_vacaciones.id,id from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert...t:2
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert...news:72
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...SafetYAWL::canTypeConvert....return:1
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|193|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|194|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|196|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|200|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|199|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|202|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|204|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|207|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|209|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|210|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|191|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|211|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|212|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|213|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|214|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|217|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|218|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|219|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|220|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|224|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|229|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|231|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|230|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|232|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|216|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|205|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|206|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|221|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|195|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|208|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|222|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|223|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|233|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|234|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|235|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|237|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|236|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|238|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|240|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|241|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|243|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|242|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|239|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|244|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|248|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|225|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|246|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|201|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|73|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|72|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|1|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|247|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|192|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] 
+
+....STATIC...SafetYAWL::evalStaticValues....s1...:|215|. ope:|=|..s2:|72|
+vie oct 14 09:25:28 2016 [  DEBUG  ] STATIC.....SafetYAWL::EVALVALUES: result:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] .....SafetWorkflow::walkPath....CHECK_CLASSID...classid:|5|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ADDING CURR_SQL:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ............SafetWorkflow::getStackExpression GETSTACK_CURR_SQL:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........CURR_SQL_E_IS_1
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........SafetSQLParser::parse....NEWS SQL:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ...........SafetWorkflow::evalSQLKeyFilterStack.....CURRPAIR....Consulta 1: "SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 )"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........(before)...SafetWorkflow::getSQLDocuments DOC_CURR_SQL_splitoperation:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 )|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........(before)...SafetWorkflow::getSQLDocuments SPLITOPERATION:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 )|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ........(after)...GROUPBY...SafetWorkflow::getSQLDocuments SPLITOPERATION:|SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 ) ORDER BY id DESC|
+vie oct 14 09:25:28 2016 [  ERROR  ] Error SQL tipo: "2". Mensaje: "QPSQL: Unable to create query". Errores en la  Sentencia SQL:
+"SELECT vista_vacaciones.id, id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones WHERE vista_vacaciones.id IN ('72') AND ( id = 72 ) ORDER BY id DESC"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Result/result.count.forfield" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Result/result.count.type" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Result/result.count.forfield" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [ WARNING ] No existe la clave "Result/result.count.type" en el archivo de configuracion "safet.conf"
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(before)...tmphowmany:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...entrando...(before)...howmanydocuments:|0|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...recorriendo..(1)
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....SafetWorkflow::getDocuments...recorriendo..(2)
+vie oct 14 09:25:28 2016 [  DEBUG  ] .......................................->SafetWorkflow::getDocuments....str:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::listDocuments...........LISTDOCUMENTS...ADOCUMENTS:||
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::listDocuments..._listprincipaltitle:|vSolicitud<SAFETSEPARATOR/>operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud |
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::executeWithJSON....SCRIPTENGINE...myscript...searchScript:|vSolicitud|
+vie oct 14 09:25:28 2016 [  DEBUG  ] MainWindow::searchScript.....confpath:|/home/vbravo/.safet/scripts|
+vie oct 14 09:25:28 2016 [  DEBUG  ] MainWindow::searchScript.....namevar:|vSolicitud|
+vie oct 14 09:25:28 2016 [ ACTION  ] No existe el directorio de scripts: "/home/vbravo/.safet/scripts"
+vie oct 14 09:25:28 2016 [  DEBUG  ] .........EVALTIPS...MainWindow::executeJSCodeAfterLoad().......code:| { "safetvariable" : "vSolicitud",
+ "safetkey" : "",
+ "safettitle" : "vSolicitud",
+"safetreport" : "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud ",
+"safetlistcount" : "0",
+"safetlist" : [],
+"safetcolumns"  : [  ]
+}
+ "safetcolumns"  : [  ]
+}
+|
+vie oct 14 09:25:28 2016 [  DEBUG  ] ....MainWindow::currentJSON....JSON:
+  { "safetvariable" : "vSolicitud",
+ "safetkey" : "",
+ "safettitle" : "vSolicitud",
+"safetreport" : "operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud ",
+"safetlistcount" : "0",
+"safetlist" : [],
+"safetcolumns"  : [  ]
+}
+
+

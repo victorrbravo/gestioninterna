@@ -3,551 +3,763 @@ Documento  : deftrac.xml
 Creado     : Víctor Bravo
 Autor      : Victor Bravo
 Descripcion: Archivo de Entrada para SAFET - Inflow
+
 -->
 
-<!DOCTYPE operations SYSTEM "file:///home/pbuitrago/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion">
 
 <operation  name="Empleados"  desc="Creacion de una solicitud" icon="vacation.png">
 </operation>
-<operation  name="agregar_empleado"  desc="Modificar un proyecto poa existente" icon="firmadoc.png" action= "" postaction="" >
+<operation  name="agregar_empleado"  desc="Modificar un proyecto poa existente" icon="firmadoc.png" action= ""
+postaction="" >
 	<command id ="1" type="agregar" table="personal">
 		<fields>
-		    <field  type="string" sequence="personal_id_seq" title="Solicitud_registro" typesequence="next" primarykey="yes">
-                id
-            </field>
+		  <field  type="string" sequence="personal_id_seq" title="Solicitud_registro" typesequence="next" primarykey="yes">
+                                id
+                        </field>
+
 			<field type="string" mandatory="yes" title="Nombres" >
-                nombres
-            </field>
-            <field type="string"  mandatory="yes" title="Apellidos" >
-                apellidos
-            </field>
-			<field type="string" mandatory="yes" primarykey="no" validation="[VE][0-9]{3,10}" title="Cédula">
+                                nombres
+                        </field>
+
+                        <field type="string"  mandatory="yes" title="Apellidos" >
+                                apellidos
+                        </field>
+			<field type="string" mandatory="yes" primarykey="no" validation="[0-9]{3,10}" title="Cédula">
 				cedula
 			</field>
-			<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="yes" title="Cargo_asignado">
+			<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="no" title="Cargo_asignado">
 				cargo
 			</field>
+
 			<field type="datetime" mandatory="yes" title="fecha_de_ingreso" format="time_t" options="calendarPopup::true,displayFormat::dd/MM/yy" >
 				fecha_ingreso
 			</field>
-			<field type="combolistliteral" options="Desarrollo::Desarrollo::Desarrollo,Investigacion::Investigacion::Investigacion,Administracion::Administracion::Administracion,Reflexion::Reflexion::Reflexion,Apropiacion::Apropiacion::Apropiacion,Redes::Redes::Redes,Soporte::Soporte::Soporte,Directiva::Directiva::Directiva" mandatory="yes" title="Departamento_dependencia" >
+
+			<field type="combolistliteral" options="Desarrollo::Desarrollo::Desarrollo,Investigacion::Investigacion::Investigacion,Administracion::Administracion::Administracion,Reflexion::Reflexion::Reflexion,Apropiacion::Apropiacion::Apropiacion,Redes::Redes::Redes,Soporte::Soporte::Soporte,Directiva::Directiva::Directiva" mandatory="no" title="Departamento_dependencia" >
 				departamento
 			</field>
-			<field type="string" mandatory="yes" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
+
+			<field type="string" mandatory="no" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
 				proyecto
 			</field>
-			<field type="string" mandatory="yes" title="Usuario_sistema" validation="[A-Za-z]\D{2,}">
+
+			<field type="string" mandatory="no" title="Usuario_sistema" validation="[A-Za-z]\D{2,}">
 				usuario
 			</field>
-			<field type="string" mandatory="yes" title="Correo_Institucional" validation="">
+
+			<field type="string" mandatory="no" title="Correo_Institucional" validation="">
 				nombre_cuenta_correo_electronico
 			</field>
-			<field type="string" mandatory="yes" title="Telefono_habitacion" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
+
+			<field type="string" mandatory="no" title="Telefono_habitacion" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
 				telefono_habitacion
 			</field>
-			<field type="string" mandatory="yes" title="Telefono_personal" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
+
+			<field type="string" mandatory="no" title="Telefono_personal" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
 				telefono_personal
 			</field>
-			<field type="stringbox" options="wiki" mandatory="yes" title="Domicilio">
+
+			<field type="stringbox" options="wiki" mandatory="no" title="Domicilio">
 				domicilio 
 			</field>
-			<field type="string" literal="Activo" mandatory="yes" title="Status">
+			<field type="string" literal="Activo" mandatory="no" title="Status">
 				estado
 			</field>
 		</fields>
 	</command>
 </operation>
-<operation  name="modificar_empleado"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" action="" >
-    <command id ="1" type="actualizar" table="personal" >
-	    <fields>
-	        <field type="combolisttable" options="id:personal::' ' || id || ' Nombres:' || apellidos || ',' || nombres " mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+<operation  name="modificar_empleado"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action="" >
+<command id ="1" type="actualizar" table="personal" >
+	<fields>
+	<field type="combolisttable" options="id:personal::' ' || id || ' Nombres:' || apellidos || ',' || nombres" mandatory="no" primarykey="yes" title="id"
+	order="desc" changekey="yes" position="open_and_close,md-6">
 				id
 			</field>
-			<field type="string" mandatory="yes" title="Nombres" >
-                nombres
-            </field>
-            <field type="string"  mandatory="yes" title="Apellidos" >
-                apellidos
-            </field>
-			<field type="string" mandatory="yes"  validation="[VE][0-9]{3,10}" title="Cédula">
+			<field type="string" mandatory="yes" title="Nombres" position="open,md-6">
+                                nombres
+                        </field>
+
+                        <field type="string"  mandatory="yes" title="Apellidos" position="close,md-6">
+                                apellidos
+                        </field>
+			<field type="string" mandatory="yes"  validation="[0-9]{3,10}" title="Cédula" position="open,md-6">
 				cedula
 			</field>
-			<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="yes" title="Cargo_asignado">
+			<field type="combolistliteral" position="close,md-6" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="yes" title="Cargo_asignado">
 				cargo
 			</field>
+
 			<field type="datetime" mandatory="yes" title="fecha_de_ingreso" format="time_t" options="calendarPopup::true,displayFormat::dd/MM/yy" >
 				fecha_ingreso
 			</field>
+
 			<field type="combolistliteral" options="Desarrollo::Desarrollo::Desarrollo,Investigacion::Investigacion::Investigacion,Administracion::Administracion::Administracion,Reflexion::Reflexion::Reflexion,Apropiacion::Apropiacion::Apropiacion,Redes::Redes::Redes,Soporte::Soporte::Soporte,Directiva::Directiva::Directiva" mandatory="yes" title="Departamento_dependencia" >
 				departamento
 			</field>
-			<field type="string" mandatory="yes" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
+
+			<field type="string" mandatory="no" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
 				proyecto
 			</field>
+
 			<field type="string" mandatory="yes" title="Usuario_sistema" validation="[A-Za-z]\D{2,}">
 				usuario
 			</field>
+
 			<field type="string" mandatory="yes" title="Correo_Institucional" validation="">
 				nombre_cuenta_correo_electronico
 			</field>
-			<field type="string" mandatory="yes" title="Telefono_habitacion" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
+
+			<field type="string" mandatory="no" title="Telefono_habitacion" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
 				telefono_habitacion
 			</field>
-			<field type="string" mandatory="yes" title="Telefono_personal" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
+
+			<field type="string" mandatory="no" title="Telefono_personal" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
 				telefono_personal
 			</field>
-			<field type="stringbox" options="wiki" mandatory="yes" title="Domicilio">
+
+			<field type="stringbox" options="wiki" mandatory="no" title="Domicilio">
 				domicilio 
 			</field>
 			<field type="string" literal="Activo" mandatory="yes" title="Status">
 				estado
 			</field>
-	    </fields>
-    </command>
+
+	</fields>
+</command>
+
 </operation>
 
-<operation  name="borrar_empleado"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" action="" >
-    <command id ="1" type="eliminar" table="personal" >
-	    <fields>
-	        <field type="combolisttable" options="id:personal::' ' || id || ' Nombres:' || apellidos || ',' || nombres " mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+<operation  name="borrar_empleado"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action="" >
+<command id ="1" type="eliminar" table="personal" >
+	<fields>
+	<field type="combolisttable" options="id:personal::' ' || id || ' Nombres:' || apellidos || ',' || nombres " mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
-	    </fields>
-    </command>
+
+	</fields>
+</command>
+
 </operation>
+
+
+
 
 <operation  name="Vacaciones"  desc="Creacion de una solicitud" icon="vacation.png">
 </operation>
-
-<operation  name="Modificar_solicitud_vacaciones"  desc="Modificar un proyecto poa existente" icon="firmadoc.png" action= "" postaction="correovacaciones" >
-	<command id ="1" type="actualizar" table="vacaciones">
+<operation  name="agregar_solicitud_vacaciones"  desc="Modificar un proyecto poa existente" icon="firmadoc.png" action= ""
+postaction="" >
+	<command id ="1" type="agregar" table="vacaciones">
 		<fields>
-			<field type="combolisttable" options="id:vacaciones:where usuario='_USERNAME' and status='iniciado'::'(' || id || ') ' || nombre || '-' || usuario " mandatory="yes" 
-			title="Periodo_vacacional" changekey="yes" primarykey="yes" >
-				id
-			</field>
-			<field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no" >
-				fechasolicitud
-			</field>
-		    <field type="string" mandatory="no" options="readonly" changefor="id" title="usuario" position="open_and_close,md-4"  >
-                 usuario
-            </field>
-			<field type="string" icon="resumen.png" format="time_t" mandatory="no" options="readonly" changefor="id" title="nombre" position="open,md-4">
-                 nombre
-            </field>
-			<field type="string" mandatory="no" title="Cédula" options="readonly,wiki" changefor="id" position="close,md-6">
-                 id_cedula
-            </field>
-			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Dias_a_disfrutar"  position="open_and_close,md-6" options="readonly" changefor="id">
+		  <field  type="string" sequence="personal_id_seq" title="Solicitud_registro" typesequence="next" primarykey="yes">
+                                id
+                        </field>
+
+
+
+
+			<field type="string" icon="resumen.png" format="time_t" mandatory="no" options="" changefor="id" title="nombre" position="open,md-4">
+                                nombre
+                        </field>
+			
+			<field type="string" mandatory="no" title="Cédula" options="" changefor="id" position="close,md-6">
+                                id_cedula
+                        </field>
+		      <field type="string" mandatory="no" options="" changefor="id" title="usuario" position="open_and_close,md-4"  >
+			  usuario
+		      </field>
+
+                        
+			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Dias_a_disfrutar" 
+position="open_and_close,md-6" options="" changefor="id">
 				diasadisfrutar
 			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Dias_disfrutados" options="readonly" changefor="id" position="open_and_close,md-6">
+
+			<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Dias_disfrutados" options="" changefor="id" position="open_and_close,md-6">
 				diasdisfrutados
 			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Dias_por_disfrutar" options="readonly" changefor="id">
+
+			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Dias_por_disfrutar" options="" changefor="id">
 				diaspordisfrutar
 			</field>
-			<field type="datetime" icon="resumen.png" mandatory="yes" options="calendarPopup::true" position="open,md-6"  title="fecha_de_inicio"  format="time_t">
+
+			<field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true" position="open,md-6"  title="fecha_de_inicio"  format="time_t">
 				fechainicio
 			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" primarykey="no" title="dias_solicitados" position="close,md-6"  changekey="yes" validation="validatefunction:CASE WHEN {#diasdisfrutados}=0 THEN {#diassolicitados} >= ({#diaspordisfrutar}/2+1) AND {#diaspordisfrutar} >= {#diassolicitados}  ELSE {#diaspordisfrutar} = {#diassolicitados} END" >
+
+			<field type="string" icon="resumen.png" mandatory="no" primarykey="no" title="dias_solicitados" position="close,md-6"  changekey="yes" validation="validatefunction:CASE WHEN {#diasdisfrutados}=0 THEN {#diassolicitados} >= ({#diaspordisfrutar}/2+1) AND {#diaspordisfrutar} >= {#diassolicitados}  ELSE {#diaspordisfrutar} = {#diassolicitados} END" >
 				diassolicitados
 			</field>
-			<field type="datetime" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados})"  
+
+
+			<field type="datetime" mandatory="no" 
+			
+			options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados})"  
 			title="Fecha_final_periodo_hasta" format="time_t" validation="" changefor="dias_solicitados" position="open,md-6">
 				fechafin
 			</field>
-			<field type="datetime" icon="resumen.png" mandatory="yes" options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados}+1)"  title="fecha_de_incorporación" 
+
+			<field type="datetime" icon="resumen.png" mandatory="no" 
+			options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados}+1)"  title="fecha_de_incorporación" 
 			primarykey="no" format="time_t" changefor="dias_solicitados" position="close,md-6">
 				fechaincorporacion
 			</field>
+
+			<field type="combolisttable" icon="resumen.png" mandatory="no" validation=".*" title="Suplente_interno_1" options="cedula:personal::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '">
+				cedula_suplente_1
+			</field>
+
+			 <field type="combolisttable" icon="resumen.png" mandatory="no" validation=".*" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '">
+                                cedula_suplente_2
+                        </field>
+			<field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no" >
+				fechasolicitud
+			</field>
+			<field type="string" literal="iniciado" mandatory="yes" title="Estatus">
+				status                                
+			</field>
+			
+			
+
+
+			
+		</fields>
+	</command>
+</operation>
+      
+<operation  name="Modificar_solicitud_vacaciones"  desc="Modificar un proyecto poa existente" icon="firmadoc.png" action= ""
+postaction="correovacaciones" >
+	<command id ="1" type="actualizar" table="vacaciones">
+		<fields>
+			<field type="combolisttable" 
+			options="id:vacaciones:where usuario='_USERNAME' and status='iniciado'::'(' || id || ') ' || nombre || '-' || usuario " mandatory="yes" 
+			title="Periodo_vacacional"   changekey="yes" primarykey="yes" >
+				id
+			</field>
+
+			<field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no" >
+				fechasolicitud
+			</field>
+
+		<field type="string" mandatory="no" options="readonly" changefor="id" title="usuario" position="open_and_close,md-4"  >
+                 usuario
+            </field>
+
+			<field type="string" icon="resumen.png" format="time_t" mandatory="no" options="readonly" changefor="id" title="nombre" position="open,md-4">
+                                nombre
+                        </field>
+			
+			<field type="string" mandatory="no" title="Cédula" options="readonly,wiki" changefor="id" position="close,md-6">
+                                id_cedula
+                        </field>
+
+			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Dias_a_disfrutar" 
+position="open_and_close,md-6" options="readonly" changefor="id">
+				diasadisfrutar
+			</field>
+
+			<field type="string" icon="resumen.png" mandatory="yes" validation="" title="Dias_disfrutados" options="readonly" changefor="id" position="open_and_close,md-6">
+				diasdisfrutados
+			</field>
+
+			<field type="string" icon="resumen.png" mandatory="yes" validation=".*" title="Dias_por_disfrutar" options="readonly" changefor="id">
+				diaspordisfrutar
+			</field>
+
+			<field type="datetime" icon="resumen.png" mandatory="yes" options="calendarPopup::true" position="open,md-6"  title="fecha_de_inicio"  format="time_t">
+				fechainicio
+			</field>
+
+			<field type="string" icon="resumen.png" mandatory="yes" primarykey="no" title="dias_solicitados" position="close,md-6"  changekey="yes" validation="validatefunction:CASE WHEN {#diasdisfrutados}=0 THEN {#diassolicitados} >= ({#diaspordisfrutar}/2+1) AND {#diaspordisfrutar} >= {#diassolicitados}  ELSE {#diaspordisfrutar} = {#diassolicitados} END" >
+				diassolicitados
+			</field>
+
+
+			<field type="datetime" mandatory="no" 
+			
+			options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados})"  
+			title="Fecha_final_periodo_hasta" format="time_t" validation="" changefor="dias_solicitados" position="open,md-6">
+				fechafin
+			</field>
+
+			<field type="datetime" icon="resumen.png" mandatory="yes" 
+			options="calendarPopup::true,displayFormat::dd/MM/yy,beforefunction:bdays({#fecha_de_inicio};{#dias_solicitados}+1)"  title="fecha_de_incorporación" 
+			primarykey="no" format="time_t" changefor="dias_solicitados" position="close,md-6">
+				fechaincorporacion
+			</field>
+
 			<field type="combolisttable" icon="resumen.png" mandatory="yes" validation=".*" title="Suplente_interno_1" options="cedula:personal::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '">
 				cedula_suplente_1
 			</field>
-			<field type="combolisttable" icon="resumen.png" mandatory="no" validation=".*" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '">
-                cedula_suplente_2
-            </field>
-			<field title="Desarrollo" desc="Activo" validation="" position="open,md-6" options="type::checkbox,Sí::true" icon="resumen.png" type="string" mandatory="no">
-			    enviar_desarrollo
-			</field>
-			<field title="Investigación" desc="Activo" validation="" position="close,md-6" options="type::checkbox,Sí::true" icon="resumen.png" type="string" mandatory="no">
+
+			 <field type="combolisttable" icon="resumen.png" mandatory="no" validation=".*" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '">
+                                cedula_suplente_2
+                        </field>
+			 <field title="Desarrollo" desc="Activo" validation="" position="open,md-6" options="type::checkbox,Sí::true" icon="resumen.png" type="string" mandatory="no">
+			      enviar_desarrollo
+			  </field>
+			 <field title="Investigación" desc="Activo" validation="" position="close,md-6" options="type::checkbox,Sí::true" icon="resumen.png" type="string" mandatory="no">
 			      enviar_investigacion
-			</field>
-		    <field title="Apropiación" desc="Activo" validation="" position="open,md-6" options="type::checkbox,Si::true" icon="resumen.png" type="string" mandatory="no">
+			  </field>
+		      <field title="Apropiación" desc="Activo" validation="" position="open,md-6" options="type::checkbox,Si::true" icon="resumen.png" type="string" mandatory="no">
 			      enviar_apropiacion
-			</field>
-		    <field title="Reflexión" desc="Activo" validation="" position="close,md-6" options="type::checkbox,Si::True" icon="resumen.png" type="string" mandatory="no">
+			  </field>
+		      <field title="Reflexión" desc="Activo" validation="" position="close,md-6" options="type::checkbox,Si::True" icon="resumen.png" type="string" mandatory="no">
 			      enviar_reflexion
-			</field>
+			  </field>
+
+
+
 			<field type="string" literal="Talento_humano" mandatory="yes" title="Estatus">
 				status                                
 			</field>
+
 			<field type="string" mandatory="yes" function="'( ' || cedula || ' ) ' || nombres ||' '|| apellidos || ' fecha ingreso ' || to_timestamp(fecha_ingreso)::date from personal where usuario='_USERNAME'" input="no" title="Informacion_usuario">
 				informacion_usuario
+			</field>			
+			
+			 <field type="string" mandatory="no"  function="CASE WHEN {#enviar_investigacion}  THEN 'victorrbravo@gmail.com' ELSE '' END"  input="no" >
+				correo_investigacion
 			</field>
+			 <field type="string" mandatory="no"  function="CASE WHEN {#enviar_desarrollo}  THEN 'vbravo@cenditel.gob.ve' ELSE '' END"  input="no" >
+				correo_desarrollo
+			</field>
+			<field type="string" mandatory="no"  function="CASE WHEN {#enviar_apropiacion}  THEN 'vbravo@cenditel.gob.ve' ELSE '' END"  input="no" >
+				correo_apropiacion
+			</field>
+			<field type="string" mandatory="no"  function="CASE WHEN {#enviar_reflexion}  THEN 'vbravo@cenditel.gob.ve' ELSE '' END"  input="no" >
+				correo_reflexion
+			</field>
+			
 		</fields>
 	</command>
-    <command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>	
+	 <command id ="1" type="agregar" table="vacaciones_registro" >
+                <fields>	
 			<field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
-                 id
-            </field>
-            <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
-                 fecha_accion
-            </field>
-            <field type="string" literal="_USERNAME" mandatory="yes" >
-                 propietario
-            </field>
-   		   <field type="number" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                 id_vacaciones
-           </field>
-           <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-				informacion_usuario
-           </field>
-		   <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
-                fechainicio
-            </field>
-			<field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
-                fechafin
-            </field>
-			<field type="number" mandatory="yes" title="nombre">
-                nombre_periodo
-            </field>
-   		    <field type="string" literal="Talento_humano" mandatory="yes" title="Estatus">
-                status
-            </field>
-        </fields>
-    </command>
-	<command id ="1" type="agregar" table="vacaciones">
-        <fields>
-            <field  type="agregar" sequence="vacaciones_id_seq" title="id">
-                id
-            </field>
-            <field type="number" mandatory="yes" title="Cédula">
-                id_cedula
-            </field>
-            <field type="string" mandatory="no" title="usuario" >
-                usuario
-            </field>
-            <field type="string" format="integer"  mandatory="yes" function="case when sum(diassolicitados) = diasadisfrutar then (nombre+1) else nombre end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar,nombre limit 1" title="nombre" >
-                nombre
-            </field>
-            <field type="string" format="integer"   mandatory="yes" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else diasadisfrutar end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_a_disfrutar" >
-                diasadisfrutar
-            </field>
-            <field type="string" format="integer" function="case when sum(diassolicitados) = diasadisfrutar then (0) else (sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_disfrutado" >
-                diasdisfrutados
-            </field>
-            <field type="string" format="integer" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else (diasadisfrutar-sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_por_disfrutar" >
-                diaspordisfrutar
-            </field>
-			<field type="string" format="integer" function="extract(epoch from now()+'10 day')::int" title="fecha_inicio" >
-                fechainicio
-            </field>
-			<field type="string" format="integer" function="extract(epoch from now()+'15 day')::int" title="fecha_fin" >
-                fechafin
-            </field>			
-            <field type="string" mandatory="yes" literal="iniciado">
-                status
-            </field>
-		</fields>
-    </command>
-</operation>
+                                id
+                        </field>
 
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                                fecha_accion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+
+			 <field type="number" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
+                                id_vacaciones
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
+				informacion_usuario
+                        </field>
+			<field type="datetime" mandatory="no" format="time_t" title="fechainicio">
+                                fechainicio
+                        </field>
+			<field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
+                                fechafin
+                        </field>
+
+			<field type="number" mandatory="yes" title="nombre">
+                                nombre_periodo
+                        </field>
+
+			 <field type="string" literal="Talento_humano" mandatory="yes" title="Estatus">
+                                status
+                        </field>
+
+                </fields>
+        </command>
+
+	<command id ="1" type="agregar" table="vacaciones">
+                <fields>
+
+                        <field  type="agregar" sequence="vacaciones_id_seq" title="id">
+                                id
+                        </field>
+                        <field type="number" mandatory="yes" title="Cédula">
+                                id_cedula
+                        </field>
+
+                         <field type="string" mandatory="no" title="usuario" >
+                                usuario
+                        </field>
+
+                        <field type="string" format="integer"  mandatory="yes" 
+			function="case when sum(diassolicitados) = diasadisfrutar then (nombre+1) else nombre end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar,nombre limit 1" title="nombre" >
+                                nombre
+                        </field>
+                        <field type="string" format="integer"   mandatory="yes" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else diasadisfrutar end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_a_disfrutar" >
+                                diasadisfrutar
+                        </field>
+                        <field type="string" format="integer" function="case when sum(diassolicitados) = diasadisfrutar then (0) else (sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_disfrutado" >
+                                diasdisfrutados
+                        </field>
+                        <field type="string" format="integer" function="case when sum(diassolicitados) = diasadisfrutar then (diasadisfrutar+1) else (diasadisfrutar-sum(diassolicitados)) end from vacaciones where usuario = '{#usuario}' and nombre = {#nombre} GROUP BY diasadisfrutar limit 1" title="Dias_por_disfrutar" >
+                                diaspordisfrutar
+                        </field>
+			<field type="string" format="integer" function="extract(epoch from now()+'10 day')::int" title="fecha_inicio" >
+                                fechainicio
+                        </field>
+			<field type="string" format="integer" function="extract(epoch from now()+'15 day')::int" title="fecha_fin" >
+                                fechafin
+                        </field>			
+                        <field type="string" mandatory="yes" literal="iniciado">
+                                status
+                        </field>
+		</fields>
+        </command>
+
+</operation>
 <operation  name="Siguiente_estado_solicitud"  desc="Cambia el siguiente estado de las vacaciones" icon="firmadoc.png">
 	<command id ="1" type="actualizar" table="vacaciones">		
-        <fields>
-	  	    <field type="combolisttable" options="id:vacaciones:where status!='Archivar_solicitud_procesada'::'(' || id || ') ' ||  nombre || '-' || usuario || '-' || status" mandatory="yes" 
-		    title="periodo_vacacional"   changekey="yes" primarykey="yes" order="desc" position="open_and_close,md-4"  >
-                id
-            </field>           
-	        <field changefor="periodo_vacacional" title="Siguiente_Estado" path="/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionessp.xml" options="next" position="open_and_close,md-4" 
-		     type="comboflow" mandatory="yes">
-                status
-             </field>		
+	      <fields>
+		 <field type="combolisttable" options="id:vacaciones:where status!='Archivar_solicitud_procesada'::'(' || id || ') ' ||  nombre || '-' || usuario || '-' || status" mandatory="yes" 
+		 title="periodo_vacacional"   changekey="yes" primarykey="yes" order="desc" position="open_and_close,md-4"  >
+                                id
+                        </field>
+                       
+	      <field changefor="periodo_vacacional" title="Siguiente_Estado"
+	      path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" options="next" 
+	      position="open_and_close,md-4" 
+		  type="comboflow" mandatory="yes">
+                                status
+               </field>		
+	       	
 		</fields>
 	</command>
-	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>	
+	 <command id ="1" type="agregar" table="vacaciones_registro" >
+                <fields>	
 			<field  type="string" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
-                id
-            </field>
-            <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
-                fecha_accion
-            </field>
-            <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
-            </field>
-      	    <field type="number" mandatory="yes" primarykey="yes" title="periodo_vacacional">
-                id_vacaciones
-            </field>
-			<field type="string"  mandatory="yes" function="nombre from vacaciones where vacaciones.id={#id_vacaciones}" title="nombre">
-               nombre_periodo
-            </field>
-			<field type="string"  mandatory="yes" title="Siguiente_Estado">
-               status
-            </field>
-        </fields>
-    </command>
+                                id
+                        </field>
+
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                                fecha_accion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+
+			 <field type="number" mandatory="yes" primarykey="yes" title="periodo_vacacional">
+                                id_vacaciones
+                        </field>
+			 <field type="string"  mandatory="yes" function="nombre from vacaciones where vacaciones.id={#id_vacaciones}" title="nombre">
+                                nombre_periodo
+                        </field>
+			 <field type="string"  mandatory="yes" title="Siguiente_Estado">
+                                status
+                        </field>
+
+                </fields>
+        </command>
+
+
 </operation>
 
-<operation  name="enviar_solicitud_por_correo"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" action=""
-dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/pbuitrago/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:%1" >
-    <command id ="1" type="agregar" table="vacaciones" >
-        <fields>
-            <field title="Periodo_vacacional" changekey="yes" options="id:vacaciones" order="desc" type="combolisttable" mandatory="yes" primarykey="yes">
-                id
-            </field>
-            <field changefor="id" title="Asunto" type="string" mandatory="no">
-                asunto
-            </field>
-            <field changefor="id" title="Base" type="string" mandatory="no">
-                base
-            </field>
-            <field changefor="id" title="Destinatarios" type="stringbox" mandatory="no">
-                destinatarios
-            </field>
-        </fields>
-    </command>
+<operation  name="enviar_solicitud_por_correo"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action=""
+dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:%1"
+>
+<command id ="1" type="agregar" table="vacaciones" >
+   <fields>
+    <field title="Periodo_vacacional" changekey="yes" options="id:vacaciones" order="desc" type="combolisttable" mandatory="yes" primarykey="yes">
+                                id
+                        </field>
+    <field changefor="id" title="Asunto" type="string" mandatory="no">
+                        asunto
+                </field>
+    <field changefor="id" title="Base" type="string" mandatory="no">
+                        base
+                </field>
+    <field changefor="id" title="Destinatarios" type="stringbox" mandatory="no">
+                        destinatarios
+                </field>
+   </fields>
+</command>
 </operation>
 
 <operation  name="Firmar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Presidencia" >
-    <command id ="1" type="actualizar" table="vacaciones" >
-	    <fields>
-	        <field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Presidencia" >
+<command id ="1" type="actualizar" table="vacaciones" >
+	<fields>
+	<field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
-		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionessp.xml" title="Siguiente_Estado" changefor="id">
+		<field type="comboflow" mandatory="yes" options="neighbour" 
+                                  path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
+				 title="Siguiente_Estado" changefor="id">
 				status
-		    </field>
-	    </fields>
-    </command>
-    <command id ="1" type="agregar" table="reuniones_registro" >
-	   <fields>
-	       <field type="string"   mandatory="yes" primarykey="yes" sequence="reuniones_registro_id_seq" typesequence="next">
-	           id 
-	       </field>
-	       <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
-               fecha_accion
-	       </field>
-	       <field type="string" literal="_USERNAME" mandatory="yes" >
-	           propietario
-	       </field>
-	       <field type="string"  mandatory="yes" title="id">
-	           id_reuniones
-	       </field>
-		   <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+		</field>
+
+	</fields>
+</command>
+        <command id ="1" type="agregar" table="reuniones_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="reuniones_registro_id_seq" typesequence="next">
+	                                id 
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fecha_accion
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="yes" title="id">
+	                        id_reuniones
+	                </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
 			   status
-		   </field>
-	   </fields>
+		        </field>
+	        </fields>
 	</command>
-</operation>
 
+</operation>
 <operation  name="Firmar_solicitud_SAFET01"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Talento" >
-    <command id ="1" type="actualizar" table="vacaciones" >
-	    <fields>
-	        <field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Talento" >
+<command id ="1" type="actualizar" table="vacaciones" >
+	<fields>
+	<field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
-		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
-		    title="Siguiente_Estado" changefor="id">
+		<field type="comboflow" mandatory="yes" options="neighbour" 
+                                  path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
+				 title="Siguiente_Estado" changefor="id">
 				status
-		    </field>
-	    </fields>
-    </command>
-    <command id ="1" type="agregar" table="reuniones_registro" >
-	    <fields>
-	        <field type="string"   mandatory="yes" primarykey="yes" sequence="reuniones_registro_id_seq" typesequence="next">
-	            id 
-	        </field>
-	        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
-                fecha_accion
-	        </field>
-	        <field type="string" literal="_USERNAME" mandatory="yes" >
-	            propietario
-	        </field>
-	        <field type="string"  mandatory="yes" title="id">
-	            id_reuniones
-	        </field>
-		    <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
-			    status
-		    </field>
-	    </fields>
-	</command>
-</operation>
+		</field>
 
+	</fields>
+</command>
+        <command id ="1" type="agregar" table="reuniones_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="reuniones_registro_id_seq" typesequence="next">
+	                                id 
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fecha_accion
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="yes" title="id">
+	                        id_reuniones
+	                </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+			   status
+		        </field>
+	        </fields>
+	</command>
+
+</operation>
 <operation  name="Firmar_solicitud_SAFET02"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Direccion" >
-    <command id ="1" type="actualizar" table="vacaciones" >
-	    <fields>
-  	        <field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
-		        id
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Direccion" >
+<command id ="1" type="actualizar" table="vacaciones" >
+	<fields>
+	<field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+				id
 			</field>
-		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
-			title="Siguiente_Estado" changefor="id">
+		<field type="comboflow" mandatory="yes" options="neighbour" 
+                                  path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
+				 title="Siguiente_Estado" changefor="id">
 				status
-		    </field>
-	    </fields>
-    </command>
-    <command id ="1" type="agregar" table="reuniones_registro" >
-	    <fields>
-	        <field type="string"   mandatory="yes" primarykey="yes" sequence="reuniones_registro_id_seq" typesequence="next">
-	            id 
-	        </field>
-	        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
-                fecha_accion
-	        </field>
-	        <field type="string" literal="_USERNAME" mandatory="yes" >
-	            propietario
-	        </field>
-	        <field type="string"  mandatory="yes" title="id">
-	            id_reuniones
-	        </field>
-		    <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
-			    status
-		    </field>
-	    </fields>
+		</field>
+
+	</fields>
+</command>
+        <command id ="1" type="agregar" table="reuniones_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" sequence="reuniones_registro_id_seq" typesequence="next">
+	                                id 
+	                </field>
+	                <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                        fecha_accion
+	                </field>
+	                <field type="string" literal="_USERNAME" mandatory="yes" >
+	                        propietario
+	                </field>
+	                <field type="string"  mandatory="yes" title="id">
+	                        id_reuniones
+	                </field>
+		        <field type="string" mandatory="no" primarykey="no" title="Siguiente_Estado" >
+			   status
+		        </field>
+	        </fields>
 	</command>
+
 </operation>
 
-<operation  name="Borrar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" action="" >
-    <command id ="1" type="eliminar" table="vacaciones" >
-	    <fields>
-	        <field type="combolisttable" options="id:vacaciones::'Solicitud Nro: ' || id || ' Periodo:' || nombre || '-' || usuario " mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+<operation  name="Borrar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action="" >
+<command id ="1" type="eliminar" table="vacaciones" >
+	<fields>
+	<field type="combolisttable" options="id:vacaciones::'Solicitud Nro: ' || id || ' Periodo:' || nombre || '-' || usuario " mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
-	    </fields>
-    </command>
-    <command id ="1" type="eliminar" table="vacaciones_registro" >
-	    <fields>
-	        <field type="string"   mandatory="yes" primarykey="yes" title="id" >
-	            id_vacaciones
-	        </field>
-	    </fields>
+
+	</fields>
+</command>
+        <command id ="1" type="eliminar" table="vacaciones_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" title="id" >
+	                                id_vacaciones
+	                </field>
+	        </fields>
 	</command>
+
 </operation>
 
-<operation  name="Desarchivar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" action="" >
-    <command id ="1" type="actualizar" table="vacaciones" >
-	    <fields>
-	        <field type="combolisttable" options="id:vacaciones:where status='Archivar_solicitud_procesada'::'Solicitud Nro ' || id || ' - ' || nombre || ' - ' ||  usuario" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+<operation  name="Desarchivar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action="" >
+<command id ="1" type="actualizar" table="vacaciones" >
+	<fields>
+	<field type="combolisttable" options="id:vacaciones:where status='Archivar_solicitud_procesada'::'Solicitud Nro ' || id || ' - ' || nombre || ' - ' ||  usuario" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
-			<field type="string" literal="Presidencia" mandatory="yes" title="Estatus">
-                status
-            </field>
-	    </fields>
-    </command>
-    <command id ="1" type="eliminar" table="vacaciones_registro" >
-	    <fields>
-	        <field type="string"   mandatory="yes" primarykey="yes" title="id" >
-	            id_vacaciones
-	        </field>
-			<field type="string" literal="Archivar_solicitud_procesada" primarykey="yes"  mandatory="yes" title="status">
-                status
-            </field>
-	    </fields>
+			 <field type="string" literal="Presidencia" mandatory="yes" title="Estatus">
+                                status
+                        </field>
+
+
+	</fields>
+</command>
+        <command id ="1" type="eliminar" table="vacaciones_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" title="id" >
+	                                id_vacaciones
+	                </field>
+			 <field type="string" literal="Archivar_solicitud_procesada" primarykey="yes"  mandatory="yes" title="status">
+                                status
+                        </field>
+
+
+	        </fields>
 	</command>
 </operation>
-
-<operation  name="Devolver_solicitud"  desc="Devolver la solicitud" icon="firmadoc.png">
-    <command id ="1" type="actualizar" table="vacaciones" >
-	    <fields>
-	        <field type="combolisttable" options="id:vacaciones:where status!='Archivar_solicitud_procesada'::'('|| id || ') ' || nombre || ' - ' ||  usuario" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
-			    id
-			</field>
-			<field type="string" mandatory="yes" title="Estatus">
-                status
-            </field>
-            <field type="string" mandatory="no" title="Devuelto" desc="Observaciones por lo que fue devuelto">
-                devuelto
-            </field>
-	    </fields>
-    </command>
-    <command id ="1" type="eliminar" table="vacaciones_registro" >
-	    <fields>
-	        <field type="string"   mandatory="yes" primarykey="yes" title="id" >
-	            id_vacaciones
-	        </field>
-        </fields>
-	</command>
-</operation>
-
-<operation  name="Reiniciar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" action="" >
-    <command id ="1" type="actualizar" table="vacaciones" >
-	    <fields>
-	        <field type="combolisttable" options="id:vacaciones::'Solicitud Nro ' || id || ' - ' || nombre || ' - ' ||  usuario" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+<operation  name="Devolver_a_Talento_Humano"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action=""
+postaction="" 
+ >
+<command id ="1" type="actualizar" table="vacaciones" >
+	<fields>
+	<field type="combolisttable" options="id:vacaciones:where status='DireccionEjecutiva' or status='Presidencia'::'Solicitud Nro ' || id || ' - ' || nombre || ' - ' ||  usuario" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
-			<field type="string" literal="iniciado" mandatory="yes" title="Estatus">
-                status
-            </field>
-	    </fields>
-    </command>
-    <command id ="1" type="eliminar" table="vacaciones_registro" >
-	    <fields>
-	        <field type="string"   mandatory="yes" primarykey="yes" title="id" >
-	            id_vacaciones
-	        </field>
-	    </fields>
+			 <field type="string" literal="Talento_humano" mandatory="yes" title="Estatus">
+                                status
+                        </field>
+		<field type="stringbox" mandatory="no" options="wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de la dirección ejecutiva" validation="">
+                                observaciones_direccion_ejecutiva
+                        </field>
+		<field type="stringbox" mandatory="no" options="wiki" title="Observaciones_Presidencia" desc="Observaciones por parte de la Presidencia" validation="">
+                                observaciones_presidencia
+                        </field>
+
+
+	</fields>
+</command>
+        <command id ="1" type="eliminar" table="vacaciones_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" title="id" >
+	                                id_vacaciones
+	                </field>
+			 <field type="string" literal="DireccionEjecutiva" primarykey="yes"  mandatory="yes" title="status">
+                                status
+                        </field>
+
+
+	        </fields>
+	</command>
+</operation>
+
+
+
+<operation  name="Reiniciar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
+action="" >
+<command id ="1" type="actualizar" table="vacaciones" >
+	<fields>
+	<field type="combolisttable" options="id:vacaciones::'Solicitud Nro ' || id || ' - ' || nombre || ' - ' ||  usuario" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
+				id
+			</field>
+			 <field type="string" literal="iniciado" mandatory="yes" title="Estatus">
+                                status
+                        </field>
+
+
+	</fields>
+</command>
+        <command id ="1" type="eliminar" table="vacaciones_registro" >
+	        <fields>
+	                <field type="string"   mandatory="yes" primarykey="yes" title="id" >
+	                                id_vacaciones
+	                </field>
+	        </fields>
 	</command>
 </operation>
 
 <operation  name="Imprimir_planilla_vacaciones" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="">
-    <command id ="1" type="agregar" table="vacaciones" >
-        <fields>
-            <field type="string" mandatory="no" options="type::button,action::Listar_datos_general,fieldsaction::Cargar_archivo_flujo::/home/pbuitrago/.safet/flowfiles/SolicitudVacaciones.xml;Variable::vVacaciones_solicitadas;parameters.Por_usuario::_USERNAME"  title="Imprimir planilla" desc="Archivo"  >
-                imprimir_planilla
-            </field>
-	    </fields>
-    </command>
-</operation>
+<command id ="1" type="agregar" table="vacaciones" >
+	<fields>
+ <field type="string" mandatory="no" options="type::button,action::Listar_datos_general,fieldsaction::Cargar_archivo_flujo::/home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml;Variable::vVacaciones_solicitadas;parameters.Por_usuario::_USERNAME"  title="Imprimir planilla" desc="Archivo"  >
+                                imprimir_planilla
+                        </field>
 
+	</fields>
+</command>
+</operation>
 <operation  name="Talento_humano" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png" 
-action="operacion:Listar_datos_general  Cargar_archivo_flujo: /home/pbuitrago/.safet/flowfiles/FlujoSolicitudVacaciones.xml Variable: vTalento_humano"
-postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto:Nueva Solicitud de VACACIONES Destinatarios: yverdi@cenditel.gob.ve  vbravo@cenditel.gob.ve configurekey.Email/email.template.1: El trabajador  {#nombreapellido}. ha realizado una solicitud de vacaciones que usted tiene pendiente para revisión.  Puede ver la planilla en el enlace  http://localhost/media/{#safetdocumentid:SolicitudVistaVacacionessp:vSolicitud}**RETURN** Puede chequear el trámite de vacaciones en el sistema de Gestión Interna disponible en el enlace http://localhost/intranet" >
+action="" postaction="" >
 	<command id ="1" type="actualizar" table="vacaciones">
 		<fields>
 			<field type="combolisttable" options="id:vacaciones:where status='Talento_humano'::'#' || id || ' Usuario: '||usuario||' (Periodo vacacional: '|| nombre || ')'" mandatory="yes" primarykey="yes" title="Periodo_vacacional" changekey="yes" order="desc" >
 				id
 			</field>
+			
 			<field type="string" mandatory="yes" title="Informacion_usuario" changefor="id" options="readonly">
 				informacion_usuario
 			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" options="readonly" changefor="id" title="Periodo" >
-                nombre
-            </field>
+
+			 <field type="string" icon="resumen.png" mandatory="yes" options="readonly" changefor="id" title="Periodo" >
+                                nombre
+                        </field>
+
 			<field type="datetime" mandatory="yes" options="readonly,calendarPopup::true,displayFormat::dd/MM/yy" title="fecha_solicitud"  format="time_t"  changefor="id">
 				fechasolicitud
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no" title="Dias_a_disfrutar" validation=".*" changefor="id" options="readonly">
 				diasadisfrutar
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no"  title="Dias_disfrutados" changefor="id" options="readonly">
 				diasdisfrutados
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no" title="Dias_por_disfrutar" changefor="id" options="readonly">
 				diaspordisfrutar
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="yes"  title="Dias_solicitados" changefor="id" options="readonly">
 				diassolicitados
 			</field>
-            <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_1" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ')'" changefor="id">
-                cedula_suplente_1
-            </field>
-            <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '" changefor="id">
-                cedula_suplente_2
-            </field>
+
+                        <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_1" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ')'" changefor="id">
+                                cedula_suplente_1
+                        </field>
+
+                         <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '" changefor="id">
+                                cedula_suplente_2
+                        </field>
+
 			<field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_inicio_desde" changefor="id">
 				fechainicio
 			</field>
-            <field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_fin_hasta" changefor="id">
+<field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_fin_hasta" changefor="id">
 				fechafin
 			</field>
-            <field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"   title="Fecha_incorporación" changefor="id">
+<field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"   title="Fecha_incorporación"
+ changefor="id">
 				fechaincorporacion
 			</field>
 			<field type="string" icon="resumen.png" mandatory="yes" title="días_hábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
@@ -556,322 +768,237 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			<field type="string" icon="resumen.png" mandatory="yes" title="días_inhábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
 				diasinhabiles
 			</field>
+
 			<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','"  >
 				bonoacancelar
 			</field>
 			<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
-            options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
-                sueldodelmes
-            </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+"
-            options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
-                sueldoanticipado
-            </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','" >
-                totalapagar
-            </field>
-			<field type="string" literal="Direccion_gestion_interna" mandatory="yes" primarykey="no">
+ options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+                                sueldodelmes
+                        </field>
+
+                        <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+"
+ options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+                                sueldoanticipado
+                        </field>
+
+                        <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','" >
+                                totalapagar
+                        </field>
+
+			<field type="string" literal="DireccionEjecutiva" mandatory="yes" primarykey="no">
 				status
 			</field>
+
 			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Talento_Humano" desc="Observaciones por parte de Talento Humano" validation="">
 				observaciones_talento_humano
-			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Dirección_Gestión_Interna" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_gestion_interna
 			</field>		
-   			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_ejecutiva	
-			</field>
-			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
-                devuelto
-            </field>		
 		</fields>
 	</command>
 	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>
-            <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="current">
-                id
-            </field>
-            <field type="datetime" mandatory="yes" function="now()" format="time_t" input="no">
-                fecha_accion
-            </field>
-            <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
-            </field>
-            <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                id_vacaciones
-            </field>
-            <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-                 informacion_usuario
-            </field>
-            <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
-                 fechainicio
-            </field>
-            <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
-                 fechafin
-            </field>
-            <field type="number" mandatory="yes" title="Periodo" >
-                 nombre_periodo
-            </field>
-			<field type="string" literal="Direccion_gestion_interna" mandatory="yes" primarykey="no" >
-                 status
-            </field>
-        </fields>
-    </command>
-</operation>
+                <fields>
 
-<operation  name="Direccion_gestion_interna" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png" 
-action="operacion:Listar_datos_general  Cargar_archivo_flujo: /home/pbuitrago/.safet/flowfiles/FlujoSolicitudVacaciones.xml Variable: vTalento_humano"
-postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto:Nueva Solicitud de VACACIONES Destinatarios: yverdi@cenditel.gob.ve  vbravo@cenditel.gob.ve configurekey.Email/email.template.1: El trabajador  {#nombreapellido}. ha realizado una solicitud de vacaciones que usted tiene pendiente para revisión.  Puede ver la planilla en el enlace  http://localhost/media/{#safetdocumentid:SolicitudVistaVacacionessp:vSolicitud}**RETURN** Puede chequear el trámite de vacaciones en el sistema de Gestión Interna disponible en el enlace http://localhost/intranet" >
+                        <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
+                                id
+                        </field>
+
+                        <field type="datetime" mandatory="yes" function="now()" format="time_t" input="no">
+                                fecha_accion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+
+                         <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
+                                id_vacaciones
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
+                                informacion_usuario
+                        </field>
+                        <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
+                                fechainicio
+                        </field>
+                        <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
+                                fechafin
+                        </field>
+
+                        <field type="number" mandatory="yes" title="Periodo" >
+                                nombre_periodo
+                        </field>
+
+			<field type="string" literal="DireccionEjecutiva" mandatory="yes" primarykey="no">
+                                status
+                        </field>
+
+                </fields>
+        </command>
+
+</operation>
+<operation  name="Direccion_ejecutiva" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png"
+action=""
+postaction="">
 	<command id ="1" type="actualizar" table="vacaciones">
 		<fields>
-			<field type="combolisttable" options="id:vacaciones:where status='Direccion_gestion_interna'::'#' || id || ' Usuario: '||usuario||' (Periodo vacacional: '|| nombre || ')'" mandatory="yes" primarykey="yes" title="Periodo_vacacional" changekey="yes" order="desc" >
-				id
-			</field>
-			<field type="string" mandatory="yes" title="Informacion_usuario" changefor="id" options="readonly">
-				informacion_usuario
-			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" options="readonly" changefor="id" title="Periodo" >
-                nombre
-            </field>
-			<field type="datetime" mandatory="yes" options="readonly,calendarPopup::true,displayFormat::dd/MM/yy" title="fecha_solicitud"  format="time_t"  changefor="id">
-				fechasolicitud
-			</field>
-			<field type="string" icon="resumen.png" mandatory="no" title="Dias_a_disfrutar" validation=".*" changefor="id" options="readonly">
-				diasadisfrutar
-			</field>
-			<field type="string" icon="resumen.png" mandatory="no"  title="Dias_disfrutados" changefor="id" options="readonly">
-				diasdisfrutados
-			</field>
-			<field type="string" icon="resumen.png" mandatory="no" title="Dias_por_disfrutar" changefor="id" options="readonly">
-				diaspordisfrutar
-			</field>
-			<field type="string" icon="resumen.png" mandatory="yes"  title="Dias_solicitados" changefor="id" options="readonly">
-				diassolicitados
-			</field>
-            <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_1" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ')'" changefor="id">
-                cedula_suplente_1
-            </field>
-            <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '" changefor="id">
-                cedula_suplente_2
-            </field>
-			<field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_inicio_desde" changefor="id">
-				fechainicio
-			</field>
-            <field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_fin_hasta" changefor="id">
-				fechafin
-			</field>
-            <field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"   title="Fecha_incorporación" changefor="id">
-				fechaincorporacion
-			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" title="días_hábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
-				diashabiles
-			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" title="días_inhábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
-				diasinhabiles
-			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','"  >
-				bonoacancelar
-			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
-            options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
-                sueldodelmes
-            </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+"
-            options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
-                sueldoanticipado
-            </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','" >
-                totalapagar
-            </field>
-			<field type="string" literal="Direccion_ejecutiva" mandatory="yes" primarykey="no">
-				status
-			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Talento_Humano" desc="Observaciones por parte de Talento Humano" validation="">
-				observaciones_talento_humano
-			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Dirección_Gestión_Interna" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_gestion_interna
-			</field>		
-   			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_ejecutiva	
-			</field>
-			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
-                devuelto
-            </field>		
-		</fields>
-	</command>
-	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>
-            <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="current">
-                id
-            </field>
-            <field type="datetime" mandatory="yes" function="now()" format="time_t" input="no">
-                fecha_accion
-            </field>
-            <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
-            </field>
-            <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                id_vacaciones
-            </field>
-            <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-                 informacion_usuario
-            </field>
-            <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
-                 fechainicio
-            </field>
-            <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
-                 fechafin
-            </field>
-            <field type="number" mandatory="yes" title="Periodo" >
-                 nombre_periodo
-            </field>
-			<field type="string" literal="Direccion_ejecutiva" mandatory="yes" primarykey="no">
-                 status
-            </field>
-        </fields>
-    </command>
-</operation>
+			<field type="combolisttable" options="id:vacaciones:where status='DireccionEjecutiva'::'#' || id || ' Usuario: '||usuario||' (Periodo vacacional: '|| nombre || ')'" mandatory="yes" order="desc" primarykey="yes" title="Periodo_vacacional" changekey="yes">
 
-<operation  name="Direccion_ejecutiva" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png" action="" postaction="">
-	<command id ="1" type="actualizar" table="vacaciones">
-		<fields>
-			<field type="combolisttable" options="id:vacaciones:where status='Direccion_ejecutiva'::'#' || id || ' Usuario: '||usuario||' (Periodo vacacional: '|| nombre || ')'" mandatory="yes" order="desc" primarykey="yes" title="Periodo_vacacional" changekey="yes">
 				id
 			</field>
+
 			<field type="string" icon="resumen.png" validation=".*" mandatory="no" title="Informacion_usuario" options="readonly,wiki" changefor="id">
 				informacion_usuario
 			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" options="readonly" changefor="id" title="Periodo" >
-                nombre
-            </field>
+
+			 <field type="string" icon="resumen.png" mandatory="yes" options="readonly" changefor="id" title="Periodo" >
+                                nombre
+                        </field>
+
 			<field type="string" icon="resumen.png" mandatory="no" validation=".*" title="Dias_a_disfrutar" changefor="id" options="readonly" >
 				diasadisfrutar
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no" validation=".*" title="Dias_disfrutados" changefor="id"  options="readonly">
 				diasdisfrutados
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no" validation=".*" title="Dias_por_disfrutar" changefor="id"   options="readonly">
 				diaspordisfrutar
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no" validation=".*" title="Dias_solicitados" changefor="id" options="readonly">
 				diassolicitados
 			</field>
+
 			<field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_1" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ')'" changefor="id">
-                cedula_suplente_1
-            </field>
+                                cedula_suplente_1
+                        </field>
 			<field type="string" mandatory="no" options="readonly" title="Aceptó_suplente_1" changefor="id" visible="yes">
 				case when acepta_suplente1 then 'Sí' else 'No' end as acepto1
 			</field>
-            <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '" changefor="id">
-                cedula_suplente_2
-            </field>
-    		<field type="string" mandatory="no" options="readonly" title="Aceptó_suplente_2" changefor="id" input="yes" >
+
+                         <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '" changefor="id">
+                                cedula_suplente_2
+                        </field>
+				<field type="string" mandatory="no" options="readonly" title="Aceptó_suplente_2" changefor="id" input="yes" >
 				case when acepta_suplente2 then 'Sí' else 'No' end as acepto2
 			</field>
+		
 			<field type="datetime" icon="resumen.png" mandatory="no" options="readonly,calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_inicio_desde" changefor="id">
 				fechainicio
 			</field>
+
 			<field type="datetime" icon="resumen.png" mandatory="no" options="readonly,calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_final_hasta" changefor="id">
 				fechafin
 			</field>
+
 			<field type="datetime" icon="resumen.png" mandatory="no" options="readonly,calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_incorporacion" changefor="id">
 				fechaincorporacion
 			</field>
+
 			<field type="string" mandatory="no" options="readonly,wiki" title="Observaciones_Talento_Humano" validation="" changefor="id">
-                observaciones_talento_humano
-            </field>
-            <field type="string" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Direccion_Gestion_Interna" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_gestion_interna
-			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Dirección_ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_ejecutiva
-			</field>
-			<field type="string" mandatory="no" options="wiki" title="Observaciones_Finanzas" desc="Observaciones por parte de la dirección ejecutiva" validation="">
-                observaciones_finanzas
-            </field>
-    		<field type="string" literal="Finanzas" mandatory="no">
-                status
-            </field>
-            <field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
-                devuelto
-            </field>
+                                observaciones_talento_humano
+                        </field>
+
+			<field type="stringbox" mandatory="no" options="wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de la dirección ejecutiva" validation="">
+                                observaciones_direccion_ejecutiva
+                        </field>
+			
+			 <field type="string" literal="Finanzas" mandatory="no">
+                                status
+                        </field>
+
 		</fields>
 	</command>
-	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>
-            <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="current">
-                id
-            </field>
-            <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
-                fecha_accion
-            </field>
-            <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
-            </field>
-            <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                id_vacaciones
-            </field>
-            <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-                informacion_usuario
-            </field>
-            <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
-                fechainicio
-            </field>
-            <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
-                 fechafin
-            </field>
-            <field type="number" mandatory="yes" title="Periodo" >
-                 nombre_periodo
-            </field>
-   		    <field type="string" literal="Finanzas" mandatory="no">
-                 status
-            </field>
-        </fields>
-    </command>
-</operation>
 
-<operation  name="Finanzas" desc="Verificación de Finanzas" action="" postaction="" >
+	<command id ="1" type="agregar" table="vacaciones_registro" >
+                <fields>
+
+                        <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
+                                id
+                        </field>
+
+                        <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                                fecha_accion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+
+                         <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
+                                id_vacaciones
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
+                                informacion_usuario
+                        </field>
+                        <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
+                                fechainicio
+                        </field>
+                        <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
+                                fechafin
+                        </field>
+
+                        <field type="number" mandatory="yes" title="Periodo" >
+                                nombre_periodo
+                        </field>
+
+			 <field type="string" literal="Finanzas" mandatory="no">
+                                status
+                        </field>
+
+                </fields>
+        </command>
+</operation>
+<operation  name="Finanzas" desc="Verificación de Finanzas" 
+action="" postaction="" >
 	<command id ="1" type="actualizar" table="vacaciones">
 		<fields>
 			<field type="combolisttable" options="id:vacaciones:where status='Finanzas'::'#' || id || ' Usuario: '||usuario||' (Periodo vacacional: '|| nombre || ')'" mandatory="yes" primarykey="yes" title="Periodo_vacacional" changekey="yes" order="desc" >
 				id
 			</field>
+			
 			<field type="string" mandatory="yes" title="Informacion_usuario" changefor="id" options="readonly">
 				informacion_usuario
 			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" options="readonly" changefor="id" title="Periodo" >
-                nombre
-            </field>
+
+			 <field type="string" icon="resumen.png" mandatory="yes" options="readonly" changefor="id" title="Periodo" >
+                                nombre
+                        </field>
+
 			<field type="datetime" mandatory="yes" options="readonly,calendarPopup::true,displayFormat::dd/MM/yy" title="fecha_solicitud"  format="time_t"  changefor="id">
 				fechasolicitud
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no" title="Dias_a_disfrutar" validation=".*" changefor="id" options="readonly">
 				diasadisfrutar
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no"  title="Dias_disfrutados" changefor="id" options="readonly">
 				diasdisfrutados
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="no" title="Dias_por_disfrutar" changefor="id" options="readonly">
 				diaspordisfrutar
 			</field>
+
 			<field type="string" icon="resumen.png" mandatory="yes"  title="Dias_solicitados" changefor="id" options="readonly">
 				diassolicitados
 			</field>
-            <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_1" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ')'" changefor="id">
-                cedula_suplente_1
-            </field>
-            <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '" changefor="id">
-                cedula_suplente_2
-            </field>
+
+                        <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_1" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ')'" changefor="id">
+                                cedula_suplente_1
+                        </field>
+
+                         <field type="combolisttable" mandatory="no" validation="" title="Suplente_interno_2" options="cedula:personal:where usuario!='_USERNAME'::nombres ||' '|| apellidos || ' (Cedula ' || cedula || ') '" changefor="id">
+                                cedula_suplente_2
+                        </field>
+
 			<field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_inicio_desde" changefor="id">
 				fechainicio
 			</field>
-            <field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_fin_hasta" changefor="id">
+<field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"  title="Fecha_fin_hasta" changefor="id">
 				fechafin
 			</field>
-            <field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"   title="Fecha_incorporación"changefor="id">
+<field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"   title="Fecha_incorporación"
+ changefor="id">
 				fechaincorporacion
 			</field>
 			<field type="string" icon="resumen.png" mandatory="yes" title="días_hábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
@@ -880,60 +1007,73 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			<field type="string" icon="resumen.png" mandatory="yes" title="días_inhábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
 				diasinhabiles
 			</field>
+
 			<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','"  >
 				bonoacancelar
 			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
-                sueldodelmes
-            </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
-                sueldoanticipado
-            </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','" >
-                totalapagar
-            </field>
+			<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
+ options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+                                sueldodelmes
+                        </field>
+
+                        <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+"
+ options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+                                sueldoanticipado
+                        </field>
+
+                        <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','" >
+                                totalapagar
+                        </field>
+
 			<field type="string" literal="Archivar_solicitud_procesada" mandatory="yes" primarykey="no">
 				status
 			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Finanzas" desc="Observaciones por parte del personal de Finanzas" validation="">
+
+			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Finanzas" 
+		desc="Observaciones por parte del personal de Finanzas" validation="">
 				observaciones_finanzas
-			</field>
-			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="">
-                devuelto
-            </field>		
+			</field>		
 		</fields>
 	</command>
 	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>
-            <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
-                id
-            </field>
-            <field type="datetime" mandatory="yes" function="now()" format="time_t" input="no">
-                fecha_accion
-            </field>
-            <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
-            </field>
-            <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                id_vacaciones
-            </field>
-            <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-                informacion_usuario
-            </field>
-            <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
-                fechainicio
-            </field>
-            <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
-                fechafin
-            </field>
-            <field type="number" mandatory="yes" title="Periodo" >
-                nombre_periodo
-            </field>
+                <fields>
+
+                        <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
+                                id
+                        </field>
+
+                        <field type="datetime" mandatory="yes" function="now()" format="time_t" input="no">
+                                fecha_accion
+                        </field>
+                        <field type="string" literal="_USERNAME" mandatory="yes" >
+                                propietario
+                        </field>
+
+                         <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
+                                id_vacaciones
+                        </field>
+                        <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
+                                informacion_usuario
+                        </field>
+                        <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
+                                fechainicio
+                        </field>
+                        <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
+                                fechafin
+                        </field>
+
+                        <field type="number" mandatory="yes" title="Periodo" >
+                                nombre_periodo
+                        </field>
+
 			<field type="string" literal="Archivar_solicitud_procesada" mandatory="yes" primarykey="no">
-                status
-            </field>
-        </fields>
-    </command>
+                                status
+                        </field>
+
+                </fields>
+        </command>
+
 </operation>
-	
+
+
 </operations>

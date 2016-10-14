@@ -19,7 +19,7 @@ Hasta la fecha: {#fechafin}
 <br/>
 <br/>
 Su planilla la puede descargar en el sistema de Gestion Interna,
-En el menu "Vacaciones", opcion "Planilla PDF Actual"
+En el menu <b>Vacaciones</b>, opcion <b>Planilla PDF Actual</b>.
 
 <br/>
 <br/>
@@ -32,5 +32,26 @@ Usted debera  reincorporarse en  fecha {#fechaincorporacion},
 <br/>
 <br/>
 Gestion Interna Cenditel 2016.
+##SAFETSEPARATOR##
+operacion:enviar_solicitud_por_correo Periodo_vacacional:%1 Asunto:Planilla de vacaciones  Destinatarios: {#correo_investigacion}  configurekey.Email/email.template.1: Estimado Director de Investigacion <br/>. La
+persona {#nombreapellido} ha solicitado salir de vacaciones. <br/>
+Gracias.
+##SAFETSEPARATOR##
+operacion:enviar_solicitud_por_correo Periodo_vacacional:%1 Asunto:Planilla de vacaciones  Destinatarios: {#correo_desarrollo}  configurekey.Email/email.template.1: Estimado Director de Desarrollo <br/>. La
+persona {#nombreapellido} ha solicitado salir de vacaciones. <br/>
+Gracias.
+##SAFETSEPARATOR##
+operacion:enviar_solicitud_por_correo Periodo_vacacional:%1 Asunto:Planilla de vacaciones  Destinatarios: {#correo_apropiacion}  configurekey.Email/email.template.1: Estimado Director de Apropiacion <br/>. La
+persona {#nombreapellido} ha solicitado salir de vacaciones. <br/>
+Gracias.
+##SAFETSEPARATOR##
+operacion:enviar_solicitud_por_correo Periodo_vacacional:%1 Asunto:Planilla de vacaciones  Destinatarios: {#correo_reflexion}  configurekey.Email/email.template.1: Estimado Director de Reflexion <br/>. La
+persona {#nombreapellido} ha solicitado salir de vacaciones. <br/>
+Gracias.
+
+
+
+
+
 
 
