@@ -1803,6 +1803,8 @@ f["filename"])
 	    return current_html
 
 
+	    
+
 
 
 mycontroller = [           
@@ -1815,6 +1817,7 @@ mycontroller = [
             (r"/gologin", GoLoginHandler),
             (r"/generatepdf/", GeneratePdfHandler),
             (r"/generateformpdf/", GeneratePdfParametroHandler),            
+            (r"/ajaxconsole", ProcessAjaxConsoleHandler),
             (r"/logout", LogoutHandler),
             (r"/goregister", GoRegisterHandler),
 	    (r"/listar/([^\s]+)/([^\s]+)", ListHandler),

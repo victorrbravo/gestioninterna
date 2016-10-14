@@ -30,7 +30,7 @@ myinflow.setHostURL(myurl)
 myconsult = u"operacion:Generar_gráfico_con_autofiltro Cargar_archivo_flujo: /home/vbravo/Filtros/localidad_publicaciones.xml Autofiltro:por_ciudad  parameters.BySearchWord:laptop"
 #myconsult = u"operacion:Generar_gráfico_con_autofiltro Cargar_archivo_flujo: /home/vbravo/tmp/localidad_publicaciones.xml Autofiltro:por_ciudad  parameters.BySearchWord:laptop"
 #myconsult = u"operacion:Generar_gráfico_coloreado Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesUser.xml"
-myconsult = u"operacion:Generar_gráfico_para_clave Clave: 79"
+myconsult = u"operacion:Generar_gráfico_para_clave Clave: 75"
  
 
 result = myinflow.login("vbravo","zpinquar") 
