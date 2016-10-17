@@ -74,7 +74,7 @@
                             <li><a href="/generatepdf/">Planilla PDF Actual</a></li>                 
                             <li class="divider"></li>                           
                             <li><a href="/listar/SolicitudVistaVacaciones/vSolicitud">Listar</a></li>		
-                            <li><a href="/goform/changestatus/Siguiente_estado_solicitud/0">Cambiar estado</a></li>
+                            {% raw menues["Siguiente_estado_solicitud"] if 'Siguiente_estado_solicitud' in menues else '' %}
                             <li class="divider"></li>                           
                             <li><a href="/goform/addrh/Talento_humano/0">Talento humano</a></li>
                             {% raw menues["Direccion_gestion_interna"] if 'Direccion_gestion_interna' in menues else '' %} 
