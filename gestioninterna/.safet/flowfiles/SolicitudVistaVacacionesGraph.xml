@@ -42,7 +42,7 @@ timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_r
 </task>
 <task id="TalentoHumano"  title="todas" >
 	<port side="forward" type="split" pattern="or" >
-		<connection   source="DireccionInterna" query="select status from vista_vacaciones"  options="Direccion_interna" tokenlink="" >
+		<connection   source="DireccionInterna" query="select status from vista_vacaciones"  options="Direccion_gestion_interna" tokenlink="" >
 		</connection>
 		<connection   source="Iniciado" query="select status from vista_vacaciones"  options="iniciado" tokenlink="" back="yes" >
 		</connection>
@@ -64,8 +64,8 @@ timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_r
 	</port>
 	 <variable id="vDireccionInterna" scope="task"  type="sql" config="1"   tokenlink=""
                  documentsource="select id,id_cedula from vista_vacaciones"
-		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Direccion_interna' limit 1)"  
-timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Direccion_interna' limit 1)" 
+		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Direccion_gestion_interna' limit 1)"  
+timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Direccion_gestion_interna' limit 1)" 
 
  >
      </variable>
@@ -108,8 +108,8 @@ timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_r
 	</port>
 	 <variable id="vArchivar" scope="task"  type="sql" config="1"   tokenlink=""
                  documentsource="select id,id_cedula from vista_vacaciones"
- 		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='procesada' limit 1)"  
-timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='procesada' limit 1)" 
+ 		rolfield="(select propietario from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Archivar_solicitud_procesada' limit 1)"  
+timestampfield="(select fecha_accion from vacaciones_registro where vacaciones_registro.id_vacaciones=vista_vacaciones.id and vacaciones_registro.status='Archivar_solicitud_procesada' limit 1)" 
  >
      </variable>
 </task>

@@ -258,7 +258,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 <operation  name="Siguiente_estado_solicitud"  desc="Cambia el siguiente estado de las vacaciones" icon="firmadoc.png">
 	<command id ="1" type="actualizar" table="vacaciones">		
         <fields>
-	  	    <field type="combolisttable" options="id:vacaciones:where status!='Archivar_solicitud_procesada'::'(' || id || ') ' ||  nombre || '-' || usuario || '-' || status" mandatory="yes" 
+	  	    <field type="combolisttable" options="id:vacaciones::'(' || id || ') ' ||  nombre || '-' || usuario || '-' || status" mandatory="yes" 
 		    title="periodo_vacacional"   changekey="yes" primarykey="yes" order="desc" position="open_and_close,md-4"  >
                 id
             </field>           
@@ -506,12 +506,11 @@ action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.saf
     </command>
 </operation>
 
-<operation  name="Talento_humano" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png" 
-action="operacion:Listar_datos_general  Cargar_archivo_flujo: /home/pbuitrago/.safet/flowfiles/FlujoSolicitudVacaciones.xml Variable: vTalento_humano"
-postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto:Nueva Solicitud de VACACIONES Destinatarios: yverdi@cenditel.gob.ve  vbravo@cenditel.gob.ve configurekey.Email/email.template.1: El trabajador  {#nombreapellido}. ha realizado una solicitud de vacaciones que usted tiene pendiente para revisión.  Puede ver la planilla en el enlace  http://localhost/media/{#safetdocumentid:SolicitudVistaVacacionessp:vSolicitud}**RETURN** Puede chequear el trámite de vacaciones en el sistema de Gestión Interna disponible en el enlace http://localhost/intranet" >
+<operation  name="Talento_humano" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png"  >
 	<command id ="1" type="actualizar" table="vacaciones">
 		<fields>
-			<field type="combolisttable" options="id:vacaciones:where status='Talento_humano'::'#' || id || ' Usuario: '||usuario||' (Periodo vacacional: '|| nombre || ')'" mandatory="yes" primarykey="yes" title="Periodo_vacacional" changekey="yes" order="desc" >
+			<field type="combolisttable" options="id:vacaciones:where status='Talento_humano'::'#' || id || ' Usuario: '||usuario||' (Periodo vacacional: '|| nombre || ')'" 
+	  mandatory="yes" primarykey="yes" title="Periodo_vacacional" changekey="yes" order="desc" >
 				id
 			</field>
 			<field type="string" mandatory="yes" title="Informacion_usuario" changefor="id" options="readonly">
@@ -550,24 +549,24 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
             <field type="datetime" icon="resumen.png" mandatory="no" options="calendarPopup::true,displayFormat::dd/MM/yy"   title="Fecha_incorporación" changefor="id">
 				fechaincorporacion
 			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" title="días_hábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
+			<field type="string" icon="resumen.png" mandatory="yes" title="días_hábiles"  validation="[0-9]+" options=""  >
 				diashabiles
 			</field>
-			<field type="string" icon="resumen.png" mandatory="yes" title="días_inhábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
+			<field type="string" icon="resumen.png" mandatory="yes" title="días_inhábiles"  validation="[0-9]+" options=""  >
 				diasinhabiles
 			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','"  >
+		<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options=""  >
 				bonoacancelar
-			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
-            options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+		</field>
+		<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
+            options="">
                 sueldodelmes
             </field>
             <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+"
-            options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+            options="">
                 sueldoanticipado
             </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','" >
+            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="" >
                 totalapagar
             </field>
 			<field type="string" literal="Direccion_gestion_interna" mandatory="yes" primarykey="no">
@@ -576,53 +575,39 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Talento_Humano" desc="Observaciones por parte de Talento Humano" validation="">
 				observaciones_talento_humano
 			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Dirección_Gestión_Interna" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_gestion_interna
-			</field>		
-   			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_ejecutiva	
-			</field>
-			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
-                devuelto
-            </field>		
 		</fields>
 	</command>
-	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>
-            <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="current">
-                id
+     <command id ="1" type="agregar" table="vacaciones_registro" >
+        <fields>	
+			<field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
+                 id
             </field>
-            <field type="datetime" mandatory="yes" function="now()" format="time_t" input="no">
-                fecha_accion
+            <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                 fecha_accion
             </field>
             <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
+                 propietario
             </field>
-            <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                id_vacaciones
+   		   <field type="number" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
+                 id_vacaciones
+           </field>
+ 	   <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
+                fechainicio
             </field>
-            <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-                 informacion_usuario
+	      <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
+                fechafin
             </field>
-            <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
-                 fechainicio
-            </field>
-            <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
-                 fechafin
-            </field>
-            <field type="number" mandatory="yes" title="Periodo" >
-                 nombre_periodo
-            </field>
-			<field type="string" literal="Direccion_gestion_interna" mandatory="yes" primarykey="no" >
-                 status
+   		  <field type="string" literal="Direccion_gestion_interna" mandatory="yes" title="Estatus">
+			status
             </field>
         </fields>
     </command>
+
 </operation>
 
 <operation  name="Direccion_gestion_interna" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png" 
-action="operacion:Listar_datos_general  Cargar_archivo_flujo: /home/pbuitrago/.safet/flowfiles/FlujoSolicitudVacaciones.xml Variable: vTalento_humano"
-postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto:Nueva Solicitud de VACACIONES Destinatarios: yverdi@cenditel.gob.ve  vbravo@cenditel.gob.ve configurekey.Email/email.template.1: El trabajador  {#nombreapellido}. ha realizado una solicitud de vacaciones que usted tiene pendiente para revisión.  Puede ver la planilla en el enlace  http://localhost/media/{#safetdocumentid:SolicitudVistaVacacionessp:vSolicitud}**RETURN** Puede chequear el trámite de vacaciones en el sistema de Gestión Interna disponible en el enlace http://localhost/intranet" >
+action=""
+postaction="" >
 	<command id ="1" type="actualizar" table="vacaciones">
 		<fields>
 			<field type="combolisttable" options="id:vacaciones:where status='Direccion_gestion_interna'::'#' || id || ' Usuario: '||usuario||' (Periodo vacacional: '|| nombre || ')'" mandatory="yes" primarykey="yes" title="Periodo_vacacional" changekey="yes" order="desc" >
@@ -670,68 +655,59 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			<field type="string" icon="resumen.png" mandatory="yes" title="días_inhábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
 				diasinhabiles
 			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','"  >
+			<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options=""  >
 				bonoacancelar
-			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
-            options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+		</field>
+		<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
+            options="">
                 sueldodelmes
             </field>
             <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+"
-            options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+            options="">
                 sueldoanticipado
             </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','" >
+            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="" >
                 totalapagar
             </field>
+			
 			<field type="string" literal="Direccion_ejecutiva" mandatory="yes" primarykey="no">
 				status
 			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Talento_Humano" desc="Observaciones por parte de Talento Humano" validation="">
+			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Talento_Humano" 
+						      desc="Observaciones por parte de Talento Humano" validation="">
 				observaciones_talento_humano
 			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Dirección_Gestión_Interna" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
+			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Dirección_Gestión_Interna" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
 				observaciones_direccion_gestion_interna
 			</field>		
-   			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Dirección_Ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
-				observaciones_direccion_ejecutiva	
-			</field>
-			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
-                devuelto
-            </field>		
 		</fields>
 	</command>
 	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>
-            <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="current">
-                id
+        <fields>	
+			<field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
+                 id
             </field>
-            <field type="datetime" mandatory="yes" function="now()" format="time_t" input="no">
-                fecha_accion
+            <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                 fecha_accion
             </field>
             <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
+                 propietario
             </field>
-            <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                id_vacaciones
+   		   <field type="number" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
+                 id_vacaciones
+           </field>
+ 	   <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
+                fechainicio
             </field>
-            <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-                 informacion_usuario
+	      <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
+                fechafin
             </field>
-            <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
-                 fechainicio
-            </field>
-            <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
-                 fechafin
-            </field>
-            <field type="number" mandatory="yes" title="Periodo" >
-                 nombre_periodo
-            </field>
-			<field type="string" literal="Direccion_ejecutiva" mandatory="yes" primarykey="no">
-                 status
+   		  <field type="string" literal="Direccion_ejecutiva" mandatory="yes" title="Estatus">
+			status
             </field>
         </fields>
     </command>
+
 </operation>
 
 <operation  name="Direccion_ejecutiva" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="padlock.png" action="" postaction="">
@@ -788,49 +764,38 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Dirección_ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
 				observaciones_direccion_ejecutiva
 			</field>
-			<field type="string" mandatory="no" options="wiki" title="Observaciones_Finanzas" desc="Observaciones por parte de la dirección ejecutiva" validation="">
-                observaciones_finanzas
-            </field>
-    		<field type="string" literal="Finanzas" mandatory="no">
-                status
-            </field>
-            <field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="" changefor="id">
-                devuelto
-            </field>
+			<field type="string" literal="Finanzas" mandatory="no">
+			    status
+			</field>
 		</fields>
 	</command>
 	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>
-            <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="current">
-                id
+        <fields>	
+			<field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
+                 id
             </field>
             <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
-                fecha_accion
+                 fecha_accion
             </field>
             <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
+                 propietario
             </field>
-            <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                id_vacaciones
-            </field>
-            <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-                informacion_usuario
-            </field>
-            <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
+   		   <field type="number" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
+                 id_vacaciones
+           </field>
+ 	   <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
                 fechainicio
             </field>
-            <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
-                 fechafin
+	      <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
+                fechafin
             </field>
-            <field type="number" mandatory="yes" title="Periodo" >
-                 nombre_periodo
-            </field>
-   		    <field type="string" literal="Finanzas" mandatory="no">
-                 status
+   		  <field type="string" literal="Finanzas" mandatory="yes" title="Estatus">
+			status
             </field>
         </fields>
     </command>
-</operation>
+
+	</operation>
 
 <operation  name="Finanzas" desc="Verificación de Finanzas" action="" postaction="" >
 	<command id ="1" type="actualizar" table="vacaciones">
@@ -880,60 +845,65 @@ postaction="operacion:Enviar_solicitud_por_correo Periodo_vacacional: %1  Asunto
 			<field type="string" icon="resumen.png" mandatory="yes" title="días_inhábiles"  validation="[0-9]+" options="spinButtons::false,width::'250px',height::'25px',symbol::''"  >
 				diasinhabiles
 			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','"  >
+			<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options=""  >
 				bonoacancelar
-			</field>
-			<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+		</field>
+		<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
+            options="">
                 sueldodelmes
             </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','">
+            <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+"
+            options="">
                 sueldoanticipado
             </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="spinButtons::false,width::'250px',height::'25px',symbol::'',groupSeparator::'.',decimalSeparator::','" >
+            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="" >
                 totalapagar
             </field>
+	    <field type="string" mandatory="no" options="readonly,wiki" title="Observaciones_Talento_Humano" validation="" changefor="id">
+                observaciones_talento_humano
+            </field>
+            <field type="string" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Direccion_Gestion_Interna" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
+				observaciones_direccion_gestion_interna
+			</field>
+			<field type="stringbox" icon="desc.png" mandatory="no"  options="readonly,wiki" title="Observaciones_Dirección_ejecutiva" desc="Observaciones por parte de Talento Humano" validation="" changefor="id">
+				observaciones_direccion_ejecutiva
+			</field>
+		<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Finanzas" desc="Observaciones por parte del personal de Finanzas" validation="">
+				observaciones_finanzas
+			</field>
+
 			<field type="string" literal="Archivar_solicitud_procesada" mandatory="yes" primarykey="no">
 				status
 			</field>
-			<field type="stringbox" icon="desc.png" mandatory="no"  options="wiki" title="Observaciones_Finanzas" desc="Observaciones por parte del personal de Finanzas" validation="">
-				observaciones_finanzas
-			</field>
-			<field type="string" mandatory="no" options="wiki" title="Devuelto" desc="Observaciones por lo que fue devuelto" validation="">
-                devuelto
-            </field>		
+
 		</fields>
 	</command>
 	<command id ="1" type="agregar" table="vacaciones_registro" >
-        <fields>
-            <field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
-                id
+        <fields>	
+			<field  type="agregar" sequence="vacaciones_registro_id_seq" title="Solicitud_registro" typesequence="next">
+                 id
             </field>
-            <field type="datetime" mandatory="yes" function="now()" format="time_t" input="no">
-                fecha_accion
+            <field type="datetime" mandatory="yes"  function="now()" format="time_t" input="no">
+                 fecha_accion
             </field>
             <field type="string" literal="_USERNAME" mandatory="yes" >
-                propietario
+                 propietario
             </field>
-            <field type="string" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
-                id_vacaciones
-            </field>
-            <field type="string" mandatory="no" primarykey="no" title="Informacion_usuario" >
-                informacion_usuario
-            </field>
-            <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
+   		   <field type="number" mandatory="yes" primarykey="yes" title="Periodo_vacacional">
+                 id_vacaciones
+           </field>
+ 	   <field type="datetime" mandatory="no" format="time_t" title="fechainicio">
                 fechainicio
             </field>
-            <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
+	      <field type="datetime" mandatory="no"  format="time_t" title="Fecha_final_periodo_hasta">
                 fechafin
             </field>
-            <field type="number" mandatory="yes" title="Periodo" >
-                nombre_periodo
-            </field>
-			<field type="string" literal="Archivar_solicitud_procesada" mandatory="yes" primarykey="no">
-                status
+   		  <field type="string" literal="Archivar_solicitud_procesada" mandatory="yes" title="Estatus">
+			status
             </field>
         </fields>
     </command>
+
 </operation>
 	
 </operations>

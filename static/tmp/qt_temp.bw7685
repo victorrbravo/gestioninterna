@@ -1,0 +1,24 @@
+digraph G {
+rankdir="TB";
+ranksep="0.5 equally";
+fontsize="12";
+Archivar_solicitud_procesada [style=filled,image="cloud.ps", fontname="Helvetica", shape=Mrecord, label="{ Archivar_solicitud_procesada\nsolicitud_archivada | or}",fillcolor="#ffffff" ,color="black"];
+Archivar_solicitud_procesada -> final;
+DireccionEjecutiva [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="DireccionEjecutiva\nPlanilla vista_vacaciones",fillcolor="#ffffff" ,color="black"];
+DireccionEjecutiva -> Finanzas;
+DireccionInterna [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="DireccionInterna\nPlanilla vista_vacaciones",fillcolor="#ffffff" ,color="black"];
+DireccionInterna -> DireccionEjecutiva;
+Finanzas [style=filled,image="cloud.ps", fontname="Helvetica", shape=Mrecord, label="{ Finanzas\nAprobacion del Presidente | or}",fillcolor="#ffffff" ,color="black"];
+Finanzas -> Archivar_solicitud_procesada;
+Iniciado [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Iniciado\ntodas",fillcolor="#ffffff" ,color="black"];
+Iniciado -> TalentoHumano;
+TalentoHumano [style=filled,image="cloud.ps", fontname="Helvetica", shape=Mrecord, label="{ TalentoHumano\ntodas | or}",fillcolor="#ffff99" ,color="black"];
+TalentoHumano -> DireccionInterna;
+TalentoHumano_stats [style="dashed"  label=<vbravo<br/>17/10/2016 03:31pm<br/>hace dos  dias y 23 horas  llego<br/>N/A>shape="box" fontcolor="black" fillcolor="antiquewhite"];
+TalentoHumano_stats -> TalentoHumano [style="dotted"];
+inicial [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
+inicial -> Iniciado;
+final [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
+final_stats [style="dashed"  label=<Total: 0<br/>  >shape="box" fontcolor="black" fillcolor="antiquewhite"];
+final_stats -> final [style="dotted"];
+}
