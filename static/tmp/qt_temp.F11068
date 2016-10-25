@@ -1,0 +1,32 @@
+digraph G {
+rankdir="TB";
+ranksep="0.5 equally";
+fontsize="12";
+Archivar_solicitud_procesada [style=filled,image="cloud.ps", fontname="Helvetica", shape=Mrecord, label="{ Archivar_solicitud_procesada\nsolicitud_archivada | or}",fillcolor="#ffff99" ,color="black"];
+Archivar_solicitud_procesada -> final;
+Archivar_solicitud_procesada_stats [style="dashed"  label=<vbravo<br/>20/10/2016 03:07pm<br/>hace 4 dias y 17 horas  llego<br/>13 minutos  en espera>shape="box" fontcolor="black" fillcolor="antiquewhite"];
+Archivar_solicitud_procesada_stats -> Archivar_solicitud_procesada [style="dotted"];
+DireccionEjecutiva [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="DireccionEjecutiva\nPlanilla vista_vacaciones",fillcolor="#ffff99" ,color="black"];
+DireccionEjecutiva -> Finanzas;
+DireccionEjecutiva_stats [style="dashed"  label=<vbravo<br/>20/10/2016 02:49pm<br/>hace 4 dias y 17 horas  llego<br/>17 minutos  en espera>shape="box" fontcolor="black" fillcolor="antiquewhite"];
+DireccionEjecutiva_stats -> DireccionEjecutiva [style="dotted"];
+DireccionInterna [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="DireccionInterna\nPlanilla vista_vacaciones",fillcolor="#ffff99" ,color="black"];
+DireccionInterna -> DireccionEjecutiva;
+DireccionInterna_stats [style="dashed"  label=<vbravo<br/>20/10/2016 02:32pm<br/>hace 4 dias y 17 horas  llego<br/>dos  dias y 23 horas  en espera>shape="box" fontcolor="black" fillcolor="antiquewhite"];
+DireccionInterna_stats -> DireccionInterna [style="dotted"];
+Finanzas [style=filled,image="cloud.ps", fontname="Helvetica", shape=Mrecord, label="{ Finanzas\nAprobacion del Presidente | or}",fillcolor="#ffff99" ,color="black"];
+Finanzas -> Archivar_solicitud_procesada;
+Finanzas_stats [style="dashed"  label=<vbravo<br/>20/10/2016 02:54pm<br/>hace 4 dias y 17 horas  llego<br/>5 minutos  en espera>shape="box" fontcolor="black" fillcolor="antiquewhite"];
+Finanzas_stats -> Finanzas [style="dotted"];
+Iniciado [style=filled,image="cloud.ps", fontname="Helvetica", shape=box, label="Iniciado\ntodas",fillcolor="#ffffff" ,color="black"];
+Iniciado -> TalentoHumano;
+TalentoHumano [style=filled,image="cloud.ps", fontname="Helvetica", shape=Mrecord, label="{ TalentoHumano\ntodas | or}",fillcolor="#ffff99" ,color="black"];
+TalentoHumano -> DireccionInterna;
+TalentoHumano_stats [style="dashed"  label=<vbravo<br/>17/10/2016 03:31pm<br/>hace una semana  llego<br/>N/A>shape="box" fontcolor="black" fillcolor="antiquewhite"];
+TalentoHumano_stats -> TalentoHumano [style="dotted"];
+inicial [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
+inicial -> Iniciado;
+final [style=filled, shape=ellipse,fillcolor="#FFFFFF",color="black"];
+final_stats [style="dashed"  label=<Total: 0<br/>  >shape="box" fontcolor="black" fillcolor="antiquewhite"];
+final_stats -> final [style="dotted"];
+}
