@@ -29,29 +29,46 @@ myval = 0;
 {% block ownscripts %}
 <script type="text/javascript">
 
-function ordenarJson() {
+function fieldSearch() {
 	
-	items = [ {id:1, value:3, perc:0.5}, {id:2, value:2, perc:0.3}, {id:3, value:1, perc:0.2} ]
-	items.sort(function (a, b){
-		return (b.value - a.value)
-	})
+	}
+
+function createTable(data) {
+	
+	console.log("...createTable...");
+	//******************************************
+	var title = '<h2> Estado de la solicitud </h2> \n ';
+    var head = '<div class=\'container\'> \n <table id=\' \' class=\'table table-bordered\'> \n <thead> \n <tr>\n <th>Estado</th>\n <th>Usuario</th> \n <th>Fecha</th> \n <th>Tiempo</th> \n <th>Espera</th> \n </tr>\n </thead>\n <tbody> \n';
+    var footer = '</tbody> \n </table> \n </div>';
+    var tableHtml = title + head;
+    var estados = ["TalentoHumano", "DireccionInterna", "DireccionEjecutiva", "Finanzas", "Archivar_solicitud_procesada"]
+    //*******************************************
+    
+   for (i = 0; i < 5; i++ ) {
+		for (var pru in data) {
+			var field = data[pru];
+		    //console.log("estado: " + field['estado'] + " vs Estados: "+ estados[i]);
+	        
+	        if(field['estado'] == estados[i]) { 
+				if(field['visita'] == true) {
+					tableHtml += '<tr class="active">\n<td>' + estados[i] + '</td>\n<td>' + field['usuario'] + '</td>\n<td>' + field['fecha'] +' </td>\n<td>' + field['tiempo'] +'</td>\n<td>' + field['espera'] + ' </td>\n</tr>\n';
+			    }			
+				else  {
+					tableHtml += '<tr>\n<td>' + estados[i] + '</td>\n<td>' + field['usuario'] + '</td>\n<td>' + field['fecha'] +' </td>\n<td>' + field['tiempo'] +'</td>\n<td>' + field['espera'] + ' </td>\n</tr>\n';
+				}
+			} else {
+				//console.log("No son iguales");
+				}
+		}
+	}
+	tableHtml += footer;
+	document.getElementById("table-status").innerHTML = tableHtml;
 }
 
-function buildtable(vector) {
-	var title = '<h2> Estado de la soliciitud </h2> \n ';
-    var head = '<div class=\'container\'> \n <table id=\' \' class=\'table table-bordered\'> \n <thead> \n <tr>\n <th>#</th>\n <th>Estado</th>\n <th>Usuario</th> \n <th>Fecha</th> \n <th>Tiempo</th> \n <th>Espera</th> \n </tr>\n </thead>\n <tbody> \n';
-    var footer = '</tbody> \n </table> \n </div>';
-	$.each(vector, function(idx, obj) {
-	});
-		
-	}
-function orderArray(vector) {
-	vector.sort(function(a,b){return a-b});
-	}
 
 function jsonTable(datajson) {
 	console.log("....jsonTable()....");
-	console.log(data);
+	//console.log("dataJson: %o", datajson);
 	//******************************************
 	var title = '<h2> Estado de la solicitud </h2> \n ';
     var head = '<div class=\'container\'> \n <table id=\' \' class=\'table table-bordered\'> \n <thead> \n <tr>\n <th>Estado</th>\n <th>Usuario</th> \n <th>Fecha</th> \n <th>Tiempo</th> \n <th>Espera</th> \n </tr>\n </thead>\n <tbody> \n';
@@ -60,57 +77,48 @@ function jsonTable(datajson) {
     //*******************************************
 	var dataJson = new Array();
 	var data = new Array();
-	var v_estado,v_usuario,v_fecha,v_date,v_tiempo,v_espera,v_visita;
-	//var json_job = data;
-	//console.log(json_job);
-	//var json_job= '{ "filename": "qt_temp.wO3304.svg", "id": "Generar planilla de solicitud de vista_vacaciones",  "data": { "nodes":  [  {  "name": "Archivar_solicitud_procesada", "type": "Task", "report": "yes", "union": "none", "pattern": "or", "title": "solicitud_archivada", "variable": "vArchivar", "index": "0.4", "following_nodes": [  "final"], "parameter1": " 0", "parameter2": "0", "parameter3": "vbravo", "parameter4": "20/10/2016 03:07pm", "date": "1476990420", "parameter5": "hace una semana y 5 dias  llego", "parameter6": "13 minutos  en espera" }, {  "name": "DireccionEjecutiva", "type": "Task", "report": "yes", "union": "none", "pattern": "none", "title": "Planilla vista_vacaciones", "variable": "vDireccionEjecutiva", "index": "0.4", "following_nodes": [  "Finanzas"], "parameter1": " 0", "parameter2": "0", "parameter3": "vbravo", "parameter4": "20/10/2016 02:49pm", "date": "1476989340", "parameter5": "hace una semana y 5 dias  llego", "parameter6": "17 minutos  en espera" }, {  "name": "DireccionInterna", "type": "Task", "report": "yes", "union": "none", "pattern": "none", "title": "Planilla vista_vacaciones", "variable": "vDireccionInterna", "index": "0.4", "following_nodes": [  "DireccionEjecutiva"], "parameter1": " 0", "parameter2": "0", "parameter3": "vbravo", "parameter4": "20/10/2016 02:32pm", "date": "1476988320", "parameter5": "hace una semana y 5 dias  llego", "parameter6": "dos  dias y 23 horas  en espera" }, {  "name": "Finanzas", "type": "Task", "report": "yes", "union": "none", "pattern": "or", "title": "Aprobacion del Presidente", "variable": "vFinanzas", "index": "0.4", "following_nodes": [  "Archivar_solicitud_procesada"], "parameter1": " 0", "parameter2": "0", "parameter3": "vbravo", "parameter4": "20/10/2016 02:54pm", "date": "1476989640", "parameter5": "hace una semana y 5 dias  llego", "parameter6": "5 minutos  en espera" }, {  "name": "Iniciado", "type": "Task", "report": "yes", "union": "none", "pattern": "none", "title": "todas", "variable": "vSolicitud", "index": "0", "following_nodes": [  "TalentoHumano"], "parameter1": " 0", "parameter2": "0" }, {  "name": "TalentoHumano", "type": "Task", "report": "yes", "union": "none", "pattern": "or", "title": "todas", "variable": "vTalentoHumano", "index": "0.4", "following_nodes": [  "DireccionInterna"], "parameter1": " 0", "parameter2": "0", "parameter3": "vbravo", "parameter4": "17/10/2016 03:31pm", "date": "1476732660", "parameter5": "hace 2 semanas  llego", "parameter6": "N/A" }, {  "name": "inicial", "type": "Condition", "report": "yes", "union": "none", "pattern": "none", "index": "0", "following_nodes": [  "Iniciado"], "parameter1": " 0", "parameter2": "0" }, {  "name": "final", "type": "Condition", "report": "yes", "union": "none", "pattern": "none", "index": "0.4", "parameter1": " 0", "parameter2": "0", "parameter3": "Total: 0", "parameter4": "  " } ], "first_date_number": "1476732660", "last_date_number": "1476990420", "first_date_format": "17/10/2016 03:31pm", "last_date_format": "20/10/2016 03:07pm", "lapse_date_nunmber": "257760", "lapse_date_text": "dos  dias y 23 Horas  " } }';
-	//var objVarVerifique = JSON.parse(json_job);
-	//var objVarVerifique = JSON.parse(JSON.stringify(json_job));
+	var v_estado = "";
+	var v_usuario = "";
+	var v_fecha = "";
+	var v_date = "";
+	var v_tiempo = "";
+	var v_espera = "";
+	var v_visita = "";
 	var objVarVerifique = JSON.parse(datajson);
 	$.each(objVarVerifique, function(idx, obj) {
-		//console.log("1....idx: " + idx);
-		//console.log("1....obj: " + obj);
 		if(idx == 'data') {
 				fielData = obj;
 				$.each(fielData, function(id, objx) { 
-					//console.log("2....id: " + id);
-					//console.log("2....objx: " + objx);
 					if(id == 'nodes') {
 						fielnode = objx;
-						//console.log("3....objx: " + objx);
 						$.each(fielnode, function(idy, objy) { 
-							//console.log("4....idy: " + idy);
-							//console.log("4....objy: " + objy);
 							fileobject = objy;
 							var i = 0;
 							$.each(fileobject, function(idyx, objyx) { 
-							    //console.log("5....idy: " + idyx);
-							    //console.log("5....objy: " + objyx);
 							    if(idyx == 'name') {
 									v_estado = objyx;
 									console.log(idyx + ": " + v_estado );
 									}
-									
 								if(idyx == 'parameter3') {
-										v_usuario = objyx;
-										v_visita = true;
-										console.log("Usuario : " + v_usuario );
+									v_usuario = objyx;
+									v_visita = true;
+									console.log("Usuario : " + v_usuario );
 									}
 								if(idyx == 'parameter4') {
-										v_fecha = objyx;
-										console.log("Fecha : " + v_fecha );
+									v_fecha = objyx;
+									console.log("Fecha : " + v_fecha );
 									}
 								if(idyx == 'date') {
-										v_date = objyx;
-										console.log("Date : " + v_date );
+									v_date = objyx;
+									console.log("Date : " + v_date );
 									}
 								if(idyx == 'parameter5') {
-										v_tiempo = objyx;
-										console.log("Tiempo : " + v_tiempo );
+									v_tiempo = objyx;
+									console.log("Tiempo : " + v_tiempo );
 									}
 								if(idyx == 'parameter6') {
-										v_espera = objyx;
-										console.log("Espera : " + v_espera );
+									v_espera = objyx;
+									console.log("Espera : " + v_espera );
 									}	
 						    });
 						    i++;
@@ -120,18 +128,18 @@ function jsonTable(datajson) {
 							else  {
 								tableHtml += '<tr>\n<td>' + v_estado + '</td>\n<td>' + v_usuario + '</td>\n<td>' + v_fecha +' </td>\n<td>' + v_tiempo +'</td>\n<td>' + v_espera + ' </td>\n</tr>\n';
 								}
-						    data = {estado:v_estado, usuario:v_usuario, fecha:v_fecha, espera:v_espera, date:v_date, visita:v_visita};
+						    data = {estado:v_estado, usuario:v_usuario, fecha:v_fecha, tiempo:v_tiempo, espera:v_espera, visita:v_visita};
 						    dataJson.push(data);
+						    if (v_estado == 'inicial') {dataJson.pop();}
+						    if (v_estado == 'Iniciado') {dataJson.pop();}
+						    if (v_estado == 'final') {dataJson.pop();}
 						});
 					}
 				});	
 			}
-			console.log("***********");
-			//console.log(dataJson);
-			//orderJsonArray = orderArray(dataJson);
 	 });
 	tableHtml += footer;
-	document.getElementById("table-status").innerHTML = tableHtml;
+	createTable(dataJson);
 }
 
 var mysubcategory = "";
