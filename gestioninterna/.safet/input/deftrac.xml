@@ -5,7 +5,7 @@ Autor      : Victor Bravo
 Descripcion: Archivo de Entrada para SAFET - Inflow
 -->
 
-<!DOCTYPE operations SYSTEM "file:///home/pbuitrago/.safet/dtd/yawlinput.dtd">
+<!DOCTYPE operations SYSTEM "file:///home/vbravo/.safet/dtd/yawlinput.dtd">
 <operations suffix=":" commandname="operacion">
 
 <operation  name="Empleados"  desc="Creacion de una solicitud" icon="vacation.png">
@@ -16,13 +16,14 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 		    <field  type="string" sequence="personal_id_seq" title="Solicitud_registro" typesequence="next" primarykey="yes">
                 id
             </field>
-			<field type="string" mandatory="yes" title="Nombres" >
+			<field type="string" mandatory="yes" title="Nombres"  position="open,md-4">
                 nombres
             </field>
-            <field type="string"  mandatory="yes" title="Apellidos" >
+            <field type="string"  mandatory="yes" title="Apellidos" position="middle,md-4">
                 apellidos
             </field>
-			<field type="string" mandatory="yes" primarykey="no" validation="[VE][0-9]{3,10}" title="Cédula">
+			<field type="string" mandatory="yes" primarykey="no" validation="[0-9]{3,10}" title="Cédula"
+position="close,md-4">
 				cedula
 			</field>
 			<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="yes" title="Cargo_asignado">
@@ -34,7 +35,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 			<field type="combolistliteral" options="Desarrollo::Desarrollo::Desarrollo,Investigacion::Investigacion::Investigacion,Administracion::Administracion::Administracion,Reflexion::Reflexion::Reflexion,Apropiacion::Apropiacion::Apropiacion,Redes::Redes::Redes,Soporte::Soporte::Soporte,Directiva::Directiva::Directiva" mandatory="yes" title="Departamento_dependencia" >
 				departamento
 			</field>
-			<field type="string" mandatory="yes" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
+			<field type="string" mandatory="no" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
 				proyecto
 			</field>
 			<field type="string" mandatory="yes" title="Usuario_sistema" validation="[A-Za-z]\D{2,}">
@@ -49,12 +50,25 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 			<field type="string" mandatory="yes" title="Telefono_personal" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
 				telefono_personal
 			</field>
+		<field title="Sueldo_base" desc="Sueldo_base" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+				        sueldo_base
+				</field>
+					<field title="Prima_complementaria" desc="Sueldo_base" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+				        prima_complementaria
+				</field>
+					<field title="Prima_profesionalización" desc="Prima_profesionalización" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+				        prima_profesionalizacion
+				</field>
+		<field title="Prima_antiguedad" desc="Prima_antiguedad" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+				        prima_antiguedad
+				</field>
 			<field type="stringbox" options="wiki" mandatory="yes" title="Domicilio">
 				domicilio 
 			</field>
 			<field type="string" literal="Activo" mandatory="yes" title="Status">
 				estado
 			</field>
+
 		</fields>
 	</command>
 </operation>
@@ -70,7 +84,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
             <field type="string"  mandatory="yes" title="Apellidos" >
                 apellidos
             </field>
-			<field type="string" mandatory="yes"  validation="[VE][0-9]{3,10}" title="Cédula">
+			<field type="string" mandatory="yes"  validation="[0-9]{3,10}" title="Cédula">
 				cedula
 			</field>
 			<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="yes" title="Cargo_asignado">
@@ -91,17 +105,26 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 			<field type="string" mandatory="yes" title="Correo_Institucional" validation="">
 				nombre_cuenta_correo_electronico
 			</field>
-			<field type="string" mandatory="yes" title="Telefono_habitacion" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
+			<field type="string" mandatory="no" title="Telefono_habitacion" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
 				telefono_habitacion
 			</field>
-			<field type="string" mandatory="yes" title="Telefono_personal" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
+			<field type="string" mandatory="no" title="Telefono_personal" validation="^0[1-9]{3}[-]{1}[0-9]{7}">
 				telefono_personal
 			</field>
-			<field type="stringbox" options="wiki" mandatory="yes" title="Domicilio">
+			<field title="Sueldo_base" desc="Sueldo_base" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+                        sueldo_base
+                </field>
+			<field title="Prima_complementaria" desc="Sueldo_base" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+                        prima_complementaria
+                </field>
+			<field title="Prima_profesionalización" desc="Prima_profesionalización" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+                        prima_profesionalizacion
+                </field>
+<field title="Prima_antiguedad" desc="Prima_antiguedad" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+                        prima_antiguedad
+                </field>
+			<field type="stringbox" options="wiki" mandatory="no" title="Domicilio">
 				domicilio 
-			</field>
-			<field type="string" literal="Activo" mandatory="yes" title="Status">
-				estado
 			</field>
 	    </fields>
     </command>
@@ -262,7 +285,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 		    title="periodo_vacacional"   changekey="yes" primarykey="yes" order="desc" position="open_and_close,md-4"  >
                 id
             </field>           
-	        <field changefor="periodo_vacacional" title="Siguiente_Estado" path="/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionessp.xml" options="next" position="open_and_close,md-4" 
+	        <field changefor="periodo_vacacional" title="Siguiente_Estado" path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" options="next" position="open_and_close,md-4" 
 		     type="comboflow" mandatory="yes">
                 status
              </field>		
@@ -293,7 +316,7 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 </operation>
 
 <operation  name="enviar_solicitud_por_correo"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png" action=""
-dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/pbuitrago/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:%1" >
+dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/vbravo/.safet/flowfiles/SolicitudVistaVacaciones.xml Variable: vSolicitud parameters.ByPeriod:%1" >
     <command id ="1" type="agregar" table="vacaciones" >
         <fields>
             <field title="Periodo_vacacional" changekey="yes" options="id:vacaciones" order="desc" type="combolisttable" mandatory="yes" primarykey="yes">
@@ -313,13 +336,13 @@ dataaction="operacion:Listar_datos Cargar_archivo_flujo: /home/pbuitrago/.safet/
 </operation>
 
 <operation  name="Firmar_solicitud"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Presidencia" >
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Presidencia" >
     <command id ="1" type="actualizar" table="vacaciones" >
 	    <fields>
 	        <field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
-		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionessp.xml" title="Siguiente_Estado" changefor="id">
+		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml" title="Siguiente_Estado" changefor="id">
 				status
 		    </field>
 	    </fields>
@@ -346,13 +369,13 @@ action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.saf
 </operation>
 
 <operation  name="Firmar_solicitud_SAFET01"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Talento" >
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Talento" >
     <command id ="1" type="actualizar" table="vacaciones" >
 	    <fields>
 	        <field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 				id
 			</field>
-		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
+		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
 		    title="Siguiente_Estado" changefor="id">
 				status
 		    </field>
@@ -380,13 +403,13 @@ action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.saf
 </operation>
 
 <operation  name="Firmar_solicitud_SAFET02"  desc="Agregar una nueva actividad a accion especifica" icon="plus.png"
-action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Direccion" >
+action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionesspUser.xml  Variable:vNoFirmada_Direccion" >
     <command id ="1" type="actualizar" table="vacaciones" >
 	    <fields>
   	        <field type="combolisttable" options="id:vacaciones:where status='Presidencia'::'Solicitud Nro ' || id" mandatory="yes" primarykey="yes" title="id" order="desc" changekey="yes">
 		        id
 			</field>
-		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/pbuitrago/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
+		    <field type="comboflow" mandatory="yes" options="neighbour" path="/home/vbravo/.safet/flowfiles/SolicitudVistaVacacionessp.xml"
 			title="Siguiente_Estado" changefor="id">
 				status
 		    </field>
@@ -499,7 +522,7 @@ action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/pbuitrago/.saf
 <operation  name="Imprimir_planilla_vacaciones" desc="Verificacion de la informacion de la solicitus y calculo del bono vacacional" icon="">
     <command id ="1" type="agregar" table="vacaciones" >
         <fields>
-            <field type="string" mandatory="no" options="type::button,action::Listar_datos_general,fieldsaction::Cargar_archivo_flujo::/home/pbuitrago/.safet/flowfiles/SolicitudVacaciones.xml;Variable::vVacaciones_solicitadas;parameters.Por_usuario::_USERNAME"  title="Imprimir planilla" desc="Archivo"  >
+            <field type="string" mandatory="no" options="type::button,action::Listar_datos_general,fieldsaction::Cargar_archivo_flujo::/home/vbravo/.safet/flowfiles/SolicitudVacaciones.xml;Variable::vVacaciones_solicitadas;parameters.Por_usuario::_USERNAME"  title="Imprimir planilla" desc="Archivo"  >
                 imprimir_planilla
             </field>
 	    </fields>
