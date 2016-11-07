@@ -36,6 +36,7 @@ function fieldSearch() {
 function createTable(data) {
 	
 	console.log("...createTable...");
+	console.log("data: %o", data);
 	//******************************************
 	var title = '<h2> Estado de la solicitud </h2> \n ';
     var head = '<div class=\'container\'> \n <table id=\' \' class=\'table table-bordered\'> \n <thead> \n <tr>\n <th>Estado</th>\n <th>Usuario</th> \n <th>Fecha</th> \n <th>Tiempo</th> \n <th>Espera</th> \n </tr>\n </thead>\n <tbody> \n';
@@ -47,17 +48,20 @@ function createTable(data) {
    for (i = 0; i < 5; i++ ) {
 		for (var pru in data) {
 			var field = data[pru];
-		    //console.log("estado: " + field['estado'] + " vs Estados: "+ estados[i]);
+		    console.log(field['estado'] + " vs " + estados[i]);
 	        
 	        if(field['estado'] == estados[i]) { 
+				console.log("***Son iguales***");
 				if(field['visita'] == true) {
+					console.log("---true - Entro");
 					tableHtml += '<tr class="active">\n<td>' + estados[i] + '</td>\n<td>' + field['usuario'] + '</td>\n<td>' + field['fecha'] +' </td>\n<td>' + field['tiempo'] +'</td>\n<td>' + field['espera'] + ' </td>\n</tr>\n';
 			    }			
-				else  {
+				else {
+					console.log("---false - Entro");
 					tableHtml += '<tr>\n<td>' + estados[i] + '</td>\n<td>' + field['usuario'] + '</td>\n<td>' + field['fecha'] +' </td>\n<td>' + field['tiempo'] +'</td>\n<td>' + field['espera'] + ' </td>\n</tr>\n';
 				}
 			} else {
-				//console.log("No son iguales");
+				console.log("No son iguales");
 				}
 		}
 	}
@@ -68,13 +72,6 @@ function createTable(data) {
 
 function jsonTable(datajson) {
 	console.log("....jsonTable()....");
-	//console.log("dataJson: %o", datajson);
-	//******************************************
-	var title = '<h2> Estado de la solicitud </h2> \n ';
-    var head = '<div class=\'container\'> \n <table id=\' \' class=\'table table-bordered\'> \n <thead> \n <tr>\n <th>Estado</th>\n <th>Usuario</th> \n <th>Fecha</th> \n <th>Tiempo</th> \n <th>Espera</th> \n </tr>\n </thead>\n <tbody> \n';
-    var footer = '</tbody> \n </table> \n </div>';
-    var tableHtml = title + head;
-    //*******************************************
 	var dataJson = new Array();
 	var data = new Array();
 	var v_estado = "";
@@ -87,58 +84,60 @@ function jsonTable(datajson) {
 	var objVarVerifique = JSON.parse(datajson);
 	$.each(objVarVerifique, function(idx, obj) {
 		if(idx == 'data') {
-				fielData = obj;
-				$.each(fielData, function(id, objx) { 
-					if(id == 'nodes') {
-						fielnode = objx;
-						$.each(fielnode, function(idy, objy) { 
-							fileobject = objy;
-							var i = 0;
-							$.each(fileobject, function(idyx, objyx) { 
-							    if(idyx == 'name') {
-									v_estado = objyx;
-									console.log(idyx + ": " + v_estado );
-									}
-								if(idyx == 'parameter3') {
-									v_usuario = objyx;
-									v_visita = true;
-									console.log("Usuario : " + v_usuario );
-									}
-								if(idyx == 'parameter4') {
-									v_fecha = objyx;
-									console.log("Fecha : " + v_fecha );
-									}
-								if(idyx == 'date') {
-									v_date = objyx;
-									console.log("Date : " + v_date );
-									}
-								if(idyx == 'parameter5') {
-									v_tiempo = objyx;
-									console.log("Tiempo : " + v_tiempo );
-									}
-								if(idyx == 'parameter6') {
-									v_espera = objyx;
-									console.log("Espera : " + v_espera );
-									}	
-						    });
-						    i++;
-						    if(v_visita == true) {
-								tableHtml += '<tr class="active">\n<td>' + v_estado + '</td>\n<td>' + v_usuario + '</td>\n<td>' + v_fecha +' </td>\n<td>' + v_tiempo +'</td>\n<td>' + v_espera + ' </td>\n</tr>\n';
-								}
-							else  {
-								tableHtml += '<tr>\n<td>' + v_estado + '</td>\n<td>' + v_usuario + '</td>\n<td>' + v_fecha +' </td>\n<td>' + v_tiempo +'</td>\n<td>' + v_espera + ' </td>\n</tr>\n';
-								}
-						    data = {estado:v_estado, usuario:v_usuario, fecha:v_fecha, tiempo:v_tiempo, espera:v_espera, visita:v_visita};
-						    dataJson.push(data);
-						    if (v_estado == 'inicial') {dataJson.pop();}
-						    if (v_estado == 'Iniciado') {dataJson.pop();}
-						    if (v_estado == 'final') {dataJson.pop();}
-						});
-					}
-				});	
-			}
-	 });
-	tableHtml += footer;
+			fielData = obj;
+			$.each(fielData, function(id, objx) { 
+				if(id == 'nodes') {
+					fielnode = objx;
+					$.each(fielnode, function(idy, objy) { 
+						fileobject = objy;
+						v_estado = "";
+						v_usuario = "";
+						v_fecha = "";
+						v_date = "";
+						v_tiempo = "";
+						v_espera = "";
+						v_visita = "";
+						
+						if(objy['name'] != '') {
+							v_estado = objy['name'];
+							console.log("Estado: " + v_estado );
+						}
+						if (objy['index'] > 0) {
+							v_visita = true;
+							v_usuario = objy['parameter3'];
+							console.log("Usuario : " + v_usuario );
+							v_fecha = objy['parameter4'];
+							console.log("Fecha : " + v_fecha );						
+							v_date = objy['date'];
+							console.log("Date : " + v_date );							
+							v_tiempo = objy['parameter5'];
+							console.log("Tiempo : " + v_tiempo );
+							v_espera = objy['parameter6'];
+							console.log("Espera : " + v_espera );
+							
+						} else {
+							v_visita = false;
+						}
+						console.log("Visitado: " + v_visita);
+						data = {estado:v_estado, usuario:v_usuario, fecha:v_fecha, tiempo:v_tiempo, espera:v_espera, visita:v_visita};
+						dataJson.push(data);
+						if (v_estado == 'inicial') {
+							dataJson.pop();
+						}
+						if (v_estado == 'Iniciado') {
+							dataJson.pop();
+						}
+						if (v_estado == 'final') {
+							dataJson.pop();
+						}
+						//console.log("dataJson: %o", dataJson);
+						//console.log("*******************************************"); 
+					});
+				}
+			});	
+		}
+	});
+	//tableHtml += footer;
 	createTable(dataJson);
 }
 
