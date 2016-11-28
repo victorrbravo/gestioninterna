@@ -16,10 +16,10 @@ Descripcion: Archivo de Entrada para SAFET - Inflow
 		    <field  type="string" sequence="personal_id_seq" title="Solicitud_registro" typesequence="next" primarykey="yes">
                 id
             </field>
-			<field type="string" mandatory="yes" title="Nombres"  position="open,md-4">
+			<field type="string" mandatory="yes"  desc="Coloque su nombre completo"  position="open,md-4">
                 nombres
             </field>
-            <field type="string"  mandatory="yes" title="Apellidos" position="middle,md-4">
+            <field type="string"  mandatory="yes" desc="" title="Apellidos" options=""  position="middle,md-4">
                 apellidos
             </field>
 			<field type="string" mandatory="yes" primarykey="no" validation="[0-9]{3,10}" title="Cédula"
@@ -29,7 +29,7 @@ position="close,md-4">
 			<field type="combolistliteral" options="Analista Desarrollo::Programador::Analista Desarrollo,Investigador::Investigación en tecnologías Libres::Investigador,Analista Administración::Tareas administrativas::Analista Administración,Analista Reflexión::Tareas de análisis de la tecnología::Analista Reflexión,Apoyo::Personal de apoyo a la fundación::Apoyo" mandatory="yes" title="Cargo_asignado">
 				cargo
 			</field>
-			<field type="datetime" mandatory="yes" title="fecha_de_ingreso" format="time_t" options="calendarPopup::true,displayFormat::dd/MM/yy" >
+			<field type="datetime" mandatory="yes"  position="open_and_close,md-3" title="Fecha_de_ingreso" format="time_t" options="calendarPopup::true,displayFormat::dd/MM/yy" desc="Ingreso a Cenditel"  >
 				fecha_ingreso
 			</field>
 			<field type="combolistliteral" options="Desarrollo::Desarrollo::Desarrollo,Investigacion::Investigacion::Investigacion,Administracion::Administracion::Administracion,Reflexion::Reflexion::Reflexion,Apropiacion::Apropiacion::Apropiacion,Redes::Redes::Redes,Soporte::Soporte::Soporte,Directiva::Directiva::Directiva" mandatory="yes" title="Departamento_dependencia" >
@@ -96,7 +96,7 @@ position="close,md-4">
 			<field type="combolistliteral" options="Desarrollo::Desarrollo::Desarrollo,Investigacion::Investigacion::Investigacion,Administracion::Administracion::Administracion,Reflexion::Reflexion::Reflexion,Apropiacion::Apropiacion::Apropiacion,Redes::Redes::Redes,Soporte::Soporte::Soporte,Directiva::Directiva::Directiva" mandatory="yes" title="Departamento_dependencia" >
 				departamento
 			</field>
-			<field type="string" mandatory="yes" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
+			<field type="string" mandatory="no" title="Proyectos_Asignados" validation="[A-Za-z]\D{2,}">
 				proyecto
 			</field>
 			<field type="string" mandatory="yes" title="Usuario_sistema" validation="[A-Za-z]\D{2,}">
@@ -209,6 +209,9 @@ position="close,md-4">
 			<field type="string" mandatory="yes" function="'( ' || cedula || ' ) ' || nombres ||' '|| apellidos || ' fecha ingreso ' || to_timestamp(fecha_ingreso)::date from personal where usuario='_USERNAME'" input="no" title="Informacion_usuario">
 				informacion_usuario
 			</field>
+			<field type="string" mandatory="yes"  function="(sueldo_base+prima_complementaria+prima_profesionalizacion)*1.5*({#diassolicitados}.0/{#diasadisfrutar}.0) from personal where personal.usuario='_USERNAME'"  input="no">
+                	 bonoacancelar
+	            </field>
 		</fields>
 	</command>
     <command id ="1" type="agregar" table="vacaciones_registro" >
@@ -578,20 +581,18 @@ action="operacion:Listar_datos_general Cargar_archivo_flujo:/home/vbravo/.safet/
 			<field type="string" icon="resumen.png" mandatory="yes" title="días_inhábiles"  validation="[0-9]+" options=""  >
 				diasinhabiles
 			</field>
-		<field type="number" icon="resumen.png" mandatory="yes" title="Bono_vacacional"  validation="[0-9][0-9\.,]+" options=""  >
-				bonoacancelar
-		</field>
-		<field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_del_mes" validation="[0-9][0-9\.,]+"
-            options="">
-                sueldodelmes
-            </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Sueldo_anticipado" validation="[0-9][0-9\.,]+"
-            options="">
-                sueldoanticipado
-            </field>
-            <field type="number" icon="resumen.png" mandatory="yes" title="Total_a_pagar" validation="[0-9][0-9\.,]+" options="" >
-                totalapagar
-            </field>
+		<field title="Bono" desc="Bono" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+                        bonoacancelar
+                </field>
+		<field title="Sueldo_del_mes" desc="mes" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+                        sueldodelmes
+                </field>
+		<field title="Suelto_anticipado" desc="anticipado" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+                        sueldoanticipado
+                </field>
+		<field title="Total" desc="total" validation="" position="open_and_close,md-8" icon="resumen.png" type="number" mandatory="no">
+                        totalapagar
+                </field>
 			<field type="string" literal="Direccion_gestion_interna" mandatory="yes" primarykey="no">
 				status
 			</field>
@@ -928,5 +929,4 @@ postaction="" >
     </command>
 
 </operation>
-	
 </operations>
