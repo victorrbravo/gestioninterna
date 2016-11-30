@@ -197,12 +197,16 @@ position="close,md-4">
 			<field title="Investigación" desc="Activo" validation="" position="close,md-6" options="type::checkbox,Sí::true" icon="resumen.png" type="string" mandatory="no">
 			      enviar_investigacion
 			</field>
-		    <field title="Apropiación" desc="Activo" validation="" position="open,md-6" options="type::checkbox,Si::true" icon="resumen.png" type="string" mandatory="no">
+		    <field title="Apropiación" desc="Activo" validation="" position="open,md-4" options="type::checkbox,Si::true" icon="resumen.png" type="string" mandatory="no">
 			      enviar_apropiacion
 			</field>
-		    <field title="Reflexión" desc="Activo" validation="" position="close,md-6" options="type::checkbox,Si::True" icon="resumen.png" type="string" mandatory="no">
+<field title="Gestión" desc="Activo" validation="" position="middle,md-4" options="type::checkbox,Si::True" icon="resumen.png" type="string" mandatory="no">
+			      enviar_gestion
+			</field>
+		    <field title="Reflexión" desc="Activo" validation="" position="close,md-4" options="type::checkbox,Si::True" icon="resumen.png" type="string" mandatory="no">
 			      enviar_reflexion
 			</field>
+		    
 			<field type="string" literal="Talento_humano" mandatory="yes" title="Estatus">
 				status                                
 			</field>
@@ -212,6 +216,9 @@ position="close,md-4">
 			<field type="string" mandatory="yes"  function="(sueldo_base+prima_complementaria+prima_profesionalizacion)*1.5*({#diassolicitados}.0/{#diasadisfrutar}.0) from personal where personal.usuario='_USERNAME'"  input="no">
                 	 bonoacancelar
 	            </field>
+<field type="string" function="case when {#enviar_gestion} then 'vbravo@cenditel.gob.ve' else '' end" input="no" title="correo_gestion">
+				correo_gestion
+			</field>
 		</fields>
 	</command>
     <command id ="1" type="agregar" table="vacaciones_registro" >
@@ -273,7 +280,8 @@ position="close,md-4">
             </field>
 			<field type="string" format="integer" function="extract(epoch from now()+'15 day')::int" title="fecha_fin" >
                 fechafin
-            </field>			
+            </field>	
+		
             <field type="string" mandatory="yes" literal="iniciado">
                 status
             </field>

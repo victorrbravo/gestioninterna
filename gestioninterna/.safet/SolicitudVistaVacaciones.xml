@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Documento  : tickets.xml
+Creado     : 16/10/08 09:27 AM
+Autor      : nombre_autor
+Descripcion: Archivo generado por plantilla de la Libreria SAFET
+-->
+<!--<!DOCTYPE yawl SYSTEM "http://trac-safet.cenditel.gob.ve/dtd/yawlworkflow.dtd">-->
+<!DOCTYPE yawl SYSTEM "file:///home/vbravo/.safet/dtd/yawlworkflow.dtd">
+<yawl  version="0.01">
+<workflow id="Generar planilla de solicitud de vista_vacaciones" desc="Planilla que se generar con los datos de una solicitud de vista_vacaciones">
+<token key="vista_vacaciones.id"  keysource="vista_vacaciones">
+</token>
+<parameter type="" icon="hito.png" desc= "ByPeriod" mandatory="no" options="" title="ByPeriod" >
+</parameter>	
+     
+<condition id="inicial" type="start">
+	<port side="forward" type="split"  >
+		<connection   source="Por_usuario" query="select id from vista_vacaciones"  options="{#ByPeriod}" tokenlink="" >
+		</connection>
+	</port>
+</condition>
+<task id="Por_usuario"  title="_USERNAME" >
+	<port side="forward" type="split"  >
+		<connection   source="Vacaciones_solicitadas" query="select status from vista_vacaciones"  options="Archivar_solicitud_procesada" tokenlink="[cedula,id_cedula:vista_vacaciones]" >
+		</connection>
+
+	</port>
+	 <variable id="vSolicitud" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,status,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva,nombre_cuenta_correo_electronico, observaciones_presidencia,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion,correo_gestion from vista_vacaciones"
+ rolfield=""  timestampfield="" groupby="ORDER BY id DESC" 
+
+ >
+     </variable>
+</task>
+
+<task id="Vacaciones_solicitadas"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"  >
+	    <connection source="Solicitud_firmada" query="vSolicitud SIGN #ANYBODY#" options="yes" tokenlink="" 
+>
+        </connection>
+	</port>
+	 <variable id="vVacaciones_solicitadas" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia ,nombre_cuenta_correo_electronico,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones"
+ rolfield="(select nombre_periodo from vista_vacaciones_registro where vista_vacaciones_registro.id_vista_vacaciones=vista_vacaciones.id and vista_vacaciones_registro.status='Archivar_solicitud_procesada' limit 1)"  timestampfield="(select fecha_accion from vista_vacaciones_registro where vista_vacaciones_registro.id_vista_vacaciones=vista_vacaciones.id and vista_vacaciones_registro.status='Archivar_solicitud_procesada' limit 1)" 
+
+ >
+     </variable>
+</task>
+<task id="Solicitud_firmada"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"  >
+		<connection   source="DireccionEjecutiva" query="select status from vista_vacaciones"  options="Direccion_ejecutiva" tokenlink="" >
+		</connection>
+
+	</port>
+	 <variable id="vFirmadas" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select id,id_cedula, nombres_suplente_1,nombres_suplente_2,cargo_suplente_1,cargo_suplente_2,nombreapellido, diasadisfrutar, diasdisfrutados, diassolicitados, diaspordisfrutar, fechasolicitud, fechainicio, fechafin, suplenteinterno_1, suplenteinterno_2, cedula_suplente_1, cedula_suplente_2, vista_vacaciones.cargo, vista_vacaciones.fecha_ingreso, nombre, vista_vacaciones.departamento, cargo_1, cargo_2, vista_vacaciones.fechaincorporacion, fechafin, diasinhabiles, diasadicionales, bonoacancelar, sueldodelmes, sueldoanticipado, totalapagar, observaciones_talento_humano, observaciones_direccion_ejecutiva, observaciones_presidencia ,nombre_cuenta_correo_electronico,correo_investigacion,correo_desarrollo,correo_apropiacion,correo_reflexion from vista_vacaciones"
+ rolfield="cn::Victor Rafael Bravo Bravo"  timestampfield="cn::Victor Rafael Bravo Bravo"
+
+ >
+     </variable>
+</task>
+<task id="DireccionEjecutiva"  title="Planilla vista_vacaciones" >
+	<port side="forward" type="split"  >
+	    <connection source="final" query="true" options="" >
+        </connection>
+	</port>
+	 <variable id="vDireccionEjecutiva" scope="task"  type="sql" config="1"   tokenlink="" 
+                documentsource="select  personal.cargo, personal.departamento, diasadisfrutar, diasdisfrutados, diaspordisfrutar, diassolicitados, suplenteinterno_1, suplenteinterno_2, fechasolicitud, nombre, vista_vacaciones.fecha_ingreso, informacion_usuario, nombre, fechainicio, fechafin from vista_vacaciones"
+ rolfield=""  timestampfield="" 
+
+ >
+     </variable>
+</task>
+
+<condition id="final">
+	<port side="forward" type="split">
+		<connection source="">
+		</connection>
+	</port>
+</condition>
+
+</workflow>
+	<configuration id="1" connectstring="psql:seguridad.cenditel.gob.ve:ticket:vbravo:vbravo_">
+	</configuration>
+</yawl>
+
