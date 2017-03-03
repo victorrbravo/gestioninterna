@@ -39,8 +39,8 @@ function createTable(data) {
 	console.log("data: %o", data);
 	//******************************************
 	var title = '<h2> Estado de la solicitud </h2> \n ';
-    var head = '<div class=\'container\'> \n <table id=\' \' class=\'table table-bordered\'> \n <thead> \n <tr>\n <th>Estado</th>\n <th>Usuario</th> \n <th>Fecha</th> \n <th>Tiempo</th> \n <th>Espera</th> \n </tr>\n </thead>\n <tbody> \n';
-    var footer = '</tbody> \n </table> \n </div>';
+    var head = '<div style="position: relative; overflow: auto; width: 100%;"> <div class=\'container\'> \n <table id=\' \' class=\'table table-bordered\'> \n <thead> \n <tr>\n <th>Estado</th>\n <th>Usuario</th> \n <th>Fecha</th> \n <th>Tiempo</th> \n <th>Espera</th> \n </tr>\n </thead>\n <tbody> \n';
+    var footer = '</tbody> \n </table> \n </div></div>';
     var tableHtml = title + head;
     var estados = ["TalentoHumano", "DireccionInterna", "DireccionEjecutiva", "Finanzas", "Archivar_solicitud_procesada"]
     //*******************************************
